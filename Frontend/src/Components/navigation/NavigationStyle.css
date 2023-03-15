@@ -1,0 +1,32 @@
+.navigation-container {
+    display: block;
+    background-color: #144013;
+    height: 100vh;
+    width: 380px;
+}
+
+.control-button {
+    display: block;
+    width: 290px;
+    height: 70px;
+    margin-left: 2.5em;
+    margin-bottom: 2em;
+    background-color: #0E2C0D;
+    border-radius: 1em;
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    border: solid #0E2C0D;
+    transition: 0.3s ease-in;
+    text-align: left;
+    cursor: pointer;
+}
+
+.control-button:hover {
+    transform: scale(1.01);
+    box-shadow: 6px 4px 10px -2px rgba(0, 0, 0, 0.25);
+}
+
+.control-buttons {
+    padding-top: 3em;
+}

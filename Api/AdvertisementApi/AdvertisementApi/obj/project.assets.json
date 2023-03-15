@@ -466,9 +466,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\Унік\\WEB\\lab\\Api\\AdvertisementApi\\AdvertisementApi\\AdvertisementApi.csproj",
-      "projectName": "AdvertisementApi",
-      "projectPath": "H:\\Унік\\WEB\\lab\\Api\\AdvertisementApi\\AdvertisementApi\\AdvertisementApi.csproj",
+      "projectUniqueName": "H:\\Унік\\WEB\\lab\\Api\\AdvertisementApi\\AdvertisementApi\\AdIntegration.Api.csproj",
+      "projectName": "AdIntegration.Api",
+      "projectPath": "H:\\Унік\\WEB\\lab\\Api\\AdvertisementApi\\AdvertisementApi\\AdIntegration.Api.csproj",
       "packagesPath": "C:\\Users\\ilmln\\.nuget\\packages\\",
       "outputPath": "H:\\Унік\\WEB\\lab\\Api\\AdvertisementApi\\AdvertisementApi\\obj\\",
       "projectStyle": "PackageReference",

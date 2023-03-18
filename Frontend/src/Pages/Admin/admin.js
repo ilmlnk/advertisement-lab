@@ -16,7 +16,7 @@ const Admin = () => {
             <div className='admin-content'>
                 <h1>Orders</h1>
                 <div>
-
+                    
                 </div>
 
                 <button>Create new order</button>
@@ -24,8 +24,7 @@ const Admin = () => {
                 <div>
                     <h1>Recent Activity</h1>
                     <span 
-                    onClick={() => setIsOpenUserModal(true)}
-                    >
+                    onClick={() => setIsOpenUserModal(true)}>
                         See all
                     </span>
 

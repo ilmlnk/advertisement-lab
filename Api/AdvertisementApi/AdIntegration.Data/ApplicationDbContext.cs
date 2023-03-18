@@ -25,6 +25,8 @@ namespace AdIntegration.Data
             optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         }
 
+        public DbSet<Advertisement> Advertisements { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Advertisement>()

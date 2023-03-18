@@ -1,0 +1,7 @@
+H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\obj\Debug\net7.0\AdIntegration.Api.csproj.AssemblyReference.cache
+H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\obj\Debug\net7.0\AdIntegration.Api.GeneratedMSBuildEditorConfig.editorconfig
+H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\obj\Debug\net7.0\AdIntegration.Api.AssemblyInfoInputs.cache
+H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\obj\Debug\net7.0\AdIntegration.Api.AssemblyInfo.cs
+H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\obj\Debug\net7.0\AdIntegration.Api.csproj.CoreCompileInputs.cache
+H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\obj\Debug\net7.0\AdIntegration.Api.MvcApplicationPartsAssemblyInfo.cs
+H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\obj\Debug\net7.0\AdIntegration.Api.MvcApplicationPartsAssemblyInfo.cache

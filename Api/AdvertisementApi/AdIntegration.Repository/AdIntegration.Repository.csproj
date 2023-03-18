@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.SignalR" Version="2.4.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AdIntegration.Data\AdIntegration.Data.csproj" />
+  </ItemGroup>
+
 </Project>

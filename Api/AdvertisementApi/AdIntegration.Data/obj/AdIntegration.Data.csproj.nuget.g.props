@@ -18,6 +18,8 @@
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore.design\7.0.4\build\net6.0\Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore.design\7.0.4\build\net6.0\Microsoft.EntityFrameworkCore.Design.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgNewtonsoft_Json Condition=" '$(PkgNewtonsoft_Json)' == '' ">C:\Users\ilmln\.nuget\packages\newtonsoft.json\6.0.4</PkgNewtonsoft_Json>
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\ilmln\.nuget\packages\microsoft.entityframeworkcore.tools\7.0.4</PkgMicrosoft_EntityFrameworkCore_Tools>
+    <PkgjQuery Condition=" '$(PkgjQuery)' == '' ">C:\Users\ilmln\.nuget\packages\jquery\1.6.4</PkgjQuery>
   </PropertyGroup>
 </Project>

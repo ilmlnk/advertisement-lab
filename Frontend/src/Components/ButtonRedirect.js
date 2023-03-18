@@ -1,13 +1,14 @@
 import React from "react";
-import { Icon } from "react-icons-kit";
-import {home} from 'react-icons-kit/fa/home'
+import { useNavigate } from "react-router-dom";
 
 
 const ButtonRedirect = (props) => {
+    const navigate = useNavigate();
+
     return (
-        <button className={props.class}>
-            <img src={props.image} />
-            <span>{props.text}</span>
+        <button onClick={props.action} className={props.class}>
+            <img className={props.imageClass} src={props.image} />
+            <span className={props.spanClass}>{props.text}</span>
         </button>
     )
 }

@@ -2,13 +2,13 @@ import React, { useContext, useState } from 'react';
 import Header from '../../Components/header/Header';
 import Navigation from '../../Components/navigation/Navigation';
 import OnlineUsersList from '../../Components/OnlineUsersList';
-import OnlineUsersModalWindow from '../../Components/OnlineUsersModalWindow';
+import OnlineUsersModalWindow from '../../Components/modal/OnlineUsersModalWindow';
 import Layout from '../Layout/layout';
-import CreateOrderModalWindow from '../../Components/CreateOrderModalWindow';
+import CreateOrderModalWindow from '../../Components/modal/CreateOrderModalWindow';
 import './adminStyle.css';
 import { ModalContext, ModalProvider } from '../../Contexts/ModalContext';
 import ModalOpenButton from '../../Components/ModalOpenButton';
-import CreateTaskModalWindow from '../../Components/CreateTaskModalWindow';
+import CreateTaskModalWindow from '../../Components/modal/CreateTaskModalWindow';
 import {plusSquareO} from 'react-icons-kit/fa/plusSquareO'
 import Icon from 'react-icons-kit';
 import Footer from '../../Components/footer/Footer';
@@ -123,8 +123,6 @@ const Admin = () => {
 
     return (
         <Layout>
-            <Header />
-            <Navigation />
             <div className='admin-content'>
                 <div className='orders-list-container'>
                 <h1 className='orders-title container-title'>Orders</h1>
@@ -188,10 +186,10 @@ const Admin = () => {
                         .map((user) => (
                             <li className='online-user-mark' key={user.id}>
                                 <div className='online-user-block'>
-                                <h2 className='online-user-fullname'>{user.name} {user.surname}</h2>
-                                <span className='online-user-status'>{user.isOnline ? "Online" : "Offline"}</span>
-                                <button className='online-user-profile'>Profile</button>
-                                <button className='online-user-chat'>Chat</button>
+                                  <h2 className='online-user-fullname'>{user.name} {user.surname}</h2>
+                                  <span className='online-user-status'>{user.isOnline ? "Online" : "Offline"}</span>
+                                  <button className='online-user-profile'>Profile</button>
+                                  <button className='online-user-chat'>Chat</button>
                                 </div>
                             </li>
                         ))}

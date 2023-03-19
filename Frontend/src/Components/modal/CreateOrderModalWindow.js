@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
-import { ModalContext } from "../Contexts/ModalContext";
+import { ModalContext } from "../../Contexts/ModalContext";
+import './CreateOrderStyle.css';
 
 const CreateOrderModalWindow = () => {
 
@@ -22,16 +23,16 @@ const CreateOrderModalWindow = () => {
                 <h2>Create New Order</h2>
 
                 <input
-                className="name-text-field"
+                className="name-text-field text-field"
                 placeholder="Input name"></input>
 
                 <textarea 
-                className="description-text-area"
+                className="description-text-area text-field"
                 placeholder="Input description"
                 ></textarea>
 
                 <input
-                className="price-text-area"
+                className="price-text-area text-field"
                 placeholder="Input price"
                 ></input>
 
@@ -63,6 +64,7 @@ const CreateOrderModalWindow = () => {
                     </ul>
                 )}
                 <input
+                className="text-field"
                 placeholder="Input username" 
                 value="User"></input>
 

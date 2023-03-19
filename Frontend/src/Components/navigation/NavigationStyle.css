@@ -1,8 +1,19 @@
 .navigation-container {
     display: block;
     background-color: #144013;
-    height: 100vh;
+    height: 120vh;
     width: 380px;
+    position: fixed;
+    top: 0;
+    z-index: -2;
+    padding-top: 1em;
+}
+
+.navigation-title {
+    color: #fff;
+    text-align: center;
+    font-size: 36px;
+    margin-right: 10px;
 }
 
 .control-button {
@@ -36,4 +47,33 @@
 .home-img {
     display: inline-block;
 
+}
+
+.user-profile-image {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    padding: 1em;
+}
+
+.control-panel {
+    display: inline-flex;
+    position: absolute;
+    margin-top: 1.65em;
+}
+
+.control-username {
+    color: #fff;
+}
+
+.user-button {
+    
+}
+
+.navigation-footer-container {
+    background-color: #0E2C0D;
+    height: 72px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    margin-top: 3em;
 }

@@ -9,7 +9,7 @@ const Layout = ({ children, history }) => {
             <main>{children}</main>
             <Footer history={history} />
       </div>
-    )
+    );
   }
 
 export default Layout;

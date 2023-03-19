@@ -1,8 +1,72 @@
 .header-logo {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
+    display: inline-block;
+    margin-left: 3em;
+    cursor: pointer;
 }
 
 .header-container {
     background-color: #1D5A1C;
+    height: 125px;
+}
+
+.search-bar {
+    display: inline-block;
+    position: absolute;
+    top: 3%;
+    left: 25%;
+}
+
+.search-text-field {
+    width: 375px;
+    height: 55px;
+    border-radius: 35px;
+    border: solid #fff;
+    padding-left: 2em;
+    padding-right: 3em;
+    font-size: 16px;
+    box-shadow: 0px 0px 0px rgba(34, 167, 255, 0.7);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.search-text-field:focus {
+    outline: none;
+    box-shadow: 0px 0px 10px rgba(34, 167, 255, 0.7);
+}
+
+.search-button {
+    width: 64px;
+    height: 64px;
+    border-radius: 15px;
+    cursor: pointer;
+    border: solid #fff;
+    background-color: #fff;
+    margin-left: 10px;
+    transition: 0.3s ease-in;
+}
+
+.search-button:hover {
+    transform: scale(1.02);
+    background-color: #154413;
+    color: #fff;
+}
+
+.notification-button {
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    width: 65px;
+    height: 65px;
+    border-radius: 15px;
+    border: solid #fff;
+    background-color: #fff;
+    transition: 0.3s ease-in;
+    cursor: pointer;
+}
+
+.notification-button:hover {
+    transform: scale(1.02);
+    background-color: #154413;
+    color: #fff;
 }

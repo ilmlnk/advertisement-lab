@@ -41,3 +41,51 @@
     display: inline-block;
 
 }
+
+.recent-activity-container {
+    margin-top: 5em;
+}
+
+.create-order-button {
+    font-size: 18px;
+    display: block;
+    position: relative;
+    left: 34.5%;
+    margin-top: 4em;
+    width: 300px;
+    height: 75px;
+    border-radius: 20px;
+    border: solid #0E2C0D;
+    background-color: #0E2C0D;
+    cursor: pointer;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    transition: 0.3s ease-in;
+}
+
+.create-order-button:hover {
+    transform: scale(1.01);
+    box-shadow: 6px 4px 10px -2px rgba(0, 0, 0, 0.25);
+    background-color: #10900E;
+    border-color: #10900E;
+}
+
+.create-order-icon {
+    margin-right: 1em;
+}
+
+.see-all-button {
+    background-color: #f0f0f0;
+    width: 150px;
+    height: 40px;
+    border-radius: 1.5em;
+    border: solid #f0f0f0;
+    cursor: pointer;
+    color: #5e5e5e;
+    transition: 0.3s ease-in;
+}
+
+.see-all-button:hover {
+    background-color: #d3d3d3;
+    border: solid #d3d3d3;
+}

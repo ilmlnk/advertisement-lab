@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ButtonRedirect from '../ButtonRedirect';
+import Icon from 'react-icons-kit';
+import { NavLink } from 'react-router-dom';
+
+import {cog} from 'react-icons-kit/fa/cog';
+import {moon} from 'react-icons-kit/iconic/moon';
+import {exit} from 'react-icons-kit/icomoon/exit';
 
 import './NavigationStyle.css';
 
@@ -13,10 +19,14 @@ import commandChatIcon from '../../Images/Chat_alt_2.png';
 import customerSupportIcon from '../../Images/Favorite_fill.png';
 import currentUserIcon from '../../Images/Active_user.png';
 
-
 const Navigation = () => {
 
     const navigate = useNavigate();
+    const [isOnPage, setIsOnPage] = useState(false);
+
+    const handleNavigation = () => {
+        setIsOnPage(true);
+    }
 
     return (
     <>
@@ -25,87 +35,117 @@ const Navigation = () => {
             <h2 className='navigation-title'>Menu</h2>
             <div className='control-buttons'>
                 {/* Button "Home" */}
-                <ButtonRedirect 
-                action={() => navigate("/admin")}
-                class="control-button home-button navigation-content" 
-                text="Main" 
-                image={homeIcon}
-                imageClass="home-img"
-                spanClass="control-button-span home-span"
-                />
+                <NavLink to="/admin" activeClassName="nav-link-button nav-link-admin">
+                    <ButtonRedirect 
+                    action={() => navigate("/admin")}
+                    class="control-button home-button navigation-content" 
+                    text="Main" 
+                    image={homeIcon}
+                    imageClass="home-img redirect-button-img"
+                    spanClass="control-button-span home-span"
+                    />
+                </NavLink>
 
                 {/* Button "Analytics" */}
-                <ButtonRedirect 
-                action={() => navigate("/analytics")}
-                class="control-button analytics-button navigation-content" 
-                text="Analytics"
-                image={analyticsIcon}
-                imageClass="analytics-img"
-                spanClass="control-button-span analytics-span"
-                />
+                <NavLink to="/analytics" activeClassName="nav-link-button nav-link-analytics">
+                    <ButtonRedirect 
+                    action={() => navigate("/analytics")}
+                    class="control-button analytics-button navigation-content" 
+                    text="Analytics"
+                    image={analyticsIcon}
+                    imageClass="analytics-img redirect-button-img"
+                    spanClass="control-button-span analytics-span"
+                    />
+                </NavLink>
 
                 {/* Button "User Management" */}
-                <ButtonRedirect 
-                action={() => navigate("/user-management")}
-                class="control-button user-management-button navigation-content" 
-                text="User Management"
-                image={userManagementIcon}
-                imageClass="user-management-img"
-                spanClass="control-button-span user-management-span"
-                />
+                <NavLink to="/user-management" activeClassName="nav-link-button nav-link-user-management">
+                    <ButtonRedirect 
+                    action={() => navigate("/user-management")}
+                    class="control-button user-management-button navigation-content" 
+                    text="User Management"
+                    image={userManagementIcon}
+                    imageClass="user-management-img redirect-button-img"
+                    spanClass="control-button-span user-management-span"
+                    />
+                </NavLink>
 
                 {/* Button "Budget Management" */}
-                <ButtonRedirect 
-                action={() => navigate("/budget-management")}
-                class="control-button budget-management-button navigation-content" 
-                text="Budget Management"
-                image={budgetManagementIcon}
-                imageClass="budget-management-img"
-                spanClass="control-button-span user-management-span"
-                />
+                <NavLink to="/budget-management" activeClassName="nav-link-button nav-link-budget-management">
+                    <ButtonRedirect 
+                    action={() => navigate("/budget-management")}
+                    class="control-button budget-management-button navigation-content" 
+                    text="Budget Management"
+                    image={budgetManagementIcon}
+                    imageClass="budget-management-img redirect-button-img"
+                    spanClass="control-button-span user-management-span"
+                    />
+                </NavLink>
 
                 {/* Button "Compliance Management" */}
-                <ButtonRedirect 
-                action={() => navigate("/compliance-management")}
-                class="control-button compliance-management-button navigation-content" 
-                text="Compliance Management"
-                image={complianceManagementIcon}
-                imageClass="compliance-management-img"
-                spanClass="control-button-span compliance-management-span"
-                />
+                <NavLink to="/compliance-management" activeClassName="nav-link-button nav-link-compliance-management">
+                    <ButtonRedirect 
+                    action={() => navigate("/compliance-management")}
+                    class="control-button compliance-management-button navigation-content" 
+                    text="Compliance Management"
+                    image={complianceManagementIcon}
+                    imageClass="compliance-management-img redirect-button-img"
+                    spanClass="control-button-span compliance-management-span"
+                    />
+                </NavLink>
 
                 {/* Button "Command Chat" */}
-                <ButtonRedirect 
-                action={() => navigate("/command-chat")}
-                class="control-button command-chat-button navigation-content" 
-                text="Command Chat"
-                image={commandChatIcon}
-                imageClass="command-chat-img"
-                spanClass="control-button-span command-chat-span"
-                />
+                <NavLink to="/command-chat" activeClassName="nav-link-button nav-link-command-chat">
+                    <ButtonRedirect 
+                    action={() => navigate("/command-chat")}
+                    class="control-button command-chat-button navigation-content" 
+                    text="Command Chat"
+                    image={commandChatIcon}
+                    imageClass="command-chat-img redirect-button-img"
+                    spanClass="control-button-span command-chat-span"
+                    />
+                </NavLink>
 
                 {/* Button "Customer Support" */}
-                <ButtonRedirect 
-                action={() => navigate("/customer-support")}
-                class="control-button customer-support-button navigation-content" 
-                text="Customer Support"
-                image={customerSupportIcon}
-                imageClass="customer-support-img"
-                spanClass="control-button-span customer-support-span"
-                />
+                <NavLink to="/customer-support" activeClassName="nav-link-button nav-link-customer-support">
+                    <ButtonRedirect 
+                    action={() => navigate("/customer-support")}
+                    class="control-button customer-support-button navigation-content" 
+                    text="Customer Support"
+                    image={customerSupportIcon}
+                    imageClass="customer-support-img redirect-button-img"
+                    spanClass="control-button-span customer-support-span"
+                    />
+                </NavLink>
             </div>
 
             <footer className='navigation-footer'>
                 <div className='navigation-footer-container'>
                     <div className='navigation-footer-content navigation-content'>
-                        <img 
-                        className='user-profile-image' 
-                        src={currentUserIcon}/>
-                        <div className='control-panel'>
+                        <div>
+                            <img 
+                            className='user-profile-image' 
+                            src={currentUserIcon}/>
                             <span className='control-username'>User</span>
-                            <button className='user-button'>Dark Mode</button>
-                            <button className='user-button'>Settings</button>
-                            <button className='user-button'>Log Out</button>
+                        </div>
+                        <div className='control-panel'>
+                            <button className='user-button dark-mode-button'>
+                                <Icon
+                                className='user-button-icon dark-mode-icon' 
+                                size={20}
+                                icon={moon}/>
+                            </button>
+                            <button className='user-button settings-button'>
+                                <Icon 
+                                className='user-button-icon settings-icon' 
+                                size={20}
+                                icon={cog}/>
+                            </button>
+                            <button className='user-button exit-button'>
+                                <Icon className='user-button-icon exit-icon' 
+                                size={20}
+                                icon={exit}/>
+                            </button>
                         </div>
                     </div>
                 </div>

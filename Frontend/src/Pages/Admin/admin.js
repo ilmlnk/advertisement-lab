@@ -9,6 +9,9 @@ import './adminStyle.css';
 import { ModalContext, ModalProvider } from '../../Contexts/ModalContext';
 import ModalOpenButton from '../../Components/ModalOpenButton';
 import CreateTaskModalWindow from '../../Components/CreateTaskModalWindow';
+import {plusSquareO} from 'react-icons-kit/fa/plusSquareO'
+import Icon from 'react-icons-kit';
+import Footer from '../../Components/footer/Footer';
 
 const Admin = () => {
     const [isOpenUserModal, setIsOpenUserModal] = useState(false);
@@ -124,7 +127,8 @@ const Admin = () => {
             <Navigation />
             <div className='admin-content'>
                 <div className='orders-list-container'>
-                <h1 className='orders-title'>Orders</h1>
+                <h1 className='orders-title container-title'>Orders</h1>
+                <button className='see-all-orders-button see-all-button'>See all &rarr;</button>
                 <div className='orders-list-blocks'>
                     <ul className='orders-marked-list'>
                         {orders
@@ -165,27 +169,29 @@ const Admin = () => {
                 onClick={() => setIsOpenUserModal(true)} 
                 className='create-order-button'
                 >
-                  Create new order
+                  <Icon 
+                  className='create-order-icon' 
+                  size={40} 
+                  icon={plusSquareO}/>
+                  <span className='create-order-span'>Create new order</span>
                 </button>
                 { isOpenUserModal && <CreateOrderModalWindow/> }
 
-                <div>
-                    <h1>Recent Activity</h1>
-                    <span>
-                        See all
-                    </span>
+                <div className='recent-activity-container'>
+                    <h1 className='container-title recent-activity-title'>Recent Activity</h1>
+                    <button className='see-all-button'>See All &rarr;</button>
 
                     {/*<OnlineUsersList/>*/} {/* show the latest 6 online users */}
-                    <div>
-                        <ul>
+                    <div className='online-user-blocks'>
+                        <ul className='online-user-list'>
                         {users
                         .map((user) => (
-                            <li key={user.id}>
-                                <div>
-                                <h2>{user.name} {user.surname}</h2>
-                                {user.isOnline ? <span>Online</span> : <span>Offline</span>}
-                                <button>Profile</button>
-                                <button>Chat</button>
+                            <li className='online-user-mark' key={user.id}>
+                                <div className='online-user-block'>
+                                <h2 className='online-user-fullname'>{user.name} {user.surname}</h2>
+                                <span className='online-user-status'>{user.isOnline ? "Online" : "Offline"}</span>
+                                <button className='online-user-profile'>Profile</button>
+                                <button className='online-user-chat'>Chat</button>
                                 </div>
                             </li>
                         ))}
@@ -194,7 +200,8 @@ const Admin = () => {
                     
                 </div>
 
-                <h1>Tasks</h1>
+                <h1 className='container-title'>Tasks</h1>
+                <button className='see-all-button'>See All &rarr;</button>
 
                 {/* <TasksList/> */}
                 <div>
@@ -213,7 +220,6 @@ const Admin = () => {
                         </ul>
                 </div>
 
-                <button>Create new task</button>
                 <button 
                     onClick={() => setIsOpenUserModal(true)} 
                     className='create-task-button'

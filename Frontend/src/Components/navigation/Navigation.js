@@ -22,11 +22,12 @@ const Navigation = () => {
     <>
     <div className='navigation-container'>
         <nav className='navigation-bar'>
+            <h2 className='navigation-title'>Menu</h2>
             <div className='control-buttons'>
                 {/* Button "Home" */}
                 <ButtonRedirect 
                 action={() => navigate("/admin")}
-                class="control-button home-button" 
+                class="control-button home-button navigation-content" 
                 text="Main" 
                 image={homeIcon}
                 imageClass="home-img"
@@ -36,7 +37,7 @@ const Navigation = () => {
                 {/* Button "Analytics" */}
                 <ButtonRedirect 
                 action={() => navigate("/analytics")}
-                class="control-button analytics-button" 
+                class="control-button analytics-button navigation-content" 
                 text="Analytics"
                 image={analyticsIcon}
                 imageClass="analytics-img"
@@ -46,7 +47,7 @@ const Navigation = () => {
                 {/* Button "User Management" */}
                 <ButtonRedirect 
                 action={() => navigate("/user-management")}
-                class="control-button user-management-button" 
+                class="control-button user-management-button navigation-content" 
                 text="User Management"
                 image={userManagementIcon}
                 imageClass="user-management-img"
@@ -56,7 +57,7 @@ const Navigation = () => {
                 {/* Button "Budget Management" */}
                 <ButtonRedirect 
                 action={() => navigate("/budget-management")}
-                class="control-button budget-management-button" 
+                class="control-button budget-management-button navigation-content" 
                 text="Budget Management"
                 image={budgetManagementIcon}
                 imageClass="budget-management-img"
@@ -66,7 +67,7 @@ const Navigation = () => {
                 {/* Button "Compliance Management" */}
                 <ButtonRedirect 
                 action={() => navigate("/compliance-management")}
-                class="control-button compliance-management-button" 
+                class="control-button compliance-management-button navigation-content" 
                 text="Compliance Management"
                 image={complianceManagementIcon}
                 imageClass="compliance-management-img"
@@ -76,7 +77,7 @@ const Navigation = () => {
                 {/* Button "Command Chat" */}
                 <ButtonRedirect 
                 action={() => navigate("/command-chat")}
-                class="control-button command-chat-button" 
+                class="control-button command-chat-button navigation-content" 
                 text="Command Chat"
                 image={commandChatIcon}
                 imageClass="command-chat-img"
@@ -86,7 +87,7 @@ const Navigation = () => {
                 {/* Button "Customer Support" */}
                 <ButtonRedirect 
                 action={() => navigate("/customer-support")}
-                class="control-button customer-support-button" 
+                class="control-button customer-support-button navigation-content" 
                 text="Customer Support"
                 image={customerSupportIcon}
                 imageClass="customer-support-img"
@@ -94,13 +95,19 @@ const Navigation = () => {
                 />
             </div>
 
-            <footer>
-                <div>
-                    <img src={currentUserIcon}/>
-                    <span>User</span>
-                    <button>Dark Mode</button>
-                    <button>Settings</button>
-                    <button>Log Out</button>
+            <footer className='navigation-footer'>
+                <div className='navigation-footer-container'>
+                    <div className='navigation-footer-content navigation-content'>
+                        <img 
+                        className='user-profile-image' 
+                        src={currentUserIcon}/>
+                        <div className='control-panel'>
+                            <span className='control-username'>User</span>
+                            <button className='user-button'>Dark Mode</button>
+                            <button className='user-button'>Settings</button>
+                            <button className='user-button'>Log Out</button>
+                        </div>
+                    </div>
                 </div>
             </footer>
         </nav>

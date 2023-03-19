@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const OrdersList = () => {
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     async function fetchProducts() {
       const response = await fetch('/api/products');
       const data = await response.json();
@@ -11,17 +11,19 @@ const OrdersList = () => {
     }
 
     fetchProducts();
-  }, []);
+  }, []);*/
 
   return (
     <div>
       <ul>
         {products.map(product => (
-        <div>
             <li key={product.id}>
-                {product.name} - {product.price}$
+                <div>
+                    <h2>{product.name}</h2>
+                    <span>{product.description}</span>
+                    <span>{product.price}</span>
+                </div>
             </li>
-          </div>
         ))}
       </ul>
     </div>

@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AdIntegration.Business\AdIntegration.Business.csproj" />
     <ProjectReference Include="..\AdIntegration.Data\AdIntegration.Data.csproj" />
   </ItemGroup>
 

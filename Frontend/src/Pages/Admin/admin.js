@@ -12,6 +12,9 @@ import CreateTaskModalWindow from '../../Components/modal/CreateTaskModalWindow'
 import {plusSquareO} from 'react-icons-kit/fa/plusSquareO'
 import Icon from 'react-icons-kit';
 import Footer from '../../Components/footer/Footer';
+import userProfilePicture from '../../Images/Active_user.png';
+import { user as userIcon } from 'react-icons-kit/typicons/user';
+import { chatbox } from 'react-icons-kit/ionicons/chatbox';
 
 const Admin = () => {
     const [isOpenUserModal, setIsOpenUserModal] = useState(false);
@@ -165,7 +168,7 @@ const Admin = () => {
 
                 <button 
                 onClick={() => setIsOpenUserModal(true)} 
-                className='create-order-button'
+                className='create-order-button create-button'
                 >
                   <Icon 
                   className='create-order-icon' 
@@ -186,10 +189,23 @@ const Admin = () => {
                         .map((user) => (
                             <li className='online-user-mark' key={user.id}>
                                 <div className='online-user-block'>
-                                  <h2 className='online-user-fullname'>{user.name} {user.surname}</h2>
-                                  <span className='online-user-status'>{user.isOnline ? "Online" : "Offline"}</span>
-                                  <button className='online-user-profile'>Profile</button>
-                                  <button className='online-user-chat'>Chat</button>
+                                  <img className='online-user-picture online-user-content' src={userProfilePicture}/>
+                                  <div className='online-user-active-content-block'>
+                                    <h2 className='online-user-fullname online-user-content'>{user.name} {user.surname}</h2>
+                                    <span className='online-user-status online-user-content'>{user.isOnline ? "Online" : "Offline"}</span>
+                                    <div className='online-user-buttons'>
+                                      <button className='online-user-profile online-user-content online-user-button'>
+                                        <Icon 
+                                        size={26}
+                                        icon={userIcon}/>
+                                      </button>
+                                      <button className='online-user-chat online-user-content online-user-button'>
+                                        <Icon
+                                        size={26}
+                                        icon={chatbox}/>
+                                      </button>
+                                    </div>
+                                  </div>
                                 </div>
                             </li>
                         ))}
@@ -198,29 +214,45 @@ const Admin = () => {
                     
                 </div>
 
-                <h1 className='container-title'>Tasks</h1>
-                <button className='see-all-button'>See All &rarr;</button>
+                
 
                 {/* <TasksList/> */}
-                <div>
-                    <ul>
+                <div className='tasks-list-container'>
+                  <h1 className='container-title tasks-list-title'>Tasks</h1>
+                  <button className='see-all-button'>See All &rarr;</button>
+                  <div className='tasks-list-content'>
+                    <ul className='tasks-mark-list'>
                         {tasks
                         .map((task) => (
-                            <li key={task.id}>
-                                <div>
-                                    <h2>{task.name}</h2>
-                                    <span>{task.description}</span>
-                                    <span>{task.username}</span>
-                                    {task.isCompleted ? <span>Completed</span> : <span>Not Completed</span>}
+                            <li
+                            className='task-mark'
+                            key={task.id}>
+                                <div className='task-block task-text'>
+                                    <h2 className='task-name-title task-text'>{task.name}</h2>
+                                    <div className='task-characteristic-block'>
+                                      <label className='task-description-label task-text task-label'>Description</label>
+                                      <span className='task-description task-text'>{task.description}</span>
+                                    </div>
+                                    <div className='task-characteristic-block'>
+                                      <label className='task-username-label task-text task-label'>User</label>
+                                      <span className='task-username task-text'>{task.username}</span>
+                                    </div>
+                                    <div className='task-characteristic-block'>
+                                      <label className='task-status-label task-text task-label'>Status</label>
+                                      {task.isCompleted 
+                                                        ? <span className='task-status task-text task-completed'>Completed</span> 
+                                                        : <span className='task-status task-text task-not-completed'>Not Completed</span>}
+                                    </div>
                                 </div>
                             </li>
                         ))}
                         </ul>
+                      </div>
                 </div>
 
                 <button 
                     onClick={() => setIsOpenUserModal(true)} 
-                    className='create-task-button'
+                    className='create-task-button create-button'
                     >
                       <span>Create new task</span>
                     </button>

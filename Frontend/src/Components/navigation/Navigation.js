@@ -35,7 +35,6 @@ const Navigation = () => {
             <h2 className='navigation-title'>Menu</h2>
             <div className='control-buttons'>
                 {/* Button "Home" */}
-                <NavLink to="/admin" activeClassName="nav-link-button nav-link-admin">
                     <ButtonRedirect 
                     action={() => navigate("/admin")}
                     class="control-button home-button navigation-content" 
@@ -44,10 +43,8 @@ const Navigation = () => {
                     imageClass="home-img redirect-button-img"
                     spanClass="control-button-span home-span"
                     />
-                </NavLink>
 
                 {/* Button "Analytics" */}
-                <NavLink to="/analytics" activeClassName="nav-link-button nav-link-analytics">
                     <ButtonRedirect 
                     action={() => navigate("/analytics")}
                     class="control-button analytics-button navigation-content" 
@@ -56,10 +53,8 @@ const Navigation = () => {
                     imageClass="analytics-img redirect-button-img"
                     spanClass="control-button-span analytics-span"
                     />
-                </NavLink>
 
                 {/* Button "User Management" */}
-                <NavLink to="/user-management" activeClassName="nav-link-button nav-link-user-management">
                     <ButtonRedirect 
                     action={() => navigate("/user-management")}
                     class="control-button user-management-button navigation-content" 
@@ -68,10 +63,8 @@ const Navigation = () => {
                     imageClass="user-management-img redirect-button-img"
                     spanClass="control-button-span user-management-span"
                     />
-                </NavLink>
 
                 {/* Button "Budget Management" */}
-                <NavLink to="/budget-management" activeClassName="nav-link-button nav-link-budget-management">
                     <ButtonRedirect 
                     action={() => navigate("/budget-management")}
                     class="control-button budget-management-button navigation-content" 
@@ -80,10 +73,8 @@ const Navigation = () => {
                     imageClass="budget-management-img redirect-button-img"
                     spanClass="control-button-span user-management-span"
                     />
-                </NavLink>
 
                 {/* Button "Compliance Management" */}
-                <NavLink to="/compliance-management" activeClassName="nav-link-button nav-link-compliance-management">
                     <ButtonRedirect 
                     action={() => navigate("/compliance-management")}
                     class="control-button compliance-management-button navigation-content" 
@@ -92,10 +83,8 @@ const Navigation = () => {
                     imageClass="compliance-management-img redirect-button-img"
                     spanClass="control-button-span compliance-management-span"
                     />
-                </NavLink>
 
                 {/* Button "Command Chat" */}
-                <NavLink to="/command-chat" activeClassName="nav-link-button nav-link-command-chat">
                     <ButtonRedirect 
                     action={() => navigate("/command-chat")}
                     class="control-button command-chat-button navigation-content" 
@@ -104,10 +93,8 @@ const Navigation = () => {
                     imageClass="command-chat-img redirect-button-img"
                     spanClass="control-button-span command-chat-span"
                     />
-                </NavLink>
 
                 {/* Button "Customer Support" */}
-                <NavLink to="/customer-support" activeClassName="nav-link-button nav-link-customer-support">
                     <ButtonRedirect 
                     action={() => navigate("/customer-support")}
                     class="control-button customer-support-button navigation-content" 
@@ -116,7 +103,6 @@ const Navigation = () => {
                     imageClass="customer-support-img redirect-button-img"
                     spanClass="control-button-span customer-support-span"
                     />
-                </NavLink>
             </div>
 
             <footer className='navigation-footer'>

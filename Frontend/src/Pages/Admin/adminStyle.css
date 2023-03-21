@@ -39,34 +39,10 @@
 
 .orders-mark {
     display: inline-block;
-
 }
 
 .recent-activity-container {
     margin-top: 5em;
-}
-
-.create-order-button {
-    font-size: 18px;
-    display: block;
-    position: relative;
-    left: 34.5%;
-    margin-top: 4em;
-    width: 300px;
-    height: 75px;
-    border-radius: 20px;
-    border: solid #0E2C0D;
-    background-color: #0E2C0D;
-    cursor: pointer;
-    color: #fff;
-    transition: 0.3s ease-in;
-}
-
-.create-order-button:hover {
-    transform: scale(1.01);
-    box-shadow: 6px 4px 10px -2px rgba(0, 0, 0, 0.25);
-    background-color: #10900E;
-    border-color: #10900E;
 }
 
 .create-order-icon {
@@ -98,11 +74,120 @@
 }
 
 .online-user-block {
-    background-color: #e9e9e9;
+    background-color: rgba(233, 233, 233, 1);
     margin-left: 1em;
     margin-bottom: 1em;
     width: 500px;
-    height: 125px;
+    height: 100px;
     padding: 2em;
+    padding-bottom: 3em;
     border-radius: 25px;
+}
+
+.online-user-picture {
+    width: 70px;
+    height: 70px;
+    margin-right: 2em;
+    margin-left: 0.5em;
+    margin-top: 1.2em;
+    display: inline-flex;
+}
+
+.online-user-active-content-block {
+    display: inline-block;
+}
+
+.online-user-button {
+    width: 60px;
+    height: 60px;
+    margin-right: 1em;
+    border-radius: 15px;
+    border: solid;
+    color: #fff;
+    cursor: pointer;
+}
+
+.online-user-profile {
+    background-color: #571397;
+    border: #571397;
+    transition: 0.2s ease-in;
+}
+
+.online-user-profile:hover {
+    background-color: #791dcf;
+    border: #791dcf;
+}
+
+.online-user-chat {
+    background-color: #176ebe;
+    border: #176ebe;
+    transition: 0.2s ease-in;
+}
+
+.online-user-chat:hover {
+    background-color: #348de0;
+    border: #348de0;
+}
+
+.online-user-buttons {
+    position: absolute;
+    margin-left: 15em;
+    margin-top: -4em;
+}
+
+.create-button {
+    font-size: 18px;
+    display: block;
+    position: relative;
+    left: 34.5%;
+    margin-top: 4em;
+    width: 300px;
+    height: 75px;
+    border-radius: 20px;
+    border: solid #0E2C0D;
+    background-color: #0E2C0D;
+    cursor: pointer;
+    color: #fff;
+    transition: 0.3s ease-in;
+}
+
+.create-button:hover {
+    transform: scale(1.01);
+    box-shadow: 6px 4px 10px -2px rgba(0, 0, 0, 0.25);
+    background-color: #10900E;
+    border-color: #10900E;
+}
+
+.tasks-list-container {
+    margin-top: 5em;
+}
+
+.task-mark {
+    list-style-type: none;
+    display: inline-flex;
+}
+
+.task-block {
+    background-color: rgba(233, 233, 233, 1);
+    width: 335px;
+    height: 335px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 1em;
+    padding: 1em;
+    border-radius: 25px;
+}
+
+.task-text {
+    display: block;
+    margin-left: 20px;
+}
+
+.task-label {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.task-characteristic-block {
+    margin-bottom: 1em;
 }

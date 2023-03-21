@@ -10,6 +10,7 @@ import BudgetManagement from './Pages/BudgetManagement/budgetManagement';
 import ComplianceManagement from './Pages/ComplianceManagement/complianceManagement';
 import CustomerSupport from './Pages/CustomerSupport/customerSupport';
 import CommandChat from './Pages/CommandChat/commandChat';
+import StartPage from './Pages/Start/start';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
     <>
     <Router>
       <Routes>
+        <Route path='/' element={<StartPage />} />
         <Route path='/admin' element={<Admin />} />
         <Route path='/analytics' element={<Analytics />} />
         <Route path='/user-management' element={<UserManagement />} />

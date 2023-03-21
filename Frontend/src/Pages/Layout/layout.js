@@ -7,10 +7,12 @@ import Header from '../../Components/header/Header';
 const Layout = ({ children, history }) => {
     return (
       <div className='layout-container'>
-        <Header/>
-        <Navigation/>
-        <main>{children}</main>
-        <Footer history={history} />
+        <div className='content-wrapper'>
+          <Header/>
+          <Navigation/>
+          <main>{children}</main>
+          <Footer className='layout-footer' history={history} />
+        </div>
       </div>
     );
   }

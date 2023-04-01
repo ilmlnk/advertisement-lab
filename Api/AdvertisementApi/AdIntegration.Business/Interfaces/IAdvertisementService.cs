@@ -1,4 +1,5 @@
 ﻿using AdIntegration.Data;
+using AdIntegration.Data.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace AdIntegration.Business.Interfaces
 {
     public interface IAdvertisementService
     {
-        public int CreateAdvertisement(Advertisement advertisement);
-        public int UpdateAdvertisement(Advertisement advertisement);
-        public int UpdateAdvertisementById(int id, Advertisement advertisement);
+        public int CreateAdvertisement(CreateAdvertisementDto createAdvertisementDto);
+        public int UpdateAdvertisement(UpdateAdvertisementDto updateAdvertisementDto);
+        public int UpdateAdvertisementById(int id, UpdateAdvertisementDto updateAdvertisementDto);
         public int DeleteAdvertisement(int id);
         public List<Advertisement> GetAllAdvertisements();
         public Advertisement GetAdvertisementById(int id);

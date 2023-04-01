@@ -13,11 +13,11 @@ namespace AdIntegration.Business.Mapping
     {
         public AppMappingProfile()
         {
-            CreateMap<UserRegisterModel, User>();
+            /* CreateMap<UserRegisterModel, User>();
             CreateMap<UserLoginModel, User>();
             CreateMap<CreateAdvertisementModel, Advertisement>()
                 .ForMember(d => d.Author, opt => opt.MapFrom(src => src.User.FirstName + ' ' + src.User.LastName));
-            CreateMap<EditAdvertisementModel, Advertisement>();
+            CreateMap<EditAdvertisementModel, Advertisement>(); */
 
         }
     }

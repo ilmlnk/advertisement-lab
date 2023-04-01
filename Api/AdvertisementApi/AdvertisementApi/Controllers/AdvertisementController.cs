@@ -19,7 +19,7 @@ namespace AdIntegration.Api.Controllers
         [HttpGet]
         public IActionResult GetAdvertisements()
         {
-            var advertisements = _advertisementService.Advertisements.ToList();
+            //var advertisements = _advertisementService.Advertisements.ToList();
             return Ok();
         }
     }

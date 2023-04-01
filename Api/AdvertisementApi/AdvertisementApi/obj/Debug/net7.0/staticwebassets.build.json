@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "OzcmT9Kc0otQjrYbyTLHqkTybcOX3KqKVUetk+7Gdko=",
+  "Source": "AdIntegration.Api",
+  "BasePath": "_content/AdIntegration.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

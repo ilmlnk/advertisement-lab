@@ -16,4 +16,8 @@
     <ProjectReference Include="..\AdIntegration.Data\AdIntegration.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+
 </Project>

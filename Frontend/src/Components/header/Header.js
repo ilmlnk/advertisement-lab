@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 import logo from '../../Images/logo_transparent.png';
-import activeUserIcon from '../../Images/Active_user.png';
 import { Icon } from 'react-icons-kit';
 import { search } from 'react-icons-kit/icomoon/search';
 import { bell } from 'react-icons-kit/fa/bell'

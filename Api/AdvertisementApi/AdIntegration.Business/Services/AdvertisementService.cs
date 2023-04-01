@@ -1,5 +1,6 @@
 ﻿using AdIntegration.Business.Interfaces;
 using AdIntegration.Data;
+using AdIntegration.Data.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,11 @@ namespace AdIntegration.Business.Services
     public class AdvertisementService : IAdvertisementService
     {
         public int CreateAdvertisement(Advertisement advertisement)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int CreateAdvertisement(CreateAdvertisementDto createAdvertisementDto)
         {
             throw new NotImplementedException();
         }
@@ -35,7 +41,17 @@ namespace AdIntegration.Business.Services
             throw new NotImplementedException();
         }
 
+        public int UpdateAdvertisement(UpdateAdvertisementDto updateAdvertisementDto)
+        {
+            throw new NotImplementedException();
+        }
+
         public int UpdateAdvertisementById(int id, Advertisement advertisement)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int UpdateAdvertisementById(int id, UpdateAdvertisementDto updateAdvertisementDto)
         {
             throw new NotImplementedException();
         }

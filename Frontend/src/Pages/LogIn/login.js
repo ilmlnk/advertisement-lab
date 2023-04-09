@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import localStorage from 'local-storage';
 import { useNavigate } from 'react-router-dom';
+import './loginStyle.css';
+import loginIllustration from '../../Images/login-illustration.png';
+import Footer from '../../Components/footer/Footer';
+import logo from '../../Images/logo_transparent.png';
+import Loader from '../../Components/Loader';
 import './loginStyle.css'
-import logInIllustration from '../../Images/loginIllustration.svg';
-import logo from '../../Images/logo2.png';
 
 export const AuthHeader = () => {
     axios.interceptors.request.use(
@@ -58,63 +61,42 @@ const Login = () => {
     }
 
     return (
-        <body>
-        <nav className="headBar">
-            <div className="container">
-                <a href="#">
-                    <img src={logo}/>
-                </a>
+        <div className='login-container'>
+            <header className='login-header'>
+                <div className='login-header-content'>
+                    <img 
+                    src={logo}
+                    className='login-logo'/>
+                    <h1 className='login-title'>AdReach</h1>
+                </div>
+            </header>
+            <div className='login-form-container'>
+                <h2 className='login-form-title'>Set your advertisements to the next level</h2>
+                <p className='login-form-text'>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
+                <img 
+                className='login-illustration'
+                src={loginIllustration}/>
+                <form className='login-form'>
+                    <div className='login-textfields'>
+                        <input 
+                        className='username-textfield login-textfield'
+                        placeholder='E-mail or username'/>
+                        <input 
+                        className='password-textfield login-textfield'
+                        type='password'
+                        placeholder='Password'/>
+                    </div>
+                    <button type='submit' 
+                    className='login-button login-submit-button'
+                    onClick={handleLogin}>Sign In</button>
+                </form>
+                <button
+                className='login-button sign-up-button'
+                onClick={() => navigate("/registration")}>Sign Up</button>
+                {loading && <Loader/>}
             </div>
-        </nav>
-        <div className="content">
-            <img src={logInIllustration}/>
-            <div className="leftSide">
-                <div className="welcomeText">
-                    <h1>Set your advertisements to the next level</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Minima quis corporis quos distinctio cupiditate ullam hic, excepturi ratione deleniti
-                        nam</p><br/>
-                </div>
-                <div className="loginForms">
-                    <input type="text" id="login" placeholder="Login or e-mail"/><br/><br/>
-                    <input type="password" id="password" placeholder="Password"/><br/><br/>
-                </div>
-                <div className="buttons">
-                    <a href="#" className="logInButton">Log in</a><br/><br/>
-                    <a href="#" className="signUpButton">SignUp</a>
-                </div>
-            </div>
+            <Footer/>
         </div>
-        <div className="footer">
-            <div className="footerContent">
-                <ul className="menuColumn">
-                    <h3>AdReach</h3>
-                    <li><a href="#">Terms of Use</a></li>
-                    <li><a href="#">Join our Team</a></li>
-                </ul>
-                <ul className="menuColumn">
-                    <h3>Products</h3>
-                    <li><a href="#">Telegram channels Catalogue</a></li>
-                    <li><a href="#">WhatsApp channels Catalogue</a></li>
-                    <li><a href="#">Viber channels Catalogue</a></li>
-                    <li><a href="#">Instagram profiles Catalogue</a></li>
-                </ul>
-                <ul className="menuColumn">
-                    <h3>Community</h3>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Groups</a></li>
-                    <li><a href="#">Our Telegram Channel</a></li>
-                    <li><a href="#">Service Reviews</a></li>
-                </ul>
-                <ul className="menuColumn">
-                    <h3>Help</h3>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Support Bot</a></li>
-                    <li><a href="#">Report us</a></li>
-                </ul>
-            </div>
-        </div>
-    </body>
     );
 }
 

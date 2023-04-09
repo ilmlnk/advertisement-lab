@@ -1,9 +1,10 @@
 .admin-content {
-    position: absolute;
-    display: inline-block;
-    left: 25%;
-    top: 15%;
-    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin-left: 30em;
+    margin-top: 4em;
+    margin-bottom: 4em;
 }
 
 .order-text {

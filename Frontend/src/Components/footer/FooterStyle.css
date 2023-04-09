@@ -1,15 +1,6 @@
 .footer {
-    position: absolute;
-    background-color: #383838;
-    bottom: -270%;
-    width: 80.2%;
-    right: 0;
+    background-color: #333;
     height: 300px;
-    z-index: -10;
-}
-
-.footer-container {
-    margin-left: 4em;
 }
 
 .links-block-title {
@@ -27,21 +18,8 @@
     vertical-align: top;
     display: inline-block;
     width: fit-content;
+    margin-left: 7em;
 }
-
-/*.footer-link::before {
-    content: '';
-    position: absolute;
-    margin-top: 1.3em;
-    width: 0%;
-    height: 2px;
-    background-color: #dfdfdf;
-    transition: width 0.3s ease-in-out;
-}
-
-.footer-link:hover::before {
-    width: 100%;
-}*/
 
 .links-list {
     margin-left: -2.5em;

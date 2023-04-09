@@ -1,6 +1,7 @@
 ﻿using AdIntegration.Business.Interfaces;
 using AdIntegration.Data;
 using AdIntegration.Data.Dto;
+using AdIntegration.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,49 +12,17 @@ namespace AdIntegration.Business.Services
 {
     public class AdvertisementService : IAdvertisementService
     {
-        public int CreateAdvertisement(Advertisement advertisement)
-        {
-            throw new NotImplementedException();
-        }
+        private readonly IAdvertisementRepository _advertisementRepository;
 
-        public int CreateAdvertisement(CreateAdvertisementDto createAdvertisementDto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int DeleteAdvertisement(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Advertisement GetAdvertisementById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Advertisement> GetAllAdvertisements()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateAdvertisement(Advertisement advertisement)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateAdvertisement(UpdateAdvertisementDto updateAdvertisementDto)
-        {
-            throw new NotImplementedException();
-        }
-
+        public AdvertisementService(IAdvertisementRepository advertisementRepository) => _advertisementRepository = advertisementRepository;
+        public int CreateAdvertisement(Advertisement advertisement) => _advertisementRepository.CreateAdvertisement(advertisement);
+        public int DeleteAdvertisement(int id) => _advertisementRepository.DeleteAdvertisement(id);
+        public Advertisement GetAdvertisementById(int id) => _advertisementRepository.GetAdvertisementById(id);
+        public IEnumerable<Advertisement> GetAllAdvertisements() => _advertisementRepository.GetAllAdvertisements();
         public int UpdateAdvertisementById(int id, Advertisement advertisement)
         {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateAdvertisementById(int id, UpdateAdvertisementDto updateAdvertisementDto)
-        {
-            throw new NotImplementedException();
+            _advertisementRepository.UpdateAdvertisementById(id, advertisement);
+            return id;
         }
     }
 }

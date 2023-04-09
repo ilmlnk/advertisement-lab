@@ -1,5 +1,6 @@
 ﻿using AdIntegration.Business.Models;
 using AdIntegration.Data;
+using AdIntegration.Data.Dto;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -13,12 +14,8 @@ namespace AdIntegration.Business.Mapping
     {
         public AppMappingProfile()
         {
-            /* CreateMap<UserRegisterModel, User>();
-            CreateMap<UserLoginModel, User>();
-            CreateMap<CreateAdvertisementModel, Advertisement>()
-                .ForMember(d => d.Author, opt => opt.MapFrom(src => src.User.FirstName + ' ' + src.User.LastName));
-            CreateMap<EditAdvertisementModel, Advertisement>(); */
-
+            CreateMap<RegisterUserDto, User>();
+            CreateMap<LoginUserDto, User>();
         }
     }
 }

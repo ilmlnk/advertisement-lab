@@ -10,11 +10,10 @@ namespace AdIntegration.Business.Interfaces
 {
     public interface IAdvertisementService
     {
-        public int CreateAdvertisement(CreateAdvertisementDto createAdvertisementDto);
-        public int UpdateAdvertisement(UpdateAdvertisementDto updateAdvertisementDto);
-        public int UpdateAdvertisementById(int id, UpdateAdvertisementDto updateAdvertisementDto);
+        public int CreateAdvertisement(Advertisement advertisement);
+        public int UpdateAdvertisementById(int id, Advertisement advertisement);
         public int DeleteAdvertisement(int id);
-        public List<Advertisement> GetAllAdvertisements();
+        public IEnumerable<Advertisement> GetAllAdvertisements();
         public Advertisement GetAdvertisementById(int id);
     }
 }

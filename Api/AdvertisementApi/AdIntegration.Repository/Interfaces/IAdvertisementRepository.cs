@@ -10,9 +10,9 @@ namespace AdIntegration.Repository.Interfaces
     public interface IAdvertisementRepository
     {
         public int CreateAdvertisement(Advertisement advertisement);
-        public int UpdateAdvertisement(Advertisement advertisement);
-        public void DeleteAdvertisement(int id);
+        public int DeleteAdvertisement(int id);
         public IEnumerable<Advertisement> GetAllAdvertisements();
-
+        public Advertisement GetAdvertisementById(int id);
+        public int UpdateAdvertisementById(int id, Advertisement advertisement);
     }
 }

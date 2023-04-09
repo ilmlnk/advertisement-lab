@@ -11,6 +11,8 @@ import ComplianceManagement from './Pages/ComplianceManagement/complianceManagem
 import CustomerSupport from './Pages/CustomerSupport/customerSupport';
 import CommandChat from './Pages/CommandChat/commandChat';
 import StartPage from './Pages/Start/start';
+import Registration from './Pages/Registration/registration';
+import Login from './Pages/LogIn/login';
 
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
         <Route path='/compliance-management' element={<ComplianceManagement />}/>
         <Route path='/command-chat' element={<CommandChat />}/>
         <Route path='/customer-support' element={<CustomerSupport />}/>
+        <Route path='/registration' element={<Registration />}/>
+        <Route path='/login' element={<Login />}/>
       </Routes>
     </Router>
     </>

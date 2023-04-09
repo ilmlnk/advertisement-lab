@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdIntegration.Business.Models.View
+namespace AdIntegration.Business.Exceptions
 {
-    internal class UserRegisterViewModel
+    public interface IAppException
     {
+        public int GetStatusCode();
     }
 }

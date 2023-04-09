@@ -2190,6 +2190,21 @@
         "runtime": {
           "bin/placeholder/AdIntegration.Data.dll": {}
         }
+      },
+      "AdIntegration.Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "AdIntegration.Data": "1.0.0",
+          "Microsoft.AspNet.SignalR": "2.4.3",
+          "Microsoft.AspNetCore.Mvc.Core": "2.2.5"
+        },
+        "compile": {
+          "bin/placeholder/AdIntegration.Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AdIntegration.Repository.dll": {}
+        }
       }
     }
   },
@@ -6460,11 +6475,17 @@
       "type": "project",
       "path": "../AdIntegration.Data/AdIntegration.Data.csproj",
       "msbuildProject": "../AdIntegration.Data/AdIntegration.Data.csproj"
+    },
+    "AdIntegration.Repository/1.0.0": {
+      "type": "project",
+      "path": "../AdIntegration.Repository/AdIntegration.Repository.csproj",
+      "msbuildProject": "../AdIntegration.Repository/AdIntegration.Repository.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
       "AdIntegration.Data >= 1.0.0",
+      "AdIntegration.Repository >= 1.0.0",
       "AutoMapper >= 12.0.1",
       "Microsoft.AspNet.SignalR >= 2.4.3",
       "Microsoft.AspNetCore.Mvc.Core >= 2.2.5"
@@ -6505,6 +6526,9 @@
           "projectReferences": {
             "H:\\Унік\\WEB\\lab\\Api\\AdvertisementApi\\AdIntegration.Data\\AdIntegration.Data.csproj": {
               "projectPath": "H:\\Унік\\WEB\\lab\\Api\\AdvertisementApi\\AdIntegration.Data\\AdIntegration.Data.csproj"
+            },
+            "H:\\Унік\\WEB\\lab\\Api\\AdvertisementApi\\AdIntegration.Repository\\AdIntegration.Repository.csproj": {
+              "projectPath": "H:\\Унік\\WEB\\lab\\Api\\AdvertisementApi\\AdIntegration.Repository\\AdIntegration.Repository.csproj"
             }
           }
         }

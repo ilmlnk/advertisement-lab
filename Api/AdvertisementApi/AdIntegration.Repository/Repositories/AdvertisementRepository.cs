@@ -21,19 +21,24 @@ namespace AdIntegration.Repository.Repositories
             return advertisement.Id;
         }
 
-        public void DeleteAdvertisement(int id)
+        public int DeleteAdvertisement(int id)
         {
-            throw new NotImplementedException();
+            _context.Advertisements.Remove(GetAdvertisementById(id));
+            _context.SaveChanges();
+            return id;
         }
 
-        public IEnumerable<Advertisement> GetAllAdvertisements()
-        {
-            throw new NotImplementedException();
-        }
+        public Advertisement GetAdvertisementById(int id) => _context.Advertisements.FirstOrDefault(x => x.Id == id);
 
-        public int UpdateAdvertisement(Advertisement advertisement)
+        public IEnumerable<Advertisement> GetAllAdvertisements() => _context.Advertisements.ToList();
+
+
+        public int UpdateAdvertisementById(int adId, Advertisement inputAdvertisement)
         {
-            throw new NotImplementedException();
+            Advertisement advertisement = GetAdvertisementById(adId);
+            _context.Advertisements.Add(inputAdvertisement);
+            _context.SaveChanges();
+            return advertisement.Id;
         }
     }
 }

@@ -13,3 +13,5 @@ H:\Унік\WEB\lab\Api\AdvertisementApi\AdIntegration.Business\obj\Debug\net7.0
 H:\Унік\WEB\lab\Api\AdvertisementApi\AdIntegration.Business\obj\Debug\net7.0\refint\AdIntegration.Business.dll
 H:\Унік\WEB\lab\Api\AdvertisementApi\AdIntegration.Business\obj\Debug\net7.0\AdIntegration.Business.pdb
 H:\Унік\WEB\lab\Api\AdvertisementApi\AdIntegration.Business\obj\Debug\net7.0\ref\AdIntegration.Business.dll
+H:\Унік\WEB\lab\Api\AdvertisementApi\AdIntegration.Business\bin\Debug\net7.0\AdIntegration.Repository.dll
+H:\Унік\WEB\lab\Api\AdvertisementApi\AdIntegration.Business\bin\Debug\net7.0\AdIntegration.Repository.pdb

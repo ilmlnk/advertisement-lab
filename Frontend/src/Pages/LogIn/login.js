@@ -43,7 +43,7 @@ const Login = () => {
 
     const handleLogin = () => {
         setLoading(true);
-        axios.post('https://localhost:8080/api/user/login', {
+        axios.post('/api/User/login', {
             username,
             password
         })
@@ -53,4 +53,25 @@ const Login = () => {
             navigate("/admin");
         })
     }
+
+    return (
+        <div>
+            <h1>Login</h1>
+            <div>
+                <form>
+                    <div>
+                        <label></label>
+                        <input/>
+                    </div>
+                    <div>
+                        <label></label>
+                        <input/>
+                    </div>
+                    <button type='submit'>Sign In</button>
+                </form>
+            </div>
+        </div>
+    );
 }
+
+export default Login;

@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import PopupError from "../../Components/PopupError";
+import './registrationStyle.css';
+import Footer from "../../Components/footer/Footer";
+import ModalSuccessfulRegistration from "../../Components/modal/ModalSuccessfulRegistration";
+import logo from '../../Images/logo_transparent.png';
+import registrationIllustration from '../../Images/registration_illustration.png';
+import Loader from "../../Components/Loader";
 
 const Registration = () => {
     const navigate = useNavigate();
@@ -18,15 +24,15 @@ const Registration = () => {
     const [loading, setLoading] = useState(false);
 
     {/* Refreshing state of the form */}
-    { /*const onUpdateField = e => {
-        const nextFormState = {
-            ...formData,
-            [e.target.name]: e.target.value,
-        };
-        setFormData(nextFormState);
-    } */}
 
     {/* User Registration Handle */}
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        <ModalSuccessfulRegistration/>
+        console.log({ firstName, lastName, email, username, password, confirmPassword });
+      };
+
     const handleSignUp = () => {
         if (firstName && 
             lastName && 
@@ -35,6 +41,7 @@ const Registration = () => {
             password && 
             confirmPassword) {
             if (password !== confirmPassword) {
+                console.log("ERROR!");
                 return (
                     <PopupError/>
                 )
@@ -49,136 +56,129 @@ const Registration = () => {
             })
             .then(res => {
                 setLoading(false);
-                localStorage.set('api_key', res.data);
+                //localStorage.set('api_key', res.data);
                 navigate('/admin');
             })
             .catch((error) => {
                 if (error.response.data.message) {
-                    console.log(error.response.data.message);
+                    console.log("ERROR: " + error.response.data.message);
                     return (
                         <PopupError/>
                     );
                 }
             })
         } else {
-
-        }
-    }
-
-    { /*const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormData({ ...formData, [name]: value });
-    } */}
-
-    {/* Email */}
-
-    const handleChangeEmail = (event) => {
-        setEmail(event.target.value);
-    }
-
-    const validateEmail = (inputEmail) => {
-        const re = /\S+@\S+\.\S+/;
-        if (!re.test(inputEmail)) {
-            return false;
-        } else {
-            return true;
+            <PopupError/>
         }
     }
 
     return (
-        <div>
-            <form>
-            { /* onSubmit={handleSubmit} */ }
-                {/* First Name block */}
-                <div className="">
-                    {/* Label First Name */}
-                    <label 
-                    className="" 
-                    htmlFor="firstName">
-                        First Name
-                    </label>
+        <div className="registration-container">
+            <header className="registration-header">
+                <div className="registration-header-content">
+                    <img 
+                    className="registration-header-logo" 
+                    src={logo}/>
+                    <h1 className="registration-header-title">AdReach</h1>
+                </div>
+            </header>
 
+            <div className="registration-content">
+                <h1 className="registration-title">Sign Up</h1>
+                <img
+                className="registration-illustration"
+                src={registrationIllustration}/>
+                <form 
+                className="registration-form"
+                onSubmit={handleSubmit}>
+
+                {/* First Name block */}
+                <div className="first-name-block user-data-block">
                     {/* Input field First Name */}
                     <input
+                    className="first-name-textfield textfield"
                     type="text"
                     id="firstName"
                     name="firstName"
                     value={firstName}
+                    placeholder="First Name"
+                    onChange={(e) => setFirstName(e.target.value)}
                     />
-                    { /*onChange={handleChange} */}
                 </div>
 
                 {/* Last Name block */}
-                <div className=""> 
-                    <label>Last Name</label>
+                <div className="last-name-block user-data-block"> 
                     <input
+                    className="last-name-textfield textfield"
                     type="text"
                     id="lastName"
                     name="lastName"
                     value={lastName}
+                    placeholder="Last Name"
+                    onChange={(e) => setLastName(e.target.value)}
                     />
-                    { /* onChange={handleChange} */ }
                 </div>
 
 
                 {/* Email block */}
-                <div className=""> 
-                    <label>Email</label>
+                <div className="email-block user-data-block"> 
                     <input
+                    className="email-textfield textfield"
                     type="text"
                     id="email"
                     name="email"
                     value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Email"
                     />
-                    { /* onChange={handleChange} */ }
-
-                    {validateEmail(email) ? (
-                        <p style={{ color: 'green'}}>Valid email</p>
-                    ) : (
-                        <p style={{ color: 'red'}}>Invalid email</p>
-                    )}
                 </div>
 
                 {/* Username block */}
-                <div className="">
-                    <label>Username</label>
+                <div className="username-block user-data-block">
                     <input
                     type="text"
                     id="username"
                     name="username"
                     value={username}
+                    className="textfield"
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Username"
                     />
-                    { /* onChange={handleChange} */ }
                 </div>
 
                 {/* Password block */}
-                <div>
-                    <label>Password</label>
+                <div className="user-data-block">
                     <input
                     type="password"
                     id="password"
                     name="password"
                     value={password}
-                    
+                    className="textfield"
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Password"
                     />
-                    { /* onChange={handleChange} */ }
                 </div>
 
                 {/* Confirm Password block */}
-                <div>
-                    <label>Confirm Password</label>
+                <div className="user-data-block">
                     <input
                     type="password"
                     id="password"
                     name="password"
                     value={confirmPassword}
+                    className="textfield"
+                    placeholder="Confirm Password"
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                     />
-                    { /* onChange={handleChange} */ }
                 </div>
-            <button onClick={handleSignUp} type="submit">Next</button>
-            { /*loading && <LoadingPopup/>*/ }
+            <button 
+            className="submit-registration-button"
+            onClick={handleSignUp} 
+            type="submit">Next</button>
+            {loading && <Loader/>}
             </form>
-
+            </div>
+            <Footer/>
         </div>
     );
 }

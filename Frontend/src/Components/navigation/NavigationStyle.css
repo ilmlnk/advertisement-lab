@@ -5,7 +5,7 @@
     width: 380px;
     position: fixed;
     top: 0;
-    z-index: -2;
+    z-index: -1;
     padding-top: 1em;
 }
 
@@ -16,9 +16,6 @@
     margin-right: 10px;
 }
 
-.nav-link-button {
-
-}
 
 .control-button {
     display: block;

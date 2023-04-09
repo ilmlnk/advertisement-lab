@@ -10,8 +10,8 @@ const Layout = ({ children, history }) => {
         <div className='content-wrapper'>
           <Header/>
           <Navigation/>
-          <main>{children}</main>
-          <Footer className='layout-footer' history={history} />
+          <main className='main-content'>{children}</main>
+          <Footer history={history} />
         </div>
       </div>
     );

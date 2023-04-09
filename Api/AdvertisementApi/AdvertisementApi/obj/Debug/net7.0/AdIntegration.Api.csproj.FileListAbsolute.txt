@@ -104,3 +104,10 @@ H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\bin\Debug\net7.0\Micro
 H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\bin\Debug\net7.0\Mono.TextTemplating.dll
 H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\bin\Debug\net7.0\System.CodeDom.dll
 H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\obj\Debug\net7.0\AdIntegration.Api.MvcApplicationPartsAssemblyInfo.cs
+H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\bin\Debug\net7.0\System.Net.Http.Formatting.dll
+H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\bin\Debug\net7.0\System.Web.Http.dll
+H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
+H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\bin\Debug\net7.0\AdIntegration.Repository.dll
+H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\bin\Debug\net7.0\AdIntegration.Repository.pdb
+H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\bin\Debug\net7.0\appsettings.json
+H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\bin\Debug\net7.0\appsettings.Development.json

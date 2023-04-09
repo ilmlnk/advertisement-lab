@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdIntegration.Business.Models.Domain
 {
-    internal class EditAdvertisementModel
+    public class EditAdvertisementModel
     {
     }
 }

@@ -8,5 +8,10 @@ namespace AdIntegration.Data.Dto
 {
     public class UpdateAdvertisementDto
     {
+        public string Name { get; set; }
+        public string Topic { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+        public string Username { get; set; }
     }
 }

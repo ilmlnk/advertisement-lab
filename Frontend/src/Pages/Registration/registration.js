@@ -5,32 +5,35 @@ import PopupError from "../../Components/PopupError";
 
 const Registration = () => {
     const navigate = useNavigate();
+
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+
+
     const [emailError, setEmailError] = useState("");
     const [loading, setLoading] = useState(false);
 
-    {/* Data and credentials from form */}
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        username: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
-    });
-
     {/* Refreshing state of the form */}
-    const onUpdateField = e => {
+    { /*const onUpdateField = e => {
         const nextFormState = {
-            ...form,
+            ...formData,
             [e.target.name]: e.target.value,
         };
         setFormData(nextFormState);
-    }
+    } */}
 
     {/* User Registration Handle */}
     const handleSignUp = () => {
-        if (firstName && lastName && username && email && password && confirmPassword) {
+        if (firstName && 
+            lastName && 
+            username && 
+            email && 
+            password && 
+            confirmPassword) {
             if (password !== confirmPassword) {
                 return (
                     <PopupError/>
@@ -62,10 +65,10 @@ const Registration = () => {
         }
     }
 
-    const handleChange = (event) => {
+    { /*const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
-    }
+    } */}
 
     {/* Email */}
 
@@ -84,8 +87,8 @@ const Registration = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-
+            <form>
+            { /* onSubmit={handleSubmit} */ }
                 {/* First Name block */}
                 <div className="">
                     {/* Label First Name */}
@@ -100,9 +103,9 @@ const Registration = () => {
                     type="text"
                     id="firstName"
                     name="firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}
+                    value={firstName}
                     />
+                    { /*onChange={handleChange} */}
                 </div>
 
                 {/* Last Name block */}
@@ -112,9 +115,9 @@ const Registration = () => {
                     type="text"
                     id="lastName"
                     name="lastName"
-                    value={formData.lastName}
-                    onChange={handleChange}
+                    value={lastName}
                     />
+                    { /* onChange={handleChange} */ }
                 </div>
 
 
@@ -126,8 +129,8 @@ const Registration = () => {
                     id="email"
                     name="email"
                     value={email}
-                    onChange={handleChange}
                     />
+                    { /* onChange={handleChange} */ }
 
                     {validateEmail(email) ? (
                         <p style={{ color: 'green'}}>Valid email</p>
@@ -144,8 +147,8 @@ const Registration = () => {
                     id="username"
                     name="username"
                     value={username}
-                    onChange={handleChange}
                     />
+                    { /* onChange={handleChange} */ }
                 </div>
 
                 {/* Password block */}
@@ -156,8 +159,9 @@ const Registration = () => {
                     id="password"
                     name="password"
                     value={password}
-                    onChange={handleChange}
+                    
                     />
+                    { /* onChange={handleChange} */ }
                 </div>
 
                 {/* Confirm Password block */}
@@ -167,12 +171,12 @@ const Registration = () => {
                     type="password"
                     id="password"
                     name="password"
-                    value={password}
-                    onChange={handleChange}
+                    value={confirmPassword}
                     />
+                    { /* onChange={handleChange} */ }
                 </div>
             <button onClick={handleSignUp} type="submit">Next</button>
-            { loading && <LoadingPopup/> }
+            { /*loading && <LoadingPopup/>*/ }
             </form>
 
         </div>

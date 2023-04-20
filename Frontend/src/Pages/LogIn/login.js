@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import localStorage from 'local-storage';
-import { useNavigate, useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './loginStyle.css';
 import loginIllustration from '../../Images/login-illustration.png';
 import Footer from '../../Components/footer/Footer';
 import logo from '../../Images/logo_transparent.png';
 import Loader from '../../Components/Loader';
-import './loginStyle.css'
+import './loginStyle.css';
 
 export const AuthHeader = () => {
     axios.interceptors.request.use(
@@ -68,11 +68,8 @@ const Login = () => {
                 <div className='login-header-content'>
                     <img 
                     src={logo}
-                    onClick={() => navigate("/")}
                     className='login-logo'/>
-                    <h1 
-                    onClick={() => navigate("/")}
-                    className='login-title'>AdReach</h1>
+                    <h1 className='login-title'>AdReach</h1>
                 </div>
             </header>
             <div className='login-form-container'>

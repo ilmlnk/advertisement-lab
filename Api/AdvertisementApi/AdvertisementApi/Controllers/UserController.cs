@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using AdIntegration.Business.Models;
-using Microsoft.AspNet.SignalR;
-using AdIntegration.Data.Dto;
+﻿using Microsoft.AspNetCore.Mvc;
 using AdIntegration.Data;
-using AdIntegration.Repository.Interfaces;
-using AdIntegration.Business.Interfaces;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNet.SignalR;
 
 namespace AdIntegration.Api.Controllers
 {
@@ -17,29 +8,68 @@ namespace AdIntegration.Api.Controllers
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly IAuthenticateService _authenticateService;
+        private readonly ApplicationDbContext _context;
 
-        public UserController(IAuthenticateService authenticateService)
+        public UserController(ApplicationDbContext context)
         {
-            _authenticateService = authenticateService;
+            _context = context;
         }
 
-        [AllowAnonymous]
-        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginUserDto loginUserDto)
+        [Authorize]
+        [HttpGet("users/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult GetUserById(int id) 
         {
-            var user = await _authenticateService.AuthenticateUser(loginUserDto);
-            var tokenString = _authenticateService.GenerateToken(user);
-            return Ok(tokenString);
+            var user = _context.Users.Find(id);
+
+            if (user == null)
+            {
+                return NotFound("User was not found");
+            }
+
+            return Ok(user);
         }
 
-        [AllowAnonymous]
-        [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterUserDto registerUserDto)
+        [Authorize]
+        [HttpGet("users")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult GetUsers()
         {
-            var user = await _authenticateService.CreateUser(registerUserDto);
-            var tokenString = _authenticateService.GenerateToken(user);
-            return Created("", tokenString);
+            var users = _context.Users.ToList();
+
+            var response = new
+            {
+                Users = users,
+                Success = true
+            };
+
+            return Ok(response);
+        }
+
+        [HttpDelete("delete/{id}"), ActionName("Delete")]
+        public IActionResult DeleteUserById(int id)
+        {
+            var user = _context.Users.Find(id);
+
+            if (user == null)
+            {
+                return NotFound("User was not found.");
+            }
+
+            _context.Users.Remove(user);
+            _context.SaveChanges();
+
+            var response = new
+            {
+                User = user,
+                Success = true
+            };
+
+            return Ok(response);
         }
     }
 }

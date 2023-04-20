@@ -1,4 +1,5 @@
 ﻿using AdIntegration.Data;
+using AdIntegration.Data.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace AdIntegration.Repository.Interfaces
 {
     public interface IAdvertisementRepository
     {
-        public int CreateAdvertisement(Advertisement advertisement);
-        public int DeleteAdvertisement(int id);
-        public IEnumerable<Advertisement> GetAllAdvertisements();
+        public Advertisement CreateAdvertisement(Advertisement advertisement);
+        public Advertisement DeleteAdvertisement(int id);
+        public List<Advertisement> GetAllAdvertisements();
         public Advertisement GetAdvertisementById(int id);
-        public int UpdateAdvertisementById(int id, Advertisement advertisement);
+        public Advertisement UpdateAdvertisementById(int id, Advertisement advertisement);
     }
 }

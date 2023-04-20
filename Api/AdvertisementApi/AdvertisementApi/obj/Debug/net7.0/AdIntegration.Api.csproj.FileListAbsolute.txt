@@ -111,3 +111,5 @@ H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\bin\Debug\net7.0\AdInt
 H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\bin\Debug\net7.0\AdIntegration.Repository.pdb
 H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\bin\Debug\net7.0\appsettings.json
 H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\bin\Debug\net7.0\appsettings.Development.json
+H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\bin\Debug\net7.0\FluentAssertions.dll
+H:\Унік\WEB\lab\Api\AdvertisementApi\AdvertisementApi\bin\Debug\net7.0\BCrypt.Net-Next.dll

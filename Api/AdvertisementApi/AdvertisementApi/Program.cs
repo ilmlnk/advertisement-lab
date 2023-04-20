@@ -1,16 +1,37 @@
-﻿using AdIntegration.Business.Mapping;
+﻿using AdIntegration.Api.Helpers;
+using AdIntegration.Business.Interfaces;
+using AdIntegration.Business.Mapping;
 using AdIntegration.Business.Models;
+using AdIntegration.Business.Services;
 using AdIntegration.Data;
+using AdIntegration.Repository.Interfaces;
+using AdIntegration.Repository.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
+using System.Configuration;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddScoped<IAdvertisementRepository, AdvertisementRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAuthenticateService, AuthenticateService>();
+builder.Services.AddScoped<IAdvertisementService, AdvertisementService>();
+builder.Services.AddScoped<IAuthenticateService, AuthenticateService>();
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddDefaultTokenProviders();
+
+builder.Services.AddScoped<JwtService>();
+
 builder.Services.AddSwaggerGen(option =>
 {
     option.SwaggerDoc("v1", new OpenApiInfo { Title = "Advertisement App", Version = "v1" });

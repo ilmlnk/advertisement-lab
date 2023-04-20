@@ -4,16 +4,19 @@ using AdIntegration.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace AdIntegration.Data.Migrations
+namespace AdIntegration.Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230416183416_InitialAdvertisementDatabase")]
+    partial class InitialAdvertisementDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,11 +27,11 @@ namespace AdIntegration.Data.Migrations
 
             modelBuilder.Entity("AdIntegration.Business.Models.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
@@ -44,6 +47,10 @@ namespace AdIntegration.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Id")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -86,9 +93,9 @@ namespace AdIntegration.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
-                    b.ToTable("Users");
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("AdIntegration.Data.Advertisement", b =>
@@ -117,36 +124,36 @@ namespace AdIntegration.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId1")
+                    b.Property<int>("UserEntityUserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserEntityUserId");
 
-                    b.HasIndex("UserId1");
-
-                    b.ToTable("Advertisements");
+                    b.ToTable("Advertisement");
                 });
 
             modelBuilder.Entity("AdIntegration.Data.Advertisement", b =>
                 {
-                    b.HasOne("AdIntegration.Business.Models.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                    b.HasOne("AdIntegration.Data.Advertisement", null)
+                        .WithMany("Advertisements")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AdIntegration.Business.Models.User", "User")
+                    b.HasOne("AdIntegration.Business.Models.User", "UserEntity")
                         .WithMany()
-                        .HasForeignKey("UserId1")
+                        .HasForeignKey("UserEntityUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("UserEntity");
+                });
+
+            modelBuilder.Entity("AdIntegration.Data.Advertisement", b =>
+                {
+                    b.Navigation("Advertisements");
                 });
 #pragma warning restore 612, 618
         }

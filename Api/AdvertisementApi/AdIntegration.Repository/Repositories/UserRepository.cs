@@ -18,31 +18,36 @@ namespace AdIntegration.Repository.Repositories
             _context = context;
         }
 
-        public int AddUser(User user)
+        public User AddUser(User user)
         {
             _context.Users.Add(user);
-            _context.SaveChanges();
-            return user.Id;
+            user.UserId = _context.SaveChanges();
+            return user;
         }
 
-        public int DeleteUser(int id)
+        public User DeleteUser(int id)
         {
-            _context.Users.Remove(GetUserById(id));
+            var deleteUser = GetUserById(id);
+            _context.Users.Remove(deleteUser);
             _context.SaveChanges();
-            return id;
+
+            return deleteUser;
         }
 
         public IEnumerable<User> GetAllUsers() => _context.Users.ToList();
 
-        public User GetUserById(int id) => _context.Users.FirstOrDefault(x => x.Id == id);
+        public User GetUserByEmail(string email) => _context.Users.FirstOrDefault(u => u.Email == email);
+        public User GetUserByUsername(string username) => _context.Users.FirstOrDefault(u => u.UserName == username);
+
+        public User GetUserById(int id) => _context.Users.FirstOrDefault(x => x.UserId == id);
 
 
-        public int UpdateUser(int userId, User inputUser)
+        public User UpdateUser(int userId, User inputUser)
         {
             User user = GetUserById(userId);
             _context.Users.Update(inputUser);
             _context.SaveChanges();
-            return user.Id;
+            return user;
         }
     }
 }

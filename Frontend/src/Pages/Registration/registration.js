@@ -77,9 +77,12 @@ const Registration = () => {
             <header className="registration-header">
                 <div className="registration-header-content">
                     <img 
+                    onClick={() => navigate("/")}
                     className="registration-header-logo" 
                     src={logo}/>
-                    <h1 className="registration-header-title">AdReach</h1>
+                    <h1 
+                    onClick={() => navigate("/")}
+                    className="registration-header-title">AdReach</h1>
                 </div>
             </header>
 

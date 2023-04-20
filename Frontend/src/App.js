@@ -14,6 +14,11 @@ import StartPage from './Pages/Start/start';
 import Registration from './Pages/Registration/registration';
 import Login from './Pages/LogIn/login';
 
+import TermsOfUse from './Pages/TermsOfUse/termsOfUse';
+import JoinOurTeam from './Pages/JoinOurTeam/joinOurteam';
+import TelegramChannels from './Pages/TelegramChannels/telegramChannels';
+import ViberChannels from './Pages/ViberChannels/viberChannels';
+
 
 function App() {
   return (
@@ -30,6 +35,23 @@ function App() {
         <Route path='/customer-support' element={<CustomerSupport />}/>
         <Route path='/registration' element={<Registration />}/>
         <Route path='/login' element={<Login />}/>
+
+{/*
+
+        <Route path='/terms-of-use' element={<TermsOfUse/>}/>
+        <Route path='/join-team' element={<JoinOurTeam/>}/>
+
+        <Route path='/telegram-channels' element={<TelegramChannels/>}/>
+        <Route path='/whatsapp-channels' element={<WhatsAppChannels/>}/>
+        <Route path='/viber-channels' element={<ViberChannels/>}/>
+        <Route path='/instagram-profiles' element={<InstagramProfiles/>}/>
+
+        <Route path='/groups' element={<Groups/>}/>
+        <Route path='/service-reviews' element={<ServiceReviews/>}/>
+
+        <Route path='/faq' element={<Faq/>}/>
+        <Route path='/report-us' element={<ReportUs/>}/>
+*/}
       </Routes>
     </Router>
     </>

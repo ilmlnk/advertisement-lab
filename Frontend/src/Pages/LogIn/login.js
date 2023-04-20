@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import localStorage from 'local-storage';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useHistory } from 'react-router-dom';
 import './loginStyle.css';
 import loginIllustration from '../../Images/login-illustration.png';
 import Footer from '../../Components/footer/Footer';
@@ -49,15 +49,17 @@ const Login = () => {
 
     const handleLogin = () => {
         setLoading(true);
-        axios.post('/api/User/login', {
-            username,
-            password
-        })
-        .then(res => {
-            localStorage.set("api_key", res.data);
-            setLoading(false);
-            navigate("/admin");
-        })
+        try {
+            const response = axios.post('https://localhost:50555/api/User/login', {
+                username,
+                password
+            })
+            if (response.status === 200) {
+                navigate("/admin");
+            }
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     return (
@@ -66,8 +68,11 @@ const Login = () => {
                 <div className='login-header-content'>
                     <img 
                     src={logo}
+                    onClick={() => navigate("/")}
                     className='login-logo'/>
-                    <h1 className='login-title'>AdReach</h1>
+                    <h1 
+                    onClick={() => navigate("/")}
+                    className='login-title'>AdReach</h1>
                 </div>
             </header>
             <div className='login-form-container'>

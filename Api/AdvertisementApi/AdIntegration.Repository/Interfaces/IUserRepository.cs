@@ -11,8 +11,10 @@ namespace AdIntegration.Repository.Interfaces
     {
         public IEnumerable<User> GetAllUsers();
         public User GetUserById(int id);
-        public int AddUser(User user);
-        public int UpdateUser(int userId, User inputUser);
-        public int DeleteUser(int id);
+        public User AddUser(User user);
+        public User UpdateUser(int userId, User inputUser);
+        public User DeleteUser(int id);
+        public User GetUserByEmail(string email);
+        public User GetUserByUsername(string username);
     }
 }

@@ -37,13 +37,14 @@ namespace AdIntegration.Business.Services
             throw new AuthenticateException("Incorrect password");
         }
 
+
         public async Task<User> CreateUser(RegisterUserDto registerUserDto)
         {
             var user = _mapper.Map<User>(registerUserDto);
             var result = await _userManager.CreateAsync(user, registerUserDto.Password);
             if (!result.Succeeded)
             {
-                throw new Exception("User was not created");
+                throw new Exception();
             }
             return user;
         }

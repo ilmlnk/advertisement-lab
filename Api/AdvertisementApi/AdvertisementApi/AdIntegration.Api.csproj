@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="Microsoft.AspNet.SignalR" Version="2.4.3" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.9" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.4" />
@@ -30,6 +31,10 @@
     <ProjectReference Include="..\AdIntegration.Business\AdIntegration.Business.csproj" />
     <ProjectReference Include="..\AdIntegration.Data\AdIntegration.Data.csproj" />
     <ProjectReference Include="..\AdIntegration.Repository\AdIntegration.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

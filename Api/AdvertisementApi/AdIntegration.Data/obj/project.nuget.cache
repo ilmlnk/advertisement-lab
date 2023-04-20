@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "AEr4n3/hrZsLsRNuXtaj+PV/HX0Hm99XG7C0lHt8X0cLIolEazBlH40KliPbSHFjPXiZYRYiEb65buVxu9I8ew==",
+  "dgSpecHash": "JamiCgIBZeWyAbcByxmSG8CfxtGqOMSZ2CnglQaPKqXCfgq0Cms91oSN3oy0Hr5Dw/EvcAn3YBSGG6NOs4ff1w==",
   "success": true,
   "projectFilePath": "H:\\Унік\\WEB\\lab\\Api\\AdvertisementApi\\AdIntegration.Data\\AdIntegration.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ilmln\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\ilmln\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\ilmln\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
+    "C:\\Users\\ilmln\\.nuget\\packages\\fluentassertions\\6.10.0\\fluentassertions.6.10.0.nupkg.sha512",
     "C:\\Users\\ilmln\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\ilmln\\.nuget\\packages\\jquery\\1.6.4\\jquery.1.6.4.nupkg.sha512",
     "C:\\Users\\ilmln\\.nuget\\packages\\microsoft.aspnet.signalr\\2.4.3\\microsoft.aspnet.signalr.2.4.3.nupkg.sha512",

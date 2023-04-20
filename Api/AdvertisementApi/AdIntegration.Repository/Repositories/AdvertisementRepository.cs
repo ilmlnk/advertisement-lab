@@ -1,10 +1,7 @@
 ﻿using AdIntegration.Data;
+using AdIntegration.Data.Dto;
 using AdIntegration.Repository.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace AdIntegration.Repository.Repositories
 {
@@ -14,31 +11,32 @@ namespace AdIntegration.Repository.Repositories
 
         public AdvertisementRepository(ApplicationDbContext context) => _context = context;
 
-        public int CreateAdvertisement(Advertisement advertisement)
+        public Advertisement CreateAdvertisement(Advertisement advertisement)
         {
             _context.Advertisements.Add(advertisement);
             _context.SaveChanges();
-            return advertisement.Id;
+            return advertisement;
         }
 
-        public int DeleteAdvertisement(int id)
+        public Advertisement DeleteAdvertisement(int id)
         {
-            _context.Advertisements.Remove(GetAdvertisementById(id));
+            var deleteAdvertisement = GetAdvertisementById(id);
+            _context.Advertisements.Remove(deleteAdvertisement);
             _context.SaveChanges();
-            return id;
+            return deleteAdvertisement;
         }
 
         public Advertisement GetAdvertisementById(int id) => _context.Advertisements.FirstOrDefault(x => x.Id == id);
 
-        public IEnumerable<Advertisement> GetAllAdvertisements() => _context.Advertisements.ToList();
+        public List<Advertisement> GetAllAdvertisements() => _context.Advertisements.ToList();
 
 
-        public int UpdateAdvertisementById(int adId, Advertisement inputAdvertisement)
+        public Advertisement UpdateAdvertisementById(int adId, Advertisement inputAdvertisement)
         {
             Advertisement advertisement = GetAdvertisementById(adId);
             _context.Advertisements.Add(inputAdvertisement);
             _context.SaveChanges();
-            return advertisement.Id;
+            return inputAdvertisement;
         }
     }
 }

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdIntegration.Api", "AdvertisementApi\AdIntegration.Api.csproj", "{788D35D0-EC16-48C5-A895-5490C36F88E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdIntegration.Api", "AdvertisementApi\AdIntegration.Api.csproj", "{788D35D0-EC16-48C5-A895-5490C36F88E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdIntegration.Business", "AdIntegration.Business\AdIntegration.Business.csproj", "{6267ADA8-8202-48A7-93F7-66CD47492927}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdIntegration.Business", "AdIntegration.Business\AdIntegration.Business.csproj", "{6267ADA8-8202-48A7-93F7-66CD47492927}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdIntegration.Repository", "AdIntegration.Repository\AdIntegration.Repository.csproj", "{D13ACA09-BC40-4AA3-9244-4DC42FFFE87E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdIntegration.Repository", "AdIntegration.Repository\AdIntegration.Repository.csproj", "{D13ACA09-BC40-4AA3-9244-4DC42FFFE87E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdIntegration.Data", "AdIntegration.Data\AdIntegration.Data.csproj", "{37F76B78-A8B4-409C-B4DB-2124EEABBE2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdIntegration.Data", "AdIntegration.Data\AdIntegration.Data.csproj", "{37F76B78-A8B4-409C-B4DB-2124EEABBE2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

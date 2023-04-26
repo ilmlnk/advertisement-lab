@@ -1,6 +1,7 @@
 ﻿using AdIntegration.Business.Interfaces;
 using AdIntegration.Data;
 using AdIntegration.Data.Dto;
+using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Interfaces;
 using AutoMapper;
 using System;

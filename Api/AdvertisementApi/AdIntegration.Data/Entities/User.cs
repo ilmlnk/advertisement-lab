@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdIntegration.Business.Models
+namespace AdIntegration.Data.Entities
 {
     [Table(nameof(User))]
     public class User : IdentityUser

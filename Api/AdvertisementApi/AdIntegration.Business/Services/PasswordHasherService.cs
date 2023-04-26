@@ -1,4 +1,4 @@
-﻿using AdIntegration.Business.Models;
+﻿using AdIntegration.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;

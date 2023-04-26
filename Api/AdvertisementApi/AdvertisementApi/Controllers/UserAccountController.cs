@@ -1,4 +1,4 @@
-﻿using AdIntegration.Business.Models;
+﻿using AdIntegration.Data.Entities;
 using AdIntegration.Data.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
@@ -82,20 +82,5 @@ namespace AdIntegration.Api.Controllers
             _context.SaveChanges();
             return Ok(dto);
         }
-
-        /*[Authorize]
-        [HttpDelete("delete/{id}")]
-        public IActionResult DeleteUser(int userId)
-        {
-            var user = _context.Users.Find(userId);
-
-            if (user == null)
-            {
-                return NotFound("User was not found.");
-            }
-
-            _repository.DeleteUser(userId);
-            return NoContent();
-        }*/
     }
 }

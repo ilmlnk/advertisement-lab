@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdIntegration.Data.Dto
 {
-    internal class AddChannelDto
+    internal class AddViberChannelDto
     {
     }
 }

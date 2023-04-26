@@ -1,4 +1,4 @@
-﻿using AdIntegration.Business.Models;
+﻿using AdIntegration.Data.Entities;
 using FluentAssertions.Common;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;

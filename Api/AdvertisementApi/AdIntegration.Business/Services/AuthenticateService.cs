@@ -1,7 +1,7 @@
 ﻿using AdIntegration.Business.Exceptions;
 using AdIntegration.Business.Interfaces;
-using AdIntegration.Business.Models;
 using AdIntegration.Data.Dto;
+using AdIntegration.Data.Entities;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;

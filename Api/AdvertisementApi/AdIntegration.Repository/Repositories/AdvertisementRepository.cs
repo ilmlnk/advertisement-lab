@@ -1,5 +1,6 @@
 ﻿using AdIntegration.Data;
 using AdIntegration.Data.Dto;
+using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Interfaces;
 
 

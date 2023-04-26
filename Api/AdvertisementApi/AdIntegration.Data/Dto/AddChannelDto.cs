@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdIntegration.Business.Models.Domain
+namespace AdIntegration.Data.Dto
 {
-    public class EditAdvertisementModel
+    internal class AddChannelDto
     {
     }
 }

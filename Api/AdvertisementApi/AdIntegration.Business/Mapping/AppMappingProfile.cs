@@ -1,6 +1,6 @@
-﻿using AdIntegration.Business.Models;
-using AdIntegration.Data;
+﻿using AdIntegration.Data;
 using AdIntegration.Data.Dto;
+using AdIntegration.Data.Entities;
 using AutoMapper;
 using System;
 using System.Collections.Generic;

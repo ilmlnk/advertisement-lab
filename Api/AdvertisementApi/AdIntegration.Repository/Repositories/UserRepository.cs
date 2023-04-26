@@ -1,5 +1,5 @@
-﻿using AdIntegration.Business.Models;
-using AdIntegration.Data;
+﻿using AdIntegration.Data;
+using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Interfaces;
 using System;
 using System.Collections.Generic;

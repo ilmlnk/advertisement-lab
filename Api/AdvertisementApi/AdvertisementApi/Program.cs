@@ -1,9 +1,9 @@
 ﻿using AdIntegration.Api.Helpers;
 using AdIntegration.Business.Interfaces;
 using AdIntegration.Business.Mapping;
-using AdIntegration.Business.Models;
 using AdIntegration.Business.Services;
 using AdIntegration.Data;
+using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Interfaces;
 using AdIntegration.Repository.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

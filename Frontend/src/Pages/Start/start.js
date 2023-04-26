@@ -1,10 +1,14 @@
 import React from "react";
+import './startStyle.css';
+import Footer from "../../Components/footer/Footer";
+import StartPageHeader from "./Components/StartPageHeader";
 
 const StartPage = () => {
     return (
-        <div>
-            <h1>Start Page</h1>
+        <div className="start-page-container">
+            <StartPageHeader/>
             
+            <Footer/>
         </div>
     );
 }

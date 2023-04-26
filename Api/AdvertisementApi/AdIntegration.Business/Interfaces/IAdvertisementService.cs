@@ -1,5 +1,5 @@
-﻿using AdIntegration.Data;
-using AdIntegration.Data.Dto;
+﻿using AdIntegration.Data.Dto;
+using AdIntegration.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

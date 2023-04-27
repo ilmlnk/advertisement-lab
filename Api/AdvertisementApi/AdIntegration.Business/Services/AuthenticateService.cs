@@ -4,6 +4,7 @@ using AdIntegration.Data.Dto;
 using AdIntegration.Data.Entities;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -25,23 +26,26 @@ namespace AdIntegration.Business.Services
             _mapper = mapper;
         }
 
-        public async Task<User> AuthenticateUser(LoginUserDto loginUserDto)
+        public IActionResult AuthenticateUser(LoginUserDto loginUserDto)
         {
-            var user = await _userManager.FindByNameAsync(loginUserDto.UserName);
+            var user =  _userManager.FindByName(loginUserDto.UserName);
             if (user == null)
             {
                 throw new NotFoundException("Username not found");
             }
 
-            if (await _userManager.CheckPasswordAsync(user, loginUserDto.Password)) return user;
+            if (_userManager.CheckPassword(user, loginUserDto.Password)) 
+            { 
+                return user; 
+            }
             throw new AuthenticateException("Incorrect password");
         }
 
 
-        public async Task<User> CreateUser(RegisterUserDto registerUserDto)
+        public IActionResult CreateUser(RegisterUserDto registerUserDto)
         {
             var user = _mapper.Map<User>(registerUserDto);
-            var result = await _userManager.CreateAsync(user, registerUserDto.Password);
+            var result = _userManager.CreateAsync(user, registerUserDto.Password);
             if (!result.Succeeded)
             {
                 throw new Exception();

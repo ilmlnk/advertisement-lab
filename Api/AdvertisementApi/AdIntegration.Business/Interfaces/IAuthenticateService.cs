@@ -1,5 +1,6 @@
 ﻿using AdIntegration.Data.Dto;
 using AdIntegration.Data.Entities;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace AdIntegration.Business.Interfaces
     public interface IAuthenticateService
     {
         public string GenerateToken(User user);
-        public Task<User> CreateUser(RegisterUserDto registerUserDto);
-        public Task<User> AuthenticateUser(LoginUserDto loginUserDto);
+        public IActionResult CreateUser(RegisterUserDto registerUserDto);
+        public IActionResult AuthenticateUser(LoginUserDto loginUserDto);
     }
 }

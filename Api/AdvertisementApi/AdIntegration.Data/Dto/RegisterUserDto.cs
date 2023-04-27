@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace AdIntegration.Data.Dto
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
+        public bool IsAdmin { get; set; }
         [Required]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }

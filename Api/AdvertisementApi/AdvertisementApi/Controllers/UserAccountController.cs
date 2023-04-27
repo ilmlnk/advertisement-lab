@@ -11,19 +11,19 @@ namespace AdIntegration.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UserAccountController : ControllerBase
+    public class UserAccountController<T, V> : ControllerBase where T : User where V : Channel<T>
     {
 
-        private readonly IUserRepository _repository;
+        private readonly IUserRepository<T> _userRepository;
         private readonly JwtService _jwtService;
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext<T, V> _context;
         private readonly IMapper _mapper;
         private readonly ILogger _logger;
 
-        public UserAccountController(IUserRepository repository, JwtService jwtService, 
-            ApplicationDbContext context, IMapper mapper, ILogger logger)
+        public UserAccountController(IUserRepository<T> userRepository, JwtService jwtService, 
+            ApplicationDbContext<T, V> context, IMapper mapper, ILogger logger)
         {
-            _repository = repository;
+            _userRepository = userRepository;
             _jwtService = jwtService;
             _context = context;
             _mapper = mapper;
@@ -34,7 +34,7 @@ namespace AdIntegration.Api.Controllers
         [HttpPost("register")]
         public IActionResult Register(RegisterUserDto dto)
         {
-            var user = new User
+            var user = new SystemUser
             {
                 FirstName = dto.FirstName,
                 LastName = dto.LastName,
@@ -44,14 +44,14 @@ namespace AdIntegration.Api.Controllers
             };
 
             
-            return Created("success", _repository.AddUser(user));
+            return Created("success", _userRepository.AddUser(user));
         }
 
         [AllowAnonymous]
         [HttpPost("login")]
         public IActionResult Login(LoginUserDto dto)
         {
-            var user = _repository.GetUserByUsername(dto.UserName);
+            var user = _userRepository.GetUserByUsername(dto.UserName);
             if (user == null) { 
                 return BadRequest(new { message = "Invalid credentials." }); 
             }

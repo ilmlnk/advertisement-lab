@@ -103,5 +103,6 @@ namespace AdIntegration.Repository.Repositories
 
             return deleteUser;
         }
+
     }
 }

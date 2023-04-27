@@ -18,16 +18,14 @@ namespace AdIntegration.Api.Controllers
         private readonly JwtService _jwtService;
         private readonly ApplicationDbContext<T, V> _context;
         private readonly IMapper _mapper;
-        private readonly ILogger _logger;
 
         public UserAccountController(IUserRepository<T> userRepository, JwtService jwtService, 
-            ApplicationDbContext<T, V> context, IMapper mapper, ILogger logger)
+            ApplicationDbContext<T, V> context, IMapper mapper)
         {
             _userRepository = userRepository;
             _jwtService = jwtService;
             _context = context;
             _mapper = mapper;
-            _logger = logger;
         }
 
         [AllowAnonymous]
@@ -51,7 +49,7 @@ namespace AdIntegration.Api.Controllers
         [HttpPost("login")]
         public IActionResult Login(LoginUserDto dto)
         {
-            var user = _userRepository.GetUserByUsername(dto.UserName);
+            var user = _userRepository.GetUserByUsername<T>(dto.UserName);
             if (user == null) { 
                 return BadRequest(new { message = "Invalid credentials." }); 
             }

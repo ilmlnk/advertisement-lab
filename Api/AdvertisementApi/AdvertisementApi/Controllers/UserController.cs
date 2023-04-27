@@ -13,11 +13,11 @@ namespace AdIntegration.Api.Controllers
     public class UserController<T, V> : ControllerBase where T : User where V : Channel<T>
     {
         private readonly ApplicationDbContext<T, V> _context;
-        private readonly UserRepository _userRepository;
+        private readonly UserRepository<T, V> _userRepository;
         private readonly AdvertisementRepository<T, V> _advertisementRepository;
 
         public UserController(ApplicationDbContext<T, V> context, 
-            UserRepository userRepository,
+            UserRepository<T, V> userRepository,
             AdvertisementRepository<T, V> advertisementRepository)
         {
             _context = context;

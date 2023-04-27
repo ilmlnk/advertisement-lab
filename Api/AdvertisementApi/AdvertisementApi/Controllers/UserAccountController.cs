@@ -56,7 +56,7 @@ namespace AdIntegration.Api.Controllers
                 return BadRequest(new { message = "Invalid credentials." }); 
             }
 
-            if (!BCrypt.Net.BCrypt.Verify(dto.Password, user.Password))
+            if (!BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
             {
                 return BadRequest(new { message = "Invalid credentials." });
             }

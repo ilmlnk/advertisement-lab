@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace AdIntegration.Data.Entities.Viber
 {
-    internal class ViberUser
+    public class ViberUser : User
     {
+        public string Username { get; set; }
+        public byte[]? Photo { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }

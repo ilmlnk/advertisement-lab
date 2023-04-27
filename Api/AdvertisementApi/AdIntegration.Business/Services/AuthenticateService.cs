@@ -28,13 +28,13 @@ namespace AdIntegration.Business.Services
 
         public IActionResult AuthenticateUser(LoginUserDto loginUserDto)
         {
-            var user =  _userManager.FindByName(loginUserDto.UserName);
+            var user =  _userManager.FindByNameAsync(loginUserDto.UserName);
             if (user == null)
             {
                 throw new NotFoundException("Username not found");
             }
 
-            if (_userManager.CheckPassword(user, loginUserDto.Password)) 
+            if (_userManager.CheckPasswordAsync(user, loginUserDto.Password)) 
             { 
                 return user; 
             }
@@ -42,7 +42,7 @@ namespace AdIntegration.Business.Services
         }
 
 
-        public IActionResult CreateUser(RegisterUserDto registerUserDto)
+        public Task CreateUser(RegisterUserDto registerUserDto)
         {
             var user = _mapper.Map<User>(registerUserDto);
             var result = _userManager.CreateAsync(user, registerUserDto.Password);
@@ -50,7 +50,7 @@ namespace AdIntegration.Business.Services
             {
                 throw new Exception();
             }
-            return user;
+            return ;
         }
 
         public string GenerateToken(User user)

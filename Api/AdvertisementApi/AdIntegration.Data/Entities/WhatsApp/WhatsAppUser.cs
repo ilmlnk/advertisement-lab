@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace AdIntegration.Data.Entities.WhatsApp
 {
-    internal class WhatsAppUser
+    public class WhatsAppUser : User
     {
+        public string Username { get; set; }
+        public byte[]? Photo { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }

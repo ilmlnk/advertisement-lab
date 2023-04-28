@@ -13,7 +13,7 @@ namespace AdIntegration.Repository.Repositories
             _context = context;
         }
         /* Create */
-        public T AddUser(T user)
+        public T AddUser<T>(T user) where T : User
         {
             _context.Users.Add(user);
             user.UserId = _context.SaveChanges();
@@ -72,7 +72,7 @@ namespace AdIntegration.Repository.Repositories
         }
 
         /* Update */
-        public object UpdateUser(int userId, T inputUser)
+        public object UpdateUser<T>(int userId, T inputUser) where T : User
         {
             var foundUser = _context.Users.Find(userId);
 

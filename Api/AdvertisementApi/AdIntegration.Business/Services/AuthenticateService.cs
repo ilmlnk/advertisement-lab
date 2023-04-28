@@ -26,15 +26,15 @@ namespace AdIntegration.Business.Services
             _mapper = mapper;
         }
 
-        public IActionResult AuthenticateUser(LoginUserDto loginUserDto)
+        public async Task<User> AuthenticateUser(LoginUserDto loginUserDto)
         {
-            var user =  _userManager.FindByNameAsync(loginUserDto.UserName);
+            var user = await _userManager.FindByNameAsync(loginUserDto.UserName);
             if (user == null)
             {
                 throw new NotFoundException("Username not found");
             }
 
-            if (_userManager.CheckPasswordAsync(user, loginUserDto.Password)) 
+            if (await _userManager.CheckPasswordAsync(user, loginUserDto.Password)) 
             { 
                 return user; 
             }
@@ -42,15 +42,15 @@ namespace AdIntegration.Business.Services
         }
 
 
-        public Task CreateUser(RegisterUserDto registerUserDto)
+        public async Task<User> CreateUser(RegisterUserDto registerUserDto)
         {
             var user = _mapper.Map<User>(registerUserDto);
-            var result = _userManager.CreateAsync(user, registerUserDto.Password);
+            var result = await _userManager.CreateAsync(user, registerUserDto.Password);
             if (!result.Succeeded)
             {
                 throw new Exception();
             }
-            return ;
+            return user;
         }
 
         public string GenerateToken(User user)

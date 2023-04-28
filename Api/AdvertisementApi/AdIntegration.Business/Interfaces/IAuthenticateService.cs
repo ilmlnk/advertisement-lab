@@ -12,7 +12,7 @@ namespace AdIntegration.Business.Interfaces
     public interface IAuthenticateService
     {
         public string GenerateToken(User user);
-        public IActionResult CreateUser(RegisterUserDto registerUserDto);
-        public IActionResult AuthenticateUser(LoginUserDto loginUserDto);
+        public Task<User> CreateUser(RegisterUserDto registerUserDto);
+        public Task<User> AuthenticateUser(LoginUserDto loginUserDto);
     }
 }

@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace AdIntegration.Data.Dto
 {
-    public class AddViberChannelDto
+    public class UpdateViberChannelDto
     {
         public string Name { get; set; }
-        public string? Description { get; set; }
-        public byte[]? Photo { get; set; }
+        public string Description { get; set; }
+        public byte[] Photo { get; set; }
         public bool IsPrivate { get; set; }
         public Url ChannelUrl { get; set; }
         public string Category { get; set; }
@@ -20,6 +20,5 @@ namespace AdIntegration.Data.Dto
         public Point Location { get; set; }
         public string Email { get; set; }
         public Url Website { get; set; }
-        public bool IsPublished { get; set; }
     }
 }

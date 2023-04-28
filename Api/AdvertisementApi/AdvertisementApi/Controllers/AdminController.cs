@@ -86,6 +86,9 @@ namespace AdIntegration.Api.Controllers
         }
 
         [HttpDelete("ads/delete/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult DeleteAdvertisement(int id)
         {
             var ad = _context.Advertisements.Find(id);
@@ -100,6 +103,9 @@ namespace AdIntegration.Api.Controllers
         }
 
         [HttpPut("ads/update/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult UpdateAdvertisement(int id, UpdateAdvertisementDto dto)
         {
             var existingAd = _context.Advertisements.FirstOrDefault(x => x.Id == id);
@@ -123,12 +129,18 @@ namespace AdIntegration.Api.Controllers
         }
 
         [HttpGet("ads")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult GetAllAdvertisements()
         {
             return Ok(_advertisementRepository.GetAllAdvertisements<T, V>());
         }
 
         [HttpGet("ads/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult GetAdvertisementById(int id)
         {
             return Ok(_advertisementRepository.GetAdvertisementById<T, V>(id));

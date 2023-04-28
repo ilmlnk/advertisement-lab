@@ -13,6 +13,5 @@ namespace AdIntegration.Data.Entities.Telegram
         public bool IsSuperGroup { get; set; }
         public bool IsBroadcast { get; set; }
         public string InviteLink { get; set; }
-        public bool IsPrivate { get; set; }
     }
 }

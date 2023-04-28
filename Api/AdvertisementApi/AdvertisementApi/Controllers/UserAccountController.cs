@@ -40,7 +40,6 @@ namespace AdIntegration.Api.Controllers
                 UserName = dto.UserName,
                 Password = BCrypt.Net.BCrypt.HashPassword(dto.Password)
             };
-
             
             return Created("success", _userRepository.AddUser(user));
         }
@@ -49,7 +48,7 @@ namespace AdIntegration.Api.Controllers
         [HttpPost("login")]
         public IActionResult Login(LoginUserDto dto)
         {
-            var user = _userRepository.GetUserByUsername<T>(dto.UserName);
+            var user = _userRepository.GetUserByUsername(dto.UserName);
             if (user == null) { 
                 return BadRequest(new { message = "Invalid credentials." }); 
             }

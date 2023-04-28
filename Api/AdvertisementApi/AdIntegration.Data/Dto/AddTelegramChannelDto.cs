@@ -10,8 +10,8 @@ namespace AdIntegration.Data.Dto
     public class AddTelegramChannelDto
     {
         public string Name { get; set; }
-        public string Description { get; set; }
-        public byte[] Photo { get; set; }
+        public string? Description { get; set; }
+        public byte[]? Photo { get; set; }
         public bool IsPrivate { get; set; }
         public Url ChannelUrl { get; set; }
         public string InviteLink { get; set; }

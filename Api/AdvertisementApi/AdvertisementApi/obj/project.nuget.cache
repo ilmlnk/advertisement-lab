@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZLTG/w0JN4r5mksxpYaORt5rW+KJH6TxwVdEsJczeLT1JQ5IyKd++PD0iokztU30Gke42v3OIu3BjRgrQitM6A==",
+  "dgSpecHash": "xFNyyoWytH2dgjWocKvjZmMO64r4f+SJprHUkEQZiHuS7QZAOfaeYQ893jK1KXc9Rmsl2Zyz62ldMpN+Jjco/A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\illia.melnyk\\Documents\\Projects\\Advertisement Project\\advertisement-project-lab\\Api\\AdvertisementApi\\AdvertisementApi\\AdIntegration.Api.csproj",
+  "projectFilePath": "C:\\Users\\illia.melnyk\\Documents\\Projects\\advertisement-project-lab\\Api\\AdvertisementApi\\AdvertisementApi\\AdIntegration.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
@@ -189,27 +189,6 @@
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
   "logs": [
-    {
-      "code": "NU3037",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.0' from source 'C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\': The repository primary signature validity period has expired.",
-      "libraryId": "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl"
-    },
-    {
-      "code": "NU3037",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.0' from source 'C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\': The repository primary signature validity period has expired.",
-      "libraryId": "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl"
-    },
-    {
-      "code": "NU3037",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.0' from source 'C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\': The repository primary signature validity period has expired.",
-      "libraryId": "runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl"
-    },
     {
       "code": "NU1701",
       "level": "Warning",

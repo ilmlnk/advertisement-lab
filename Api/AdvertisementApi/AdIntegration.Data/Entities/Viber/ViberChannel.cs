@@ -6,8 +6,8 @@ using System.Security.Policy;
 
 namespace AdIntegration.Data.Entities.Viber
 {
-    [Table(nameof(ViberChannel<T, V>))]
-    public class ViberChannel<T, V> : Channel<T> where T : User where V : Channel<T>
+    [Table(nameof(ViberChannel))]
+    public class ViberChannel : Channel
     {
         [Required]
         public string AuthToken { get; set; }
@@ -21,7 +21,7 @@ namespace AdIntegration.Data.Entities.Viber
         public Point? Location { get; set; }
         [StringLength(100)]
         public string? Email { get; set; }
-        public Url? Website { get; set; }
+        public string? Website { get; set; }
         [Required]
         public List<string> EventTypes { get; set; }
         [Required]

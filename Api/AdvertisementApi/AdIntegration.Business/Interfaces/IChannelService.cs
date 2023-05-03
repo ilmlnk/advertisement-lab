@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace AdIntegration.Business.Interfaces
 {
-    public interface IChannelService<T, V> where T : User where V : Channel<T>
+    public interface IChannelService
     {
-        public V CreateChannel(V channel);
-        public object UpdateChannelById(int id, V channel);
-        public V GetChannelById(int channelId);
-        public IEnumerable<V> GetAllChannels();
-        public V DeleteChannelById(int channelId);
+        public Channel CreateChannel(Channel channel);
+        public object UpdateChannelById(int id, Channel channel);
+        public Channel GetChannelById(int channelId);
+        public IEnumerable<Channel> GetAllChannels();
+        public Channel DeleteChannelById(int channelId);
     }
 }

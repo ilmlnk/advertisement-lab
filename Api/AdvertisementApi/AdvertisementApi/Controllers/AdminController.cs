@@ -11,14 +11,14 @@ namespace AdIntegration.Api.Controllers
     [Authorize(Roles = "Admin")]
     [ApiController]
     [Route("api/[controller]")]
-    public class AdminController<T, V> : ControllerBase where T : User where V : Channel<T>
+    public class AdminController : ControllerBase 
     {
-        private readonly ApplicationDbContext<T, V> _context;
-        private readonly AdvertisementRepository<T, V> _advertisementRepository;
-        private readonly UserRepository<T, V> _userRepository;
-        public AdminController(ApplicationDbContext<T, V> context, 
-            AdvertisementRepository<T, V> advertisementRepository, 
-            UserRepository<T, V> userRepository)
+        private readonly ApplicationDbContext _context;
+        private readonly AdvertisementRepository _advertisementRepository;
+        private readonly UserRepository _userRepository;
+        public AdminController(ApplicationDbContext context, 
+            AdvertisementRepository advertisementRepository, 
+            UserRepository userRepository)
         { 
             _context = context;
             _advertisementRepository = advertisementRepository;
@@ -97,7 +97,7 @@ namespace AdIntegration.Api.Controllers
                 return NotFound();
             }
 
-            _advertisementRepository.DeleteAdvertisement<T, V>(id);
+            _advertisementRepository.DeleteAdvertisement(id);
 
             return Ok();
         }
@@ -114,7 +114,7 @@ namespace AdIntegration.Api.Controllers
                 return NotFound();
             }
 
-            var editAd = new Advertisement<T, V>
+            var editAd = new Advertisement
             {
                 Name = dto.Name,
                 Topic = dto.Topic,
@@ -134,7 +134,7 @@ namespace AdIntegration.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult GetAllAdvertisements()
         {
-            return Ok(_advertisementRepository.GetAllAdvertisements<T, V>());
+            return Ok(_advertisementRepository.GetAllAdvertisements());
         }
 
         [HttpGet("ads/{id}")]
@@ -143,7 +143,7 @@ namespace AdIntegration.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult GetAdvertisementById(int id)
         {
-            return Ok(_advertisementRepository.GetAdvertisementById<T, V>(id));
+            return Ok(_advertisementRepository.GetAdvertisementById(id));
         }
 
 

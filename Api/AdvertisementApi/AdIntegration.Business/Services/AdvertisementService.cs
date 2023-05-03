@@ -12,22 +12,18 @@ using System.Threading.Tasks;
 
 namespace AdIntegration.Business.Services
 {
-    public class AdvertisementService<T, V> : IAdvertisementService<T, V> 
-        where T : User 
-        where V : Channel<T>
+    public class AdvertisementService : IAdvertisementService
     {
-        private readonly IAdvertisementRepository<T, V> _advertisementRepository;
-        private readonly ApplicationDbContext<T, V> _context;
+        private readonly IAdvertisementRepository _advertisementRepository;
+        private readonly ApplicationDbContext _context;
 
-        public AdvertisementService(IAdvertisementRepository<T, V> advertisementRepository, ApplicationDbContext<T, V> context) 
+        public AdvertisementService(IAdvertisementRepository advertisementRepository, ApplicationDbContext context) 
         { 
             _advertisementRepository = advertisementRepository;
             _context = context;
         }
 
-        public Advertisement<T, V> CreateAdvertisement<T, V>(Advertisement<T, V> advertisement) 
-            where T : User 
-            where V : Channel<T>
+        public Advertisement CreateAdvertisement(Advertisement advertisement)
         {
             var createdAdvertisement = _advertisementRepository.CreateAdvertisement(advertisement);
 
@@ -39,11 +35,9 @@ namespace AdIntegration.Business.Services
             return createdAdvertisement;
         }
 
-        public Advertisement<T, V> DeleteAdvertisement<T, V>(int id)
-            where T : User
-            where V : Channel<T>
+        public Advertisement DeleteAdvertisement(int id)
         {
-            var deletedAdvertisement = _advertisementRepository.DeleteAdvertisement<T, V>(id);
+            var deletedAdvertisement = _advertisementRepository.DeleteAdvertisement(id);
 
             if (deletedAdvertisement == null)
             {
@@ -53,11 +47,9 @@ namespace AdIntegration.Business.Services
             return deletedAdvertisement;
         }
 
-        public Advertisement<T, V> GetAdvertisementById<T, V>(int id)
-            where T : User
-            where V : Channel<T>
+        public Advertisement GetAdvertisementById(int id)
         {
-            var adverisement = _advertisementRepository.GetAdvertisementById<T, V>(id);
+            var adverisement = _advertisementRepository.GetAdvertisementById(id);
             
             if (adverisement == null)
             {
@@ -67,11 +59,9 @@ namespace AdIntegration.Business.Services
             return adverisement;
         }
 
-        public IEnumerable<Advertisement<T, V>> GetAllAdvertisements<T, V>()
-            where T : User
-            where V : Channel<T>
+        public IEnumerable<Advertisement> GetAllAdvertisements()
         {
-            var advertisements = _advertisementRepository.GetAllAdvertisements<T, V>();
+            var advertisements = _advertisementRepository.GetAllAdvertisements();
             
             if (advertisements == null)
             {
@@ -81,9 +71,7 @@ namespace AdIntegration.Business.Services
             return advertisements;
         }
 
-        public Advertisement<T, V> UpdateAdvertisementById<T, V>(int id, Advertisement<T, V> advertisement)
-            where T : User
-            where V : Channel<T>
+        public Advertisement UpdateAdvertisementById(int id, Advertisement advertisement)
         {
             var updatedAdvertisement = _advertisementRepository.UpdateAdvertisementById(id, advertisement);
 

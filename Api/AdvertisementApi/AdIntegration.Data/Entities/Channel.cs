@@ -4,7 +4,7 @@ using System.Threading.Channels;
 
 namespace AdIntegration.Data.Entities
 {
-    public abstract class Channel<T> where T : User 
+    public abstract class Channel
     {
         [Key]
         [Required]
@@ -19,6 +19,6 @@ namespace AdIntegration.Data.Entities
         public int ActiveUsers { get; set; }
         public int? Posts { get; set; }
         [Required]
-        public List<T> UserAdmins { get; set; }
+        public List<User> UserAdmins { get; set; }
     }
 }

@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace AdIntegration.Data.Entities
 {
-    [Table(nameof(User))]
     public abstract class User : IdentityUser
     {
         public int UserId { get; set; }

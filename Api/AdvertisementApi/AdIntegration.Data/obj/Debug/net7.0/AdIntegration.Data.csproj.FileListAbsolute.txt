@@ -28,3 +28,18 @@ C:\Users\illia.melnyk\Documents\Projects\Advertisement Project\advertisement-pro
 C:\Users\illia.melnyk\Documents\Projects\Advertisement Project\advertisement-project-lab\Api\AdvertisementApi\AdIntegration.Data\obj\Debug\net7.0\AdIntegration.Data.pdb
 C:\Users\illia.melnyk\Documents\Projects\Advertisement Project\advertisement-project-lab\Api\AdvertisementApi\AdIntegration.Data\obj\Debug\net7.0\AdIntegration.Data.genruntimeconfig.cache
 C:\Users\illia.melnyk\Documents\Projects\Advertisement Project\advertisement-project-lab\Api\AdvertisementApi\AdIntegration.Data\obj\Debug\net7.0\ref\AdIntegration.Data.dll
+C:\Users\illia.melnyk\Documents\Projects\advertisement-project-lab\Api\AdvertisementApi\AdIntegration.Data\bin\Debug\net7.0\AdIntegration.Data.deps.json
+C:\Users\illia.melnyk\Documents\Projects\advertisement-project-lab\Api\AdvertisementApi\AdIntegration.Data\bin\Debug\net7.0\AdIntegration.Data.runtimeconfig.json
+C:\Users\illia.melnyk\Documents\Projects\advertisement-project-lab\Api\AdvertisementApi\AdIntegration.Data\bin\Debug\net7.0\AdIntegration.Data.dll
+C:\Users\illia.melnyk\Documents\Projects\advertisement-project-lab\Api\AdvertisementApi\AdIntegration.Data\bin\Debug\net7.0\AdIntegration.Data.pdb
+C:\Users\illia.melnyk\Documents\Projects\advertisement-project-lab\Api\AdvertisementApi\AdIntegration.Data\obj\Debug\net7.0\AdIntegration.Data.csproj.AssemblyReference.cache
+C:\Users\illia.melnyk\Documents\Projects\advertisement-project-lab\Api\AdvertisementApi\AdIntegration.Data\obj\Debug\net7.0\AdIntegration.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\illia.melnyk\Documents\Projects\advertisement-project-lab\Api\AdvertisementApi\AdIntegration.Data\obj\Debug\net7.0\AdIntegration.Data.AssemblyInfoInputs.cache
+C:\Users\illia.melnyk\Documents\Projects\advertisement-project-lab\Api\AdvertisementApi\AdIntegration.Data\obj\Debug\net7.0\AdIntegration.Data.AssemblyInfo.cs
+C:\Users\illia.melnyk\Documents\Projects\advertisement-project-lab\Api\AdvertisementApi\AdIntegration.Data\obj\Debug\net7.0\AdIntegration.Data.csproj.CoreCompileInputs.cache
+C:\Users\illia.melnyk\Documents\Projects\advertisement-project-lab\Api\AdvertisementApi\AdIntegration.Data\obj\Debug\net7.0\EFCoreSqlServerNetTopologySuite.cs
+C:\Users\illia.melnyk\Documents\Projects\advertisement-project-lab\Api\AdvertisementApi\AdIntegration.Data\obj\Debug\net7.0\AdIntegration.Data.dll
+C:\Users\illia.melnyk\Documents\Projects\advertisement-project-lab\Api\AdvertisementApi\AdIntegration.Data\obj\Debug\net7.0\refint\AdIntegration.Data.dll
+C:\Users\illia.melnyk\Documents\Projects\advertisement-project-lab\Api\AdvertisementApi\AdIntegration.Data\obj\Debug\net7.0\AdIntegration.Data.pdb
+C:\Users\illia.melnyk\Documents\Projects\advertisement-project-lab\Api\AdvertisementApi\AdIntegration.Data\obj\Debug\net7.0\AdIntegration.Data.genruntimeconfig.cache
+C:\Users\illia.melnyk\Documents\Projects\advertisement-project-lab\Api\AdvertisementApi\AdIntegration.Data\obj\Debug\net7.0\ref\AdIntegration.Data.dll

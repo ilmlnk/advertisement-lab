@@ -4,16 +4,16 @@ using AdIntegration.Repository.Interfaces;
 
 namespace AdIntegration.Repository.Repositories
 {
-    public class UserRepository<T, V> : IUserRepository<T> where T : User where V : Channel<T>
+    public class UserRepository : IUserRepository
     {
-        private readonly ApplicationDbContext<T, V> _context;
+        private readonly ApplicationDbContext _context;
 
-        public UserRepository(ApplicationDbContext<T, V> context)
+        public UserRepository(ApplicationDbContext context)
         {
             _context = context;
         }
         /* Create */
-        public T AddUser<T>(T user) where T : User
+        public User AddUser(User user)
         {
             _context.Users.Add(user);
             user.UserId = _context.SaveChanges();
@@ -23,9 +23,9 @@ namespace AdIntegration.Repository.Repositories
 
         /* Get (Receive) */
 
-        public T GetUserByEmail(string email)
+        public User GetUserByEmail(string email)
         {
-            T user = (T)_context.Users.FirstOrDefault(u => u.Email == email);
+            User user = _context.Users.FirstOrDefault(u => u.Email == email);
 
             if (user == null)
             {
@@ -35,21 +35,21 @@ namespace AdIntegration.Repository.Repositories
             return user;
         }
 
-        public IEnumerable<T> GetAllUsers()
+        public IEnumerable<User> GetAllUsers()
         {
             var users = _context.Users.ToList();
 
             if (users == null)
             {
-                return Enumerable.Empty<T>();
+                return Enumerable.Empty<User>();
             }
 
-            return users as IEnumerable<T>;
+            return users;
         }
 
-        public T GetUserByUsername(string username)
+        public User GetUserByUsername(string username)
         {
-            T user = (T)_context.Users.FirstOrDefault(u => u.UserName == username);
+            var user = _context.Users.FirstOrDefault(u => u.UserName == username);
 
             if (user == null)
             {
@@ -59,9 +59,9 @@ namespace AdIntegration.Repository.Repositories
             return user;
         }
 
-        public T GetUserById(int id)
+        public User GetUserById(int id)
         {
-            T user = (T)_context.Users.FirstOrDefault(x => x.UserId == id);
+            User user = _context.Users.FirstOrDefault(x => x.UserId == id);
 
             if (user == null)
             {
@@ -72,7 +72,7 @@ namespace AdIntegration.Repository.Repositories
         }
 
         /* Update */
-        public object UpdateUser<T>(int userId, T inputUser) where T : User
+        public object UpdateUser(int userId, User inputUser)
         {
             var foundUser = _context.Users.Find(userId);
 
@@ -95,7 +95,7 @@ namespace AdIntegration.Repository.Repositories
 
 
         /* Delete */
-        public T DeleteUser(int id)
+        public User DeleteUser(int id)
         {
             var deleteUser = GetUserById(id);
             _context.Users.Remove(deleteUser);

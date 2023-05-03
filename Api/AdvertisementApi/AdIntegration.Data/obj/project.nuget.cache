@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cXoZnnHSrWtcdreuv95ZwV1PCQHUUYLUc3fzFeb0lCDuKCTy2B+bPxIL6BdFHgmzNtUHxozIoHvpEzGA1mGe5A==",
+  "dgSpecHash": "HAUpJ4+SLjvqmCEw3WZgddeRht46AHSwdKc+cnwTG9EIHsbzeQvtJDyIT7etJejquJwU1ZfHlp4ffvD8DWPoHQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\illia.melnyk\\Documents\\Projects\\Advertisement Project\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Data\\AdIntegration.Data.csproj",
+  "projectFilePath": "C:\\Users\\illia.melnyk\\Documents\\Projects\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Data\\AdIntegration.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
@@ -113,20 +113,6 @@
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512"
   ],
   "logs": [
-    {
-      "code": "NU3037",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Reflection.Emit.Lightweight 4.0.1' from source 'C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\': The repository primary signature validity period has expired.",
-      "libraryId": "System.Reflection.Emit.Lightweight"
-    },
-    {
-      "code": "NU3037",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Reflection.Primitives 4.3.0' from source 'C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\': The repository primary signature validity period has expired.",
-      "libraryId": "System.Reflection.Primitives"
-    },
     {
       "code": "NU1701",
       "level": "Warning",

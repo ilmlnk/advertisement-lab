@@ -2,20 +2,20 @@
 
 namespace AdIntegration.Repository.Interfaces
 {
-    public interface IChannelRepository<T, V> where T : User where V : Channel<T>
+    public interface IChannelRepository
     {
         /* Create */
-        public V CreateChannel<V>(V channel) where V : Channel<T>;
+        public Channel CreateChannel(Channel channel);
         /* Update */
-        public object UpdateChannelById<V>(int id, V channel) where V : Channel<T>;
+        public object UpdateChannelById(int id, Channel channel);
         /* Get */
-        public V GetChannelById<V>(int id) where V : Channel<T>;
-        public V GetChannelByLink<V>(string link) where V : Channel<T>;
-        public IEnumerable<V> GetChannelsByCategory<V>(string category) where V : Channel<T>;
-        public V GetChannelByEmail<V>(string email) where V : Channel<T>;
-        public IEnumerable<V> GetChannels<V>() where V : Channel<T>;
+        public Channel GetChannelById(int id);
+        public Channel GetChannelByLink(string link);
+        public IEnumerable<Channel> GetChannelsByCategory(string category);
+        public Channel GetChannelByEmail(string email);
+        public IEnumerable<Channel> GetChannels();
         /* Delete */
-        public V DeleteChannelById<V>(int id) where V : Channel<T>;
+        public Channel DeleteChannelById(int id);
 
     }
 }

@@ -4,58 +4,58 @@ using AdIntegration.Repository.Interfaces;
 
 namespace AdIntegration.Repository.Repositories
 {
-    public class ChannelRepository<T, V> : IChannelRepository<T, V> where T : User where V : Channel<T>
+    public class ChannelRepository : IChannelRepository
     {
-        private readonly ApplicationDbContext<T, V> _context;
+        private readonly ApplicationDbContext _context;
 
         /* Create */
-        public V CreateChannel<V>(V channel) where V : Channel<T>
+        public Channel CreateChannel(Channel channel)
         {
-            _context.Channels.Add(channel);
+            _context.SocialChannels.Add(channel);
             _context.SaveChanges();
             return channel;
         }
 
         /* Get (Receive) */
 
-        public V GetChannelById<V>(int id) where V : Channel<T>
+        public Channel GetChannelById(int id)
         {
-            var foundChannel = _context.Channels.Find(id, false);
+            var foundChannel = _context.SocialChannels.Find(id, false);
 
             if (foundChannel == null)
             {
                 throw new InvalidOperationException();
             }
 
-            _context.Channels.Remove(foundChannel);
+            _context.SocialChannels.Remove(foundChannel);
             _context.SaveChanges();
 
-            return (V) foundChannel;
+            return foundChannel;
         } 
 
-        public IEnumerable<V> GetChannels<V>() where V : Channel<T>
+        public IEnumerable<Channel> GetChannels()
         {
-            var channels = _context.Channels.ToList();
+            var channels = _context.SocialChannels.ToList();
 
             if (channels == null)
             {
-                return Enumerable.Empty<V>();
+                return Enumerable.Empty<Channel>();
             }
 
-            return (IEnumerable<V>) channels;
+            return channels;
         }
 
         /* Update */
-        public object UpdateChannelById<V>(int id, V channel) where V : Channel<T>
+        public object UpdateChannelById(int id, Channel channel)
         {
-            var foundChannel = _context.Channels.Find(id);
+            var foundChannel = _context.SocialChannels.Find(id);
 
             if (foundChannel == null)
             {
                 throw new InvalidOperationException();
             }
 
-            _context.Channels.Update(channel);
+            _context.SocialChannels.Update(channel);
             _context.SaveChanges();
 
             var response = new
@@ -68,32 +68,32 @@ namespace AdIntegration.Repository.Repositories
         }
 
         /* Delete */
-        public V DeleteChannelById<V>(int id) where V : Channel<T>
+        public Channel DeleteChannelById(int id)
         {
-            var foundChannel = _context.Channels.Find(id, false);
+            var foundChannel = _context.SocialChannels.Find(id, false);
 
             if (foundChannel == null)
             {
                 throw new InvalidOperationException();
             }
 
-            _context.Channels.Remove(foundChannel);
+            _context.SocialChannels.Remove(foundChannel);
             _context.SaveChanges();
 
-            return (V)foundChannel;
+            return foundChannel;
         }
 
-        public V GetChannelByLink<V>(string link) where V : Channel<T>
+        public Channel GetChannelByLink(string link)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<V> GetChannelsByCategory<V>(string category) where V : Channel<T>
+        public IEnumerable<Channel> GetChannelsByCategory(string category)
         {
             throw new NotImplementedException();
         }
 
-        public V GetChannelByEmail<V>(string email) where V : Channel<T>
+        public Channel GetChannelByEmail(string email)
         {
             throw new NotImplementedException();
         }

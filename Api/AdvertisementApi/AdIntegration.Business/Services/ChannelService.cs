@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace AdIntegration.Business.Services
 {
-    public class ChannelService<T, V> : IChannelService<T, V> where T : User where V : Channel<T>
+    public class ChannelService : IChannelService
     {
-        private readonly IChannelRepository<T, V> _channelRepository;
-        public ChannelService(IChannelRepository<T, V> channelRepository) 
+        private readonly IChannelRepository _channelRepository;
+        public ChannelService(IChannelRepository channelRepository) 
         {
             _channelRepository = channelRepository;
         }
-        public V CreateChannel(V channel)
+        public Channel CreateChannel(Channel channel)
         {
-            var createdChannel = _channelRepository.CreateChannel<V>(channel);
+            var createdChannel = _channelRepository.CreateChannel(channel);
             if (createdChannel == null)
             {
                 throw new ArgumentException();
@@ -26,25 +26,25 @@ namespace AdIntegration.Business.Services
             return createdChannel;
         }
 
-        public V DeleteChannelById(int channelId)
+        public Channel DeleteChannelById(int channelId)
         {
-            return _channelRepository.DeleteChannelById<V>(channelId);
+            return _channelRepository.DeleteChannelById(channelId);
         }
 
-        public IEnumerable<V> GetAllChannels()
+        public IEnumerable<Channel> GetAllChannels()
         {
-            return _channelRepository.GetChannels<V>();
+            return _channelRepository.GetChannels();
         }
 
-        public V GetChannelById(int channelId)
+        public Channel GetChannelById(int channelId)
         {
-            return _channelRepository.GetChannelById<V>(channelId);
+            return _channelRepository.GetChannelById(channelId);
         }
 
-        public object UpdateChannelById(int id, V channel)
+        public object UpdateChannelById(int id, Channel channel)
         {
-            var foundChannel = _channelRepository.GetChannelById<V>(id);
-            var updatedChannel = _channelRepository.UpdateChannelById<V>(id, channel);
+            var foundChannel = _channelRepository.GetChannelById(id);
+            var updatedChannel = _channelRepository.UpdateChannelById(id, channel);
             
             var response =  new
             {

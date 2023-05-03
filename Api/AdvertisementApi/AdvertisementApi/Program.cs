@@ -20,14 +20,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddScoped<IAdvertisementRepository<User, Channel<User>>, AdvertisementRepository<User, Channel<User>>>();
-builder.Services.AddScoped<IAdvertisementRepository<User, Channel<User>>, AdvertisementRepository<User, Channel<User>>>();
-builder.Services.AddScoped<IAuthenticateService, AuthenticateService>();
-builder.Services.AddScoped<IAdvertisementRepository<User, Channel<User>>, AdvertisementRepository<User, Channel<User>>>();
+builder.Services.AddScoped<IAdvertisementRepository, AdvertisementRepository>();
+builder.Services.AddScoped<IChannelRepository, ChannelRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 builder.Services.AddScoped<IAuthenticateService, AuthenticateService>();
 
+builder.Services.AddScoped<AdvertisementRepository>();
+builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<ChannelRepository>();
+
+
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-        .AddEntityFrameworkStores<ApplicationDbContext<User, Channel<User>>>()
+        .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultTokenProviders();
 
 builder.Services.AddScoped<JwtService>();
@@ -60,7 +65,7 @@ builder.Services.AddSwaggerGen(option =>
     });
 });
 
-builder.Services.AddDbContext<ApplicationDbContext<User, Channel<User>>>();
+builder.Services.AddDbContext<ApplicationDbContext>();
 
 builder.Services.AddIdentityCore<User>(options =>
 {
@@ -69,7 +74,7 @@ builder.Services.AddIdentityCore<User>(options =>
     options.Password.RequireUppercase = false;
     options.Password.RequireNonAlphanumeric = false;
 })
-    .AddEntityFrameworkStores<ApplicationDbContext<User, Channel<User>>>();
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         .AddJwtBearer(options =>
@@ -108,7 +113,7 @@ app.UseSwaggerUI();
 
 using (var scope = app.Services.CreateScope())
 {
-    var dataContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext<User, Channel<User>>>();
+    var dataContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     dataContext.Database.EnsureCreated();
 }
 

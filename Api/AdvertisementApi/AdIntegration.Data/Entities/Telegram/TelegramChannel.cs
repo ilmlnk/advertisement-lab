@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace AdIntegration.Data.Entities.Telegram
 {
-    [Table(nameof(TelegramChannel<T, V>))]
-    public class TelegramChannel<T, V> : Channel<T> where T : User where V : Channel<T>
+    [Table(nameof(TelegramChannel))]
+    public class TelegramChannel : Channel
     {
         [Required]
-        public Url ChannelUrl { get; set; }
+        public string ChannelUrl { get; set; }
         [Required]
         public bool IsSuperGroup { get; set; }
         [Required]

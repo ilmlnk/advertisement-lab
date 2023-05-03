@@ -6,34 +6,33 @@ using AdIntegration.Repository.Interfaces;
 
 namespace AdIntegration.Repository.Repositories
 {
-    public class AdvertisementRepository<T, V> : IAdvertisementRepository<T, V> where T : User where V : Channel<T>
+    public class AdvertisementRepository : IAdvertisementRepository
     {
-        private readonly ApplicationDbContext<T, V> _context;
+        private readonly ApplicationDbContext _context;
 
-        public AdvertisementRepository(ApplicationDbContext<T, V> context) => _context = context;
+        public AdvertisementRepository(ApplicationDbContext context) => _context = context;
 
-        public Advertisement<T, V> CreateAdvertisement<T, V>(Advertisement<T, V> advertisement) 
-            where T : User where V: Channel<T>
+        public Advertisement CreateAdvertisement(Advertisement advertisement)
         {
-            _context.Set<Advertisement<T, V>>().Add(advertisement);
+            _context.Advertisements.Add(advertisement);
             _context.SaveChanges();
             return advertisement;
         }
 
-        public Advertisement<T, V>? DeleteAdvertisement<T, V>(int id) where T : User where V : Channel<T>
+        public Advertisement DeleteAdvertisement(int id) 
         {
-            var advertisement = _context.Set<Advertisement<T, V>>().Find(id);
+            var advertisement = _context.Advertisements.Find(id);
             if (advertisement != null)
             {
-                _context.Set<Advertisement<T, V>>().Remove(advertisement);
+                _context.Advertisements.Remove(advertisement);
                 _context.SaveChanges();
             }
             return advertisement;
         }
 
-        public Advertisement<T, V>? GetAdvertisementById<T, V>(int id) where T : User where V : Channel<T>
+        public Advertisement GetAdvertisementById(int id)
         {
-            var advertisement = _context.Set<Advertisement<T, V>>().FirstOrDefault(a => a.Id == id && typeof(T).IsAssignableFrom(a.SocialMediaUser.GetType()) && typeof(V).IsAssignableFrom(a.Channel.GetType()));
+            var advertisement = _context.Advertisements.Find(id);
 
             if (advertisement == null)
             {
@@ -43,11 +42,9 @@ namespace AdIntegration.Repository.Repositories
             return advertisement;
         }
 
-        public Advertisement<T, V> UpdateAdvertisementById<T, V>(int adId, Advertisement<T, V> inputAdvertisement) where T : User where V : Channel<T>
+        public Advertisement UpdateAdvertisementById(int adId, Advertisement inputAdvertisement)
         {
-            var advertisement = _context.Set<Advertisement<T, V>>().FirstOrDefault(a => a.Id == adId 
-            && typeof(T).IsAssignableFrom(a.SocialMediaUser.GetType()) 
-            && typeof(V).IsAssignableFrom(a.Channel.GetType()));
+            var advertisement = _context.Advertisements.Find(adId);
 
             if (advertisement == null)
             {
@@ -58,7 +55,7 @@ namespace AdIntegration.Repository.Repositories
             advertisement.Topic = inputAdvertisement.Topic;
             advertisement.Description = inputAdvertisement.Description;
             advertisement.Price = inputAdvertisement.Price;
-            advertisement.Channel = inputAdvertisement.Channel;
+            advertisement.ChannelEntity = inputAdvertisement.ChannelEntity;
             advertisement.SocialMediaUser = inputAdvertisement.SocialMediaUser;
 
             _context.SaveChanges();
@@ -66,17 +63,14 @@ namespace AdIntegration.Repository.Repositories
             return inputAdvertisement;
         }
 
-        public IEnumerable<Advertisement<T, V>>? GetAllAdvertisements<T, V>() where T : User where V : Channel<T>
+        public IEnumerable<Advertisement> GetAllAdvertisements()
         {
-            var advertisements = _context.Set<Advertisement<T, V>>()
-                .Where(a => typeof(T)
-                .IsAssignableFrom(a.SocialMediaUser.GetType()) 
-            && typeof(V).IsAssignableFrom(a.Channel.GetType()));
+            var advertisements = _context.Advertisements.ToList();
 
-            if (advertisements == null)
+            /*if (advertisements == null)
             {
                 throw new InvalidOperationException();
-            }
+            }*/
 
             return advertisements;
         }

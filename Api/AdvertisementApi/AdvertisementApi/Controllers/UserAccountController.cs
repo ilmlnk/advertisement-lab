@@ -11,16 +11,16 @@ namespace AdIntegration.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UserAccountController<T, V> : ControllerBase where T : User where V : Channel<T>
+    public class UserAccountController : ControllerBase
     {
 
-        private readonly IUserRepository<T> _userRepository;
+        private readonly IUserRepository _userRepository;
         private readonly JwtService _jwtService;
-        private readonly ApplicationDbContext<T, V> _context;
+        private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
 
-        public UserAccountController(IUserRepository<T> userRepository, JwtService jwtService, 
-            ApplicationDbContext<T, V> context, IMapper mapper)
+        public UserAccountController(IUserRepository userRepository, JwtService jwtService, 
+            ApplicationDbContext context, IMapper mapper)
         {
             _userRepository = userRepository;
             _jwtService = jwtService;

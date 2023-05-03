@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace AdIntegration.Data.Entities
 {
-    [Table(nameof(Advertisement<T, V>))]
-    public class Advertisement<T, V> where T : User where V : Channel<T>
+    [Table(nameof(Advertisement))]
+    public class Advertisement
     {
         [Key]
         [Required]
@@ -26,11 +26,11 @@ namespace AdIntegration.Data.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime DatePosted { get; set; }
         [Required]
-        public T SocialMediaUser { get; set; }
+        public User SocialMediaUser { get; set; }
         [Required]
         public SystemUser UserEntity { get; set; }
         [Required]
-        public V Channel { get; set; }
+        public Channel ChannelEntity { get; set; }
 
     }
 }

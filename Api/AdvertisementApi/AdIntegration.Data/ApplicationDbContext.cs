@@ -4,11 +4,13 @@ using AdIntegration.Data.Entities.Viber;
 using AdIntegration.Data.Entities.WhatsApp;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
+using Newtonsoft.Json;
 
 namespace AdIntegration.Data
 {
-    public class ApplicationDbContext<T, V> : DbContext where T : User where V : Channel<T>
+    public class ApplicationDbContext : DbContext
     {
         private readonly IConfiguration _configuration;
 
@@ -33,29 +35,63 @@ namespace AdIntegration.Data
         }
 
         public DbSet<SystemUser> SystemUsers { get; set; }
+
+        /* Users */
         public DbSet<User> Users { get; set; }
-        public DbSet<Channel<T>> Channels { get; set; }
-        public DbSet<Advertisement<T, V>> Advertisements { get; set; }
+
+        /* Channels */
+        public DbSet<Channel> SocialChannels { get; set; }
+
+        public DbSet<Advertisement> Advertisements { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {       
 
-            modelBuilder.Entity<SystemUser>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
                 entity
-                .HasKey(e => e.UserId)
-                .HasName("PrimaryKey_UserId");
+                .HasKey(e => e.UserId);
 
+            });
+
+
+            modelBuilder.Entity<TelegramChannel>(entity =>
+            {
+                entity.HasIndex(i => i.InviteLink).IsUnique();
+            });
+
+            modelBuilder.Entity<WhatsAppChannel>(entity =>
+            {
+                entity.HasIndex(e => e.Email).IsUnique();
+            });
+
+            modelBuilder.Entity<ViberChannel>(entity =>
+            {
+                entity
+                .Property(c => c.Location)
+                .HasConversion(
+                    p => JsonConvert.SerializeObject(p),
+                    s => JsonConvert.DeserializeObject<Point>(s));
+
+                entity
+                .Property(e => e.EventTypes)
+                .HasConversion(
+                    v => string.Join(',', v),
+                    v => v
+                    .Split(',', StringSplitOptions.RemoveEmptyEntries)
+                    .ToList()
+                    );
+            }
+        );
+
+
+            modelBuilder.Entity<TelegramUser>(entity =>
+            {
                 entity.HasIndex(e => e.Email).IsUnique();
                 entity.HasIndex(u => u.UserName).IsUnique();
             });
 
-            modelBuilder.Entity<TelegramUser>(entity =>
-            {
-
-            });
-
-            modelBuilder.Entity<Advertisement<T, V>>(entity =>
+            modelBuilder.Entity<Advertisement>(entity =>
             {
                 entity
                 .HasOne(a => a.UserEntity)

@@ -14,7 +14,7 @@ namespace AdIntegration.Data.Dto
         public byte[]? Photo { get; set; }
         public bool IsPrivate { get; set; }
         public string Email { get; set; }
-        public Url UrlAddress { get; set; }
+        public string UrlAddress { get; set; }
         public string Category { get; set; }
         public string Subcategory { get; set; }
     }

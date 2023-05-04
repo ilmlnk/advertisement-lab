@@ -1,16 +1,19 @@
 ﻿using AdIntegration.Data;
 using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Interfaces;
+using Microsoft.AspNetCore.Identity;
 
 namespace AdIntegration.Repository.Repositories
 {
     public class UserRepository : IUserRepository
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<User> _userManager;
 
-        public UserRepository(ApplicationDbContext context)
+        public UserRepository(ApplicationDbContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
         /* Create */
         public User AddUser(User user)
@@ -22,18 +25,6 @@ namespace AdIntegration.Repository.Repositories
 
 
         /* Get (Receive) */
-
-        public User GetUserByEmail(string email)
-        {
-            User user = _context.Users.FirstOrDefault(u => u.Email == email);
-
-            if (user == null)
-            {
-                throw new InvalidOperationException();
-            }
-
-            return user;
-        }
 
         public IEnumerable<User> GetAllUsers()
         {
@@ -61,7 +52,7 @@ namespace AdIntegration.Repository.Repositories
 
         public User GetUserById(int id)
         {
-            User user = _context.Users.FirstOrDefault(x => x.UserId == id);
+            var user = _context.Users.FirstOrDefault(x => x.UserId == id);
 
             if (user == null)
             {

@@ -65,8 +65,7 @@ namespace AdIntegration.Business.Services
                     new Claim(ClaimTypes.NameIdentifier, GenerateToken(user)),
                     new Claim(nameof(user.UserName), user.UserName),
                     new Claim(nameof(user.FirstName), user.FirstName),
-                    new Claim(nameof(user.LastName), user.LastName),
-                    new Claim(nameof(user.Email), user.Email)
+                    new Claim(nameof(user.LastName), user.LastName)
                 },
                 expires: DateTime.Now.AddHours(6),
                 signingCredentials: signingCredentials

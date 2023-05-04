@@ -8,6 +8,7 @@ import Footer from '../../Components/footer/Footer';
 import logo from '../../Images/logo_transparent.png';
 import Loader from '../../Components/Loader';
 import './loginStyle.css';
+import PopupError from '../../Components/PopupError/PopupError';
 
 export const AuthHeader = () => {
     axios.interceptors.request.use(
@@ -45,21 +46,39 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
+    const [showErrorPopup, setShowErrorPopup] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+
     const navigate = useNavigate();
 
-    const handleLogin = () => {
+    const handleCloseErrorPopup = () => {
+        setShowErrorPopup(false);
+    }
+
+    const handleLogin = (event) => {
+        event.preventDefault();
+
         setLoading(true);
-        try {
-            const response = axios.post('https://localhost:50555/api/User/login', {
-                username,
-                password
-            })
-            if (response.status === 200) {
-                navigate("/admin");
+
+        fetch('https://localhost:50555/api/UserAccount/login', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({username, password})
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Authentication failed!');
             }
-        } catch (error) {
-            console.error(error);
-        }
+            return response.json();
+        })
+        .then(() => {
+            navigate('/admin');
+        })
+        .catch(error => {
+            setLoading(false);
+            setShowErrorPopup(true);
+            console.error('Login failed', error);
+        })
     }
 
     return (
@@ -81,9 +100,11 @@ const Login = () => {
                 <form className='login-form'>
                     <div className='login-textfields'>
                         <input 
+                        onChange={e => setUsername(e.target.value)}
                         className='username-textfield login-textfield'
                         placeholder='E-mail or username'/>
                         <input 
+                        onChange={e => setPassword(e.target.value)}
                         className='password-textfield login-textfield'
                         type='password'
                         placeholder='Password'/>
@@ -95,7 +116,11 @@ const Login = () => {
                 <button
                 className='login-button sign-up-button'
                 onClick={() => navigate("/registration")}>Sign Up</button>
-                {loading && <Loader/>}
+                { loading && <Loader/> }
+                <PopupError 
+                show={showErrorPopup}
+                onClose={handleCloseErrorPopup}
+                />
             </div>
             <Footer/>
         </div>

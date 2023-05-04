@@ -1,5 +1,4 @@
-﻿using AdIntegration.Api.Helpers;
-using AdIntegration.Business.Interfaces;
+﻿using AdIntegration.Business.Interfaces;
 using AdIntegration.Business.Mapping;
 using AdIntegration.Business.Services;
 using AdIntegration.Data;
@@ -8,11 +7,8 @@ using AdIntegration.Repository.Interfaces;
 using AdIntegration.Repository.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Configuration;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,7 +31,6 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
         .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultTokenProviders();
 
-builder.Services.AddScoped<JwtService>();
 
 builder.Services.AddSwaggerGen(option =>
 {
@@ -92,6 +87,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 });
 
 builder.Services.AddAutoMapper(typeof(AppMappingProfile));
+
 
 builder.Services.AddCors(c =>
 {

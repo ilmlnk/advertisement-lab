@@ -11,7 +11,7 @@ namespace AdIntegration.Data.Entities.Telegram
     [Table(nameof(TelegramUser))]
     public class TelegramUser : User
     {
-        public string? Username { get; set; }
+        public override string? UserName { get; set; }
         public byte[]? Photo { get; set; }
         [Required]
         [DataType(DataType.PhoneNumber)]

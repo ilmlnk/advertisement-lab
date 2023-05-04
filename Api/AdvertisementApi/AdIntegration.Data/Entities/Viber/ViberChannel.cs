@@ -18,6 +18,7 @@ namespace AdIntegration.Data.Entities.Viber
         [Required]
         [StringLength(100)]
         public string Subcategory { get; set; }
+        [NotMapped]
         public Point? Location { get; set; }
         [StringLength(100)]
         public string? Email { get; set; }

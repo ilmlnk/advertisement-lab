@@ -11,9 +11,6 @@ namespace AdIntegration.Data.Entities.Viber
     [Table(nameof(ViberUser))]
     public class ViberUser : User
     {
-        [Required]
-        [StringLength(50)]
-        public string Username { get; set; }
         public byte[]? Photo { get; set; }
         [Required]
         [DataType(DataType.PhoneNumber)]

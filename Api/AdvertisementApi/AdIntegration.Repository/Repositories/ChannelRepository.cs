@@ -1,6 +1,10 @@
 ﻿using AdIntegration.Data;
 using AdIntegration.Data.Entities;
+using AdIntegration.Data.Entities.Telegram;
+using AdIntegration.Data.Entities.Viber;
+using AdIntegration.Data.Entities.WhatsApp;
 using AdIntegration.Repository.Interfaces;
+using System.Runtime.Serialization;
 
 namespace AdIntegration.Repository.Repositories
 {
@@ -83,9 +87,30 @@ namespace AdIntegration.Repository.Repositories
             return foundChannel;
         }
 
-        public Channel GetChannelByLink(string link)
+        public Channel GetChannelByLink(string channelType, string link)
         {
-            throw new NotImplementedException();
+            /* ChannelType[] channelTypes = { 
+                ChannelType.Telegram, 
+                ChannelType.WhatsApp, 
+                ChannelType.Viber 
+            };
+
+
+
+            Channel channel = null;
+
+
+            if (string.IsNullOrEmpty(channelType))
+            {
+                return channel;
+            }
+
+            switch(channelType.ToLower())
+            {
+                case :
+                    channel = _context.TelegramChannels.FirstOrDefault(x => x.ChannelType == channelType);
+            } */
+            return null;
         }
 
         public IEnumerable<Channel> GetChannelsByCategory(string category)
@@ -98,5 +123,20 @@ namespace AdIntegration.Repository.Repositories
             throw new NotImplementedException();
         }
 
+        public IEnumerable<TelegramChannel> GetTelegramChannels()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<ViberChannel> GetVibersChannels()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<WhatsAppChannel> GetWhatsAppChannels()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
+

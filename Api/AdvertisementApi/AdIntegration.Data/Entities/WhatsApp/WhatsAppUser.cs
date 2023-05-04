@@ -11,8 +11,6 @@ namespace AdIntegration.Data.Entities.WhatsApp
     [Table(nameof(WhatsAppUser))]
     public class WhatsAppUser : User
     {
-        [Required]
-        public string Username { get; set; }
         public byte[]? Photo { get; set; }
         [Required]
         [DataType(DataType.PhoneNumber)]

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import PopupError from "../../Components/PopupError";
+import PopupError from "../../Components/PopupError/PopupError";
 import './registrationStyle.css';
 import Footer from "../../Components/footer/Footer";
 import ModalSuccessfulRegistration from "../../Components/modal/ModalSuccessfulRegistration";
@@ -15,7 +15,8 @@ const Registration = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
-    const [username, setUsername] = useState("");
+    const [isAdmin, setIsAdmin] = useState(true);
+    const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -30,46 +31,39 @@ const Registration = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         <ModalSuccessfulRegistration/>
-        console.log({ firstName, lastName, email, username, password, confirmPassword });
+        console.log({ firstName, lastName, email, userName, password, confirmPassword });
       };
 
-    const handleSignUp = () => {
-        if (firstName && 
-            lastName && 
-            username && 
-            email && 
-            password && 
-            confirmPassword) {
-            if (password !== confirmPassword) {
-                console.log("ERROR!");
-                return (
-                    <PopupError/>
-                )
-            }
-            setLoading(true);
-            axios.post('/api/User/register', {
+    const handleSignUp = (event) => {
+        event.preventDefault();
+
+        setLoading(true);
+
+        fetch('https://localhost:50555/api/UserAccount/register', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
                 firstName,
                 lastName,
-                username,
+                isAdmin,
                 email,
-                password,
-            })
-            .then(res => {
-                setLoading(false);
-                //localStorage.set('api_key', res.data);
-                navigate('/admin');
-            })
-            .catch((error) => {
-                if (error.response.data.message) {
-                    console.log("ERROR: " + error.response.data.message);
-                    return (
-                        <PopupError/>
-                    );
-                }
-            })
-        } else {
-            <PopupError/>
-        }
+                userName,
+                password
+        })
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Registration failed!');
+            }
+            return response.json();
+        })
+        .then(() => {
+            navigate('/admin');
+        })
+        .catch(error => {
+            setLoading(false);
+            console.error('Registration failed', error);
+        })
     }
 
     return (
@@ -142,9 +136,9 @@ const Registration = () => {
                     type="text"
                     id="username"
                     name="username"
-                    value={username}
+                    value={userName}
                     className="textfield"
-                    onChange={(e) => setUsername(e.target.value)}
+                    onChange={(e) => setUserName(e.target.value)}
                     placeholder="Username"
                     />
                 </div>

@@ -41,6 +41,9 @@ namespace AdIntegration.Data
 
         /* Channels */
         public DbSet<Channel> SocialChannels { get; set; }
+        public DbSet<TelegramChannel> TelegramChannels { get; set; }
+        public DbSet<ViberChannel> ViberChannels { get; set; }
+        public DbSet<WhatsAppChannel> WhatsAppChannels { get; set; }
 
         public DbSet<Advertisement> Advertisements { get; set; }
 
@@ -51,6 +54,8 @@ namespace AdIntegration.Data
             {
                 entity
                 .HasKey(e => e.UserId);
+
+                entity.HasIndex(u => u.UserName).IsUnique();
 
             });
 
@@ -67,12 +72,12 @@ namespace AdIntegration.Data
 
             modelBuilder.Entity<ViberChannel>(entity =>
             {
-                entity
+                /*entity
                 .Property(c => c.Location)
                 .HasConversion(
                     p => JsonConvert.SerializeObject(p),
                     s => JsonConvert.DeserializeObject<Point>(s));
-
+                */
                 entity
                 .Property(e => e.EventTypes)
                 .HasConversion(
@@ -84,12 +89,6 @@ namespace AdIntegration.Data
             }
         );
 
-
-            modelBuilder.Entity<TelegramUser>(entity =>
-            {
-                entity.HasIndex(e => e.Email).IsUnique();
-                entity.HasIndex(u => u.UserName).IsUnique();
-            });
 
             modelBuilder.Entity<Advertisement>(entity =>
             {

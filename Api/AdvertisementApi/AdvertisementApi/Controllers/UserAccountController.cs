@@ -3,9 +3,13 @@ using AdIntegration.Data.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using AdIntegration.Repository.Interfaces;
-using AdIntegration.Api.Helpers;
 using AdIntegration.Data;
 using AutoMapper;
+using System.Security.Claims;
+using AdIntegration.Repository.Repositories;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace AdIntegration.Api.Controllers
 {
@@ -13,17 +17,18 @@ namespace AdIntegration.Api.Controllers
     [Route("api/[controller]")]
     public class UserAccountController : ControllerBase
     {
-
-        private readonly IUserRepository _userRepository;
-        private readonly JwtService _jwtService;
+        private readonly IConfiguration _configuration;
+        private readonly UserRepository _userRepository;
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
 
-        public UserAccountController(IUserRepository userRepository, JwtService jwtService, 
-            ApplicationDbContext context, IMapper mapper)
+        public UserAccountController(IConfiguration configuration, 
+            UserRepository userRepository,
+            ApplicationDbContext context, 
+            IMapper mapper)
         {
+            _configuration = configuration;
             _userRepository = userRepository;
-            _jwtService = jwtService;
             _context = context;
             _mapper = mapper;
         }
@@ -49,19 +54,32 @@ namespace AdIntegration.Api.Controllers
         public IActionResult Login(LoginUserDto dto)
         {
             var user = _userRepository.GetUserByUsername(dto.UserName);
-            if (user == null) { 
-                return BadRequest(new { message = "Invalid credentials." }); 
-            }
 
-            if (!BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
+            if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.Password))
             {
-                return BadRequest(new { message = "Invalid credentials." });
+                return NotFound();
             }
 
-            var jwt = _jwtService.Generate(user.UserId);
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+            };
 
-            return Ok(new { jwt });
-            
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Key"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var expires = DateTime.Now.AddDays(Convert.ToDouble(_configuration["JWT:ExpireDays"]));
+
+
+            var token = new JwtSecurityToken(
+                _configuration["JWT:Issuer"],
+                _configuration["JWT:Audience"],
+                claims,
+                expires: expires,
+                signingCredentials: creds);
+
+            return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token) });
         }
 
         [Authorize]

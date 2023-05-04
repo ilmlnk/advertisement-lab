@@ -14,7 +14,6 @@ namespace AdIntegration.Repository.Interfaces
         public User AddUser(User user);
         public object UpdateUser(int userId, User inputUser);
         public User DeleteUser(int id);
-        public User GetUserByEmail(string email);
         public User GetUserByUsername(string username);
     }
 }

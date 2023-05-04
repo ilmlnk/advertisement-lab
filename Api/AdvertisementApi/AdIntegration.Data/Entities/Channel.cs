@@ -20,5 +20,6 @@ namespace AdIntegration.Data.Entities
         public int? Posts { get; set; }
         [Required]
         public List<User> UserAdmins { get; set; }
+        public string ChannelType { get; set; }
     }
 }

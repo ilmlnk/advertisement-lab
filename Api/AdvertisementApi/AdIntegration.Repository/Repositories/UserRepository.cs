@@ -41,10 +41,9 @@ namespace AdIntegration.Repository.Repositories
         public User GetUserByUsername(string username)
         {
             var user = _context.Users.FirstOrDefault(u => u.UserName == username);
-
             if (user == null)
             {
-                throw new InvalidOperationException();
+                return null;
             }
 
             return user;

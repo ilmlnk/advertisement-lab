@@ -10,6 +10,7 @@ using AdIntegration.Repository.Repositories;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace AdIntegration.Api.Controllers
 {
@@ -37,16 +38,25 @@ namespace AdIntegration.Api.Controllers
         [HttpPost("register")]
         public IActionResult Register(RegisterUserDto dto)
         {
-            var user = new SystemUser
+            var existingUser = _userRepository.GetUserByUsername(dto.UserName);
+
+            if (existingUser != null) 
             {
-                FirstName = dto.FirstName,
-                LastName = dto.LastName,
-                Email = dto.Email,
-                UserName = dto.UserName,
-                Password = BCrypt.Net.BCrypt.HashPassword(dto.Password)
-            };
+                return StatusCode(409, "User with this username is already registered!");
+            } 
+            else 
+            { 
+                var user = new SystemUser
+                {
+                    FirstName = dto.FirstName,
+                    LastName = dto.LastName,
+                    Email = dto.Email,
+                    UserName = dto.UserName,
+                    Password = BCrypt.Net.BCrypt.HashPassword(dto.Password)
+                };
             
-            return Created("success", _userRepository.AddUser(user));
+                return Created("success", _userRepository.AddUser(user));
+            }
         }
 
         [AllowAnonymous]
@@ -81,6 +91,7 @@ namespace AdIntegration.Api.Controllers
 
             return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token) });
         }
+
 
         [Authorize]
         [HttpPut("update/{id}")]

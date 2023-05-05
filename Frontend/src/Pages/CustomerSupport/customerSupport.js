@@ -1,10 +1,9 @@
 import React from "react";
+import Layout from "../Layout/Layout";
 
 const CustomerSupport = () => {
     return (
-        <div>
-            <h1>Customer Support</h1>
-        </div>
+        <Layout></Layout>
     );
 }
 

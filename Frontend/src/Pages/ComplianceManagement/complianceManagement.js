@@ -1,10 +1,9 @@
 import React from "react";
+import Layout from "../Layout/Layout";
 
 const ComplianceManagement = () => {
     return (
-        <div>
-            <h1>Compliance Management</h1>
-        </div>
+        <Layout></Layout>
     );
 }
 

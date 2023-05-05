@@ -1,10 +1,9 @@
 import React from "react";
+import Layout from "../Layout/Layout";
 
 const BudgetManagement = () => {
     return (
-        <div className="">
-            <h1>Budget Management</h1>
-        </div>
+        <Layout></Layout>
     );
 }
 

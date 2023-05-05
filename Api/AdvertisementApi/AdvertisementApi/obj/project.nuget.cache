@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GzL/iFnAoX2jFtqySU3+UAjvyPs7KHgpUiv/4+YvXDBb6/NNsWMMJkgNUfY28Pg4IcWvtXXDpP6dVjASOcQ9eA==",
+  "dgSpecHash": "srGHPleFAxYSLGdSMcheaA0qAU8e+HTZRYhKIXN9KAISauZH7lSas1NmONPZ1PlHxdEwoHqP8KjbeAlnZ4xEhQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\illia.melnyk\\Documents\\Projects\\advertisement-project-lab\\Api\\AdvertisementApi\\AdvertisementApi\\AdIntegration.Api.csproj",
+  "projectFilePath": "C:\\Users\\illia.melnyk\\Documents\\Projects_Development\\advertisement-project-lab\\Api\\AdvertisementApi\\AdvertisementApi\\AdIntegration.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

@@ -1,146 +1,235 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import ButtonRedirect from '../ButtonRedirect';
-import Icon from 'react-icons-kit';
-import { NavLink } from 'react-router-dom';
+import React, { ReactNode } from "react";
+import {
+  IconButton,
+  Avatar,
+  Box,
+  CloseButton,
+  Flex,
+  HStack,
+  VStack,
+  Icon,
+  useColorModeValue,
+  Link,
+  Drawer,
+  DrawerContent,
+  Text,
+  useDisclosure,
+  BoxProps,
+  FlexProps,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+} from "@chakra-ui/react";
+import {
+  FiHome,
+  FiTrendingUp,
+  FiCompass,
+  FiStar,
+  FiSettings,
+  FiMenu,
+  FiBell,
+  FiChevronDown,
+  FiUsers,
+  FiDollarSign,
+  FiCheckSquare,
+  FiInbox,
+  FiHeart,
+} from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
-import {cog} from 'react-icons-kit/fa/cog';
-import {moon} from 'react-icons-kit/iconic/moon';
-import {exit} from 'react-icons-kit/icomoon/exit';
+const LinkItems = [
+  { name: "Main", icon: FiHome, route: '/main' },
+  { name: "Analytics", icon: FiTrendingUp, route: '/analytics' },
+  { name: "Users", icon: FiUsers, route: '/user-management' },
+  { name: "Budget", icon: FiDollarSign, route: '/budget-management' },
+  { name: "Compliance", icon: FiCheckSquare, route: '/compliance-management' },
+  { name: "Chat", icon: FiInbox, route: '/command-chat' },
+  { name: "Support", icon: FiHeart, route: '/customer-support' },
+];
 
-import './NavigationStyle.css';
+export default function SidebarWithHeader({ children }) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
 
-import homeIcon from '../../Images/home.png';
-import analyticsIcon from '../../Images/Chart.png';
-import userManagementIcon from '../../Images/User_cicrle_duotone_line.png';
-import budgetManagementIcon from '../../Images/Paper.png';
-import complianceManagementIcon from '../../Images/Check_ring.png';
-import commandChatIcon from '../../Images/Chat_alt_2.png';
-import customerSupportIcon from '../../Images/Favorite_fill.png';
-import currentUserIcon from '../../Images/Active_user.png';
-
-const Navigation = () => {
-
-    const navigate = useNavigate();
-    const [isOnPage, setIsOnPage] = useState(false);
-
-    const handleNavigation = () => {
-        setIsOnPage(true);
-    }
-
-    return (
-    <>
-    <div className='navigation-container'>
-        <nav className='navigation-bar'>
-            <h2 className='navigation-title'>Menu</h2>
-            <div className='control-buttons'>
-                {/* Button "Home" */}
-                    <ButtonRedirect 
-                    action={() => navigate("/admin")}
-                    class="control-button home-button navigation-content" 
-                    text="Main" 
-                    image={homeIcon}
-                    imageClass="home-img redirect-button-img"
-                    spanClass="control-button-span home-span"
-                    />
-
-                {/* Button "Analytics" */}
-                    <ButtonRedirect 
-                    action={() => navigate("/analytics")}
-                    class="control-button analytics-button navigation-content" 
-                    text="Analytics"
-                    image={analyticsIcon}
-                    imageClass="analytics-img redirect-button-img"
-                    spanClass="control-button-span analytics-span"
-                    />
-
-                {/* Button "User Management" */}
-                    <ButtonRedirect 
-                    action={() => navigate("/user-management")}
-                    class="control-button user-management-button navigation-content" 
-                    text="User Management"
-                    image={userManagementIcon}
-                    imageClass="user-management-img redirect-button-img"
-                    spanClass="control-button-span user-management-span"
-                    />
-
-                {/* Button "Budget Management" */}
-                    <ButtonRedirect 
-                    action={() => navigate("/budget-management")}
-                    class="control-button budget-management-button navigation-content" 
-                    text="Budget Management"
-                    image={budgetManagementIcon}
-                    imageClass="budget-management-img redirect-button-img"
-                    spanClass="control-button-span user-management-span"
-                    />
-
-                {/* Button "Compliance Management" */}
-                    <ButtonRedirect 
-                    action={() => navigate("/compliance-management")}
-                    class="control-button compliance-management-button navigation-content" 
-                    text="Compliance Management"
-                    image={complianceManagementIcon}
-                    imageClass="compliance-management-img redirect-button-img"
-                    spanClass="control-button-span compliance-management-span"
-                    />
-
-                {/* Button "Command Chat" */}
-                    <ButtonRedirect 
-                    action={() => navigate("/command-chat")}
-                    class="control-button command-chat-button navigation-content" 
-                    text="Command Chat"
-                    image={commandChatIcon}
-                    imageClass="command-chat-img redirect-button-img"
-                    spanClass="control-button-span command-chat-span"
-                    />
-
-                {/* Button "Customer Support" */}
-                    <ButtonRedirect 
-                    action={() => navigate("/customer-support")}
-                    class="control-button customer-support-button navigation-content" 
-                    text="Customer Support"
-                    image={customerSupportIcon}
-                    imageClass="customer-support-img redirect-button-img"
-                    spanClass="control-button-span customer-support-span"
-                    />
-            </div>
-
-            <footer className='navigation-footer'>
-                <div className='navigation-footer-container'>
-                    <div className='navigation-footer-content navigation-content'>
-                        <div>
-                            <img 
-                            className='user-profile-image' 
-                            src={currentUserIcon}/>
-                            <span className='control-username'>User</span>
-                        </div>
-                        <div className='control-panel'>
-                            <button className='user-button dark-mode-button'>
-                                <Icon
-                                className='user-button-icon dark-mode-icon' 
-                                size={20}
-                                icon={moon}/>
-                            </button>
-                            <button className='user-button settings-button'>
-                                <Icon 
-                                className='user-button-icon settings-icon' 
-                                size={20}
-                                icon={cog}/>
-                            </button>
-                            <button className='user-button exit-button'>
-                                <Icon className='user-button-icon exit-icon' 
-                                size={20}
-                                icon={exit}/>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </nav>
-    </div>
-    </>
-    );
+  return (
+    <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
+      <SidebarContent
+        onClose={() => onClose}
+        display={{ base: "none", md: "block" }}
+      />
+      <Drawer
+        autoFocus={false}
+        isOpen={isOpen}
+        placement="left"
+        onClose={onClose}
+        returnFocusOnClose={false}
+        onOverlayClick={onClose}
+        size="full"
+      >
+        <DrawerContent>
+          <SidebarContent onClose={onClose} />
+        </DrawerContent>
+      </Drawer>
+      {/* mobilenav */}
+      <MobileNav onOpen={onOpen} />
+      <Box ml={{ base: 0, md: 60 }} p="4">
+        {children}
+      </Box>
+    </Box>
+  );
 }
 
+const SidebarContent = ({ onClose, ...rest }) => {
+  const navigate = useNavigate();
+  return (
+    <Box
+      transition="3s ease"
+      bg={useColorModeValue("white", "gray.900")}
+      borderRight="1px"
+      borderRightColor={useColorModeValue("gray.200", "gray.700")}
+      w={{ base: "full", md: 60 }}
+      pos="fixed"
+      h="full"
+      {...rest}
+    >
+      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
+        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
+          AdReach
+        </Text>
+        <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
+      </Flex>
+      {LinkItems.map((link) => (
+        <NavItem 
+        key={link.name} 
+        route={link.route}
+        icon={link.icon}>
+          {link.name}
+        </NavItem>
+      ))}
+    </Box>
+  );
+};
 
-export default Navigation;
+const NavItem = ({ icon, children, ...rest }) => {
+  const navigate = useNavigate();
+
+  return (
+    <Link
+      onClick={() => navigate(rest.route)}
+      style={{ textDecoration: "none" }}
+      _focus={{ boxShadow: "none" }}
+    >
+      <Flex
+        align="center"
+        p="4"
+        mx="4"
+        borderRadius="lg"
+        role="group"
+        cursor="pointer"
+        _hover={{
+          bg: "cyan.400",
+          color: "white",
+        }}
+        {...rest}
+      >
+        {icon && (
+          <Icon
+            mr="4"
+            fontSize="16"
+            _groupHover={{
+              color: "white",
+            }}
+            as={icon}
+          />
+        )}
+        {children}
+      </Flex>
+    </Link>
+  );
+};
+
+const MobileNav = ({ onOpen, ...rest }) => {
+  return (
+    <Flex
+      ml={{ base: 0, md: 60 }}
+      px={{ base: 4, md: 4 }}
+      height="20"
+      alignItems="center"
+      bg={useColorModeValue("white", "gray.900")}
+      borderBottomWidth="1px"
+      borderBottomColor={useColorModeValue("gray.200", "gray.700")}
+      justifyContent={{ base: "space-between", md: "flex-end" }}
+      {...rest}
+    >
+      <IconButton
+        display={{ base: "flex", md: "none" }}
+        onClick={onOpen}
+        variant="outline"
+        aria-label="open menu"
+        icon={<FiMenu />}
+      />
+
+      <Text
+        display={{ base: "flex", md: "none" }}
+        fontSize="2xl"
+        fontFamily="monospace"
+        fontWeight="bold"
+      >
+        Logo
+      </Text>
+
+      <HStack spacing={{ base: "0", md: "6" }}>
+        <IconButton
+          size="lg"
+          variant="ghost"
+          aria-label="open menu"
+          icon={<FiBell />}
+        />
+        <Flex alignItems={"center"}>
+          <Menu>
+            <MenuButton
+              py={2}
+              transition="all 0.3s"
+              _focus={{ boxShadow: "none" }}
+            >
+              <HStack>
+                <Avatar
+                  size={"sm"}
+                  src={
+                    "https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
+                  }
+                />
+                <VStack
+                  display={{ base: "none", md: "flex" }}
+                  alignItems="flex-start"
+                  spacing="1px"
+                  ml="2"
+                >
+                  <Text fontSize="sm">Justina Clark</Text>
+                  <Text fontSize="xs" color="gray.600">
+                    Admin
+                  </Text>
+                </VStack>
+                <Box display={{ base: "none", md: "flex" }}>
+                  <FiChevronDown />
+                </Box>
+              </HStack>
+            </MenuButton>
+            <MenuList
+              bg={useColorModeValue("white", "gray.900")}
+              borderColor={useColorModeValue("gray.200", "gray.700")}
+            >
+              <MenuItem>Profile</MenuItem>
+              <MenuItem>Settings</MenuItem>
+              <MenuItem>Billing</MenuItem>
+              <MenuDivider />
+              <MenuItem>Sign out</MenuItem>
+            </MenuList>
+          </Menu>
+        </Flex>
+      </HStack>
+    </Flex>
+  );
+};

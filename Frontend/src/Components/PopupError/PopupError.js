@@ -1,5 +1,14 @@
 import React from "react";
 import './PopupErrorStyle.css';
+import {
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+  } from '@chakra-ui/react'
 
 const PopupError = ({ show, onClose }) => {
     if (!show) {

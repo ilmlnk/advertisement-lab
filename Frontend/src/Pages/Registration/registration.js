@@ -2,182 +2,248 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import PopupError from "../../Components/PopupError/PopupError";
-import './registrationStyle.css';
 import Footer from "../../Components/footer/Footer";
 import ModalSuccessfulRegistration from "../../Components/modal/ModalSuccessfulRegistration";
-import logo from '../../Images/logo_transparent.png';
-import registrationIllustration from '../../Images/registration_illustration.png';
-import Loader from "../../Components/Loader";
+import logo from "../../Images/logo_transparent.png";
+import registrationIllustration from "../../Images/registration_illustration.png";
+import Loader from "../../Components/Loader/Loader";
+
+import "./RegistrationStyle.css";
+
+import {
+  InputRightElement,
+  Button,
+  Flex,
+  FormControl,
+  FormLabel,
+  Heading,
+  Input,
+  Stack,
+  useColorModeValue,
+  HStack,
+  Avatar,
+  AvatarBadge,
+  IconButton,
+  Center,
+  InputGroup,
+} from "@chakra-ui/react";
+import { SmallCloseIcon } from "@chakra-ui/icons";
 
 const Registration = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
-    const [isAdmin, setIsAdmin] = useState(true);
-    const [userName, setUserName] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [isAdmin, setIsAdmin] = useState(true);
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
+  const [emailError, setEmailError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-    const [emailError, setEmailError] = useState("");
-    const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-    {/* Refreshing state of the form */}
+  const handlePasswordClick = () => setShowPassword(!showPassword);
+  const handleConfirmPasswordClick = () =>
+    setShowConfirmPassword(!showConfirmPassword);
 
-    {/* User Registration Handle */}
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    <ModalSuccessfulRegistration />;
+    console.log({
+      firstName,
+      lastName,
+      email,
+      userName,
+      password,
+      confirmPassword,
+    });
+  };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        <ModalSuccessfulRegistration/>
-        console.log({ firstName, lastName, email, userName, password, confirmPassword });
-      };
+  const handleSignUp = (event) => {
+    event.preventDefault();
 
-    const handleSignUp = (event) => {
-        event.preventDefault();
+    setLoading(true);
 
-        setLoading(true);
-
-        fetch('https://localhost:50555/api/UserAccount/register', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                firstName,
-                lastName,
-                isAdmin,
-                email,
-                userName,
-                password
-        })
+    fetch("https://localhost:50555/api/UserAccount/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        firstName,
+        lastName,
+        isAdmin,
+        email,
+        userName,
+        password,
+      }),
     })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Registration failed!');
-            }
-            return response.json();
-        })
-        .then(() => {
-            navigate('/admin');
-        })
-        .catch(error => {
-            setLoading(false);
-            console.error('Registration failed', error);
-        })
-    }
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Registration failed!");
+        }
+        return response.json();
+      })
+      .then(() => {
+        navigate("/admin");
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.error("Registration failed", error);
+      });
+  };
 
-    return (
-        <div className="registration-container">
-            <header className="registration-header">
-                <div className="registration-header-content">
-                    <img 
-                    onClick={() => navigate("/")}
-                    className="registration-header-logo" 
-                    src={logo}/>
-                    <h1 
-                    onClick={() => navigate("/")}
-                    className="registration-header-title">AdReach</h1>
-                </div>
-            </header>
+  return (
+    <div>
+      <Flex
+        minH={"100vh"}
+        align={"center"}
+        justify={"center"}
+        bg={useColorModeValue("gray.50", "gray.800")}
+      >
+        <Stack
+          spacing={4}
+          w={"full"}
+          maxW={"70vh"}
+          bg={useColorModeValue("white", "gray.700")}
+          rounded={"xl"}
+          boxShadow={"lg"}
+          p={6}
+          my={12}
+        >
+          <Heading lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
+            User Profile Edit
+          </Heading>
+          <FormControl id="userName">
+            <FormLabel>User Icon</FormLabel>
+            <Stack direction={["column", "row"]} spacing={6}>
+              <Center>
+                <Avatar size="xl" src="https://bit.ly/sage-adebayo">
+                  <AvatarBadge
+                    as={IconButton}
+                    size="sm"
+                    rounded="full"
+                    top="-10px"
+                    colorScheme="red"
+                    aria-label="remove Image"
+                    icon={<SmallCloseIcon />}
+                  />
+                </Avatar>
+              </Center>
+              <Center w="full">
+                <Button w="full">Change Icon</Button>
+              </Center>
+            </Stack>
+          </FormControl>
 
-            <div className="registration-content">
-                <h1 className="registration-title">Sign Up</h1>
-                <img
-                className="registration-illustration"
-                src={registrationIllustration}/>
-                <form 
-                className="registration-form"
-                onSubmit={handleSubmit}>
+          <FormControl id="firstName" isRequired>
+            <FormLabel>First Name</FormLabel>
+            <Input
+              placeholder="Input your first name"
+              _placeholder={{ color: "gray.500" }}
+              type="text"
+            />
+          </FormControl>
 
-                {/* First Name block */}
-                <div className="first-name-block user-data-block">
-                    {/* Input field First Name */}
-                    <input
-                    className="first-name-textfield textfield"
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    value={firstName}
-                    placeholder="First Name"
-                    onChange={(e) => setFirstName(e.target.value)}
-                    />
-                </div>
+          <FormControl id="middleName">
+            <FormLabel>Middle Name</FormLabel>
+            <Input
+              placeholder="Input your middle name"
+              _placeholder={{ color: "gray.500" }}
+              type="text"
+            />
+          </FormControl>
 
-                {/* Last Name block */}
-                <div className="last-name-block user-data-block"> 
-                    <input
-                    className="last-name-textfield textfield"
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    value={lastName}
-                    placeholder="Last Name"
-                    onChange={(e) => setLastName(e.target.value)}
-                    />
-                </div>
+          <FormControl id="lastName" isRequired>
+            <FormLabel>Last Name</FormLabel>
+            <Input
+              placeholder="Input your last name"
+              _placeholder={{ color: "gray.500" }}
+              type="text"
+            />
+          </FormControl>
 
-
-                {/* Email block */}
-                <div className="email-block user-data-block"> 
-                    <input
-                    className="email-textfield textfield"
-                    type="text"
-                    id="email"
-                    name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email"
-                    />
-                </div>
-
-                {/* Username block */}
-                <div className="username-block user-data-block">
-                    <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    value={userName}
-                    className="textfield"
-                    onChange={(e) => setUserName(e.target.value)}
-                    placeholder="Username"
-                    />
-                </div>
-
-                {/* Password block */}
-                <div className="user-data-block">
-                    <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    value={password}
-                    className="textfield"
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
-                    />
-                </div>
-
-                {/* Confirm Password block */}
-                <div className="user-data-block">
-                    <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    value={confirmPassword}
-                    className="textfield"
-                    placeholder="Confirm Password"
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    />
-                </div>
-            <button 
-            className="submit-registration-button"
-            onClick={handleSignUp} 
-            type="submit">Next</button>
-            {loading && <Loader/>}
-            </form>
-            </div>
-            <Footer/>
-        </div>
-    );
-}
+          <FormControl id="userName" isRequired>
+            <FormLabel>Username</FormLabel>
+            <Input
+              placeholder="Input your username"
+              _placeholder={{ color: "gray.500" }}
+              type="text"
+            />
+          </FormControl>
+          <FormControl id="email" isRequired>
+            <FormLabel>Email Address</FormLabel>
+            <Input
+              placeholder="your-email@example.com"
+              _placeholder={{ color: "gray.500" }}
+              type="email"
+            />
+          </FormControl>
+          <FormControl id="password" isRequired>
+            <FormLabel>Password</FormLabel>
+            <InputGroup size="md">
+              <Input
+                pr="4.5rem"
+                type={showPassword ? "text" : "password"}
+                placeholder="Input your password"
+                _placeholder={{ color: "gray.500" }}
+              />
+              <InputRightElement width="4.5rem">
+                <Button h="1.75rem" size="sm" onClick={handlePasswordClick}>
+                  {showPassword ? "Hide" : "Show"}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+          </FormControl>
+          <FormControl id="confirmPassword" isRequired>
+            <FormLabel>Confirm Password</FormLabel>
+            <InputGroup size="md">
+              <Input
+                pr="4.5rem"
+                type={showConfirmPassword ? "text" : "password"}
+                placeholder="Confirm your password"
+                _placeholder={{ color: "gray.500" }}
+              />
+              <InputRightElement width="4.5rem">
+                <Button
+                  h="1.75rem"
+                  size="sm"
+                  onClick={handleConfirmPasswordClick}
+                >
+                  {showConfirmPassword ? "Hide" : "Show"}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+          </FormControl>
+          <Stack spacing={6} direction={["column", "row"]}>
+            <Button
+              bg={"red.400"}
+              color={"white"}
+              w="full"
+              _hover={{
+                bg: "red.500",
+              }}
+            >
+              Cancel
+            </Button>
+            <Button
+              bg={"blue.400"}
+              color={"white"}
+              w="full"
+              _hover={{
+                bg: "blue.500",
+              }}
+            >
+              Submit
+            </Button>
+          </Stack>
+        </Stack>
+      </Flex>
+      <Footer />
+    </div>
+  );
+};
 
 export default Registration;

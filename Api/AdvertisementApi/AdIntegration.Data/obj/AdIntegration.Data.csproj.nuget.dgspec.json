@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\illia.melnyk\\Documents\\Projects\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Data\\AdIntegration.Data.csproj": {}
+    "C:\\Users\\illia.melnyk\\Documents\\Projects_Development\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Data\\AdIntegration.Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\illia.melnyk\\Documents\\Projects\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Data\\AdIntegration.Data.csproj": {
+    "C:\\Users\\illia.melnyk\\Documents\\Projects_Development\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Data\\AdIntegration.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\illia.melnyk\\Documents\\Projects\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Data\\AdIntegration.Data.csproj",
+        "projectUniqueName": "C:\\Users\\illia.melnyk\\Documents\\Projects_Development\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Data\\AdIntegration.Data.csproj",
         "projectName": "AdIntegration.Data",
-        "projectPath": "C:\\Users\\illia.melnyk\\Documents\\Projects\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Data\\AdIntegration.Data.csproj",
+        "projectPath": "C:\\Users\\illia.melnyk\\Documents\\Projects_Development\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Data\\AdIntegration.Data.csproj",
         "packagesPath": "C:\\Users\\illia.melnyk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\illia.melnyk\\Documents\\Projects\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Data\\obj\\",
+        "outputPath": "C:\\Users\\illia.melnyk\\Documents\\Projects_Development\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

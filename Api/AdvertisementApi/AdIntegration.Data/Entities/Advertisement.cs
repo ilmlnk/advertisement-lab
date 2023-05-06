@@ -30,7 +30,7 @@ namespace AdIntegration.Data.Entities
         [Required]
         public SystemUser UserEntity { get; set; }
         [Required]
-        public Channel ChannelEntity { get; set; }
+        public Channel ChannelType { get; set; }
 
     }
 }

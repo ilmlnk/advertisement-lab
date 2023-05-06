@@ -4,8 +4,6 @@ import axios from "axios";
 import PopupError from "../../Components/PopupError/PopupError";
 import Footer from "../../Components/footer/Footer";
 import ModalSuccessfulRegistration from "../../Components/modal/ModalSuccessfulRegistration";
-import logo from "../../Images/logo_transparent.png";
-import registrationIllustration from "../../Images/registration_illustration.png";
 import Loader from "../../Components/Loader/Loader";
 
 import "./RegistrationStyle.css";
@@ -39,6 +37,7 @@ const Registration = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [successfulRegistration, setSuccessfulRegistration] = useState(false);
 
   const [emailError, setEmailError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -87,7 +86,7 @@ const Registration = () => {
         return response.json();
       })
       .then(() => {
-        navigate("/admin");
+        setSuccessfulRegistration(true);
       })
       .catch((error) => {
         setLoading(false);
@@ -240,6 +239,7 @@ const Registration = () => {
             </Button>
           </Stack>
         </Stack>
+        <ModalSuccessfulRegistration/>
       </Flex>
       <Footer />
     </div>

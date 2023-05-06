@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import Navigation from '../../Components/navigation/Navigation';
 import Footer from '../../Components/footer/Footer';

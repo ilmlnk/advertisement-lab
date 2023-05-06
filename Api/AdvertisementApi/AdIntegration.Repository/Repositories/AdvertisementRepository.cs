@@ -55,7 +55,7 @@ namespace AdIntegration.Repository.Repositories
             advertisement.Topic = inputAdvertisement.Topic;
             advertisement.Description = inputAdvertisement.Description;
             advertisement.Price = inputAdvertisement.Price;
-            advertisement.ChannelEntity = inputAdvertisement.ChannelEntity;
+            advertisement.ChannelType = inputAdvertisement.ChannelType;
             advertisement.SocialMediaUser = inputAdvertisement.SocialMediaUser;
 
             _context.SaveChanges();

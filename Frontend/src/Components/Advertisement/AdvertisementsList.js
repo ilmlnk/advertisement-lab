@@ -6,7 +6,7 @@ const AdvertisementsList = () => {
   return (
     <div>
       <ul>
-        {advertisements.map(advertisement => (
+        {advertisements.map((advertisement) => (
             <li key={advertisement.id}>
                 <div>
                     <h2>{advertisement.name}</h2>

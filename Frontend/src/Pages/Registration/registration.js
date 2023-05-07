@@ -9,6 +9,8 @@ import Loader from "../../Components/Loader/Loader";
 import "./RegistrationStyle.css";
 
 import {
+  Alert,
+  AlertIcon,
   InputRightElement,
   Button,
   Flex,
@@ -24,7 +26,19 @@ import {
   IconButton,
   Center,
   InputGroup,
+  Box,
+  List,
+  ListItem,
+  ListIcon,
+  OrderedList,
+  UnorderedList,
+  useDisclosure,
 } from "@chakra-ui/react";
+
+import { FiBell, FiMoon, FiArrowLeft } from "react-icons/fi";
+
+import { MdCheckCircle } from "react-icons/md";
+
 import { SmallCloseIcon } from "@chakra-ui/icons";
 
 const Registration = () => {
@@ -95,25 +109,26 @@ const Registration = () => {
   };
 
   return (
-    <div>
+    <>
       <Flex
         minH={"100vh"}
         align={"center"}
         justify={"center"}
         bg={useColorModeValue("gray.50", "gray.800")}
       >
+
         <Stack
           spacing={4}
           w={"full"}
-          maxW={"70vh"}
+          maxW={"80vh"}
           bg={useColorModeValue("white", "gray.700")}
           rounded={"xl"}
           boxShadow={"lg"}
-          p={6}
+          p={12}
           my={12}
         >
           <Heading lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
-            User Profile Edit
+            Registration Form
           </Heading>
           <FormControl id="userName">
             <FormLabel>User Icon</FormLabel>
@@ -169,8 +184,28 @@ const Registration = () => {
             <Input
               placeholder="Input your username"
               _placeholder={{ color: "gray.500" }}
+              pattern="[a-zA-Z0-9]+"
               type="text"
             />
+            {/* username validation */}
+            <Box borderRadius={6} p={5} bgColor="green.100" mt={2} spacing={4}>
+              <List spacing={3}>
+                <ListItem>
+                  <ListIcon as={MdCheckCircle} color="green.500" />
+                  Contains from 3 to 30 symbols
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={MdCheckCircle} color="green.500" />
+                  Contains letters, underscore
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={MdCheckCircle} color="green.500" />
+                  Unique username
+                </ListItem>
+              </List>
+            </Box>
+
+            {/* username uniqueness validation */}
           </FormControl>
           <FormControl id="email" isRequired>
             <FormLabel>Email Address</FormLabel>
@@ -179,6 +214,10 @@ const Registration = () => {
               _placeholder={{ color: "gray.500" }}
               type="email"
             />
+            <Alert borderRadius={6} mt={2} status="error">
+              <AlertIcon />
+              Incorrect email
+            </Alert>
           </FormControl>
           <FormControl id="password" isRequired>
             <FormLabel>Password</FormLabel>
@@ -195,6 +234,22 @@ const Registration = () => {
                 </Button>
               </InputRightElement>
             </InputGroup>
+            <Box borderRadius={6} p={5} bgColor="green.100" mt={2} spacing={4}>
+              <List spacing={3}>
+                <ListItem>
+                  <ListIcon as={MdCheckCircle} color="green.500" />
+                  Contains at least 8 symbols
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={MdCheckCircle} color="green.500" />
+                  Contains at least one number
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={MdCheckCircle} color="green.500" />
+                  Contains at least one special symbol (!, @, #, *, ^, &, %, $)
+                </ListItem>
+              </List>
+            </Box>
           </FormControl>
           <FormControl id="confirmPassword" isRequired>
             <FormLabel>Confirm Password</FormLabel>
@@ -215,18 +270,12 @@ const Registration = () => {
                 </Button>
               </InputRightElement>
             </InputGroup>
+            <Alert borderRadius={6} mt={2} status="error">
+              <AlertIcon />
+              Passwords do not match
+            </Alert>
           </FormControl>
           <Stack spacing={6} direction={["column", "row"]}>
-            <Button
-              bg={"red.400"}
-              color={"white"}
-              w="full"
-              _hover={{
-                bg: "red.500",
-              }}
-            >
-              Cancel
-            </Button>
             <Button
               bg={"blue.400"}
               color={"white"}
@@ -235,14 +284,14 @@ const Registration = () => {
                 bg: "blue.500",
               }}
             >
-              Submit
+              Sign Up
             </Button>
           </Stack>
         </Stack>
-        <ModalSuccessfulRegistration/>
+        {successfulRegistration && <ModalSuccessfulRegistration />}
       </Flex>
       <Footer />
-    </div>
+    </>
   );
 };
 

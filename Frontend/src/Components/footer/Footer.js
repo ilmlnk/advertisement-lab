@@ -109,7 +109,7 @@ import {
             <Logo />
           </Flex>
           <Text pt={6} fontSize={'sm'} textAlign={'center'}>
-            © 2022 Chakra Templates. All rights reserved
+            © {new Date().getFullYear()} Chakra Templates. All rights reserved
           </Text>
         </Box>
       </Box>

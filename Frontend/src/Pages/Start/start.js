@@ -4,6 +4,7 @@ import StartPageHeader from "./Components/StartPageHeader/StartPageHeader";
 import StartPageIntro from "./Components/StartPageIntro/StartPageIntro";
 import Instruction from "./Components/Instruction/Instruction";
 import HowToBuy from "./Components/HowToBuy/HowToBuy";
+import Feedback from "./Components/Feedback/FeedbackCarousel";
 
 import './StartStyle.css';
 
@@ -14,6 +15,7 @@ const StartPage = () => {
             <StartPageIntro/>
             <Instruction/>
             <HowToBuy/>
+            <Feedback/>
             <Footer/>
         </div>
     );

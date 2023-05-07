@@ -25,6 +25,8 @@ import {
 import {
   FiHome,
   FiTrendingUp,
+  FiGlobe,
+  FiMoon,
   FiCompass,
   FiStar,
   FiSettings,
@@ -181,6 +183,18 @@ const MobileNav = ({ onOpen, ...rest }) => {
       </Text>
 
       <HStack spacing={{ base: "0", md: "6" }}>
+        <IconButton
+          size="lg"
+          variant="ghost"
+          aria-label="open menu"
+          icon={<FiGlobe />}
+        />
+        <IconButton
+          size="lg"
+          variant="ghost"
+          aria-label="open menu"
+          icon={<FiMoon />}
+        />
         <IconButton
           size="lg"
           variant="ghost"

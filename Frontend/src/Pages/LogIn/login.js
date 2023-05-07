@@ -9,46 +9,26 @@ import Loader from "../../Components/Loader/Loader";
 import { Fade } from "@chakra-ui/react";
 import PopupError from "../../Components/PopupError/PopupError";
 
+import {
+  Box,
+  Button,
+  Checkbox,
+  Container,
+  Divider,
+  FormControl,
+  FormLabel,
+  Heading,
+  HStack,
+  Input,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+
+import { OAuthButtonGroup } from "./Group/OAuthButtonGroup";
+import { PasswordField } from "./Group/PasswordField";
+import { Logo } from "./Group/Logo";
+
 import "./LoginStyle.css";
-
-export const AuthHeader = () => {
-  axios.interceptors.request.use(
-    (config) => {
-      const apiKey = localStorage.get("api_key");
-      if (apiKey) {
-        config.headers["Authorization"] = "Bearer " + apiKey;
-      }
-      return config;
-    },
-    (error) => {
-      Promise.reject(error);
-    }
-  );
-};
-
-export const getUserId = () => {
-  let token = localStorage.get("api_key");
-  let base64Url = token.split(".")[1];
-  let base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-  let jsonPayload = decodeURIComponent(
-    window
-      .atob(base64)
-      .split("")
-      .map(function (c) {
-        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-      })
-      .join("")
-  );
-
-  return JSON.parse(jsonPayload)[
-    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"
-  ];
-};
-
-export const getUserFullName = () => {
-  let token = localStorage.get("api_key");
-  let base64Url = token.split(".")[1];
-};
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -90,57 +70,97 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <header className="login-header">
-        <div className="login-header-content">
-          <img src={logo} className="login-logo" />
-          <h1 className="login-title">AdReach</h1>
-        </div>
-      </header>
-      <div className="login-form-container">
-        <h2 className="login-form-title">
-          Set your advertisements to the next level
-        </h2>
-        <p className="login-form-text">
-          Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod
-          tempor incidunt ut labore et dolore magna aliqua.
-        </p>
-        <img className="login-illustration" src={loginIllustration} />
-        <form className="login-form">
-          <div className="login-textfields">
-            <input
-              onChange={(e) => setUsername(e.target.value)}
-              className="username-textfield login-textfield"
-              placeholder="E-mail or username"
-            />
-            <input
-              onChange={(e) => setPassword(e.target.value)}
-              className="password-textfield login-textfield"
-              type="password"
-              placeholder="Password"
-            />
-          </div>
-          <button
-            type="submit"
-            className="login-button login-submit-button"
-            onClick={handleLogin}
-          >
-            Sign In
-          </button>
-        </form>
-        <button
-          className="login-button sign-up-button"
-          onClick={() => navigate("/registration")}
+    <>
+      <Container
+    maxW="lg"
+    py={{
+      base: '12',
+      md: '24',
+    }}
+    px={{
+      base: '0',
+      sm: '8',
+    }}
+  >
+    <Stack spacing="8">
+      <Stack spacing="6">
+        <Logo />
+        <Stack
+          spacing={{
+            base: '2',
+            md: '3',
+          }}
+          textAlign="center"
         >
-          Sign Up
-        </button>
-        {loading && <Loader />}
-        <Fade initialScale={0.9} in={showErrorPopup}>
-          <PopupError show={showErrorPopup} onClose={handleCloseErrorPopup} />
-        </Fade>
-      </div>
+          <Heading
+            size={{
+              base: 'xs',
+              md: 'sm',
+            }}
+          >
+            Log in to your account
+          </Heading>
+          <HStack spacing="1" justify="center">
+            <Text color="muted">Don't have an account?</Text>
+            <Button variant="link" colorScheme="blue">
+              Sign up
+            </Button>
+          </HStack>
+        </Stack>
+      </Stack>
+      <Box
+        py={{
+          base: '0',
+          sm: '8',
+        }}
+        px={{
+          base: '4',
+          sm: '10',
+        }}
+        bg={{
+          base: 'transparent',
+          sm: 'bg-surface',
+        }}
+        boxShadow={{
+          base: 'none',
+          sm: 'md',
+        }}
+        borderRadius={{
+          base: 'none',
+          sm: 'xl',
+        }}
+      >
+        <Stack spacing="6">
+          <Stack spacing="5">
+            <FormControl>
+              <FormLabel htmlFor="email">Email</FormLabel>
+              <Input id="email" type="email" />
+            </FormControl>
+            <PasswordField />
+          </Stack>
+          <HStack justify="space-between">
+            <Checkbox defaultChecked>Remember me</Checkbox>
+            <Button variant="link" colorScheme="blue" size="sm">
+              Forgot password?
+            </Button>
+          </HStack>
+          <Stack spacing="6">
+            <Button variant="primary">Sign in</Button>
+            <HStack>
+              <Divider />
+              <Text fontSize="sm" whiteSpace="nowrap" color="muted">
+                or continue with
+              </Text>
+              <Divider />
+            </HStack>
+            <OAuthButtonGroup />
+          </Stack>
+        </Stack>
+      </Box>
+    </Stack>
+  </Container>
       <Footer />
-    </div>
+    </>
   );
 };
 

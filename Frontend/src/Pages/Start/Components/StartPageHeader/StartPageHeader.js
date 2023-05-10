@@ -10,6 +10,8 @@ import {
   MenuDivider,
 } from "@chakra-ui/react";
 
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+
 import {
   Box,
   Flex,
@@ -26,6 +28,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  useColorMode,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -34,18 +37,12 @@ import {
   ChevronRightIcon,
 } from "@chakra-ui/icons";
 
-import {
-  FaChevronDown,
-  FaSearch,
-  FaTruck,
-  FaUndoAlt,
-  FaUnlink,
-} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const StartPageHeader = () => {
   const { isOpen, onToggle } = useDisclosure();
   const navigate = useNavigate();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <>
@@ -93,6 +90,10 @@ const StartPageHeader = () => {
             </Flex>
           </Flex>
 
+          <Button m={2} onClick={toggleColorMode}>
+            {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+          </Button>
+
           <Stack
             flex={{ base: 1, md: 0 }}
             justify={"flex-end"}
@@ -117,9 +118,9 @@ const StartPageHeader = () => {
               fontSize={"sm"}
               fontWeight={600}
               color={"white"}
-              bg={"pink.400"}
+              bg={"green.400"}
               _hover={{
-                bg: "pink.300",
+                bg: "green.300",
               }}
             >
               Sign Up
@@ -139,6 +140,7 @@ const DesktopNav = () => {
   const linkColor = useColorModeValue("gray.600", "gray.200");
   const linkHoverColor = useColorModeValue("gray.800", "white");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
+  const navigate = useNavigate();
 
   return (
     <Stack direction={"row"} spacing={4}>
@@ -148,7 +150,7 @@ const DesktopNav = () => {
             <PopoverTrigger>
               <Link
                 p={2}
-                href={navItem.href ?? "#"}
+                onClick={() => navigate("/" + navItem.navLink)}
                 fontSize={"sm"}
                 fontWeight={500}
                 color={linkColor}
@@ -290,7 +292,7 @@ const MobileNavItem = ({ label, children, href }) => {
 
 const NAV_ITEMS = [
   {
-    label: "Inspiration",
+    label: "Find Orders",
     children: [
       {
         label: "Explore Design Work",
@@ -305,27 +307,27 @@ const NAV_ITEMS = [
     ],
   },
   {
-    label: "Find Work",
+    label: "Find Executors",
     children: [
       {
         label: "Job Board",
         subLabel: "Find your dream design job",
-        href: "#",
+        navLink: "job-board"
       },
       {
         label: "Freelance Projects",
         subLabel: "An exclusive list for contract work",
-        href: "#",
+        navLink: "projects"
       },
     ],
   },
   {
-    label: "Learn Design",
-    href: "#",
+    label: "Cooperation",
+    navLink: "cooperation"
   },
   {
-    label: "Hire Designers",
-    href: "#",
+    label: "Channel Dashboard",
+    navLink: "channel-board",
   },
 ];
 

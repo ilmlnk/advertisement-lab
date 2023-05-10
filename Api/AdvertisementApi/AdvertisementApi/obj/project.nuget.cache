@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "srGHPleFAxYSLGdSMcheaA0qAU8e+HTZRYhKIXN9KAISauZH7lSas1NmONPZ1PlHxdEwoHqP8KjbeAlnZ4xEhQ==",
+  "dgSpecHash": "J6JXxrabDGZ/DZNkjWXwX02ShnltzAcK/YtOamF450mYHT64jtj+xv8fnBG5MhCOtDhsAB/C02h/Ir4FmpI6qA==",
   "success": true,
   "projectFilePath": "C:\\Users\\illia.melnyk\\Documents\\Projects_Development\\advertisement-project-lab\\Api\\AdvertisementApi\\AdvertisementApi\\AdIntegration.Api.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
+    "C:\\Users\\illia.melnyk\\.nuget\\packages\\bogus\\34.0.2\\bogus.34.0.2.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\fluentassertions\\6.11.0\\fluentassertions.6.11.0.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\jquery\\1.6.4\\jquery.1.6.4.nupkg.sha512",

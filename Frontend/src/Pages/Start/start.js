@@ -7,6 +7,7 @@ import HowToBuy from "./Components/HowToBuy/HowToBuy";
 import Feedback from "./Components/Feedback/FeedbackCarousel";
 
 import './StartStyle.css';
+import PriceList from "./Components/PriceList/PriceList";
 
 const StartPage = () => {
     return (
@@ -14,7 +15,8 @@ const StartPage = () => {
             <StartPageHeader/>
             <StartPageIntro/>
             <Instruction/>
-            <HowToBuy/>
+            <PriceList/>
+            {/*<HowToBuy/>*/}
             <Feedback/>
             <Footer/>
         </div>

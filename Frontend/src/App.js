@@ -8,6 +8,10 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+import axios from "axios";
+
+import { useState, useEffect } from "react";
+
 import StartPage from "./Pages/Start/Start";
 import Admin from "./Pages/Admin/Admin";
 import Analytics from "./Pages/Analytics/Analytics";
@@ -30,6 +34,9 @@ import Groups from "./Pages/Groups/Groups";
 import ServiceReviews from "./Pages/ServiceReviews/ServiceReviews";
 import Faq from "./Pages/Faq/Faq";
 import ReportUs from "./Pages/ReportUs/ReportUs";
+import ForgotPasswordPage from "./Pages/LogIn/ForgotPasswordPage";
+import ServerUnavailablePage from "./Pages/ErrorPages/ServerUnavailable";
+import ChannelDashboard from "./Pages/ChannelDashboard/ChannelDashboard";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -106,7 +113,13 @@ const router = createBrowserRouter(
       <Route path="/sign-in/de" element={<Login />} />
       <Route path="/sign-in/pl" element={<Login />} />
 
+      <Route path="/forgot" element={<ForgotPasswordPage />} />
+
       <Route path="*" element={<NotFoundPage />} />
+
+      <Route path="/projects" />
+      <Route path="/cooperation" />
+      <Route path="/channel-board" element={<ChannelDashboard />} />
 
       <Route path="/telegram-channels" element={<TelegramChannels />} />
       <Route path="/telegram-channels/ukr" element={<TelegramChannels />} />

@@ -442,7 +442,6 @@ C:\Users\illia.melnyk\Documents\Projects_Development\advertisement-project-lab\A
 C:\Users\illia.melnyk\Documents\Projects_Development\advertisement-project-lab\Api\AdvertisementApi\AdvertisementApi\obj\Debug\net7.0\AdIntegration.Api.AssemblyInfoInputs.cache
 C:\Users\illia.melnyk\Documents\Projects_Development\advertisement-project-lab\Api\AdvertisementApi\AdvertisementApi\obj\Debug\net7.0\AdIntegration.Api.AssemblyInfo.cs
 C:\Users\illia.melnyk\Documents\Projects_Development\advertisement-project-lab\Api\AdvertisementApi\AdvertisementApi\obj\Debug\net7.0\AdIntegration.Api.csproj.CoreCompileInputs.cache
-C:\Users\illia.melnyk\Documents\Projects_Development\advertisement-project-lab\Api\AdvertisementApi\AdvertisementApi\obj\Debug\net7.0\AdIntegration.Api.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\illia.melnyk\Documents\Projects_Development\advertisement-project-lab\Api\AdvertisementApi\AdvertisementApi\obj\Debug\net7.0\AdIntegration.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\illia.melnyk\Documents\Projects_Development\advertisement-project-lab\Api\AdvertisementApi\AdvertisementApi\obj\Debug\net7.0\staticwebassets\msbuild.AdIntegration.Api.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\illia.melnyk\Documents\Projects_Development\advertisement-project-lab\Api\AdvertisementApi\AdvertisementApi\obj\Debug\net7.0\staticwebassets\msbuild.build.AdIntegration.Api.props
@@ -458,3 +457,4 @@ C:\Users\illia.melnyk\Documents\Projects_Development\advertisement-project-lab\A
 C:\Users\illia.melnyk\Documents\Projects_Development\advertisement-project-lab\Api\AdvertisementApi\AdvertisementApi\obj\Debug\net7.0\AdIntegration.Api.pdb
 C:\Users\illia.melnyk\Documents\Projects_Development\advertisement-project-lab\Api\AdvertisementApi\AdvertisementApi\obj\Debug\net7.0\AdIntegration.Api.genruntimeconfig.cache
 C:\Users\illia.melnyk\Documents\Projects_Development\advertisement-project-lab\Api\AdvertisementApi\AdvertisementApi\obj\Debug\net7.0\ref\AdIntegration.Api.dll
+C:\Users\illia.melnyk\Documents\Projects_Development\advertisement-project-lab\Api\AdvertisementApi\AdvertisementApi\bin\Debug\net7.0\Bogus.dll

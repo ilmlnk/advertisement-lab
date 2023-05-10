@@ -1,4 +1,4 @@
-﻿using AdIntegration.Data.Dto;
+﻿using AdIntegration.Data.Dto.UserDto;
 using AdIntegration.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System;

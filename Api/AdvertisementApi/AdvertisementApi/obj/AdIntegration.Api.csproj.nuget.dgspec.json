@@ -346,6 +346,10 @@
               "target": "Package",
               "version": "[4.0.3, )"
             },
+            "Bogus": {
+              "target": "Package",
+              "version": "[34.0.2, )"
+            },
             "FluentAssertions": {
               "target": "Package",
               "version": "[6.11.0, )"

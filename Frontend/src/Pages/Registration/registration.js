@@ -6,8 +6,6 @@ import Footer from "../../Components/footer/Footer";
 import ModalSuccessfulRegistration from "../../Components/modal/ModalSuccessfulRegistration";
 import Loader from "../../Components/Loader/Loader";
 
-import "./RegistrationStyle.css";
-
 import {
   Alert,
   AlertIcon,
@@ -35,14 +33,28 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from "@chakra-ui/react";
+
+import DropZone from "./DragAndDropFile";
+
 import { FiBell, FiMoon, FiArrowLeft } from "react-icons/fi";
 
 import { MdCheckCircle } from "react-icons/md";
 
 import { SmallCloseIcon } from "@chakra-ui/icons";
+import UserFormHeader from "./UserFormHeader";
 
 const Registration = () => {
   const navigate = useNavigate();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -53,7 +65,6 @@ const Registration = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [successfulRegistration, setSuccessfulRegistration] = useState(false);
 
-  const [emailError, setEmailError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
@@ -110,13 +121,13 @@ const Registration = () => {
 
   return (
     <>
+      <UserFormHeader link="/main" />
       <Flex
         minH={"100vh"}
         align={"center"}
         justify={"center"}
         bg={useColorModeValue("gray.50", "gray.800")}
       >
-
         <Stack
           spacing={4}
           w={"full"}
@@ -130,6 +141,7 @@ const Registration = () => {
           <Heading lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
             Registration Form
           </Heading>
+
           <FormControl id="userName">
             <FormLabel>User Icon</FormLabel>
             <Stack direction={["column", "row"]} spacing={6}>
@@ -146,9 +158,13 @@ const Registration = () => {
                   />
                 </Avatar>
               </Center>
-              <Center w="full">
-                <Button w="full">Change Icon</Button>
-              </Center>
+              <Stack>
+                <Center w="full">
+                  <Button colorScheme="teal" onClick={onOpen} w="full">
+                    Change Icon
+                  </Button>
+                </Center>
+              </Stack>
             </Stack>
           </FormControl>
 
@@ -188,21 +204,23 @@ const Registration = () => {
               type="text"
             />
             {/* username validation */}
-            <Box borderRadius={6} p={5} bgColor="green.100" mt={2} spacing={4}>
-              <List spacing={3}>
-                <ListItem>
-                  <ListIcon as={MdCheckCircle} color="green.500" />
-                  Contains from 3 to 30 symbols
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={MdCheckCircle} color="green.500" />
-                  Contains letters, underscore
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={MdCheckCircle} color="green.500" />
-                  Unique username
-                </ListItem>
-              </List>
+            <Box borderRadius={6} p={5} mt={2} spacing={4}>
+              <Alert borderRadius={6}>
+                <List spacing={3}>
+                  <ListItem>
+                    <ListIcon as={MdCheckCircle} color="green.500" />
+                    Contains from 3 to 30 symbols
+                  </ListItem>
+                  <ListItem>
+                    <ListIcon as={MdCheckCircle} color="green.500" />
+                    Contains letters, underscore
+                  </ListItem>
+                  <ListItem>
+                    <ListIcon as={MdCheckCircle} color="green.500" />
+                    Unique username
+                  </ListItem>
+                </List>
+              </Alert>
             </Box>
 
             {/* username uniqueness validation */}
@@ -234,21 +252,24 @@ const Registration = () => {
                 </Button>
               </InputRightElement>
             </InputGroup>
-            <Box borderRadius={6} p={5} bgColor="green.100" mt={2} spacing={4}>
-              <List spacing={3}>
-                <ListItem>
-                  <ListIcon as={MdCheckCircle} color="green.500" />
-                  Contains at least 8 symbols
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={MdCheckCircle} color="green.500" />
-                  Contains at least one number
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={MdCheckCircle} color="green.500" />
-                  Contains at least one special symbol (!, @, #, *, ^, &, %, $)
-                </ListItem>
-              </List>
+            <Box borderRadius={6} p={5} mt={2} spacing={4}>
+              <Alert borderRadius={6}>
+                <List spacing={3}>
+                  <ListItem>
+                    <ListIcon as={MdCheckCircle} color="green.500" />
+                    Contains at least 8 symbols
+                  </ListItem>
+                  <ListItem>
+                    <ListIcon as={MdCheckCircle} color="green.500" />
+                    Contains at least one number
+                  </ListItem>
+                  <ListItem>
+                    <ListIcon as={MdCheckCircle} color="green.500" />
+                    Contains at least one special symbol (!, @, #, *, ^, &, %,
+                    $)
+                  </ListItem>
+                </List>
+              </Alert>
             </Box>
           </FormControl>
           <FormControl id="confirmPassword" isRequired>
@@ -277,6 +298,9 @@ const Registration = () => {
           </FormControl>
           <Stack spacing={6} direction={["column", "row"]}>
             <Button
+            onClick={() => {
+              setLoading(true);
+            }}
               bg={"blue.400"}
               color={"white"}
               w="full"
@@ -288,8 +312,27 @@ const Registration = () => {
             </Button>
           </Stack>
         </Stack>
-        {successfulRegistration && <ModalSuccessfulRegistration />}
+      {loading && <Loader/>}
       </Flex>
+
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Modal Title</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <DropZone></DropZone>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button variant="ghost">Secondary Action</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
       <Footer />
     </>
   );

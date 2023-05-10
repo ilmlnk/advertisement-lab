@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdIntegration.Repository", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdIntegration.Data", "AdIntegration.Data\AdIntegration.Data.csproj", "{37F76B78-A8B4-409C-B4DB-2124EEABBE2E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdIntegration.UnitTest", "AdIntegration.UnitTest\AdIntegration.UnitTest.csproj", "{07A1E02C-B1FC-4225-AFD6-EA53AC9C8EF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{37F76B78-A8B4-409C-B4DB-2124EEABBE2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37F76B78-A8B4-409C-B4DB-2124EEABBE2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37F76B78-A8B4-409C-B4DB-2124EEABBE2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07A1E02C-B1FC-4225-AFD6-EA53AC9C8EF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07A1E02C-B1FC-4225-AFD6-EA53AC9C8EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07A1E02C-B1FC-4225-AFD6-EA53AC9C8EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07A1E02C-B1FC-4225-AFD6-EA53AC9C8EF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

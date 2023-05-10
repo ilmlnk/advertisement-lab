@@ -3,7 +3,6 @@ import {
   Box,
   Flex,
   Text,
-  IconButton,
   useDisclosure,
   SlideFade,
   useBreakpointValue,
@@ -11,6 +10,7 @@ import {
   CardBody,
   CardHeader,
   Heading,
+  Button
 } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
@@ -70,8 +70,13 @@ const FeedbackCarousel = () => {
 
   return (
     <>
-    <Heading>What users say about us</Heading>
-    <Box position="relative" maxW="500px" margin="0 auto" mb={8} mt={12}>
+    <Box 
+    position="relative" 
+    maxW="500px" 
+    margin="0 auto" 
+    mb={8} 
+    mt={12}>
+    <Heading textAlign="center" mb={4}>What users say about us</Heading>
       <Flex overflowX="hidden" overflowY="hidden">
         <Box
           display="flex"
@@ -111,26 +116,26 @@ const FeedbackCarousel = () => {
         </Box>
       </Flex>
       <Box position="absolute" top="50%" left="-15%">
-        <IconButton
-          bgColor={"gray.200"}
+        <Button
           aria-label="Previous Image"
-          icon={<ChevronLeftIcon />}
           onClick={handlePrevImage}
           variant="ghost"
           size="lg"
           display={isSmallerThanMd ? "none" : "block"}
-        />
+        >
+            <ChevronLeftIcon />
+        </Button>
       </Box>
       <Box position="absolute" top="50%" right="-15%">
-        <IconButton
-          bgColor={"gray.200"}
+        <Button
           aria-label="Next Image"
-          icon={<ChevronRightIcon />}
           onClick={handleNextImage}
           variant="ghost"
           size="lg"
           display={isSmallerThanMd ? "none" : "block"}
-        />
+        >
+            <ChevronRightIcon />
+        </Button>
       </Box>
     </Box>
     </>

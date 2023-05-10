@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdIntegration.Repository.Repositories
 {
-    internal class CommentRepository
+    public class CommentRepository
     {
     }
 }

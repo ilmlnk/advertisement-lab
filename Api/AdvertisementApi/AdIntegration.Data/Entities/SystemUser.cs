@@ -12,8 +12,6 @@ namespace AdIntegration.Data.Entities
     public class SystemUser : User
     {
         [Required]
-        public bool IsAdmin { get; set; }
-        [Required]
         public string Email { get; set; }
     }
 }

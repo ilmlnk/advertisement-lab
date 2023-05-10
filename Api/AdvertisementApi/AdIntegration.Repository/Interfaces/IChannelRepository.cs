@@ -13,6 +13,7 @@ namespace AdIntegration.Repository.Interfaces
         public object UpdateChannelById(int id, Channel channel);
         /* Get */
         public Channel GetChannelById(int id);
+        public Channel GetChannelByName(string name);
         public Channel GetChannelByLink(string channelType, string link);
         public IEnumerable<Channel> GetChannelsByCategory(string category);
         public Channel GetChannelByEmail(string email);

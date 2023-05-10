@@ -137,6 +137,11 @@ namespace AdIntegration.Repository.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public Channel GetChannelByName(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

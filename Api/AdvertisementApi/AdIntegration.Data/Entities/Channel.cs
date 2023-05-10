@@ -20,6 +20,7 @@ namespace AdIntegration.Data.Entities
         public int? Posts { get; set; }
         [Required]
         public List<User> UserAdmins { get; set; }
-        public ChannelType ChannelTypeName { get; set; }
+        public uint Likes { get; set; }
+        public List<Comment>? Comments { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using AdIntegration.Data.Dto;
+﻿using AdIntegration.Data.Dto.ChannelDto.Add;
+using AdIntegration.Data.Dto.ChannelDto.Update;
 using AdIntegration.Data.Entities;
 using AdIntegration.Data.Entities.Telegram;
 using AdIntegration.Data.Entities.Viber;
@@ -172,6 +173,16 @@ namespace AdIntegration.Api.Controllers
         public IActionResult GetViberChannels() 
         { 
             return Ok(); 
+        }
+
+        [HttpGet("channels")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult GetAllChannels()
+        {
+            var channels = _channelRepository.GetChannels();
+            return Ok(channels);
         }
     }
 }

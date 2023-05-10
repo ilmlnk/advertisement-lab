@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using AdIntegration.Data;
 using Microsoft.AspNet.SignalR;
-using AdIntegration.Data.Dto;
 using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Repositories;
 using Microsoft.Owin.Security.Provider;
+using AdIntegration.Business.Services;
+using AdIntegration.Data.Dto.AdvertisementDto;
 
 namespace AdIntegration.Api.Controllers
 {
@@ -12,18 +13,17 @@ namespace AdIntegration.Api.Controllers
     [ApiController]
     [Route("api/[controller]")]
     public class UserController : ControllerBase
-    {
-        private readonly ApplicationDbContext _context;
-        private readonly UserRepository _userRepository;
-        private readonly AdvertisementRepository _advertisementRepository;
+    {        
+        private readonly AdvertisementService _advertisementService;
+        private readonly UserService _userService;
 
-        public UserController(ApplicationDbContext context, 
-            UserRepository userRepository,
-            AdvertisementRepository advertisementRepository)
+        public UserController() { }
+
+        public UserController(AdvertisementService advertisementService,
+            UserService userService)
         {
-            _context = context;
-            _userRepository = userRepository;
-            _advertisementRepository = advertisementRepository;
+            _advertisementService = advertisementService;
+            _userService = userService;
         }
 
         [HttpPost("advertisement/create")]
@@ -41,8 +41,7 @@ namespace AdIntegration.Api.Controllers
                 UserEntity = (SystemUser) dto.UserEntity
             };
 
-            _context.Advertisements.Add(createdAdvertisement);
-            _context.SaveChanges();
+            _advertisementService.CreateAdvertisement(createdAdvertisement);
             return Ok(createdAdvertisement);
         }
 
@@ -51,7 +50,7 @@ namespace AdIntegration.Api.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public IActionResult GetAdvertisementById(int id)
         {
-            var advertisement = _advertisementRepository.GetAdvertisementById(id);
+            var advertisement = _advertisementService.GetAdvertisementById(id);
 
             if (advertisement == null)
             {
@@ -65,11 +64,11 @@ namespace AdIntegration.Api.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public IActionResult DeleteAdvertisement(int id)
         {
-            var advertisement = _advertisementRepository.GetAdvertisementById(id);
+            var advertisement = _advertisementService.GetAdvertisementById(id);
 
             if (advertisement != null)
             {
-                return Ok(_advertisementRepository.DeleteAdvertisement(id));
+                return Ok(_advertisementService.DeleteAdvertisement(id));
             } 
             else
             {
@@ -82,8 +81,8 @@ namespace AdIntegration.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public IActionResult GetAllUsers() 
-        { 
-            var users = _userRepository.GetAllUsers();
+        {
+            var users = _userService.GetAllUsers();
             return Ok(users);
         }
 
@@ -92,7 +91,7 @@ namespace AdIntegration.Api.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public IActionResult GetUserById(int id)
         {
-            var user = _userRepository.GetUserById(id);
+            var user = _userService.GetUserById(id);
 
             if (user == null)
             {

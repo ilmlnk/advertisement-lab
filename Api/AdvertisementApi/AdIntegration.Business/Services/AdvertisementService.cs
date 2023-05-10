@@ -15,14 +15,13 @@ namespace AdIntegration.Business.Services
     public class AdvertisementService : IAdvertisementService
     {
         private readonly IAdvertisementRepository _advertisementRepository;
-        private readonly ApplicationDbContext _context;
 
-        public AdvertisementService(IAdvertisementRepository advertisementRepository, ApplicationDbContext context) 
+        public AdvertisementService(IAdvertisementRepository advertisementRepository) 
         { 
             _advertisementRepository = advertisementRepository;
-            _context = context;
         }
 
+        /* Create */
         public Advertisement CreateAdvertisement(Advertisement advertisement)
         {
             var createdAdvertisement = _advertisementRepository.CreateAdvertisement(advertisement);

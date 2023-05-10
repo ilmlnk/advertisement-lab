@@ -46,6 +46,8 @@ namespace AdIntegration.Data
         public DbSet<WhatsAppChannel> WhatsAppChannels { get; set; }
 
         public DbSet<Advertisement> Advertisements { get; set; }
+        public DbSet<AdminTask> Tasks { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {       
@@ -59,6 +61,16 @@ namespace AdIntegration.Data
 
             });
 
+            modelBuilder.Entity<AdminTask>(entity =>
+            {
+                entity
+                .HasKey(t => t.Id);
+
+                entity
+                .HasMany(t => t.Tags)
+                .WithOne(at => at.Task)
+                .HasForeignKey(ti => ti.TaskId);
+            });
 
             modelBuilder.Entity<TelegramChannel>(entity =>
             {

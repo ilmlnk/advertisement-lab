@@ -1,5 +1,4 @@
 ﻿using AdIntegration.Data.Entities;
-using AdIntegration.Data.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using AdIntegration.Repository.Interfaces;
@@ -11,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Http.HttpResults;
+using AdIntegration.Data.Dto.UserDto;
 
 namespace AdIntegration.Api.Controllers
 {

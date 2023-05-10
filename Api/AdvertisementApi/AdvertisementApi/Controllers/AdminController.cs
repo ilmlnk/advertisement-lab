@@ -1,5 +1,5 @@
 ﻿using AdIntegration.Data;
-using AdIntegration.Data.Dto;
+using AdIntegration.Data.Dto.AdvertisementDto;
 using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Repositories;
 using Microsoft.AspNet.SignalR;

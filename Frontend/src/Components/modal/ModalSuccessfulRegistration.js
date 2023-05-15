@@ -1,5 +1,4 @@
 import React from "react";
-import "./SuccessfulRegistrationStyle.css";
 import {
     Alert,
     AlertIcon,

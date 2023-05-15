@@ -1,93 +1,125 @@
-import React, { ReactNode } from "react";
 import {
-  IconButton,
-  Avatar,
   Box,
-  CloseButton,
   Flex,
-  HStack,
-  VStack,
-  Icon,
-  useColorModeValue,
+  Avatar,
   Link,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+  useDisclosure,
+  useColorModeValue,
+  useColorMode,
+  IconButton,
+  CloseButton,
+  Icon,
   Drawer,
   DrawerContent,
   Text,
-  useDisclosure,
-  BoxProps,
-  FlexProps,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
+  HStack,
+  VStack,
+  Heading,
+  Button,
+  Divider,
+  Center,
 } from "@chakra-ui/react";
+
 import {
   FiHome,
   FiTrendingUp,
-  FiGlobe,
-  FiMoon,
   FiCompass,
   FiStar,
   FiSettings,
   FiMenu,
   FiBell,
   FiChevronDown,
-  FiUsers,
+  FiMessageCircle,
   FiDollarSign,
-  FiCheckSquare,
-  FiInbox,
+  FiUserCheck,
+  FiUsers,
+  FiSmile,
+  FiMoon,
+  FiSun,
   FiHeart,
+  FiCalendar,
+  FiGlobe,
 } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
+
+import { IconType } from "react-icons";
+import { ReactText } from "react";
+
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import Footer from "../footer/Footer";
 
 const LinkItems = [
-  { name: "Main", icon: FiHome, route: '/main' },
-  { name: "Analytics", icon: FiTrendingUp, route: '/analytics' },
-  { name: "Users", icon: FiUsers, route: '/user-management' },
-  { name: "Budget", icon: FiDollarSign, route: '/budget-management' },
-  { name: "Compliance", icon: FiCheckSquare, route: '/compliance-management' },
-  { name: "Chat", icon: FiInbox, route: '/command-chat' },
-  { name: "Support", icon: FiHeart, route: '/customer-support' },
+  { name: "Home", icon: FiHome },
+  { name: "Analytics", icon: FiTrendingUp },
+  { name: "Manage Users", icon: FiUsers },
+  { name: "Manage Budget", icon: FiDollarSign },
+  { name: "Compliances", icon: FiUserCheck },
+  { name: "Command Chat", icon: FiMessageCircle },
+  { name: "Customer Support", icon: FiSmile },
 ];
 
-export default function SidebarWithHeader({ children }) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const navigate = useNavigate();
+const Notifications = [
+  { user: "User", date: "01.01.1980 at 12:00 AM", text: "Lorem ipsum" },
+  { user: "User 1", date: "01.01.1980 at 12:00 AM", text: "Lorem ipsum" },
+  { user: "User 2", date: "01.01.1980 at 12:00 AM", text: "Lorem ipsum" },
+  { user: "User 3", date: "01.01.1980 at 12:00 AM", text: "Lorem ipsum" },
+];
 
+const NavLink = ({ children }) => (
+  <Link
+    px={2}
+    py={1}
+    rounded={"md"}
+    _hover={{
+      textDecoration: "none",
+      bg: useColorModeValue("gray.200", "gray.700"),
+    }}
+    href={"#"}
+  >
+    {children}
+  </Link>
+);
+
+export default function SidebarWithHeader({ children }) {
+  const { colorMode, toggleColorMode } = useColorMode();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
-      <SidebarContent
-        onClose={() => onClose}
-        display={{ base: "none", md: "block" }}
-      />
-      <Drawer
-        autoFocus={false}
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        returnFocusOnClose={false}
-        onOverlayClick={onClose}
-        size="full"
-      >
-        <DrawerContent>
-          <SidebarContent onClose={onClose} />
-        </DrawerContent>
-      </Drawer>
-      {/* mobilenav */}
-      <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
-        {children}
+    <>
+      <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
+        <SidebarContent
+          onClose={() => onClose}
+          display={{ base: "none", md: "block" }}
+        />
+        <Drawer
+          autoFocus={false}
+          isOpen={isOpen}
+          placement="left"
+          onClose={onClose}
+          returnFocusOnClose={false}
+          onOverlayClick={onClose}
+          size="full"
+        >
+          <DrawerContent>
+            <SidebarContent onClose={onClose} />
+          </DrawerContent>
+        </Drawer>
+        {/* mobilenav */}
+        <MobileNav onOpen={onOpen} />
+        <Box ml={{ base: 0, md: 60 }} p="4">
+          {children}
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 }
 
 const SidebarContent = ({ onClose, ...rest }) => {
-  const navigate = useNavigate();
   return (
     <Box
-      transition="3s ease"
       bg={useColorModeValue("white", "gray.900")}
       borderRight="1px"
       borderRightColor={useColorModeValue("gray.200", "gray.700")}
@@ -98,15 +130,12 @@ const SidebarContent = ({ onClose, ...rest }) => {
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          AdReach
+          Logo
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem 
-        key={link.name} 
-        route={link.route}
-        icon={link.icon}>
+        <NavItem key={link.name} icon={link.icon}>
           {link.name}
         </NavItem>
       ))}
@@ -115,11 +144,9 @@ const SidebarContent = ({ onClose, ...rest }) => {
 };
 
 const NavItem = ({ icon, children, ...rest }) => {
-  const navigate = useNavigate();
-
   return (
     <Link
-      onClick={() => navigate(rest.route)}
+      href="#"
       style={{ textDecoration: "none" }}
       _focus={{ boxShadow: "none" }}
     >
@@ -153,6 +180,8 @@ const NavItem = ({ icon, children, ...rest }) => {
 };
 
 const MobileNav = ({ onOpen, ...rest }) => {
+  const { colorMode, toggleColorMode } = useColorMode();
+  const { isOpen, onClose } = useDisclosure();
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -184,23 +213,103 @@ const MobileNav = ({ onOpen, ...rest }) => {
 
       <HStack spacing={{ base: "0", md: "6" }}>
         <IconButton
+          onClick={toggleColorMode}
           size="lg"
           variant="ghost"
           aria-label="open menu"
-          icon={<FiGlobe />}
-        />
-        <IconButton
-          size="lg"
-          variant="ghost"
-          aria-label="open menu"
-          icon={<FiMoon />}
-        />
-        <IconButton
-          size="lg"
-          variant="ghost"
-          aria-label="open menu"
-          icon={<FiBell />}
-        />
+        >
+          {colorMode === "light" ? <FiMoon /> : <FiSun />}
+        </IconButton>
+
+        <Menu>
+          <MenuButton
+            as={IconButton}
+            size="lg"
+            variant="ghost"
+            aria-label="open menu"
+          >
+            <FiGlobe
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+              }}
+            />
+          </MenuButton>
+          <MenuList
+            width="200px"
+            maxH="400px"
+            overflow="auto"
+            bg={useColorModeValue("white", "gray.700")}
+            borderColor={useColorModeValue("gray.200", "gray.900")}
+          >
+            <MenuItem>Ukrainian</MenuItem>
+            <MenuItem>Polish</MenuItem>
+            <MenuItem>English</MenuItem>
+            <MenuItem>German</MenuItem>
+          </MenuList>
+        </Menu>
+
+        <Menu>
+          <MenuButton
+            as={IconButton}
+            size="lg"
+            variant="ghost"
+            aria-label="open menu"
+          >
+            <FiBell
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+              }}
+            />
+          </MenuButton>
+          <MenuList
+            width="400px"
+            maxH="400px"
+            overflow="auto"
+            bg={useColorModeValue("white", "gray.700")}
+            borderColor={useColorModeValue("gray.200", "gray.900")}
+          >
+            <Heading m={4} ml={6}>
+              Notifications
+            </Heading>
+            <Box mb={2} ml={6}>
+              <Heading size="md">Choose filter</Heading>
+              <Box mt={2}>
+                <Button w="78.5px" mr={2}>
+                  <FiBell />
+                </Button>
+                <Button w="78.5px" mr={2}>
+                  <FiMessageCircle />
+                </Button>
+                <Button w="78.5px" mr={2}>
+                  <FiHeart />
+                </Button>
+                <Button w="78.5px" mr={2}>
+                  <FiCalendar />
+                </Button>
+              </Box>
+            </Box>
+            <Divider />
+            {Notifications.map((notification, index) => (
+              <MenuItem key={index} mt={2}>
+                <Box>
+                  <Flex>
+                    <Avatar w="30px" h="30px" m={2} />
+                    <Heading size="lg">{notification.user}</Heading>
+                  </Flex>
+                  <Text>{notification.date}</Text>
+                  <Text>{notification.text}</Text>
+                </Box>
+              </MenuItem>
+            ))}
+          </MenuList>
+        </Menu>
+
         <Flex alignItems={"center"}>
           <Menu>
             <MenuButton
@@ -232,8 +341,8 @@ const MobileNav = ({ onOpen, ...rest }) => {
               </HStack>
             </MenuButton>
             <MenuList
-              bg={useColorModeValue("white", "gray.900")}
-              borderColor={useColorModeValue("gray.200", "gray.700")}
+              bg={useColorModeValue("white", "gray.700")}
+              borderColor={useColorModeValue("gray.200", "gray.900")}
             >
               <MenuItem>Profile</MenuItem>
               <MenuItem>Settings</MenuItem>

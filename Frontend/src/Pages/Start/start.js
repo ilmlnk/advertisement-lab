@@ -4,20 +4,21 @@ import StartPageHeader from "./Components/StartPageHeader/StartPageHeader";
 import StartPageIntro from "./Components/StartPageIntro/StartPageIntro";
 import Instruction from "./Components/Instruction/Instruction";
 import HowToBuy from "./Components/HowToBuy/HowToBuy";
-import Feedback from "./Components/Feedback/FeedbackCarousel";
+import FeedbackCarousel from "./Components/Feedback/FeedbackCarousel";
 
-import './StartStyle.css';
 import PriceList from "./Components/PriceList/PriceList";
+import HotOffers from "./Components/HotOffers/HotOffers";
 
 const StartPage = () => {
     return (
         <div className="start-page-container">
             <StartPageHeader/>
-            <StartPageIntro/>
+            {/*<StartPageIntro/>*/}
             <Instruction/>
-            <PriceList/>
-            {/*<HowToBuy/>*/}
-            <Feedback/>
+            {/*<PriceList/>*/}
+            <HowToBuy/>
+            {/*<FeedbackCarousel/>*/}
+            <HotOffers/>
             <Footer/>
         </div>
     );

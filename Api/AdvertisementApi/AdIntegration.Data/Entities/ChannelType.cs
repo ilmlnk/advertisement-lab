@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -7,15 +9,12 @@ using System.Threading.Tasks;
 
 namespace AdIntegration.Data.Entities
 {
-    public enum ChannelType
+    [Table(nameof(ChannelType))]
+    public class ChannelType
     {
-        [EnumMember(Value = "telegram")]
-        Telegram = 1,
-
-        [EnumMember(Value = "whatsapp")]
-        WhatsApp,
-
-        [EnumMember(Value = "viber")]
-        Viber
+        [Required]
+        public string Type { get; set; }
+        [Required]
+        public int Amount { get; set; }
     }
 }

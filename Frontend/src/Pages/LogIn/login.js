@@ -8,7 +8,6 @@ import logo from "../../Images/logo_transparent.png";
 import Loader from "../../Components/Loader/Loader";
 import { Fade } from "@chakra-ui/react";
 import PopupError from "../../Components/PopupError/PopupError";
-import GoogleLogin from "react-google-login";
 
 import {
   Box,

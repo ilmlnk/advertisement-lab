@@ -15,6 +15,8 @@ namespace AdIntegration.Data.Entities
         [Required]
         public int Id { get; set; }
         [Required]
+        public AdminTask Task { get; set; }
+        [Required]
         public string Text { get; set; }
         public uint? Likes { get; set; }
         [Required]

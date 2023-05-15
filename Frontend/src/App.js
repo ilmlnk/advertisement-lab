@@ -13,7 +13,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 import StartPage from "./Pages/Start/Start";
-import Admin from "./Pages/Admin/Admin";
+import Admin from "./Pages/Admin/AdminPage";
 import Analytics from "./Pages/Analytics/Analytics";
 import UserManagement from "./Pages/UserManagement/UserManagement";
 import BudgetManagement from "./Pages/BudgetManagement/BudgetManagement";
@@ -26,9 +26,9 @@ import NotFoundPage from "./Pages/ErrorPages/NotFoundPage";
 
 import TermsOfUse from "./Pages/TermsOfUse/TermsOfUse";
 import JoinOurTeam from "./Pages/JoinOurTeam/JoinOurTeam";
-import TelegramChannels from "./Pages/TelegramChannels/TelegramChannels";
-import ViberChannels from "./Pages/ViberChannels/ViberChannels";
-import WhatsAppChannels from "./Pages/WhatsAppChannels/WhatsAppChannels";
+import TelegramChannels from "./Pages/TelegramChannels/TelegramChannelsPage";
+import ViberChannels from "./Pages/ViberChannels/ViberChannelsPage";
+import WhatsAppChannels from "./Pages/WhatsAppChannels/WhatsAppChannelsPage";
 import InstagramProfiles from "./Pages/InstagramProfiles/InstagramProfiles";
 import Groups from "./Pages/Groups/Groups";
 import ServiceReviews from "./Pages/ServiceReviews/ServiceReviews";
@@ -37,6 +37,7 @@ import ReportUs from "./Pages/ReportUs/ReportUs";
 import ForgotPasswordPage from "./Pages/LogIn/ForgotPasswordPage";
 import ServerUnavailablePage from "./Pages/ErrorPages/ServerUnavailable";
 import ChannelDashboard from "./Pages/ChannelDashboard/ChannelDashboard";
+import RequireCredentialsPage from "./Pages/RequireCredentials/RequireCredentialsPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -135,6 +136,9 @@ const router = createBrowserRouter(
 
       <Route path="/faq" element={<Faq />} />
       <Route path="/report-us" element={<ReportUs />} />
+
+      <Route path="/join-team" element={<JoinOurTeam />} />
+      <Route path="/advertisement/edit/:id" element={<RequireCredentialsPage />} />
     </>
   )
 );

@@ -8,6 +8,7 @@ import {
   MenuGroup,
   MenuOptionGroup,
   MenuDivider,
+  Switch,
 } from "@chakra-ui/react";
 
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
@@ -38,6 +39,7 @@ import {
 } from "@chakra-ui/icons";
 
 import { useNavigate } from "react-router-dom";
+import { FaGlobe } from "react-icons/fa";
 
 const StartPageHeader = () => {
   const { isOpen, onToggle } = useDisclosure();
@@ -90,41 +92,51 @@ const StartPageHeader = () => {
             </Flex>
           </Flex>
 
-          <Button m={2} onClick={toggleColorMode}>
-            {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-          </Button>
-
           <Stack
             flex={{ base: 1, md: 0 }}
             justify={"flex-end"}
             direction={"row"}
             spacing={6}
           >
-            <Button
-              cursor="pointer"
-              onClick={() => navigate("/login")}
-              as={"a"}
-              fontSize={"sm"}
-              fontWeight={400}
-              variant={"link"}
-            >
-              Sign In
-            </Button>
-            <Button
-              cursor="pointer"
-              onClick={() => navigate("/registration")}
-              as={"a"}
-              display={{ base: "none", md: "inline-flex" }}
-              fontSize={"sm"}
-              fontWeight={600}
-              color={"white"}
-              bg={"green.400"}
-              _hover={{
-                bg: "green.300",
-              }}
-            >
-              Sign Up
-            </Button>
+            <Flex align="center">
+              <Flex mr={4}>
+              {/* Change Language button */}
+              <Button m={2}>
+                <FaGlobe />
+              </Button>
+              {/* Change color mode */}
+              <Button m={2} onClick={toggleColorMode}>
+                {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+              </Button>
+              </Flex>
+
+              <Button
+                cursor="pointer"
+                onClick={() => navigate("/login")}
+                as={"a"}
+                fontSize={"sm"}
+                fontWeight={400}
+                variant={"link"}
+                mr={4}
+              >
+                Sign In
+              </Button>
+              <Button
+                cursor="pointer"
+                onClick={() => navigate("/registration")}
+                as={"a"}
+                display={{ base: "none", md: "inline-flex" }}
+                fontSize={"sm"}
+                fontWeight={600}
+                color={"white"}
+                bg={"green.400"}
+                _hover={{
+                  bg: "green.300",
+                }}
+              >
+                Sign Up
+              </Button>
+            </Flex>
           </Stack>
         </Flex>
 
@@ -187,6 +199,8 @@ const DesktopNav = () => {
 };
 
 const DesktopSubNav = ({ label, href, subLabel }) => {
+  const navigate = useNavigate();
+
   return (
     <Link
       href={href}
@@ -292,6 +306,10 @@ const MobileNavItem = ({ label, children, href }) => {
 
 const NAV_ITEMS = [
   {
+    label: "Home",
+    navLink: "main"
+  },
+  {
     label: "Find Orders",
     children: [
       {
@@ -312,18 +330,18 @@ const NAV_ITEMS = [
       {
         label: "Job Board",
         subLabel: "Find your dream design job",
-        navLink: "job-board"
+        navLink: "job-board",
       },
       {
         label: "Freelance Projects",
         subLabel: "An exclusive list for contract work",
-        navLink: "projects"
+        navLink: "projects",
       },
     ],
   },
   {
     label: "Cooperation",
-    navLink: "cooperation"
+    navLink: "cooperation",
   },
   {
     label: "Channel Dashboard",
@@ -331,20 +349,5 @@ const NAV_ITEMS = [
   },
 ];
 
-/*
-<Menu>
-                <MenuButton as={Button} rightIcon={<FaChevronDown />}>
-                    Actions
-                </MenuButton>
-                <MenuList>
-                    <MenuItem>Download</MenuItem>
-                    <MenuItem>Create a Copy</MenuItem>
-                    <MenuItem>Mark as Draft</MenuItem>
-                    <MenuItem>Delete</MenuItem>
-                    <MenuItem>Attend a Workshop</MenuItem>
-                </MenuList>
-            </Menu>
-
-*/
 
 export default StartPageHeader;

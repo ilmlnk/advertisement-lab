@@ -1,144 +1,142 @@
-import React from "react";
+import React from 'react';
 import {
   Box,
-  Flex,
-  Text,
-  useDisclosure,
-  SlideFade,
+  IconButton,
   useBreakpointValue,
-  Card,
-  CardBody,
-  CardHeader,
+  Stack,
   Heading,
-  Button
-} from "@chakra-ui/react";
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+  Text,
+  Container,
+} from '@chakra-ui/react';
+// Here we have used react-icons package for the icons
+import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
+// And react-slick as our Carousel Lib
+import Slider from 'react-slick';
 
-const images = [
-  {
-    id: 1,
-    title: "Perfect website!",
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id justo at mauris fringilla blandit. Maecenas maximus, lectus eget facilisis iaculis, tellus mauris rutrum lectus, vel blandit nulla dolor in sapien. Praesent vel ultrices purus. Suspendisse potenti. In vel est libero. Donec euismod, velit in dapibus semper, arcu nunc efficitur nulla, vel bibendum enim libero ac est. Nulla facilisi. Sed euismod, ipsum a venenatis lobortis, odio metus mattis ex, eu congue nisi quam id enim. Quisque nec consectetur enim. Donec non enim rhoncus, vulputate dolor eget, maximus nunc. Nunc ac tortor velit. Sed bibendum augue ipsum, eu tempor leo blandit in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam pretium metus nec justo vestibulum consequat.",
-  },
-  {
-    id: 2,
-    title: "It's amazing!!",
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id justo at mauris fringilla blandit. Maecenas maximus, lectus eget facilisis iaculis, tellus mauris rutrum lectus, vel blandit nulla dolor in sapien. Praesent vel ultrices purus. Suspendisse potenti. In vel est libero. Donec euismod, velit in dapibus semper, arcu nunc efficitur nulla, vel bibendum enim libero ac est. Nulla facilisi. Sed euismod, ipsum a venenatis lobortis, odio metus mattis ex, eu congue nisi quam id enim. Quisque nec consectetur enim. Donec non enim rhoncus, vulputate dolor eget, maximus nunc. Nunc ac tortor velit. Sed bibendum augue ipsum, eu tempor leo blandit in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam pretium metus nec justo vestibulum consequat.",
-  },
-  {
-    id: 3,
-    title: "Magnificent!",
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id justo at mauris fringilla blandit. Maecenas maximus, lectus eget facilisis iaculis, tellus mauris rutrum lectus, vel blandit nulla dolor in sapien. Praesent vel ultrices purus. Suspendisse potenti. In vel est libero. Donec euismod, velit in dapibus semper, arcu nunc efficitur nulla, vel bibendum enim libero ac est. Nulla facilisi. Sed euismod, ipsum a venenatis lobortis, odio metus mattis ex, eu congue nisi quam id enim. Quisque nec consectetur enim. Donec non enim rhoncus, vulputate dolor eget, maximus nunc. Nunc ac tortor velit. Sed bibendum augue ipsum, eu tempor leo blandit in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam pretium metus nec justo vestibulum consequat.",
-  },
-  {
-    id: 4,
-    title: "Masterpiece.",
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id justo at mauris fringilla blandit. Maecenas maximus, lectus eget facilisis iaculis, tellus mauris rutrum lectus, vel blandit nulla dolor in sapien. Praesent vel ultrices purus. Suspendisse potenti. In vel est libero. Donec euismod, velit in dapibus semper, arcu nunc efficitur nulla, vel bibendum enim libero ac est. Nulla facilisi. Sed euismod, ipsum a venenatis lobortis, odio metus mattis ex, eu congue nisi quam id enim. Quisque nec consectetur enim. Donec non enim rhoncus, vulputate dolor eget, maximus nunc. Nunc ac tortor velit. Sed bibendum augue ipsum, eu tempor leo blandit in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam pretium metus nec justo vestibulum consequat.",
-  },
-];
+// Settings for the slider
+const settings = {
+  dots: true,
+  arrows: false,
+  fade: true,
+  infinite: true,
+  autoplay: true,
+  speed: 500,
+  autoplaySpeed: 5000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
 
-const FeedbackCarousel = () => {
-  const { isOpen, onToggle } = useDisclosure();
-  const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
-  const isSmallerThanMd = useBreakpointValue({ base: true, md: false });
+function FeedbackCarousel() {
+  // As we have used custom buttons, we need a reference variable to
+  // change the state
+  const [slider, setSlider] = React.useState<Slider | null>(null);
 
-  const handleNextImage = () => {
-    const lastIndex = images.length - 1;
-    const shouldResetIndex = currentImageIndex === lastIndex;
-    const index = shouldResetIndex ? 0 : currentImageIndex + 1;
+  // These are the breakpoints which changes the position of the
+  // buttons as the screen size changes
+  const top = useBreakpointValue({ base: '90%', md: '50%' });
+  const side = useBreakpointValue({ base: '30%', md: '40px' });
 
-    setCurrentImageIndex(index);
-  };
+  // This list contains all the data for carousels
+  // This can be static or loaded from a server
+  const cards = [
+    {
+      title: 'Design Projects 1',
+      text:
+        "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
+      image:
+        'https://images.unsplash.com/photo-1516796181074-bf453fbfa3e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
+    },
+    {
+      title: 'Design Projects 2',
+      text:
+        "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
+      image:
+        'https://images.unsplash.com/photo-1438183972690-6d4658e3290e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2274&q=80',
+    },
+    {
+      title: 'Design Projects 3',
+      text:
+        "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
+      image:
+        'https://images.unsplash.com/photo-1507237998874-b4d52d1dd655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
+    },
+  ];
 
-  const handlePrevImage = () => {
-    const lastIndex = images.length - 1;
-    const shouldResetIndex = currentImageIndex === 0;
-    const index = shouldResetIndex ? lastIndex : currentImageIndex - 1;
-
-    setCurrentImageIndex(index);
-  };
-
-  const slideStyles = {
-    flex: "0 0 100%",
-    transition: "all .5s ease",
-    transform: `translateX(-${currentImageIndex * 100}%)`,
-  };
 
   return (
-    <>
-    <Box 
-    position="relative" 
-    maxW="500px" 
-    margin="0 auto" 
-    mb={8} 
-    mt={12}>
-    <Heading textAlign="center" mb={4}>What users say about us</Heading>
-      <Flex overflowX="hidden" overflowY="hidden">
-        <Box
-          display="flex"
-          w="100%"
-          style={slideStyles}
-          transition="transform ease-out 0.45s"
-        >
-          {images.map((image) => (
-            <Box key={image.id} flex="0 0 100%">
-              <SlideFade in={currentImageIndex === image.id - 1}>
-                <Card>
-                  <CardHeader fontWeight={600} fontSize={24}>
-                    {image.title}
-                  </CardHeader>
-                  <CardBody>{image.comment}</CardBody>
-                </Card>
-                <Box
-                  position="absolute"
-                  bottom="0"
-                  left="0"
-                  right="0"
-                  p="4"
-                  bg="rgba(0,0,0,0.4)"
-                  color="white"
-                  display={isOpen ? "block" : "none"}
-                >
-                  <Text fontSize="xl" fontWeight="bold">
-                    {image.title}
-                  </Text>
-                  <Text fontSize="sm" mt="2">
-                    {image.alt}
-                  </Text>
-                </Box>
-              </SlideFade>
-            </Box>
-          ))}
-        </Box>
-      </Flex>
-      <Box position="absolute" top="50%" left="-15%">
-        <Button
-          aria-label="Previous Image"
-          onClick={handlePrevImage}
-          variant="ghost"
-          size="lg"
-          display={isSmallerThanMd ? "none" : "block"}
-        >
-            <ChevronLeftIcon />
-        </Button>
-      </Box>
-      <Box position="absolute" top="50%" right="-15%">
-        <Button
-          aria-label="Next Image"
-          onClick={handleNextImage}
-          variant="ghost"
-          size="lg"
-          display={isSmallerThanMd ? "none" : "block"}
-        >
-            <ChevronRightIcon />
-        </Button>
-      </Box>
+    <Box
+      position={'relative'}
+      height={'600px'}
+      width={'full'}
+      overflow={'hidden'}>
+      {/* CSS files for react-slick */}
+      <link
+        rel="stylesheet"
+        type="text/css"
+        charSet="UTF-8"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+      />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+      />
+      {/* Left Icon */}
+      <IconButton
+        aria-label="left-arrow"
+        variant="ghost"
+        position="absolute"
+        left={side}
+        top={top}
+        transform={'translate(0%, -50%)'}
+        zIndex={2}
+        onClick={() => slider?.slickPrev()}>
+        <BiLeftArrowAlt size="40px" />
+      </IconButton>
+      {/* Right Icon */}
+      <IconButton
+        aria-label="right-arrow"
+        variant="ghost"
+        position="absolute"
+        right={side}
+        top={top}
+        transform={'translate(0%, -50%)'}
+        zIndex={2}
+        onClick={() => slider?.slickNext()}>
+        <BiRightArrowAlt size="40px" />
+      </IconButton>
+      {/* Slider */}
+      <Slider {...settings} ref={(slider) => setSlider(slider)}>
+        {cards.map((card, index) => (
+          <Box
+            key={index}
+            height={'6xl'}
+            position="relative"
+            backgroundPosition="center"
+            backgroundRepeat="no-repeat"
+            backgroundSize="cover"
+            backgroundImage={`url(${card.image})`}>
+            {/* This is the block you need to change, to customize the caption */}
+            <Container size="container.lg" height="600px" position="relative">
+              <Stack
+                spacing={6}
+                w={'full'}
+                maxW={'lg'}
+                position="absolute"
+                top="50%"
+                transform="translate(0, -50%)">
+                <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
+                  {card.title}
+                </Heading>
+                <Text fontSize={{ base: 'md', lg: 'lg' }} color="GrayText">
+                  {card.text}
+                </Text>
+              </Stack>
+            </Container>
+          </Box>
+        ))}
+      </Slider>
     </Box>
-    </>
   );
 };
 

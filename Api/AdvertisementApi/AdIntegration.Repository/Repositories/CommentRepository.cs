@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AdIntegration.Data;
+using AdIntegration.Data.Entities;
+using AdIntegration.Repository.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +9,57 @@ using System.Threading.Tasks;
 
 namespace AdIntegration.Repository.Repositories
 {
-    public class CommentRepository
+    public class CommentRepository : ICommentRepository
     {
+        private readonly ApplicationDbContext _context;
+        public CommentRepository(ApplicationDbContext context) 
+        {
+            _context = context;
+        }
+
+        public Comment CreateComment(Comment comment)
+        {
+            _context.Comments.Add(comment);
+            _context.SaveChanges();
+            return comment;
+        }
+
+        public Comment DeleteCommentById(int id)
+        {
+            var deleteComment = GetCommentById(id);
+
+            if (deleteComment == null)
+            {
+                throw new NotImplementedException();
+            }
+
+            _context.Comments.Remove(deleteComment);
+            _context.SaveChanges();
+
+            return deleteComment;
+        }
+
+        public IEnumerable<Comment> GetAllComments()
+        {
+            var comments = _context.Comments.ToList();
+            return comments;
+        }
+
+        public Comment UpdateComment(int id, Comment comment)
+        {
+            
+        }
+
+        public Comment GetCommentById(int id)
+        {
+            var comment = _context.Comments.Find(id);
+
+            if (comment == null)
+            {
+                throw new NotImplementedException();
+            }
+
+            return comment;
+        }
     }
 }

@@ -39,7 +39,7 @@ import {
     );
   };
   
-  export default function LargeWithLogoCentered() {
+  export default function Footer() {
     return (
       <Box
         bg={useColorModeValue('gray.50', 'gray.900')}

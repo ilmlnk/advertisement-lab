@@ -1,5 +1,4 @@
 import React from "react";
-import './PopupErrorStyle.css';
 import {
     Modal,
     ModalOverlay,

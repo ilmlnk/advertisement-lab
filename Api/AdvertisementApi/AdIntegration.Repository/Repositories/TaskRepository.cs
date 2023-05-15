@@ -21,37 +21,86 @@ namespace AdIntegration.Repository.Repositories
         public AdminTask CreateTask(AdminTask task)
         {
             _context.Tasks.Add(task);
+            task.Id = _context.SaveChanges();
             return task;
         }
 
         public AdminTask DeleteTaskById(int id)
         {
-            throw new NotImplementedException();
+            var deleteTask = GetTaskById(id);
+            _context.Tasks.Remove(deleteTask);
+            _context.SaveChanges();
+            return deleteTask;
         }
 
         public IEnumerable<AdminTask> GetAllTasks()
         {
-            throw new NotImplementedException();
+            var tasks = _context.Tasks.ToList();
+            return tasks;
         }
 
         public AdminTask GetTaskById(int id)
         {
-            throw new NotImplementedException();
+            var foundTask = _context.Tasks.FirstOrDefault(x => x.Id == id);
+
+            if (foundTask == null) 
+            {
+                throw new InvalidOperationException();
+            }
+
+            return foundTask;
         }
 
         public AdminTask GetTaskByName(string name)
         {
-            throw new NotImplementedException();
+            var foundTask = _context.Tasks.FirstOrDefault(x => x.Name == name);
+
+            if (foundTask == null)
+            {
+                throw new InvalidOperationException();
+            }
+
+            return foundTask;
         }
 
-        public object UpdateTask(AdminTask task)
+        public object UpdateTask(int id, AdminTask task)
         {
-            throw new NotImplementedException();
+            var foundTask = GetTaskById(id);
+
+            if (foundTask == null)
+            {
+                throw new InvalidOperationException();
+            }
+
+            _context.Tasks.Update(task);
+            _context.SaveChanges();
+
+            var response = new
+            {
+                Old = foundTask,
+                New = task
+            };
+
+            return response;
         }
 
-        public Comment WriteCommentToTask(Comment comment)
+        public Comment WriteCommentToTask(AdminTask task, Comment comment)
         {
-            throw new NotImplementedException();
+            if (task == null)
+            {
+                throw new ArgumentNullException(nameof(task));
+            }
+
+            if (comment == null)
+            {
+                throw new ArgumentNullException(nameof(comment));
+            }
+
+            comment.Id = task.Id;
+            comment.Task = task;
+
+            task.Comments.Add(comment);
+            return comment;
         }
     }
 }

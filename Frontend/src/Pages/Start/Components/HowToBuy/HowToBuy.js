@@ -1,155 +1,40 @@
-import React from "react";
-import { 
-    Card, 
-    CardHeader, 
-    CardBody, 
-    CardFooter } from '@chakra-ui/react';
+import { Box, Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 
-import {
-    Box,
-    Divider,
-    Heading,
-    HStack,
-    Stack,
-    StackDivider,
-    Text } from "@chakra-ui/layout";
+const LaunchTable = () => {
+  return (
+    <Box mt={8}>
+      <Table variant="simple">
+        <Thead>
+          <Tr>
+            <Th>№</Th>
+            <Th>Name</Th>
+            <Th>Description</Th>
+            <Th>Cost</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          <Tr>
+            <Td>1</Td>
+            <Td>Starter Pack</Td>
+            <Td>Starter Pack description</Td>
+            <Td>100$</Td>
+          </Tr>
+          <Tr>
+            <Td>2</Td>
+            <Td>Standard Pack</Td>
+            <Td>Standard Pack description</Td>
+            <Td>200$</Td>
+          </Tr>
+          <Tr>
+            <Td>3</Td>
+            <Td>Premium</Td>
+            <Td>Premium Pack description</Td>
+            <Td>300$</Td>
+          </Tr>
+        </Tbody>
+      </Table>
+    </Box>
+  );
+};
 
-import { Image } from "@chakra-ui/image";
-
-import { Button, ButtonGroup, IconButton } from "@chakra-ui/button"
-
-const HowToBuy = () => {
-    return (
-        <Box>
-        <Card maxW='sm'>
-            <CardBody>
-                <Image
-                src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-                alt='Green double couch with wooden legs'
-                borderRadius='lg'
-                />
-                <Stack mt='6' spacing='3'>
-                <Heading size='md'>Living room Sofa</Heading>
-                <Text>
-                    This sofa is perfect for modern tropical spaces, baroque inspired
-                    spaces, earthy toned spaces and for people who love a chic design with a
-                    sprinkle of vintage design.
-                </Text>
-                <Text color='blue.600' fontSize='2xl'>
-                    $450
-                </Text>
-                </Stack>
-            </CardBody>
-            <Divider />
-            <CardFooter>
-                <ButtonGroup spacing='2'>
-                <Button variant='solid' colorScheme='blue'>
-                    Buy now
-                </Button>
-                <Button variant='ghost' colorScheme='blue'>
-                    Add to cart
-                </Button>
-                </ButtonGroup>
-            </CardFooter>
-        </Card>
-
-        <Card maxW='sm'>
-            <CardBody>
-                <Image
-                src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-                alt='Green double couch with wooden legs'
-                borderRadius='lg'
-                />
-                <Stack mt='6' spacing='3'>
-                <Heading size='md'>Living room Sofa</Heading>
-                <Text>
-                    This sofa is perfect for modern tropical spaces, baroque inspired
-                    spaces, earthy toned spaces and for people who love a chic design with a
-                    sprinkle of vintage design.
-                </Text>
-                <Text color='blue.600' fontSize='2xl'>
-                    $450
-                </Text>
-                </Stack>
-            </CardBody>
-            <Divider />
-            <CardFooter>
-                <ButtonGroup spacing='2'>
-                <Button variant='solid' colorScheme='blue'>
-                    Buy now
-                </Button>
-                <Button variant='ghost' colorScheme='blue'>
-                    Add to cart
-                </Button>
-                </ButtonGroup>
-            </CardFooter>
-        </Card>
-
-        <Card maxW='sm'>
-            <CardBody>
-                <Image
-                src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-                alt='Green double couch with wooden legs'
-                borderRadius='lg'
-                />
-                <Stack mt='6' spacing='3'>
-                <Heading size='md'>Living room Sofa</Heading>
-                <Text>
-                    This sofa is perfect for modern tropical spaces, baroque inspired
-                    spaces, earthy toned spaces and for people who love a chic design with a
-                    sprinkle of vintage design.
-                </Text>
-                <Text color='blue.600' fontSize='2xl'>
-                    $450
-                </Text>
-                </Stack>
-            </CardBody>
-            <Divider />
-            <CardFooter>
-                <ButtonGroup spacing='2'>
-                <Button variant='solid' colorScheme='blue'>
-                    Buy now
-                </Button>
-                <Button variant='ghost' colorScheme='blue'>
-                    Add to cart
-                </Button>
-                </ButtonGroup>
-            </CardFooter>
-        </Card>
-
-        <Card maxW='sm'>
-            <CardBody>
-                <Image
-                src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-                alt='Green double couch with wooden legs'
-                borderRadius='lg'
-                />
-                <Stack mt='6' spacing='3'>
-                <Heading size='md'>Living room Sofa</Heading>
-                <Text>
-                    This sofa is perfect for modern tropical spaces, baroque inspired
-                    spaces, earthy toned spaces and for people who love a chic design with a
-                    sprinkle of vintage design.
-                </Text>
-                <Text color='blue.600' fontSize='2xl'>
-                    $450
-                </Text>
-                </Stack>
-            </CardBody>
-            <Divider />
-            <CardFooter>
-                <ButtonGroup spacing='2'>
-                <Button variant='solid' colorScheme='blue'>
-                    Buy now
-                </Button>
-                <Button variant='ghost' colorScheme='blue'>
-                    Add to cart
-                </Button>
-                </ButtonGroup>
-            </CardFooter>
-        </Card>
-        </Box>
-    );
-}
-
-export default HowToBuy;
+export default LaunchTable;

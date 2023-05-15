@@ -62,7 +62,7 @@ namespace AdIntegration.Repository.Repositories
         }
 
         /* Update */
-        public object UpdateUser(int userId, User inputUser)
+        public object UpdateUser(int userId, SystemUser inputUser)
         {
             var foundUser = _context.Users.Find(userId);
 
@@ -71,7 +71,7 @@ namespace AdIntegration.Repository.Repositories
                 throw new InvalidOperationException();
             }
 
-            _context.Set<User>().Update(inputUser);
+            _context.SystemUsers.Update(inputUser);
             _context.SaveChanges();
 
             var response = new

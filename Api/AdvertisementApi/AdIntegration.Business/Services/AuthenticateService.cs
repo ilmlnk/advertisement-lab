@@ -4,7 +4,6 @@ using AdIntegration.Data.Dto.UserDto;
 using AdIntegration.Data.Entities;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -34,9 +33,9 @@ namespace AdIntegration.Business.Services
                 throw new NotFoundException("Username not found");
             }
 
-            if (await _userManager.CheckPasswordAsync(user, loginUserDto.Password)) 
-            { 
-                return user; 
+            if (await _userManager.CheckPasswordAsync(user, loginUserDto.Password))
+            {
+                return user;
             }
             throw new AuthenticateException("Incorrect password");
         }

@@ -1,16 +1,14 @@
-﻿using AdIntegration.Data.Entities;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using AdIntegration.Repository.Interfaces;
-using AdIntegration.Data;
-using AutoMapper;
-using System.Security.Claims;
-using AdIntegration.Repository.Repositories;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.AspNetCore.Http.HttpResults;
+﻿using AdIntegration.Data;
 using AdIntegration.Data.Dto.UserDto;
+using AdIntegration.Data.Entities;
+using AdIntegration.Repository.Repositories;
+using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace AdIntegration.Api.Controllers
 {
@@ -23,9 +21,9 @@ namespace AdIntegration.Api.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
 
-        public UserAccountController(IConfiguration configuration, 
+        public UserAccountController(IConfiguration configuration,
             UserRepository userRepository,
-            ApplicationDbContext context, 
+            ApplicationDbContext context,
             IMapper mapper)
         {
             _configuration = configuration;
@@ -40,12 +38,12 @@ namespace AdIntegration.Api.Controllers
         {
             var existingUser = _userRepository.GetUserByUsername(dto.UserName);
 
-            if (existingUser != null) 
+            if (existingUser != null)
             {
                 return StatusCode(409, "User with this username is already registered!");
-            } 
-            else 
-            { 
+            }
+            else
+            {
                 var user = new SystemUser
                 {
                     FirstName = dto.FirstName,
@@ -54,7 +52,7 @@ namespace AdIntegration.Api.Controllers
                     UserName = dto.UserName,
                     Password = BCrypt.Net.BCrypt.HashPassword(dto.Password)
                 };
-            
+
                 return Created("success", _userRepository.AddUser(user));
             }
         }

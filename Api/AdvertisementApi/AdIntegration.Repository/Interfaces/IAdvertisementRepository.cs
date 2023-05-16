@@ -1,11 +1,4 @@
-﻿using AdIntegration.Data.Dto;
-using AdIntegration.Data.Entities;
-using NetTopologySuite.IO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AdIntegration.Data.Entities;
 
 namespace AdIntegration.Repository.Interfaces
 {

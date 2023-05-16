@@ -1,18 +1,13 @@
 ﻿using AdIntegration.Business.Interfaces;
 using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdIntegration.Business.Services
 {
     public class ChannelService : IChannelService
     {
         private readonly IChannelRepository _channelRepository;
-        public ChannelService(IChannelRepository channelRepository) 
+        public ChannelService(IChannelRepository channelRepository)
         {
             _channelRepository = channelRepository;
         }
@@ -45,8 +40,8 @@ namespace AdIntegration.Business.Services
         {
             var foundChannel = _channelRepository.GetChannelById(id);
             var updatedChannel = _channelRepository.UpdateChannelById(id, channel);
-            
-            var response =  new
+
+            var response = new
             {
                 Old = foundChannel,
                 New = updatedChannel

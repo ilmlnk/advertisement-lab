@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Heading, Grid } from "@chakra-ui/react";
+import { Box, Heading, Grid, Center } from "@chakra-ui/react";
 import User from "./User";
 import { useState } from "react";
 import {
@@ -32,9 +32,16 @@ const OnlineUserList = () => {
         <Heading mb="1em">Online Users</Heading>
         <Grid templateColumns="repeat(3, 1fr)" gap={4}>
           {blocks.map((block) => (
-            <User key={block} user={selectedUser} onOpenModal={handleOpenModal} />
+            <User
+              key={block}
+              user={selectedUser}
+              onOpenModal={handleOpenModal}
+            />
           ))}
         </Grid>
+        <Center>
+          <Button mt="2em" colorScheme="blue">Show all users</Button>
+        </Center>
       </Box>
 
       {selectedUser && (

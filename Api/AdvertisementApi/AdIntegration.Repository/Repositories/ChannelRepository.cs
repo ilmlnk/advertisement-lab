@@ -4,7 +4,6 @@ using AdIntegration.Data.Entities.Telegram;
 using AdIntegration.Data.Entities.Viber;
 using AdIntegration.Data.Entities.WhatsApp;
 using AdIntegration.Repository.Interfaces;
-using System.Runtime.Serialization;
 
 namespace AdIntegration.Repository.Repositories
 {
@@ -35,7 +34,7 @@ namespace AdIntegration.Repository.Repositories
             _context.SaveChanges();
 
             return foundChannel;
-        } 
+        }
 
         public IEnumerable<Channel> GetChannels()
         {

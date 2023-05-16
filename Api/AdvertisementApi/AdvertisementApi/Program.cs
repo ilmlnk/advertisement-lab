@@ -84,14 +84,14 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]))
         };
-});
+    });
 
 builder.Services.AddAutoMapper(typeof(AppMappingProfile));
 
 
 builder.Services.AddCors(c =>
 {
-    c.AddPolicy("AllowOrigin", 
+    c.AddPolicy("AllowOrigin",
         options => options
         .AllowAnyOrigin()
         .AllowAnyMethod()
@@ -101,7 +101,7 @@ builder.Services.AddCors(c =>
 
 builder.Services.AddHttpContextAccessor();
 
-    
+
 var app = builder.Build();
 
 app.UseSwagger();
@@ -115,7 +115,7 @@ using (var scope = app.Services.CreateScope())
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
-    
+
 app.UseAuthorization();
 app.MapControllers();
 

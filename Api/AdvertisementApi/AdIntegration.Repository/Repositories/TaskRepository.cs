@@ -1,11 +1,6 @@
 ﻿using AdIntegration.Data;
 using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdIntegration.Repository.Repositories
 {
@@ -43,7 +38,7 @@ namespace AdIntegration.Repository.Repositories
         {
             var foundTask = _context.Tasks.FirstOrDefault(x => x.Id == id);
 
-            if (foundTask == null) 
+            if (foundTask == null)
             {
                 throw new InvalidOperationException();
             }

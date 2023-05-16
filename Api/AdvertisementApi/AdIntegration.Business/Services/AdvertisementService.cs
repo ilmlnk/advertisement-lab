@@ -1,14 +1,6 @@
 ﻿using AdIntegration.Business.Interfaces;
-using AdIntegration.Data;
-using AdIntegration.Data.Dto;
 using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Interfaces;
-using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdIntegration.Business.Services
 {
@@ -16,8 +8,8 @@ namespace AdIntegration.Business.Services
     {
         private readonly IAdvertisementRepository _advertisementRepository;
 
-        public AdvertisementService(IAdvertisementRepository advertisementRepository) 
-        { 
+        public AdvertisementService(IAdvertisementRepository advertisementRepository)
+        {
             _advertisementRepository = advertisementRepository;
         }
 
@@ -49,7 +41,7 @@ namespace AdIntegration.Business.Services
         public Advertisement GetAdvertisementById(int id)
         {
             var adverisement = _advertisementRepository.GetAdvertisementById(id);
-            
+
             if (adverisement == null)
             {
                 throw new InvalidOperationException();
@@ -61,7 +53,7 @@ namespace AdIntegration.Business.Services
         public IEnumerable<Advertisement> GetAllAdvertisements()
         {
             var advertisements = _advertisementRepository.GetAllAdvertisements();
-            
+
             if (advertisements == null)
             {
                 throw new InvalidOperationException();

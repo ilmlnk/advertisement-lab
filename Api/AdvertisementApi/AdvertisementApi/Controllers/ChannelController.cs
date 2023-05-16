@@ -1,6 +1,5 @@
 ﻿using AdIntegration.Data.Dto.ChannelDto.Add;
 using AdIntegration.Data.Dto.ChannelDto.Update;
-using AdIntegration.Data.Entities;
 using AdIntegration.Data.Entities.Telegram;
 using AdIntegration.Data.Entities.Viber;
 using AdIntegration.Data.Entities.WhatsApp;
@@ -53,7 +52,7 @@ namespace AdIntegration.Api.Controllers
         public IActionResult AddWhatsAppChannel(AddWhatsAppChannelDto dto)
         {
             var createdChannel = new WhatsAppChannel
-            { 
+            {
 
             };
 
@@ -88,7 +87,7 @@ namespace AdIntegration.Api.Controllers
         public IActionResult EditTelegramChannel(int id, UpdateTelegramChannelDto dto)
         {
             var editedChannel = new TelegramChannel
-            { 
+            {
 
             };
 
@@ -114,7 +113,7 @@ namespace AdIntegration.Api.Controllers
                 Subcategory = dto.Subcategory
             };
 
-            return Created("success", 
+            return Created("success",
                 _channelRepository.UpdateChannelById(id, editedChannel));
         }
 
@@ -170,9 +169,9 @@ namespace AdIntegration.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult GetViberChannels() 
-        { 
-            return Ok(); 
+        public IActionResult GetViberChannels()
+        {
+            return Ok();
         }
 
         [HttpGet("channels")]

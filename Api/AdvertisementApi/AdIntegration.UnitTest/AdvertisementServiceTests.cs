@@ -15,7 +15,7 @@ namespace AdIntegration.UnitTest
         public AdvertisementServiceTests()
         {
             _mockRepository = new Mock<IAdvertisementRepository>();
-            _advertisementService = new AdvertisementService( _mockRepository.Object );
+            _advertisementService = new AdvertisementService(_mockRepository.Object);
         }
 
         /* Create Advertisement
@@ -75,7 +75,7 @@ namespace AdIntegration.UnitTest
                 .RuleFor(a => a.ChannelType, f => new WhatsAppChannel())
                 .Generate();
 
-            
+
             var mockAdvertisementRepository = new Mock<IAdvertisementRepository>();
             mockAdvertisementRepository.Setup(r => r.CreateAdvertisement(advertisement)).Returns(() => null);
 
@@ -90,6 +90,7 @@ namespace AdIntegration.UnitTest
          * 2. Fail
          * 3. Checking the method call
          */
+
 
 
         /* Update Advertisement

@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using AdIntegration.Data;
-using Microsoft.AspNet.SignalR;
-using AdIntegration.Data.Entities;
-using AdIntegration.Repository.Repositories;
-using Microsoft.Owin.Security.Provider;
-using AdIntegration.Business.Services;
+﻿using AdIntegration.Business.Services;
 using AdIntegration.Data.Dto.AdvertisementDto;
+using AdIntegration.Data.Entities;
+using Microsoft.AspNet.SignalR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AdIntegration.Api.Controllers
 {
@@ -13,7 +10,7 @@ namespace AdIntegration.Api.Controllers
     [ApiController]
     [Route("api/[controller]")]
     public class UserController : ControllerBase
-    {        
+    {
         private readonly AdvertisementService _advertisementService;
         private readonly UserService _userService;
 
@@ -38,7 +35,7 @@ namespace AdIntegration.Api.Controllers
                 Description = dto.Description,
                 Price = dto.Price,
                 DatePosted = DateTime.UtcNow,
-                UserEntity = (SystemUser) dto.UserEntity
+                UserEntity = (SystemUser)dto.UserEntity
             };
 
             _advertisementService.CreateAdvertisement(createdAdvertisement);
@@ -69,18 +66,18 @@ namespace AdIntegration.Api.Controllers
             if (advertisement != null)
             {
                 return Ok(_advertisementService.DeleteAdvertisement(id));
-            } 
+            }
             else
             {
                 return BadRequest("Advertisement cannot be deleted!");
             }
-            
+
         }
 
         [HttpGet("users")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public IActionResult GetAllUsers() 
+        public IActionResult GetAllUsers()
         {
             var users = _userService.GetAllUsers();
             return Ok(users);
@@ -100,7 +97,7 @@ namespace AdIntegration.Api.Controllers
 
             return Ok(user);
         }
-        
+
 
     }
 }

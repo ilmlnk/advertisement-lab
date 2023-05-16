@@ -4,22 +4,21 @@ using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Repositories;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace AdIntegration.Api.Controllers
 {
     [Authorize(Roles = "Admin")]
     [ApiController]
     [Route("api/[controller]")]
-    public class AdminController : ControllerBase 
+    public class AdminController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
         private readonly AdvertisementRepository _advertisementRepository;
         private readonly UserRepository _userRepository;
-        public AdminController(ApplicationDbContext context, 
-            AdvertisementRepository advertisementRepository, 
+        public AdminController(ApplicationDbContext context,
+            AdvertisementRepository advertisementRepository,
             UserRepository userRepository)
-        { 
+        {
             _context = context;
             _advertisementRepository = advertisementRepository;
             _userRepository = userRepository;
@@ -121,7 +120,7 @@ namespace AdIntegration.Api.Controllers
                 Description = dto.Description,
                 Price = dto.Price,
                 DatePosted = DateTime.Now,
-                UserEntity = (SystemUser) dto.UserEntity
+                UserEntity = (SystemUser)dto.UserEntity
             };
 
             _advertisementRepository.UpdateAdvertisementById(id, editAd);

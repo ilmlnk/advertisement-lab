@@ -1,5 +1,4 @@
 ﻿using AdIntegration.Data;
-using AdIntegration.Data.Dto;
 using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Interfaces;
 
@@ -19,7 +18,7 @@ namespace AdIntegration.Repository.Repositories
             return advertisement;
         }
 
-        public Advertisement DeleteAdvertisement(int id) 
+        public Advertisement DeleteAdvertisement(int id)
         {
             var advertisement = _context.Advertisements.Find(id);
             if (advertisement != null)

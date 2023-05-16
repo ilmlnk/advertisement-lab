@@ -54,12 +54,12 @@ const AdvertisementList = () => {
             <Divider />
             <ModalBody>
               <Box>
-                <Heading>{t("Description")}</Heading>
+                <Heading>{t("description")}</Heading>
                 <Text>Lorem ipsum.</Text>
               </Box>
               <Divider />
               <Box>
-                <Heading>{t("Price")}</Heading>
+                <Heading>{t("price")}</Heading>
                 <Text>Price</Text>
               </Box>
               <Divider />

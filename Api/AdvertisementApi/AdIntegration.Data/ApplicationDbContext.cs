@@ -4,9 +4,6 @@ using AdIntegration.Data.Entities.Viber;
 using AdIntegration.Data.Entities.WhatsApp;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using NetTopologySuite.Geometries;
-using NetTopologySuite.IO;
-using Newtonsoft.Json;
 
 namespace AdIntegration.Data
 {
@@ -44,13 +41,14 @@ namespace AdIntegration.Data
         public DbSet<TelegramChannel> TelegramChannels { get; set; }
         public DbSet<ViberChannel> ViberChannels { get; set; }
         public DbSet<WhatsAppChannel> WhatsAppChannels { get; set; }
+        public DbSet<Post> Posts { get; set; }
 
         public DbSet<Advertisement> Advertisements { get; set; }
         public DbSet<AdminTask> Tasks { get; set; }
         public DbSet<Comment> Comments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {       
+        {
 
             modelBuilder.Entity<User>(entity =>
             {
@@ -111,7 +109,7 @@ namespace AdIntegration.Data
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
             });
-           
+
 
             base.OnModelCreating(modelBuilder);
         }

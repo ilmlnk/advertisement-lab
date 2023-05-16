@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNet.SignalR;
-using NetTopologySuite.Geometries;
+﻿using NetTopologySuite.Geometries;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Security.Policy;
 
 namespace AdIntegration.Data.Entities.Viber
 {

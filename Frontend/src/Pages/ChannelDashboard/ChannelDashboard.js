@@ -32,6 +32,7 @@ import {
   CardBody,
   Switch,
   useDisclosure,
+  Center,
 } from "@chakra-ui/react";
 
 import Footer from "../../Components/footer/Footer";
@@ -48,12 +49,12 @@ const ChannelDashboard = () => {
     {
       id: 1,
       name: "Exclusive",
-      icon: <FaStar />,
+      icon: <FaGem />,
     },
     {
       id: 2,
       name: "Trusted",
-      icon: <FaStar />,
+      icon: <FaShieldAlt />,
     },
     {
       id: 3,
@@ -141,8 +142,9 @@ const ChannelDashboard = () => {
       <Heading mt="2em" textAlign="center">
         Channel Board
       </Heading>
-      <Box display="flex" flexDirection="row" padding={75}>
-        <Box w="500px">
+      <Center>
+      <Box  display="flex" flexDirection="row" padding={75}>
+        <Box borderRadius="1em" p="2em" w="500px" backgroundColor="gray.700">
           <Heading>Filters</Heading>
           <InputGroup size="md" width={300} mt={6}>
             <Input pr="4.5rem" placeholder="Search..." />
@@ -316,7 +318,7 @@ const ChannelDashboard = () => {
             </Accordion>
           </Box>
         </Box>
-        <Box width="70%" padding="4" overflowX="auto" maxH="700px">
+        <Box width="65%" padding="4" overflowX="auto" maxH="700px">
           <List spacing={3}>
             {items.map((item) => (
               <ListItem key={item.id} display="flex" alignItems="center">
@@ -384,6 +386,7 @@ const ChannelDashboard = () => {
           </List>
         </Box>
       </Box>
+      </Center>
       <Footer />
     </>
   );

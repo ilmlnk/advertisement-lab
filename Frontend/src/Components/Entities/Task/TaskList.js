@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Heading, Grid } from "@chakra-ui/react";
+import { Box, Heading, Grid, Center, Button } from "@chakra-ui/react";
 import Advertisement from "../Advertisement/Advertisement";
 
 const TaskList = () => {
@@ -15,6 +15,11 @@ const TaskList = () => {
           ))}
         </Grid>
       </Box>
+      <Center>
+        <Button mt="2em" colorScheme="blue">
+          Show all tasks
+        </Button>
+      </Center>
     </Box>
   );
 };

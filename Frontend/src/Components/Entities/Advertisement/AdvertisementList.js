@@ -19,8 +19,7 @@ import { useTranslation } from "react-i18next";
 
 import translationUKR from "../../locales/ukr/translation.json";
 
-const AdvertisementList = () => {
-  const blocks = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const AdvertisementList = ({ ads }) => {
   const { t } = useTranslation();
   const [selectedAd, setSelectedAd] = useState(null);
 
@@ -35,16 +34,22 @@ const AdvertisementList = () => {
   return (
     <Box p="2em">
       <Box>
-        <Heading mb="1em">{t("advertisements")}</Heading>
-        <Grid templateColumns="repeat(3, 1fr)" gap={4}>
-          {blocks.map((block) => (
-            <Advertisement
-              key={block}
-              ad={block}
-              onOpenModal={handleOpenModal}
-            />
-          ))}
-        </Grid>
+        <Heading mb="1em">Advertisements</Heading>
+        {ads.length > 0 ? (
+          <Grid templateColumns="repeat(3, 1fr)" gap={4}>
+            {ads.slice(0, 6).map((block) => (
+              <Advertisement
+                key={block}
+                ad={block}
+                onOpenModal={handleOpenModal}
+              />
+            ))}
+          </Grid>
+        ) : (
+          <Box textAlign="center" mt="2em">
+            <Heading>No data</Heading>
+          </Box>
+        )}
       </Box>
       {selectedAd && (
         <Modal isOpen={selectedAd !== null} onClose={handleCloseModal}>
@@ -54,12 +59,12 @@ const AdvertisementList = () => {
             <Divider />
             <ModalBody>
               <Box>
-                <Heading>{t("description")}</Heading>
+                <Heading>Description</Heading>
                 <Text>Lorem ipsum.</Text>
               </Box>
               <Divider />
               <Box>
-                <Heading>{t("price")}</Heading>
+                <Heading>Price</Heading>
                 <Text>Price</Text>
               </Box>
               <Divider />
@@ -70,23 +75,31 @@ const AdvertisementList = () => {
             </ModalBody>
             <ModalFooter>
               <Button mr={2} colorScheme="yellow" onClick={handleCloseModal}>
-                {t("edit")}
+                Edit
               </Button>
               <Button mr={2} colorScheme="red" onClick={handleCloseModal}>
-                {t("delete")}
+                Delete
               </Button>
               <Button mr={2} colorScheme="blue" onClick={handleCloseModal}>
-                {t("close")}
+                Close
               </Button>
             </ModalFooter>
           </ModalContent>
         </Modal>
       )}
-      <Center>
-        <Button colorScheme="blue" mt={10}>
-          {t("show-more")}
-        </Button>
-      </Center>
+      {ads.length > 0 ? (
+        <Center>
+          <Button colorScheme="blue" mt={10}>
+            Show more
+          </Button>
+        </Center>
+      ) : (
+        <Center>
+          <Button colorScheme="blue" mt={10}>
+            Refresh
+          </Button>
+        </Center>
+      )}
     </Box>
   );
 };

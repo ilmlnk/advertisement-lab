@@ -1,10 +1,11 @@
 import React from "react";
+import { Box } from "@chakra-ui/react";
 
 const ReportUs = () => {
   return (
-    <div>
+    <Box>
 
-    </div>
+    </Box>
   );
 };
 

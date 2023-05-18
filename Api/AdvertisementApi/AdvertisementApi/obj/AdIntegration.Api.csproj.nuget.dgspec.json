@@ -154,6 +154,10 @@
               "target": "Package",
               "version": "[2.4.3, )"
             },
+            "Microsoft.AspNetCore.DataProtection.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.5, )"
@@ -318,12 +322,6 @@
             "projectReferences": {
               "C:\\Users\\illia.melnyk\\Documents\\Projects_Development\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Business\\AdIntegration.Business.csproj": {
                 "projectPath": "C:\\Users\\illia.melnyk\\Documents\\Projects_Development\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Business\\AdIntegration.Business.csproj"
-              },
-              "C:\\Users\\illia.melnyk\\Documents\\Projects_Development\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Data\\AdIntegration.Data.csproj": {
-                "projectPath": "C:\\Users\\illia.melnyk\\Documents\\Projects_Development\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Data\\AdIntegration.Data.csproj"
-              },
-              "C:\\Users\\illia.melnyk\\Documents\\Projects_Development\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Repository\\AdIntegration.Repository.csproj": {
-                "projectPath": "C:\\Users\\illia.melnyk\\Documents\\Projects_Development\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Repository\\AdIntegration.Repository.csproj"
               }
             }
           }
@@ -387,6 +385,10 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[7.0.5, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "NetTopologySuite": {
               "target": "Package",

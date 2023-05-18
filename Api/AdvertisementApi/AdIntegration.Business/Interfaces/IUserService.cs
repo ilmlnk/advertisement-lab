@@ -4,10 +4,11 @@ namespace AdIntegration.Business.Interfaces
 {
     public interface IUserService
     {
-        public User CreateUser(User user);
-        public User UpdateUser(int id, User user);
-        public int DeleteUserById(int id);
-        public IEnumerable<User> GetAllUsers();
-        public User GetUserById(int id);
+        public SystemUser CreateUser(SystemUser user);
+        public SystemUser UpdateUser(int id, SystemUser user);
+        public SystemUser DeleteUserById(int id);
+        public IEnumerable<SystemUser> GetAllUsers();
+        public SystemUser GetUserById(int id);
+        public IEnumerable<SystemUser> GetOnlineUsers();
     }
 }

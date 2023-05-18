@@ -1,7 +1,6 @@
-﻿namespace AdIntegration.Business.Exceptions
+﻿namespace AdIntegration.Business.Exceptions;
+
+public interface IAppException
 {
-    public interface IAppException
-    {
-        public int GetStatusCode();
-    }
+    public int GetStatusCode();
 }

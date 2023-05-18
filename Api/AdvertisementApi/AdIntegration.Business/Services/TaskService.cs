@@ -1,33 +1,45 @@
 ﻿using AdIntegration.Business.Interfaces;
 using AdIntegration.Data.Entities;
+using AdIntegration.Repository.Repositories;
 
-namespace AdIntegration.Business.Services
+namespace AdIntegration.Business.Services;
+
+public class TaskService : ITaskService
 {
-    public class TaskService : ITaskService
+    private readonly TaskRepository _taskRepository;
+
+    public TaskService(TaskRepository taskRepository)
     {
-        public AdminTask CreateAdminTask(AdminTask task)
-        {
-            throw new NotImplementedException();
-        }
+        _taskRepository = taskRepository;
+    }
 
-        public AdminTask DeleteAdminTask(int id)
-        {
-            throw new NotImplementedException();
-        }
+    public AdminTask CreateAdminTask(AdminTask task)
+    {
+        var adminTask = _taskRepository.CreateTask(task);
+        return adminTask;
+    }
 
-        public AdminTask GetAdminTaskById(int id)
-        {
-            throw new NotImplementedException();
-        }
+    public AdminTask DeleteAdminTask(int id)
+    {
+        var deleteTask = _taskRepository.DeleteTaskById(id);
+        return deleteTask;
+    }
 
-        public IEnumerable<AdminTask> GetAdminTasks()
-        {
-            throw new NotImplementedException();
-        }
+    public AdminTask GetAdminTaskById(int id)
+    {
+        var adminTask = _taskRepository.GetTaskById(id);
+        return adminTask;
+    }
 
-        public AdminTask UpdateAdminTask(AdminTask task)
-        {
-            throw new NotImplementedException();
-        }
+    public IEnumerable<AdminTask> GetAdminTasks()
+    {
+        var tasks = _taskRepository.GetAllTasks();
+        return tasks;
+    }
+
+    public object UpdateAdminTaskById(int id, AdminTask task)
+    {
+        var updateTask = _taskRepository.UpdateTask(id, task);
+        return updateTask;
     }
 }

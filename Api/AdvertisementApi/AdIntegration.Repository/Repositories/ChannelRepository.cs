@@ -1,146 +1,124 @@
-﻿using AdIntegration.Data;
+﻿using AdIntegration.Data.DatabaseContext;
 using AdIntegration.Data.Entities;
 using AdIntegration.Data.Entities.Telegram;
 using AdIntegration.Data.Entities.Viber;
 using AdIntegration.Data.Entities.WhatsApp;
 using AdIntegration.Repository.Interfaces;
 
-namespace AdIntegration.Repository.Repositories
+namespace AdIntegration.Repository.Repositories;
+
+public class ChannelRepository : IChannelRepository
 {
-    public class ChannelRepository : IChannelRepository
+    private readonly ApplicationDbContext _context;
+
+    /* Create */
+    public Channel CreateChannel(Channel channel)
     {
-        private readonly ApplicationDbContext _context;
+        _context.Channels.Add(channel);
+        _context.SaveChanges();
+        return channel;
+    }
 
-        /* Create */
-        public Channel CreateChannel(Channel channel)
+    /* Get (Receive) */
+
+    public Channel GetChannelById(int id)
+    {
+        var foundChannel = _context.Channels.Find(id, false);
+
+        if (foundChannel == null)
         {
-            _context.SocialChannels.Add(channel);
-            _context.SaveChanges();
-            return channel;
+            throw new InvalidOperationException();
         }
 
-        /* Get (Receive) */
+        _context.Channels.Remove(foundChannel);
+        _context.SaveChanges();
 
-        public Channel GetChannelById(int id)
+        return foundChannel;
+    }
+
+    public IEnumerable<Channel> GetChannels()
+    {
+        var channels = _context.Channels.ToList();
+
+        if (channels == null)
         {
-            var foundChannel = _context.SocialChannels.Find(id, false);
-
-            if (foundChannel == null)
-            {
-                throw new InvalidOperationException();
-            }
-
-            _context.SocialChannels.Remove(foundChannel);
-            _context.SaveChanges();
-
-            return foundChannel;
+            return Enumerable.Empty<Channel>();
         }
 
-        public IEnumerable<Channel> GetChannels()
+        return channels;
+    }
+
+    /* Update */
+    public object UpdateChannelById(int id, Channel channel)
+    {
+        var foundChannel = _context.Channels.Find(id);
+
+        if (foundChannel == null)
         {
-            var channels = _context.SocialChannels.ToList();
-
-            if (channels == null)
-            {
-                return Enumerable.Empty<Channel>();
-            }
-
-            return channels;
+            throw new InvalidOperationException();
         }
 
-        /* Update */
-        public object UpdateChannelById(int id, Channel channel)
+        _context.Channels.Update(channel);
+        _context.SaveChanges();
+
+        var response = new
         {
-            var foundChannel = _context.SocialChannels.Find(id);
+            Old = foundChannel,
+            New = channel
+        };
 
-            if (foundChannel == null)
-            {
-                throw new InvalidOperationException();
-            }
+        return response;
+    }
 
-            _context.SocialChannels.Update(channel);
-            _context.SaveChanges();
+    /* Delete */
+    public Channel DeleteChannelById(int id)
+    {
+        var foundChannel = _context.Channels.Find(id, false);
 
-            var response = new
-            {
-                Old = foundChannel,
-                New = channel
-            };
-
-            return response;
+        if (foundChannel == null)
+        {
+            throw new InvalidOperationException();
         }
 
-        /* Delete */
-        public Channel DeleteChannelById(int id)
-        {
-            var foundChannel = _context.SocialChannels.Find(id, false);
+        _context.Channels.Remove(foundChannel);
+        _context.SaveChanges();
 
-            if (foundChannel == null)
-            {
-                throw new InvalidOperationException();
-            }
+        return foundChannel;
+    }
 
-            _context.SocialChannels.Remove(foundChannel);
-            _context.SaveChanges();
+    public Channel GetChannelByLink(string channelType, string link)
+    {
+        return null;
+    }
 
-            return foundChannel;
-        }
+    public IEnumerable<Channel> GetChannelsByCategory(string category)
+    {
+        throw new NotImplementedException();
+    }
 
-        public Channel GetChannelByLink(string channelType, string link)
-        {
-            /* ChannelType[] channelTypes = { 
-                ChannelType.Telegram, 
-                ChannelType.WhatsApp, 
-                ChannelType.Viber 
-            };
+    public Channel GetChannelByEmail(string email)
+    {
+        throw new NotImplementedException();
+    }
 
+    public IEnumerable<TelegramChannel> GetTelegramChannels()
+    {
+        throw new NotImplementedException();
+    }
 
+    public IEnumerable<ViberChannel> GetVibersChannels()
+    {
+        throw new NotImplementedException();
+    }
 
-            Channel channel = null;
+    public IEnumerable<WhatsAppChannel> GetWhatsAppChannels()
+    {
+        throw new NotImplementedException();
+    }
 
-
-            if (string.IsNullOrEmpty(channelType))
-            {
-                return channel;
-            }
-
-            switch(channelType.ToLower())
-            {
-                case :
-                    channel = _context.TelegramChannels.FirstOrDefault(x => x.ChannelType == channelType);
-            } */
-            return null;
-        }
-
-        public IEnumerable<Channel> GetChannelsByCategory(string category)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Channel GetChannelByEmail(string email)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<TelegramChannel> GetTelegramChannels()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<ViberChannel> GetVibersChannels()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<WhatsAppChannel> GetWhatsAppChannels()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Channel GetChannelByName(string name)
-        {
-            throw new NotImplementedException();
-        }
+    public Channel GetChannelByName(string name)
+    {
+        throw new NotImplementedException();
     }
 }
 

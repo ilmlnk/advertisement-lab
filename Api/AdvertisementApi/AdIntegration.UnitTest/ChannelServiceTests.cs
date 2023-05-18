@@ -1,6 +1,5 @@
-﻿namespace AdIntegration.UnitTest
+﻿namespace AdIntegration.UnitTest;
+
+internal class ChannelServiceTests
 {
-    internal class ChannelServiceTests
-    {
-    }
 }

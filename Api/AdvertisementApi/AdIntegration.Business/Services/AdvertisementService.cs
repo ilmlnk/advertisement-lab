@@ -2,76 +2,75 @@
 using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Interfaces;
 
-namespace AdIntegration.Business.Services
+namespace AdIntegration.Business.Services;
+
+public class AdvertisementService : IAdvertisementService
 {
-    public class AdvertisementService : IAdvertisementService
+    private readonly IAdvertisementRepository _advertisementRepository;
+
+    public AdvertisementService(IAdvertisementRepository advertisementRepository)
     {
-        private readonly IAdvertisementRepository _advertisementRepository;
+        _advertisementRepository = advertisementRepository;
+    }
 
-        public AdvertisementService(IAdvertisementRepository advertisementRepository)
+    /* Create */
+    public Advertisement CreateAdvertisement(Advertisement advertisement)
+    {
+        var createdAdvertisement = _advertisementRepository.CreateAdvertisement(advertisement);
+
+        if (createdAdvertisement == null)
         {
-            _advertisementRepository = advertisementRepository;
+            throw new InvalidOperationException();
         }
 
-        /* Create */
-        public Advertisement CreateAdvertisement(Advertisement advertisement)
+        return createdAdvertisement;
+    }
+
+    public Advertisement DeleteAdvertisement(int id)
+    {
+        var deletedAdvertisement = _advertisementRepository.DeleteAdvertisement(id);
+
+        if (deletedAdvertisement == null)
         {
-            var createdAdvertisement = _advertisementRepository.CreateAdvertisement(advertisement);
-
-            if (createdAdvertisement == null)
-            {
-                throw new InvalidOperationException();
-            }
-
-            return createdAdvertisement;
+            throw new InvalidOperationException();
         }
 
-        public Advertisement DeleteAdvertisement(int id)
+        return deletedAdvertisement;
+    }
+
+    public Advertisement GetAdvertisementById(int id)
+    {
+        var adverisement = _advertisementRepository.GetAdvertisementById(id);
+
+        if (adverisement == null)
         {
-            var deletedAdvertisement = _advertisementRepository.DeleteAdvertisement(id);
-
-            if (deletedAdvertisement == null)
-            {
-                throw new InvalidOperationException();
-            }
-
-            return deletedAdvertisement;
+            throw new InvalidOperationException();
         }
 
-        public Advertisement GetAdvertisementById(int id)
+        return adverisement;
+    }
+
+    public IEnumerable<Advertisement> GetAllAdvertisements()
+    {
+        var advertisements = _advertisementRepository.GetAllAdvertisements();
+
+        if (advertisements == null)
         {
-            var adverisement = _advertisementRepository.GetAdvertisementById(id);
-
-            if (adverisement == null)
-            {
-                throw new InvalidOperationException();
-            }
-
-            return adverisement;
+            throw new InvalidOperationException();
         }
 
-        public IEnumerable<Advertisement> GetAllAdvertisements()
+        return advertisements;
+    }
+
+    public Advertisement UpdateAdvertisementById(int id, Advertisement advertisement)
+    {
+        var updatedAdvertisement = _advertisementRepository.UpdateAdvertisementById(id, advertisement);
+
+        if (updatedAdvertisement == null)
         {
-            var advertisements = _advertisementRepository.GetAllAdvertisements();
-
-            if (advertisements == null)
-            {
-                throw new InvalidOperationException();
-            }
-
-            return advertisements;
+            throw new InvalidOperationException();
         }
 
-        public Advertisement UpdateAdvertisementById(int id, Advertisement advertisement)
-        {
-            var updatedAdvertisement = _advertisementRepository.UpdateAdvertisementById(id, advertisement);
-
-            if (updatedAdvertisement == null)
-            {
-                throw new InvalidOperationException();
-            }
-
-            return advertisement;
-        }
+        return advertisement;
     }
 }

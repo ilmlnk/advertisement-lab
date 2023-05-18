@@ -5,7 +5,7 @@ using AdIntegration.Data.Entities.WhatsApp;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace AdIntegration.Data
+namespace AdIntegration.Data.DatabaseContext
 {
     public class ApplicationDbContext : DbContext
     {
@@ -31,21 +31,44 @@ namespace AdIntegration.Data
             }
         }
 
-        public DbSet<SystemUser> SystemUsers { get; set; }
+        /*
+         * - Users (in general)
+         * - SystemUsers
+         * - TelegramUsers
+         * - ViberUsers
+         * - WhatsAppUsers
+         * 
+         * - Channels (in general)
+         * - TelegramChannels
+         * - WhatsAppChannels
+         * - ViberChannels
+         * 
+         * - ActionLogs
+         * - AdminTasks
+         * - Advertisements
+         * - Posts
+         * - Comments
+         * - Tags
+         * 
+         */
 
-        /* Users */
         public DbSet<User> Users { get; set; }
+        public DbSet<SystemUser> SystemUsers { get; set; }
+        public DbSet<TelegramUser> TelegramUsers { get; set; }
+        public DbSet<ViberUser> ViberUsers { get; set; }
+        public DbSet<WhatsAppUser> WhatsAppUsers { get; set; }
 
-        /* Channels */
-        public DbSet<Channel> SocialChannels { get; set; }
+        public DbSet<Channel> Channels { get; set; }
         public DbSet<TelegramChannel> TelegramChannels { get; set; }
-        public DbSet<ViberChannel> ViberChannels { get; set; }
         public DbSet<WhatsAppChannel> WhatsAppChannels { get; set; }
-        public DbSet<Post> Posts { get; set; }
+        public DbSet<ViberChannel> ViberChannels { get; set; }
 
+        public DbSet<ActionLog> ActionLogs { get; set; }
+        public DbSet<AdminTask> AdminTasks { get; set; }
         public DbSet<Advertisement> Advertisements { get; set; }
-        public DbSet<AdminTask> Tasks { get; set; }
+        public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Tag> Tags { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

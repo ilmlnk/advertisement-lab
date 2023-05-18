@@ -3,47 +3,46 @@ using Microsoft.Data.SqlClient;
 using System.Web.Http;
 using HttpGetAttribute = Microsoft.AspNetCore.Mvc.HttpGetAttribute;
 
-namespace AdIntegration.Api.Controllers
+namespace AdIntegration.Api.Controllers;
+
+[ApiController]
+[Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
+public class HealthCheckController : ControllerBase
 {
-    [ApiController]
-    [Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
-    public class HealthCheckController : ControllerBase
+    private readonly IConfiguration _configuration;
+
+    public HealthCheckController(IConfiguration configuration)
     {
-        private readonly IConfiguration _configuration;
+        _configuration = configuration;
+    }
 
-        public HealthCheckController(IConfiguration configuration)
+    [HttpGet("ping")]
+    public IActionResult Get()
+    {
+        bool isServerAvailable = CheckServerAvailability();
+
+        if (isServerAvailable)
         {
-            _configuration = configuration;
+            return StatusCode(StatusCodes.Status200OK);
         }
-
-        [HttpGet("ping")]
-        public IActionResult Get()
+        else
         {
-            bool isServerAvailable = CheckServerAvailability();
-
-            if (isServerAvailable)
-            {
-                return StatusCode(StatusCodes.Status200OK);
-            }
-            else
-            {
-                return StatusCode(StatusCodes.Status503ServiceUnavailable);
-            }
+            return StatusCode(StatusCodes.Status503ServiceUnavailable);
         }
+    }
 
-        private bool CheckServerAvailability()
+    private bool CheckServerAvailability()
+    {
+        using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("AdvertisementDb")))
         {
-            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("AdvertisementDb")))
+            try
             {
-                try
-                {
-                    connection.Open();
-                    return true;
-                }
-                catch (SqlException)
-                {
-                    return false;
-                }
+                connection.Open();
+                return true;
+            }
+            catch (SqlException)
+            {
+                return false;
             }
         }
     }

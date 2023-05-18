@@ -46,20 +46,24 @@ import {
   FiGlobe,
 } from "react-icons/fi";
 
+import { BiUser } from "react-icons/bi";
+
 import { IconType } from "react-icons";
 import { ReactText } from "react";
 
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import Footer from "../footer/Footer";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const LinkItems = [
-  { name: "Home", icon: FiHome },
-  { name: "Analytics", icon: FiTrendingUp },
-  { name: "Manage Users", icon: FiUsers },
-  { name: "Manage Budget", icon: FiDollarSign },
-  { name: "Compliances", icon: FiUserCheck },
-  { name: "Command Chat", icon: FiMessageCircle },
-  { name: "Customer Support", icon: FiSmile },
+  { name: "Home", icon: FiHome, navigation: "main" },
+  { name: "Admin", icon: BiUser, navigation: "admin" },
+  { name: "Analytics", icon: FiTrendingUp, navigation: "analytics" },
+  { name: "Manage Users", icon: FiUsers, navigation: "user-management" },
+  { name: "Manage Budget", icon: FiDollarSign, navigation: "budget-management" },
+  { name: "Compliances", icon: FiUserCheck, navigation: "compliance-management" },
+  { name: "Command Chat", icon: FiMessageCircle, navigation: "command-chat" },
+  { name: "Customer Support", icon: FiSmile, navigation: "customer-support" },
 ];
 
 const Notifications = [
@@ -118,6 +122,7 @@ export default function SidebarWithHeader({ children }) {
 }
 
 const SidebarContent = ({ onClose, ...rest }) => {
+  const navigate = useNavigate();
   return (
     <Box
       bg={useColorModeValue("white", "gray.900")}
@@ -135,7 +140,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
+        <NavItem onClick={() => navigate("/" + link.navigation)} key={link.name} icon={link.icon}>
           {link.name}
         </NavItem>
       ))}
@@ -144,9 +149,9 @@ const SidebarContent = ({ onClose, ...rest }) => {
 };
 
 const NavItem = ({ icon, children, ...rest }) => {
+  const navigate = useNavigate();
   return (
     <Link
-      href="#"
       style={{ textDecoration: "none" }}
       _focus={{ boxShadow: "none" }}
     >

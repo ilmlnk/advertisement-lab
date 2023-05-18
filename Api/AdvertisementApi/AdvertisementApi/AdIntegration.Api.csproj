@@ -21,6 +21,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
     <PackageReference Include="NetTopologySuite" Version="2.5.0" />
     <PackageReference Include="NetTopologySuite.IO" Version="1.14.0.1" />
     <PackageReference Include="NetTopologySuite.IO.GeoJSON" Version="3.0.0" />
@@ -31,8 +32,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AdIntegration.Business\AdIntegration.Business.csproj" />
-    <ProjectReference Include="..\AdIntegration.Data\AdIntegration.Data.csproj" />
-    <ProjectReference Include="..\AdIntegration.Repository\AdIntegration.Repository.csproj" />
   </ItemGroup>
 
   <ItemGroup>

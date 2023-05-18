@@ -14,8 +14,7 @@ import {
   Divider,
 } from "@chakra-ui/react";
 
-const OnlineUserList = () => {
-  const blocks = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const OnlineUserList = ({ onlineUsers }) => {
   const [selectedUser, setSelectedUser] = useState(null);
 
   const handleOpenModal = (user) => {
@@ -30,18 +29,35 @@ const OnlineUserList = () => {
     <Box p="2em">
       <Box>
         <Heading mb="1em">Online Users</Heading>
-        <Grid templateColumns="repeat(3, 1fr)" gap={4}>
-          {blocks.map((block) => (
-            <User
-              key={block}
-              user={selectedUser}
-              onOpenModal={handleOpenModal}
-            />
-          ))}
-        </Grid>
-        <Center>
-          <Button mt="2em" colorScheme="blue">Show all users</Button>
-        </Center>
+        {onlineUsers.length > 0 ? (
+          <Grid templateColumns="repeat(3, 1fr)" gap={4}>
+            {onlineUsers.slice(0, 9).map((block) => (
+              <User
+                key={block}
+                user={selectedUser}
+                onOpenModal={handleOpenModal}
+              />
+            ))}
+          </Grid>
+        ) : (
+          <Box textAlign="center" mt="2em">
+            <Heading>No data</Heading>
+          </Box>
+        )}
+
+        {onlineUsers.length > 0 ? (
+          <Center>
+            <Button mt="2em" colorScheme="blue">
+              Show all users
+            </Button>
+          </Center>
+        ) : (
+          <Center>
+            <Button mt="2em" colorScheme="blue">
+              Refresh
+            </Button>
+          </Center>
+        )}
       </Box>
 
       {selectedUser && (

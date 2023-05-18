@@ -1,75 +1,74 @@
-﻿using AdIntegration.Data;
+﻿using AdIntegration.Data.DatabaseContext;
 using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Interfaces;
 
 
-namespace AdIntegration.Repository.Repositories
+namespace AdIntegration.Repository.Repositories;
+
+public class PostRepository : IPostRepository
 {
-    public class PostRepository : IPostRepository
+    private readonly ApplicationDbContext _context;
+
+    public PostRepository(ApplicationDbContext context)
     {
-        private readonly ApplicationDbContext _context;
+        _context = context;
+    }
 
-        public PostRepository(ApplicationDbContext context)
+    public Post CreatePost(Post post)
+    {
+        _context.Posts.Add(post);
+        _context.SaveChanges();
+        return post;
+    }
+
+    public Post DeletePostById(int id)
+    {
+        var foundPost = GetPostById(id);
+
+        if (foundPost == null)
         {
-            _context = context;
+            throw new InvalidOperationException();
         }
 
-        public Post CreatePost(Post post)
+        _context.Posts.Remove(foundPost);
+        return foundPost;
+
+    }
+
+    public Post GetPostById(int id)
+    {
+        var foundPost = _context.Posts.Find(id);
+
+        if (foundPost == null)
         {
-            _context.Posts.Add(post);
-            _context.SaveChanges();
-            return post;
+            throw new InvalidOperationException();
         }
 
-        public Post DeletePostById(int id)
+        return foundPost;
+    }
+
+    public List<Post> GetPosts()
+    {
+        var posts = _context.Posts.ToList();
+        return posts;
+    }
+
+    public object UpdatePostById(int id, Post post)
+    {
+        var foundPost = GetPostById(id);
+
+        if (foundPost == null)
         {
-            var foundPost = GetPostById(id);
-
-            if (foundPost == null)
-            {
-                throw new InvalidOperationException();
-            }
-
-            _context.Posts.Remove(foundPost);
-            return foundPost;
-
+            throw new InvalidOperationException();
         }
 
-        public Post GetPostById(int id)
+        _context.Posts.Update(post);
+        var response = new
         {
-            var foundPost = _context.Posts.Find(id);
+            Old = foundPost,
+            New = post
+        };
 
-            if (foundPost == null)
-            {
-                throw new InvalidOperationException();
-            }
-
-            return foundPost;
-        }
-
-        public List<Post> GetPosts()
-        {
-            var posts = _context.Posts.ToList();
-            return posts;
-        }
-
-        public object UpdatePostById(int id, Post post)
-        {
-            var foundPost = GetPostById(id);
-
-            if (foundPost == null)
-            {
-                throw new InvalidOperationException();
-            }
-
-            _context.Posts.Update(post);
-            var response = new
-            {
-                Old = foundPost,
-                New = post
-            };
-
-            return response;
-        }
+        return response;
     }
 }

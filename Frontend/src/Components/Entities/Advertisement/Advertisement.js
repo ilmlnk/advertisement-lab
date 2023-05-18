@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // Chakra imports
 import {
   Avatar,
@@ -15,12 +15,26 @@ import {
 import { MdTimer, MdVideoLibrary } from "react-icons/md";
 import { IoEllipsisHorizontalSharp } from "react-icons/io5";
 
-const Advertisement = ({ ad, onOpenModal }) => {
-  let boxBg = useColorModeValue("white !important", "#111c44 !important");
-  let secondaryBg = useColorModeValue("gray.50", "whiteAlpha.100");
-  let mainText = useColorModeValue("gray.800", "white");
-  let iconBox = useColorModeValue("gray.100", "whiteAlpha.200");
-  let iconColor = useColorModeValue("brand.200", "white");
+const Advertisement = ({ ad, onOpenModal }, props) => {
+  {
+    /* Props of Advertisement entity */
+  }
+  const name = useState("");
+  const topic = useState("");
+  const description = useState("");
+  const price = useState(0.0);
+  const datePosted = useState(null);
+  const userEntity = useState(null);
+  const channelType = useState(null);
+
+  {
+    /* Color mode values */
+  }
+  const boxBg = useColorModeValue("white !important", "#111c44 !important");
+  const secondaryBg = useColorModeValue("gray.50", "whiteAlpha.100");
+  const mainText = useColorModeValue("gray.800", "white");
+  const iconBox = useColorModeValue("gray.100", "whiteAlpha.200");
+  const iconColor = useColorModeValue("brand.200", "white");
 
   const handleClick = () => {
     onOpenModal(ad);
@@ -58,24 +72,12 @@ const Advertisement = ({ ad, onOpenModal }) => {
         </Flex>
         <Box>
           <Text fontWeight="600" color={mainText} w="100%" fontSize="2xl">
-            Venus Product
+            {props.name}
           </Text>
-          <AvatarGroup
-            size="sm"
-            max={4}
-            color={iconColor}
-            fontSize="9px"
-            fontWeight="700"
-          >
+          <Box>
             <Avatar src="https://i.ibb.co/CmxNdhQ/avatar1.png" />
-            <Avatar src="https://i.ibb.co/cFWc59B/avatar2.png" />
-            <Avatar src="https://i.ibb.co/vLQJVFy/avatar3.png" />
-            <Avatar src="https://i.ibb.co/8mcrvQk/avatar4.png" />
-            <Avatar src="https://i.ibb.co/CmxNdhQ/avatar1.png" />
-            <Avatar src="https://i.ibb.co/cFWc59B/avatar2.png" />
-            <Avatar src="https://i.ibb.co/vLQJVFy/avatar3.png" />
-            <Avatar src="https://i.ibb.co/8mcrvQk/avatar4.png" />
-          </AvatarGroup>
+            <Text>{props.userEntity}</Text>
+          </Box>
         </Box>
       </Box>
       <Flex

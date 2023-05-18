@@ -38,6 +38,7 @@ import ForgotPasswordPage from "./Pages/LogIn/ForgotPasswordPage";
 import ServerUnavailablePage from "./Pages/ErrorPages/ServerUnavailable";
 import ChannelDashboard from "./Pages/ChannelDashboard/ChannelDashboard";
 import RequireCredentialsPage from "./Pages/RequireCredentials/RequireCredentialsPage";
+import PublicationsPage from "./Pages/Publications/PublicationsPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -139,6 +140,8 @@ const router = createBrowserRouter(
 
       <Route path="/join-team" element={<JoinOurTeam />} />
       <Route path="/advertisement/edit/:id" element={<RequireCredentialsPage />} />
+
+      <Route path="/publications" element={<PublicationsPage/>}/>
     </>
   )
 );

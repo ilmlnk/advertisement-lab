@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardHeader,
@@ -12,21 +12,45 @@ import {
   Heading,
   Image,
   Button,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverBody,
+  HStack,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  Textarea,
+  ModalFooter
 } from "@chakra-ui/react";
 
-import { BsThreeDotsVertical } from 'react-bootstrap';
-import { BiLike, BiChat, BiShare } from 'react-icons/bi';
+import { BiLike, BiChat, BiShare } from "react-icons/bi";
 
-const Post = () => {
+const Post = ({ publication }) => {
+  const [isCommentModalOpen, setCommentModalOpen] = useState(false);
+
+  const handleCommentButtonClick = () => {
+    setCommentModalOpen(true);
+  };
+
+  const handleCloseCommentModal = () => {
+    setCommentModalOpen(false);
+  };
+
   return (
-    <Card maxW="md">
+    <Card maxW="xl" mt="3em">
       <CardHeader>
         <Flex spacing="4">
           <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
             <Avatar name="Segun Adebayo" src="https://bit.ly/sage-adebayo" />
 
             <Box>
-              <Heading size="sm">Segun Adebayo</Heading>
+              <Heading size="sm">{}</Heading>
               <Text>Creator, Chakra UI</Text>
             </Box>
           </Flex>
@@ -34,8 +58,11 @@ const Post = () => {
             variant="ghost"
             colorScheme="gray"
             aria-label="See menu"
-            icon={<BsThreeDotsVertical />}
           />
+          {/*
+          import { BsThreeDotsVertical } from "react-bootstrap";
+          icon={<BsThreeDotsVertical />} 
+          */}
         </Flex>
       </CardHeader>
       <CardBody>
@@ -60,16 +87,56 @@ const Post = () => {
           },
         }}
       >
-        <Button flex="1" variant="ghost" leftIcon={<BiLike />}>
-          Like
-        </Button>
-        <Button flex="1" variant="ghost" leftIcon={<BiChat />}>
+        <Popover>
+          <PopoverTrigger>
+            <Button flex="1" variant="ghost" leftIcon={<BiLike />}>
+              Like
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent p="1em">
+            <PopoverArrow />
+            <PopoverBody>
+              <HStack spacing="1em">
+                <Button variant="ghost" leftIcon={<BiLike />} size="sm">
+                  Like Option 1
+                </Button>
+                <Button variant="ghost" leftIcon={<BiLike />} size="sm">
+                  Like Option 2
+                </Button>
+                <Button variant="ghost" leftIcon={<BiLike />} size="sm">
+                  Like Option 3
+                </Button>
+                {/* Add more buttons for different like options */}
+              </HStack>
+            </PopoverBody>
+          </PopoverContent>
+        </Popover>
+        <Button flex="1" variant="ghost" onClick={handleCommentButtonClick} leftIcon={<BiChat />}>
           Comment
         </Button>
         <Button flex="1" variant="ghost" leftIcon={<BiShare />}>
           Share
         </Button>
       </CardFooter>
+
+      <Modal isOpen={isCommentModalOpen} onClose={handleCloseCommentModal}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Add a Comment</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Textarea placeholder="Write your comment..." />
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3}>
+              Post
+            </Button>
+            <Button variant="ghost" onClick={handleCloseCommentModal}>
+              Cancel
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Card>
   );
 };

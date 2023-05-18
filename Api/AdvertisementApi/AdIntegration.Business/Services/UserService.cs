@@ -2,43 +2,48 @@
 using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Repositories;
 
-namespace AdIntegration.Business.Services
+namespace AdIntegration.Business.Services;
+
+public class UserService : IUserService
 {
-    public class UserService : IUserService
+    private readonly UserRepository _userRepository;
+    public UserService(UserRepository userRepository)
     {
-        private readonly UserRepository _userRepository;
-        public UserService(UserRepository userRepository)
-        {
-            _userRepository = userRepository;
-        }
-        public User GetUserById(int id)
-        {
-            var user = _userRepository.GetUserById(id);
-            if (user == null)
-            {
-                throw new InvalidOperationException();
-            }
-            return user;
-        }
+        _userRepository = userRepository;
+    }
+    public User GetUserById(int id)
+    {
+        var user = _userRepository.GetUserById(id);
+        return user;
+    }
 
-        public IEnumerable<User> GetAllUsers()
-        {
-            return _userRepository.GetAllUsers();
-        }
+    public IEnumerable<SystemUser> GetAllUsers()
+    {
+        var users = _userRepository.GetAllUsers();
+        return (IEnumerable<SystemUser>)users;
+    }
 
-        public User CreateUser(User user)
-        {
-            throw new NotImplementedException();
-        }
+    public SystemUser CreateUser(SystemUser user)
+    {
+        var createUser = _userRepository.AddUser(user);
+        return (SystemUser)createUser;
+    }
 
-        public User UpdateUser(int id, User user)
-        {
-            throw new NotImplementedException();
-        }
+    public SystemUser UpdateUser(int id, SystemUser user)
+    {
+        var updateUser = _userRepository.UpdateUser(id, user);
+        return (SystemUser)updateUser;
+    }
 
-        public int DeleteUserById(int id)
-        {
-            throw new NotImplementedException();
-        }
+    public SystemUser DeleteUserById(int id)
+    {
+        var deleteUser = _userRepository.DeleteUser(id);
+        return (SystemUser)deleteUser;
+    }
+
+    public IEnumerable<SystemUser> GetOnlineUsers()
+    {
+        var onlineUsers = _userRepository.GetOnlineUsers();
+        return onlineUsers;
     }
 }

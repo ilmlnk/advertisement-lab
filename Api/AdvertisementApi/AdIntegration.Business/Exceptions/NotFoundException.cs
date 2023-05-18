@@ -1,16 +1,15 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace AdIntegration.Business.Exceptions
-{
-    public class NotFoundException : Exception, IAppException
-    {
-        public NotFoundException(string message) : base(message)
-        {
-        }
+namespace AdIntegration.Business.Exceptions;
 
-        public int GetStatusCode()
-        {
-            return StatusCodes.Status404NotFound;
-        }
+public class NotFoundException : Exception, IAppException
+{
+    public NotFoundException(string message) : base(message)
+    {
+    }
+
+    public int GetStatusCode()
+    {
+        return StatusCodes.Status404NotFound;
     }
 }

@@ -1,8 +1,7 @@
-﻿namespace AdIntegration.Data.Dto.UserDto
+﻿namespace AdIntegration.Data.Dto.UserDto;
+
+public record LoginUserDto
 {
-    public record LoginUserDto
-    {
-        public string UserName;
-        public string Password;
-    }
+    public string UserName;
+    public string Password;
 }

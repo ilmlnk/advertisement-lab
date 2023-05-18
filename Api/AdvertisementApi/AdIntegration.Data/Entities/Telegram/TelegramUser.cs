@@ -1,15 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AdIntegration.Data.Entities.Telegram
+namespace AdIntegration.Data.Entities.Telegram;
+
+[Table(nameof(TelegramUser))]
+public class TelegramUser : User
 {
-    [Table(nameof(TelegramUser))]
-    public class TelegramUser : User
-    {
-        public override string? UserName { get; set; }
-        public byte[]? Photo { get; set; }
-        [Required]
-        [DataType(DataType.PhoneNumber)]
-        public string PhoneNumber { get; set; }
-    }
+    public override string? UserName { get; set; }
+    public byte[]? Photo { get; set; }
+    [Required]
+    [DataType(DataType.PhoneNumber)]
+    public string PhoneNumber { get; set; }
 }

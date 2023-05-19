@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AdIntegration.Data.DatabaseContext;
 
-public class DataProtectionKeysContext : DbContext, IDataProtectionKeyContext
+public class DataProtectionKeysContext
 {
 
 }

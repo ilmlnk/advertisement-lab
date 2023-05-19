@@ -49,10 +49,11 @@ namespace AdIntegration.Business.Services
             try
             {
                 userIp = _contextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
+                return userIp;
             }
             catch (Exception ex)
             {
-                
+                throw;
             }
         }
 

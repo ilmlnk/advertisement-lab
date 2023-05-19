@@ -54,7 +54,7 @@ public class UserAccountController : ControllerBase
         }
     }
 
-    [AllowAnonymous]
+    /*[AllowAnonymous]
     [HttpPost("login")]
     public IActionResult Login(LoginUserDto dto)
     {
@@ -65,7 +65,7 @@ public class UserAccountController : ControllerBase
                 var jwtToken = 
             }
         }
-    }
+    }*/
 
 
     /*public IActionResult Login(LoginUserDto dto)

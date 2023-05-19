@@ -31,7 +31,7 @@ public class ActionLogService : IActionLogService
 
     public ActionLog GetLogById(int id)
     {
-        var 
+        return null;
     }
 
     public int GetLogCount()

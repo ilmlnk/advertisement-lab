@@ -46,4 +46,9 @@ public class UserService : IUserService
         var onlineUsers = _userRepository.GetOnlineUsers();
         return onlineUsers;
     }
+
+    SystemUser IUserService.GetUserById(int id)
+    {
+        throw new NotImplementedException();
+    }
 }

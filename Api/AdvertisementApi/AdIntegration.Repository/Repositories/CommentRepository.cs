@@ -42,7 +42,7 @@ public class CommentRepository : ICommentRepository
 
     public Comment UpdateComment(int id, Comment comment)
     {
-
+        return null;
     }
 
     public Comment GetCommentById(int id)

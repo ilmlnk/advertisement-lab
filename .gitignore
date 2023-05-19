@@ -38,5 +38,4 @@ Thumbs.db
 
 # Folders #
 ###########
-Api/AdvertisementApi/.vs
-Api/AdvertisementApi/AdvertisementApi/obj
+/Api/AdvertisementApi/.vs

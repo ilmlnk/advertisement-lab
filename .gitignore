@@ -41,3 +41,8 @@ Thumbs.db
 /Api/AdvertisementApi/.vs/
 /Api/AdvertisementApi/AdvertisementApi/obj
 /Frontend
+Frontend/node_modules/.cache/default-development/128.pack
+Frontend/node_modules/.cache/default-development/14.pack
+Frontend/node_modules/.cache/default-development/127.pack
+Frontend/node_modules/.cache/default-development/17.pack
+Frontend/node_modules/.cache/default-development/16.pack

@@ -1,5 +1,5 @@
 ﻿using AdIntegration.Business.Exceptions;
-using AdIntegration.Business.Interfaces;
+using AdIntegration.Business.Interfaces.Authentication;
 using AdIntegration.Data.Dto.UserDto;
 using AdIntegration.Data.Entities;
 using AutoMapper;

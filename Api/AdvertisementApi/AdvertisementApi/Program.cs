@@ -1,4 +1,4 @@
-﻿using AdIntegration.Business.Interfaces;
+﻿using AdIntegration.Business.Interfaces.Authentication;
 using AdIntegration.Business.Mapping;
 using AdIntegration.Business.Services;
 using AdIntegration.Data.DatabaseContext;

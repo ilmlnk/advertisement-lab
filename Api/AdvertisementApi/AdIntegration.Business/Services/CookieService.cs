@@ -1,4 +1,4 @@
-﻿using AdIntegration.Business.Interfaces;
+﻿using AdIntegration.Business.Interfaces.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System;

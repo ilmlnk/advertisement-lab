@@ -42,58 +42,58 @@ import PublicationsPage from "./Pages/Publications/PublicationsPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <>
+    <Router>
       <Route path="/main" element={<StartPage />} />
       <Route path="/main/ukr" element={<StartPage />} />
       <Route path="/main/de" element={<StartPage />} />
       <Route path="/main/pl" element={<StartPage />} />
 
-      <Route path="/admin/:id" element={<Admin />} />
-      <Route path="/admin/ukr/:id" element={<Admin />} />
-      <Route path="/admin/de/:id" element={<Admin />} />
-      <Route path="/admin/pl/:id" element={<Admin />} />
+      <Route path="/admin/:userId" element={<Admin />} />
+      <Route path="/admin/ukr/:userId" element={<Admin />} />
+      <Route path="/admin/de/:userId" element={<Admin />} />
+      <Route path="/admin/pl/:userId" element={<Admin />} />
 
-      <Route path="/analytics/:id" element={<Analytics />} />
-      <Route path="/analytics/ukr/:id" element={<Analytics />} />
-      <Route path="/analytics/de/:id" element={<Analytics />} />
-      <Route path="/analytics/pl/:id" element={<Analytics />} />
+      <Route path="/analytics/:userId" element={<Analytics />} />
+      <Route path="/analytics/ukr/:userId" element={<Analytics />} />
+      <Route path="/analytics/de/:userId" element={<Analytics />} />
+      <Route path="/analytics/pl/:userId" element={<Analytics />} />
 
-      <Route path="/user-management/:id" element={<UserManagement />} />
-      <Route path="/user-management/ukr/:id" element={<UserManagement />} />
-      <Route path="/user-management/de/:id" element={<UserManagement />} />
-      <Route path="/user-management/pl/:id" element={<UserManagement />} />
+      <Route path="/user-management/:userId" element={<UserManagement />} />
+      <Route path="/user-management/ukr/:userId" element={<UserManagement />} />
+      <Route path="/user-management/de/:userId" element={<UserManagement />} />
+      <Route path="/user-management/pl/:userId" element={<UserManagement />} />
 
-      <Route path="/budget-management/:id" element={<BudgetManagement />} />
-      <Route path="/budget-management/ukr/:id" element={<BudgetManagement />} />
-      <Route path="/budget-management/de/:id" element={<BudgetManagement />} />
-      <Route path="/budget-management/pl/:id" element={<BudgetManagement />} />
+      <Route path="/budget-management/:userId" element={<BudgetManagement />} />
+      <Route path="/budget-management/ukr/:userId" element={<BudgetManagement />} />
+      <Route path="/budget-management/de/:userId" element={<BudgetManagement />} />
+      <Route path="/budget-management/pl/:userId" element={<BudgetManagement />} />
 
       <Route
-        path="/compliance-management/:id"
+        path="/compliance-management/:userId"
         element={<ComplianceManagement />}
       />
       <Route
-        path="/compliance-management/ukr/:id"
+        path="/compliance-management/ukr/:userId"
         element={<ComplianceManagement />}
       />
       <Route
-        path="/compliance-management/de/:id"
+        path="/compliance-management/de/:userId"
         element={<ComplianceManagement />}
       />
       <Route
-        path="/compliance-management/pl/:id"
+        path="/compliance-management/pl/:userId"
         element={<ComplianceManagement />}
       />
 
-      <Route path="/command-chat/:id" element={<CommandChat />} />
-      <Route path="/command-chat/ukr/:id" element={<CommandChat />} />
-      <Route path="/command-chat/de/:id" element={<CommandChat />} />
-      <Route path="/command-chat/pl/:id" element={<CommandChat />} />
+      <Route path="/command-chat/:userId" element={<CommandChat />} />
+      <Route path="/command-chat/ukr/:userId" element={<CommandChat />} />
+      <Route path="/command-chat/de/:userId" element={<CommandChat />} />
+      <Route path="/command-chat/pl/:userId" element={<CommandChat />} />
 
-      <Route path="/customer-support/:id" element={<CustomerSupport />} />
-      <Route path="/customer-support/ukr/:id" element={<CustomerSupport />} />
-      <Route path="/customer-support/de/:id" element={<CustomerSupport />} />
-      <Route path="/customer-support/pl/:id" element={<CustomerSupport />} />
+      <Route path="/customer-support/:userId" element={<CustomerSupport />} />
+      <Route path="/customer-support/ukr/:userId" element={<CustomerSupport />} />
+      <Route path="/customer-support/de/:userId" element={<CustomerSupport />} />
+      <Route path="/customer-support/pl/:userId" element={<CustomerSupport />} />
 
       <Route path="/registration" element={<Registration />} />
       <Route path="/registration/ukr" element={<Registration />} />
@@ -139,10 +139,10 @@ const router = createBrowserRouter(
       <Route path="/report-us" element={<ReportUs />} />
 
       <Route path="/join-team" element={<JoinOurTeam />} />
-      <Route path="/advertisement/edit/:id" element={<RequireCredentialsPage />} />
+      <Route path="/advertisement/edit/:userId" element={<RequireCredentialsPage />} />
 
       <Route path="/publications" element={<PublicationsPage/>}/>
-    </>
+    </Router>
   )
 );
 

@@ -1,4 +1,4 @@
-﻿namespace AdIntegration.Business.Interfaces;
+﻿namespace AdIntegration.Business.Interfaces.Authentication;
 
 public interface ICookieService
 {

@@ -22,12 +22,6 @@ public class CommentRepository : ICommentRepository
     public Comment DeleteCommentById(int id)
     {
         var deleteComment = GetCommentById(id);
-
-        if (deleteComment == null)
-        {
-            throw new NotImplementedException();
-        }
-
         _context.Comments.Remove(deleteComment);
         _context.SaveChanges();
 
@@ -42,6 +36,13 @@ public class CommentRepository : ICommentRepository
 
     public Comment UpdateComment(int id, Comment comment)
     {
+        var foundComment = _context.Comments.Find(id);
+        if (foundComment != null)
+        {
+            _context.Comments.Update(foundComment);
+            _context.SaveChanges();
+            return foundComment;
+        }
         return null;
     }
 
@@ -49,11 +50,10 @@ public class CommentRepository : ICommentRepository
     {
         var comment = _context.Comments.Find(id);
 
-        if (comment == null)
+        if (comment != null)
         {
-            throw new NotImplementedException();
+            return comment;
         }
-
-        return comment;
+        return null;
     }
 }

@@ -17,4 +17,6 @@ public class AdminController : ControllerBase
         _adminService = adminService;
         _logger = logger;
     }
+
+
 }

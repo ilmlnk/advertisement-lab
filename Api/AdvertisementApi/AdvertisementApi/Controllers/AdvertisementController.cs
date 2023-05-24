@@ -64,6 +64,7 @@ public class AdvertisementController : ControllerBase
     public IActionResult DeleteAdvertisementById(int id)
     {
         var foundAdvertisement = _advertisementService.GetAdvertisementById(id);
+
         if (foundAdvertisement != null)
         {
             _advertisementService.DeleteAdvertisement(id);
@@ -80,6 +81,25 @@ public class AdvertisementController : ControllerBase
     [HttpPut("advertisement/update/{id}")]
     public IActionResult UpdateAdvertisementById(int id, UpdateAdvertisementDto dto)
     {
-        return null;
+        var foundAdvertisement = _advertisementService.GetAdvertisementById(id);
+        if (foundAdvertisement != null)
+        {
+            var updatedAdvertisement = new Advertisement
+            {
+                Name = dto.Name,
+                Topic = dto.Topic,
+                Description = dto.Description,
+                Price = dto.Price,
+                DatePosted = DateTime.Now,
+                UserEntity = (SystemUser)dto.UserEntity,
+                ChannelType = dto.ChannelType
+            };
+
+            _advertisementService.UpdateAdvertisementById(id, updatedAdvertisement);
+            return Ok(updatedAdvertisement);
+        } else
+        {
+            return BadRequest();
+        }
     }
 }

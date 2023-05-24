@@ -21,7 +21,7 @@ namespace AdIntegration.Repository.Repositories
         }
 
         public ActionLog DeleteLogById(int id)
-        {
+        {)
             var foundActionLog = GetLogById(id);
             _context.ActionLogs.Remove(foundActionLog);
             _context.SaveChanges();

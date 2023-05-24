@@ -1,7 +1,7 @@
 ﻿using AdIntegration.Data.Dto.UserDto;
 using AdIntegration.Data.Entities;
 
-namespace AdIntegration.Business.Interfaces;
+namespace AdIntegration.Business.Interfaces.Authentication;
 
 public interface IAuthenticateService
 {

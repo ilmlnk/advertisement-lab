@@ -21,48 +21,39 @@ public class AdvertisementRepository : IAdvertisementRepository
     public Advertisement DeleteAdvertisement(int id)
     {
         var advertisement = _context.Advertisements.Find(id);
+
         if (advertisement != null)
         {
             _context.Advertisements.Remove(advertisement);
             _context.SaveChanges();
+            return advertisement;
         }
-        else
-        {
-            throw new InvalidOperationException();
-        }
-        return advertisement;
+        return null;
     }
 
     public Advertisement GetAdvertisementById(int id)
     {
         var advertisement = _context.Advertisements.Find(id);
 
-        if (advertisement == null)
+        if (advertisement != null)
         {
-            throw new ArgumentException($"Advertisement with ID {id} not found.");
+            return advertisement;
         }
-
-        return advertisement;
+        return null;
     }
 
     public Advertisement UpdateAdvertisementById(int adId, Advertisement inputAdvertisement)
     {
         var advertisement = _context.Advertisements.Find(adId);
 
-        if (advertisement == null)
+        if (advertisement != null)
         {
-            throw new ArgumentException($"Advertisement with ID {adId} not found.");
+            _context.Advertisements.Update(inputAdvertisement);
+            _context.SaveChanges();
+            return inputAdvertisement;
         }
 
-        advertisement.Name = inputAdvertisement.Name;
-        advertisement.Topic = inputAdvertisement.Topic;
-        advertisement.Description = inputAdvertisement.Description;
-        advertisement.Price = inputAdvertisement.Price;
-        advertisement.ChannelType = inputAdvertisement.ChannelType;
-
-        _context.SaveChanges();
-
-        return inputAdvertisement;
+        return null;
     }
 
     public IEnumerable<Advertisement> GetAllAdvertisements()

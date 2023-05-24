@@ -1,4 +1,6 @@
-﻿namespace AdIntegration.Data.Dto.ChannelDto.Add;
+﻿using System.Drawing;
+
+namespace AdIntegration.Data.Dto.ChannelDto.Add;
 
 public record AddTelegramChannelDto
 {
@@ -8,4 +10,5 @@ public record AddTelegramChannelDto
     public bool IsPrivate;
     public string ChannelUrl;
     public string InviteLink;
+    public string Category;
 }

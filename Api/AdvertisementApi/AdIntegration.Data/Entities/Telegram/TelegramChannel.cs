@@ -14,4 +14,6 @@ public class TelegramChannel : Channel
     public bool IsBroadcast { get; set; }
     [Required]
     public string InviteLink { get; set; }
+    [Required]
+    public string Category { get; set; }
 }

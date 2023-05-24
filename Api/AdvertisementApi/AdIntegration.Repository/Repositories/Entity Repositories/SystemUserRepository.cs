@@ -5,18 +5,18 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AdIntegration.Repository.Repositories;
 
-public class UserRepository : IUserRepository
+public class SystemUserRepository : ISystemUserRepository
 {
     private readonly ApplicationDbContext _context;
     private readonly UserManager<User> _userManager;
 
-    public UserRepository(ApplicationDbContext context, UserManager<User> userManager)
+    public SystemUserRepository(ApplicationDbContext context, UserManager<User> userManager)
     {
         _context = context;
         _userManager = userManager;
     }
     /* Create */
-    public User AddUser(User user)
+    public async Task<User> AddUser(User user)
     {
         _context.Users.Add(user);
         user.UserId = _context.SaveChanges();

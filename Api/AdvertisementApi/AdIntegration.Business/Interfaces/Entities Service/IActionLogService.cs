@@ -4,7 +4,7 @@ namespace AdIntegration.Business.Interfaces;
 
 public interface IActionLogService
 {
-    public ActionLog CreateLog(ActionLog actionLog);
+    public ActionLog CreateLog(int userId, ActionLog actionLog);
     public ActionLog DeleteLogById(int id);
     public ActionLog GetLogById(int id);
     public IEnumerable<ActionLog> GetLogList();

@@ -16,10 +16,9 @@ public class ActionLogService : IActionLogService
         _logger = logger;
     }
 
-    public ActionLog CreateLog(ActionLog actionLog)
+    public ActionLog CreateLog(int userId, ActionLog actionLog)
     {
         var createdActionLog = _actionLogRepository.CreateLog(actionLog);
-        _logger.LogInformation("Action Log ");
         return createdActionLog;
     }
 
@@ -31,17 +30,20 @@ public class ActionLogService : IActionLogService
 
     public ActionLog GetLogById(int id)
     {
-        return null;
+        var actionLog = _actionLogRepository.GetLogById(id);
+        return actionLog;
     }
 
     public int GetLogCount()
     {
-        throw new NotImplementedException();
+        var actionLogsCount = _actionLogRepository.GetActionLogs().Count();
+        return actionLogsCount;
     }
 
     public IEnumerable<ActionLog> GetLogList()
     {
-        throw new NotImplementedException();
+        var actionLogs = _actionLogRepository.GetActionLogs();
+        return actionLogs;
     }
 
     public IEnumerable<ActionLog> GetLogListForUser(int userId)

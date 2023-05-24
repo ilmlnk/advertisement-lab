@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdIntegration.Business.Interfaces.Entities_Service
+namespace AdIntegration.Business.Interfaces.Entities_Service;
+
+public class ITwoFactorRequestService
 {
-    internal class ITwoFactorRequestService
-    {
-    }
 }

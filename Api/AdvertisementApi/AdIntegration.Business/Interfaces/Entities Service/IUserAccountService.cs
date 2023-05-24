@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdIntegration.Business.Services
+namespace AdIntegration.Business.Interfaces.Entities_Service;
+
+public interface IUserAccountService
 {
-    internal class TwoFactorRequestService
-    {
-    }
 }

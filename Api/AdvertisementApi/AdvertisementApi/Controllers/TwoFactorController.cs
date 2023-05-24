@@ -1,6 +1,6 @@
-﻿namespace AdIntegration.Api.Controllers
+﻿namespace AdIntegration.Api.Controllers;
+
+
+public class TwoFactorController
 {
-    public class TwoFactorController
-    {
-    }
 }

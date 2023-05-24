@@ -21,7 +21,7 @@ builder.Services.AddScoped<IChannelRepository, ChannelRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ISystemUserRepository, SystemUserRepository>();
 
 builder.Services.AddScoped<IAuthenticateService, AuthenticateService>();
 
@@ -30,7 +30,7 @@ builder.Services.AddScoped<ChannelRepository>();
 builder.Services.AddScoped<CommentRepository>();
 builder.Services.AddScoped<PostRepository>();
 builder.Services.AddScoped<TaskRepository>();
-builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<SystemUserRepository>();
 
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()

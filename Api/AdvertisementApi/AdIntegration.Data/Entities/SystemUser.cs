@@ -10,4 +10,6 @@ public class SystemUser : User
     public string Email { get; set; }
     [Required]
     public bool IsOnline { get; set; }
+    [Required]
+    public string Role { get; set; }
 }

@@ -1,4 +1,5 @@
 ﻿using AdIntegration.Business.Services;
+using AdIntegration.Data.Dto.AdminTaskDto;
 using AdIntegration.Data.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +21,7 @@ public class RecentActionsController : ControllerBase
     }
 
     [HttpPost("action/create")]
-    public IActionResult CreateLog(ActionLog actionLog)
+    public IActionResult CreateLog(int userId, ActionLog action)
     {
         throw new NotImplementedException();
     }

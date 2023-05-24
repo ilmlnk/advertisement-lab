@@ -12,9 +12,11 @@ namespace AdIntegration.Api.Controllers;
 public class TaskController : ControllerBase
 {
     private readonly TaskService _taskService;
-    public TaskController(TaskService taskService)
+    private readonly ILogger _logger;
+    public TaskController(TaskService taskService, ILogger logger)
     {
         _taskService = taskService;
+        _logger = logger;
     }
 
     [HttpGet("tasks")]

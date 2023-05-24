@@ -13,15 +13,23 @@ namespace AdIntegration.Repository.Repositories
             _context = context;
         }
 
-        public ActionLog CreateLog(ActionLog actionLog)
+        public ActionLog CreateLog(int userId, ActionLog action)
         {
-            _context.ActionLogs.Add(actionLog);
-            actionLog.Id = _context.SaveChanges();
-            return actionLog;
+            var createdActionLog = new ActionLog
+            {
+                UserId = userId,
+                ActionName = action.ActionName,
+                ActionDescription = action.ActionDescription,
+                Timestamp = DateTime.Now
+            };
+
+            _context.ActionLogs.Add(createdActionLog);
+            _context.SaveChanges();
+            return createdActionLog;
         }
 
         public ActionLog DeleteLogById(int id)
-        {)
+        {
             var foundActionLog = GetLogById(id);
             _context.ActionLogs.Remove(foundActionLog);
             _context.SaveChanges();
@@ -31,12 +39,6 @@ namespace AdIntegration.Repository.Repositories
         public ActionLog GetLogById(int id)
         {
             var actionLog = _context.ActionLogs.Find(id);
-
-            if (actionLog == null)
-            {
-                throw new InvalidOperationException();
-            }
-
             return actionLog;
         }
 
@@ -45,5 +47,9 @@ namespace AdIntegration.Repository.Repositories
             return _context.ActionLogs.ToList();
         }
 
+        public IEnumerable<ActionLog> GetLogListForUser(int userId)
+        {
+            return _context.ActionLogs.Where(log => log.UserId == userId).ToList();
+        }
     }
 }

@@ -1,6 +1,6 @@
-﻿namespace AdIntegration.Data.Dto.UserDto;
+﻿namespace AdIntegration.Data.Dto.UserDto.Admin;
 
-public record RegisterUserDto
+public record JoinOurTeamDto
 {
     public string FirstName;
     public string LastName;

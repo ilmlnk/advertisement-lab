@@ -1,7 +1,11 @@
 ﻿using AdIntegration.Business.Services;
+using AdIntegration.Data.Dto.UserDto;
 using AdIntegration.Data.Entities;
 using Microsoft.AspNet.SignalR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.CompilerServices;
+using System.Security.Claims;
 
 namespace AdIntegration.Api.Controllers;
 
@@ -11,47 +15,52 @@ namespace AdIntegration.Api.Controllers;
 public class UserController : ControllerBase
 {
     private readonly UserService _userService;
+    private readonly UserManager<IdentityUser> _userManager;
+    private readonly ILogger<UserController> _logger;
 
-    public UserController() { }
-
-    public UserController(UserService userService)
+    public UserController(UserService userService, UserManager<IdentityUser> userManager, ILogger<UserController> logger)
     {
         _userService = userService;
+        _userManager = userManager;
+        _logger = logger;
     }
 
 
-    [HttpGet("users")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    public IActionResult GetAllUsers()
+    [HttpPost("user/create")]
+    public async Task<IActionResult> CreateUser([FromBody] RegisterUserDto dto)
     {
-        var users = _userService.GetAllUsers();
-        return Ok(users);
-    }
-
-    [HttpGet("users/{id}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    public IActionResult GetUserById(int id)
-    {
-        var user = _userService.GetUserById(id);
-
-        if (user == null)
+        var user = new SystemUser
         {
-            return BadRequest("User is not found!");
-        }
+            FirstName = dto.FirstName,
+            LastName = dto.LastName,
+            Email = dto.Email
+        };
 
-        return Ok(user);
+        try
+        {
+            var result = await _userManager.CreateAsync(user, dto.Password);
+            if (result.Succeeded)
+            {
+                if (!string.IsNullOrEmpty(dto.Role))
+                {
+                    await _userManager.AddToRoleAsync(user, dto.Role);
+                }
+                return Ok("User was created successfully!");
+            }
+            return BadRequest(result.Errors);
+        } catch (Exception ex)
+        {
+            _logger.LogError(ex.Message);
+            return StatusCode(500, "Attempt to create new user was failed.");
+        }
     }
 
-    public IActionResult GetOnlineUsers()
+    [HttpPut("user/update/{id}")]
+    public async Task<IActionResult> UpdateUser([FromBody] UpdateUserDto)
     {
         return Ok();
     }
 
-    private IEnumerable<SystemUser> GetOnlineUsersFromDataSource()
-    {
-        return null;
-    }
+
 
 }

@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace AdIntegration.Business.Interfaces.Entities_Service;
 
-public class ITwoFactorRequestService
+public interface ITwoFactorRequestService
 {
 }

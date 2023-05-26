@@ -8,6 +8,6 @@ public record CreateAdvertisementDto
     public string Topic;
     public string? Description;
     public decimal Price;
-    public User UserEntity;
+    public int UserId;
     public Channel ChannelType;
 }

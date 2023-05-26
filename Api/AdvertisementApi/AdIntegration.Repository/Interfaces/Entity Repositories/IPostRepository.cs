@@ -4,9 +4,9 @@ namespace AdIntegration.Repository.Interfaces;
 
 public interface IPostRepository
 {
-    public Post CreatePost(Post post);
-    public object UpdatePostById(int id, Post post);
-    public Post DeletePostById(int id);
-    public Post GetPostById(int id);
-    public List<Post> GetPosts();
+    public Task<Post> CreatePost(Post post);
+    public Task<object> UpdatePostById(int id, Post post);
+    public Task<Post> DeletePostById(int id);
+    public Task<Post> GetPostById(int id);
+    public Task<IEnumerable<Post>> GetPosts();
 }

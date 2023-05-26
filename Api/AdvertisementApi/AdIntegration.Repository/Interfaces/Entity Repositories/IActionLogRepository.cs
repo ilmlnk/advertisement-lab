@@ -4,9 +4,9 @@ namespace AdIntegration.Repository.Interfaces
 {
     public interface IActionLogRepository
     {
-        public ActionLog CreateLog(int userId, ActionLog action);
-        public ActionLog DeleteLogById(int id);
-        public ActionLog GetLogById(int id);
-        public IEnumerable<ActionLog> GetActionLogs();
+        public Task<ActionLog> CreateLog(int userId, ActionLog action);
+        public Task<ActionLog> DeleteLogById(int id);
+        public Task<ActionLog> GetLogById(int id);
+        public Task<IEnumerable<ActionLog>> GetActionLogs();
     }
 }

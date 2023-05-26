@@ -21,17 +21,17 @@ public class AdvertisementController : ControllerBase
 
 
     [HttpGet("advertisements")]
-    public IActionResult GetAdvertisements()
+    public async Task<IActionResult> GetAdvertisements()
     {
-        var advertisements = _advertisementService.GetAllAdvertisements();
+        var advertisements = await _advertisementService.GetAllAdvertisements();
         _logger.LogInformation("Advertisements were received successfully.");
         return Ok(advertisements);
     }
 
     [HttpGet("advertisement/{id}")]
-    public IActionResult GetAdvertisementById(int id)
+    public async Task<IActionResult> GetAdvertisementById(int id)
     {
-        var advertisement = _advertisementService.GetAdvertisementById(id);
+        var advertisement = await _advertisementService.GetAdvertisementById(id);
 
         if (advertisement == null)
         {
@@ -43,7 +43,7 @@ public class AdvertisementController : ControllerBase
     }
 
     [HttpPost("advertisement/create")]
-    public IActionResult CreateAdvertisement(CreateAdvertisementDto dto)
+    public async Task<IActionResult> CreateAdvertisement(CreateAdvertisementDto dto)
     {
         var createAdvertisement = new Advertisement
         {
@@ -51,11 +51,11 @@ public class AdvertisementController : ControllerBase
             Topic = dto.Topic,
             Description = dto.Description,
             Price = dto.Price,
-            UserEntity = (SystemUser)dto.UserEntity,
+            UserId = dto.UserId,
             ChannelType = dto.ChannelType,
         };
 
-        var uploadAdvertisement = _advertisementService.CreateAdvertisement(createAdvertisement);
+        var uploadAdvertisement = await _advertisementService.CreateAdvertisement(createAdvertisement);
         _logger.LogInformation("Advertisement created and uploaded successfully.");
         return Ok(uploadAdvertisement);
     }

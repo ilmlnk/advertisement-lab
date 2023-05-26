@@ -1,6 +1,7 @@
 ﻿using AdIntegration.Data.DatabaseContext;
 using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace AdIntegration.Repository.Repositories;
 
@@ -13,62 +14,51 @@ public class TaskRepository : ITaskRepository
         _context = context;
     }
 
-    public AdminTask CreateTask(AdminTask task)
+    public async Task<AdminTask> CreateTask(AdminTask task)
     {
         _context.AdminTasks.Add(task);
-        task.Id = _context.SaveChanges();
+        task.Id = await _context.SaveChangesAsync();
         return task;
     }
 
-    public AdminTask DeleteTaskById(int id)
+    public async Task<AdminTask> DeleteTaskById(int id)
     {
-        var deleteTask = GetTaskById(id);
-        _context.AdminTasks.Remove(deleteTask);
-        _context.SaveChanges();
+        var deleteTask = await GetTaskById(id);
+
+        if (deleteTask != null)
+        {
+            _context.AdminTasks.Remove(deleteTask);
+            await _context.SaveChangesAsync();
+        }
         return deleteTask;
     }
 
-    public IEnumerable<AdminTask> GetAllTasks()
+    public async Task<IEnumerable<AdminTask>> GetAllTasks()
     {
-        var tasks = _context.AdminTasks.ToList();
+        var tasks = await _context.AdminTasks.ToListAsync();
         return tasks;
     }
 
-    public AdminTask GetTaskById(int id)
+    public async Task<AdminTask> GetTaskById(int id)
     {
-        var foundTask = _context.AdminTasks.FirstOrDefault(x => x.Id == id);
-
-        if (foundTask == null)
-        {
-            throw new InvalidOperationException();
-        }
-
+        var foundTask = await _context.AdminTasks.FirstOrDefaultAsync(x => x.Id == id);
         return foundTask;
     }
 
-    public AdminTask GetTaskByName(string name)
+    public async Task<AdminTask> GetTaskByName(string name)
     {
-        var foundTask = _context.AdminTasks.FirstOrDefault(x => x.Name == name);
-
-        if (foundTask == null)
-        {
-            throw new InvalidOperationException();
-        }
-
+        var foundTask = await _context.AdminTasks.FirstOrDefaultAsync(x => x.Name == name);
         return foundTask;
     }
 
-    public object UpdateTask(int id, AdminTask task)
+    public async Task<object> UpdateTask(int id, AdminTask task)
     {
-        var foundTask = GetTaskById(id);
-
-        if (foundTask == null)
+        var foundTask = await GetTaskById(id);
+        if (foundTask != null)
         {
-            throw new InvalidOperationException();
+            _context.AdminTasks.Update(task);
+            await _context.SaveChangesAsync();
         }
-
-        _context.AdminTasks.Update(task);
-        _context.SaveChanges();
 
         var response = new
         {

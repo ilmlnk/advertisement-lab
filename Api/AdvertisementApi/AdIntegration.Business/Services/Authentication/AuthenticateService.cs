@@ -10,7 +10,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace AdIntegration.Business.Services;
+namespace AdIntegration.Business.Services.Authentication;
 
 public class AuthenticateService : IAuthenticateService
 {

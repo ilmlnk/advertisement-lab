@@ -50,19 +50,7 @@ const AdminMainContent = () => {
         } else {
           console.error("Error occurred: ", tasks.statusText);
         }
-
-        {
-          /* Fetch recent actions */
-        }
-        const recentActions = await axios.get(
-          "https://localhost:50555/RecentActions/actions"
-        );
-        if (recentActions.status === 200) {
-          setRecentActionsData(recentActions);
-        } else {
-          console.error("Error occurred: ", recentActions.statusText);
-        }
-      } catch (error) {
+      } catch (error){
         console.error(error);
       }
     };

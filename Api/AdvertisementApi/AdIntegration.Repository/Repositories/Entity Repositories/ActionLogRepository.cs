@@ -1,6 +1,7 @@
 ﻿using AdIntegration.Data.DatabaseContext;
 using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace AdIntegration.Repository.Repositories
 {
@@ -13,7 +14,7 @@ namespace AdIntegration.Repository.Repositories
             _context = context;
         }
 
-        public ActionLog CreateLog(int userId, ActionLog action)
+        public async Task<ActionLog> CreateLog(int userId, ActionLog action)
         {
             var createdActionLog = new ActionLog
             {
@@ -24,32 +25,38 @@ namespace AdIntegration.Repository.Repositories
             };
 
             _context.ActionLogs.Add(createdActionLog);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return createdActionLog;
         }
 
-        public ActionLog DeleteLogById(int id)
+        public async Task<ActionLog> DeleteLogById(int id)
         {
-            var foundActionLog = GetLogById(id);
-            _context.ActionLogs.Remove(foundActionLog);
-            _context.SaveChanges();
+            var foundActionLog = await GetLogById(id);
+            if (foundActionLog != null)
+            {
+                _context.ActionLogs.Remove(foundActionLog);
+                await _context.SaveChangesAsync();
+            }
             return foundActionLog;
         }
 
-        public ActionLog GetLogById(int id)
+        public async Task<ActionLog> GetLogById(int id)
         {
-            var actionLog = _context.ActionLogs.Find(id);
+            var actionLog = await _context.ActionLogs.FindAsync(id);
             return actionLog;
         }
 
-        public IEnumerable<ActionLog> GetActionLogs()
+        public async Task<IEnumerable<ActionLog>> GetActionLogs()
         {
-            return _context.ActionLogs.ToList();
+            return await _context.ActionLogs
+                .ToListAsync();
         }
 
-        public IEnumerable<ActionLog> GetLogListForUser(int userId)
+        public async Task<IEnumerable<ActionLog>> GetLogListForUser(int userId)
         {
-            return _context.ActionLogs.Where(log => log.UserId == userId).ToList();
+            return await _context.ActionLogs
+                .Where(log => log.UserId == userId)
+                .ToListAsync();
         }
     }
 }

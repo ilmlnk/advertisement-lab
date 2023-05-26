@@ -20,7 +20,8 @@ public class Advertisement
     [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
     public DateTime DatePosted { get; set; }
     [Required]
-    public SystemUser UserEntity { get; set; }
+    [ForeignKey(nameof(Advertisement))]
+    public int UserId { get; set; }
     [Required]
     public Channel ChannelType { get; set; }
 

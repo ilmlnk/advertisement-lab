@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdIntegration.Business.Services
+namespace AdIntegration.Business.Services.Authentication
 {
     public class CookieService : ICookieService
     {

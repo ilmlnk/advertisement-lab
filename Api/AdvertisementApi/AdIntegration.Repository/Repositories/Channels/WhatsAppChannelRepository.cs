@@ -1,11 +1,7 @@
 ﻿using AdIntegration.Data.DatabaseContext;
 using AdIntegration.Data.Entities.WhatsApp;
 using AdIntegration.Repository.Interfaces.Channels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace AdIntegration.Repository.Repositories.Channels;
 
@@ -17,98 +13,85 @@ public class WhatsAppChannelRepository : IWhatsAppChannelRepository
     {
         _context = context;
     }
-    public WhatsAppChannel CreateWhatsAppChannel(WhatsAppChannel whatsAppChannel)
+    public async Task<WhatsAppChannel> CreateWhatsAppChannel(WhatsAppChannel whatsAppChannel)
     {
         _context.WhatsAppChannels.Add(whatsAppChannel);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
         return whatsAppChannel;
     }
 
-    public WhatsAppChannel DeleteWhatsAppChannelById(int id)
+    public async Task<WhatsAppChannel> DeleteWhatsAppChannelById(int id)
     {
-        var foundChannel = GetWhatsAppChannelById(id);
+        var foundChannel = await GetWhatsAppChannelById(id);
         if (foundChannel != null)
         {
             _context.WhatsAppChannels.Remove(foundChannel);
-            _context.SaveChanges();
-            return foundChannel;
+            await _context.SaveChangesAsync();
         }
-        return null;
+        return foundChannel;
     }
 
-    public WhatsAppChannel DeleteWhatsAppChannelByLink(string link)
+    public async Task<WhatsAppChannel> DeleteWhatsAppChannelByLink(string link)
     {
-        var foundChannel = GetWhatsAppChannelByLink(link);
+        var foundChannel = await GetWhatsAppChannelByLink(link);
         if (foundChannel != null)
         {
             _context.WhatsAppChannels.Remove(foundChannel);
-            _context.SaveChanges();
-            return foundChannel;
+            await _context.SaveChangesAsync();
         }
-        return null;
+        return foundChannel;
     }
 
-    public IEnumerable<WhatsAppChannel> GetAllWhatsAppChannels()
+    public async Task<IEnumerable<WhatsAppChannel>> GetAllWhatsAppChannels()
     {
-        var whatsAppChannels = _context.WhatsAppChannels.ToList();
+        var whatsAppChannels = await _context.WhatsAppChannels.ToListAsync();
         return whatsAppChannels;
     }
 
-    public WhatsAppChannel GetWhatsAppChannelById(int id)
+    public async Task<WhatsAppChannel> GetWhatsAppChannelById(int id)
     {
-        var foundChannel = _context.WhatsAppChannels.Find(id);
-
-        if (foundChannel != null)
-        {
-            return foundChannel;
-        }
-
-        return null;
+        var foundChannel = await _context.WhatsAppChannels.FindAsync(id);
+        return foundChannel;
     }
 
-    public WhatsAppChannel GetWhatsAppChannelByLink(string link)
+    public async Task<WhatsAppChannel> GetWhatsAppChannelByLink(string link)
     {
-        var foundChannel = _context.WhatsAppChannels.FirstOrDefault(channel => channel.UrlAddress == link);
-        
-        if (foundChannel != null)
-        {
-            return foundChannel;
-        }
-
-        return null;
+        var foundChannel = await _context.WhatsAppChannels
+            .FirstOrDefaultAsync(channel => channel.UrlAddress == link);
+        return foundChannel;
     }
 
-    public IEnumerable<WhatsAppChannel> GetWhatsAppChannelsByCategory(string category)
+    public async Task<IEnumerable<WhatsAppChannel>> GetWhatsAppChannelsByCategory(string category)
     {
-        var foundChannels = _context.WhatsAppChannels.Where(channel =>  channel.Category == category).ToList();
+        var foundChannels = await _context.WhatsAppChannels
+            .Where(channel =>  channel.Category == category)
+            .ToListAsync();
         return foundChannels;
     }
 
-    public WhatsAppChannel UpdateWhatsAppChannelById(int id, WhatsAppChannel whatsAppChannel)
+    public async Task<WhatsAppChannel> UpdateWhatsAppChannelById(int id, WhatsAppChannel whatsAppChannel)
     {
         var foundChannel = GetWhatsAppChannelById(id);
 
         if (foundChannel != null)
         {
             _context.WhatsAppChannels.Update(whatsAppChannel);
-            _context.SaveChanges();
-            return whatsAppChannel;
+            await _context.SaveChangesAsync();
         }
 
-        return null;
+        return whatsAppChannel;
     }
 
-    public WhatsAppChannel UpdateWhatsAppChannelByLink(string link, WhatsAppChannel whatsAppChannel)
+    public async Task<WhatsAppChannel> UpdateWhatsAppChannelByLink(string link, WhatsAppChannel whatsAppChannel)
     {
-        var foundChannel = GetWhatsAppChannelByLink(link);
+        var foundChannel = await GetWhatsAppChannelByLink(link);
 
         if (foundChannel != null)
         {
             _context.WhatsAppChannels.Update(whatsAppChannel);
-            _context.SaveChanges();
-            return whatsAppChannel;
+            _context.SaveChangesAsync();
         }
 
-        return null;
+        return whatsAppChannel;
     }
 }

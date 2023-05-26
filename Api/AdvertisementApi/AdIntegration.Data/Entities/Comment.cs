@@ -12,8 +12,9 @@ public class Comment
     [Required]
     public string Text { get; set; }
     public uint? Likes { get; set; }
+    [ForeignKey(nameof(Comment))]
     [Required]
-    public User CreatedBy { get; set; }
+    public int UserId { get; set; }
     [Required]
     public DateTime CreateDate { get; set; }
 }

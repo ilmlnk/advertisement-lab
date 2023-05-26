@@ -2,86 +2,62 @@
 using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace AdIntegration.Repository.Repositories;
 
 public class SystemUserRepository : ISystemUserRepository
 {
     private readonly ApplicationDbContext _context;
-    private readonly UserManager<User> _userManager;
 
-    public SystemUserRepository(ApplicationDbContext context, UserManager<User> userManager)
+    public SystemUserRepository(ApplicationDbContext context)
     {
         _context = context;
-        _userManager = userManager;
     }
     /* Create */
-    public async Task<User> AddUser(User user)
+    public async Task<SystemUser> AddSystemUser(SystemUser user)
     {
-        _context.Users.Add(user);
-        user.UserId = _context.SaveChanges();
+        _context.SystemUsers.Add(user);
+        user.UserId = await _context.SaveChangesAsync();
         return user;
     }
 
-
-    /* Get (Receive) */
-
-    public IEnumerable<User> GetAllUsers()
+    public async Task<IEnumerable<SystemUser>> GetAllSystemUsers()
     {
-        var users = _context.Users.ToList();
-
-        if (users == null)
-        {
-            return Enumerable.Empty<User>();
-        }
-
+        var users = await _context.SystemUsers.ToListAsync();
         return users;
     }
 
-    public User GetUserByUsername(string username)
+    public async Task<SystemUser> GetSystemUserByUsername(string username)
     {
-        var user = _context.Users.FirstOrDefault(u => u.UserName == username);
-        if (user == null)
-        {
-            return null;
-        }
-
+        var user = await _context.SystemUsers.FirstOrDefaultAsync(u => u.UserName == username);
         return user;
     }
 
-    public User GetUserById(int id)
+    public async Task<SystemUser> GetSystemUserById(int id)
     {
-        var user = _context.Users.FirstOrDefault(x => x.UserId == id);
-
-        if (user == null)
-        {
-            throw new InvalidOperationException();
-        }
-
+        var user = await _context.SystemUsers.FirstOrDefaultAsync(x => x.UserId == id);
         return user;
     }
 
-    public IEnumerable<SystemUser> GetOnlineUsers()
+    public async Task<IEnumerable<SystemUser>> GetOnlineSystemUsers()
     {
-        var onlineUsers = _context.SystemUsers
+        var onlineUsers = await _context.SystemUsers
             .Where(u => u.IsOnline)
-            .ToList();
+            .ToListAsync();
 
         return onlineUsers;
     }
 
-    /* Update */
-    public object UpdateUser(int userId, SystemUser inputUser)
+    public async Task<object> UpdateSystemUser(int userId, SystemUser inputUser)
     {
-        var foundUser = _context.Users.Find(userId);
+        var foundUser = await _context.SystemUsers.FindAsync(userId);
 
-        if (foundUser == null)
+        if (foundUser != null)
         {
-            throw new InvalidOperationException();
+            _context.SystemUsers.Update(inputUser);
+            await _context.SaveChangesAsync();
         }
-
-        _context.SystemUsers.Update(inputUser);
-        _context.SaveChanges();
 
         var response = new
         {
@@ -92,21 +68,16 @@ public class SystemUserRepository : ISystemUserRepository
         return response;
     }
 
-
-    /* Delete */
-    public User DeleteUser(int id)
+    public async Task<SystemUser> DeleteSystemUser(int id)
     {
-        var deleteUser = GetUserById(id);
+        var deleteUser = await GetSystemUserById(id);
 
-        if (deleteUser == null)
+        if (deleteUser != null)
         {
-            throw new InvalidOperationException();
+            _context.Users.Remove(deleteUser);
+            await _context.SaveChangesAsync();
         }
-
-        _context.Users.Remove(deleteUser);
-        _context.SaveChanges();
 
         return deleteUser;
     }
-
 }

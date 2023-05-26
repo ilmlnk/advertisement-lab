@@ -13,33 +13,33 @@ public class TaskService : ITaskService
         _taskRepository = taskRepository;
     }
 
-    public AdminTask CreateAdminTask(AdminTask task)
+    public async Task<AdminTask> CreateAdminTask(AdminTask task)
     {
-        var adminTask = _taskRepository.CreateTask(task);
+        var adminTask = await _taskRepository.CreateTask(task);
         return adminTask;
     }
 
-    public AdminTask DeleteAdminTask(int id)
+    public async Task<AdminTask> DeleteAdminTask(int id)
     {
-        var deleteTask = _taskRepository.DeleteTaskById(id);
+        var deleteTask = await _taskRepository.DeleteTaskById(id);
         return deleteTask;
     }
 
-    public AdminTask GetAdminTaskById(int id)
+    public async Task<AdminTask> GetAdminTaskById(int id)
     {
-        var adminTask = _taskRepository.GetTaskById(id);
+        var adminTask = await _taskRepository.GetTaskById(id);
         return adminTask;
     }
 
-    public IEnumerable<AdminTask> GetAdminTasks()
+    public async Task<IEnumerable<AdminTask>> GetAdminTasks()
     {
-        var tasks = _taskRepository.GetAllTasks();
+        var tasks = await _taskRepository.GetAllTasks();
         return tasks;
     }
 
-    public object UpdateAdminTaskById(int id, AdminTask task)
+    public async Task<object> UpdateAdminTaskById(int id, AdminTask task)
     {
-        var updateTask = _taskRepository.UpdateTask(id, task);
+        var updateTask = await _taskRepository.UpdateTask(id, task);
         return updateTask;
     }
 }

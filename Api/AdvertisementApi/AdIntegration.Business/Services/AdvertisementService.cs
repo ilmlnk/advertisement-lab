@@ -13,34 +13,33 @@ public class AdvertisementService : IAdvertisementService
         _advertisementRepository = advertisementRepository;
     }
 
-    /* Create */
-    public Advertisement CreateAdvertisement(Advertisement advertisement)
+    public async Task<Advertisement> CreateAdvertisement(Advertisement advertisement)
     {
-        var createdAdvertisement = _advertisementRepository.CreateAdvertisement(advertisement);
+        var createdAdvertisement = await _advertisementRepository.CreateAdvertisement(advertisement);
         return createdAdvertisement;
     }
 
-    public Advertisement DeleteAdvertisement(int id)
+    public async Task<Advertisement> DeleteAdvertisement(int id)
     {
-        var deletedAdvertisement = _advertisementRepository.DeleteAdvertisement(id);
+        var deletedAdvertisement = await _advertisementRepository.DeleteAdvertisement(id);
         return deletedAdvertisement;
     }
 
-    public Advertisement GetAdvertisementById(int id)
+    public async Task<Advertisement> GetAdvertisementById(int id)
     {
-        var adverisement = _advertisementRepository.GetAdvertisementById(id);
+        var adverisement = await _advertisementRepository.GetAdvertisementById(id);
         return adverisement;
     }
 
-    public IEnumerable<Advertisement> GetAllAdvertisements()
+    public async Task<IEnumerable<Advertisement>> GetAllAdvertisements()
     {
-        var advertisements = _advertisementRepository.GetAllAdvertisements();
+        var advertisements = await _advertisementRepository.GetAllAdvertisements();
         return advertisements;
     }
 
-    public Advertisement UpdateAdvertisementById(int id, Advertisement advertisement)
+    public async Task<Advertisement> UpdateAdvertisementById(int id, Advertisement advertisement)
     {
-        var updatedAdvertisement = _advertisementRepository.UpdateAdvertisementById(id, advertisement);
+        var updatedAdvertisement = await _advertisementRepository.UpdateAdvertisementById(id, advertisement);
         return advertisement;
     }
 }

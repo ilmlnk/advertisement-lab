@@ -4,10 +4,10 @@ namespace AdIntegration.Repository.Interfaces;
 
 public interface ITaskRepository
 {
-    public AdminTask CreateTask(AdminTask task);
-    public object UpdateTask(int id, AdminTask task);
-    public AdminTask DeleteTaskById(int id);
-    public AdminTask GetTaskById(int id);
-    public AdminTask GetTaskByName(string name);
-    public IEnumerable<AdminTask> GetAllTasks();
+    public Task<AdminTask> CreateTask(AdminTask task);
+    public Task<object> UpdateTask(int id, AdminTask task);
+    public Task<AdminTask> DeleteTaskById(int id);
+    public Task<AdminTask> GetTaskById(int id);
+    public Task<AdminTask> GetTaskByName(string name);
+    public Task<IEnumerable<AdminTask>> GetAllTasks();
 }

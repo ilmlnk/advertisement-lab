@@ -11,38 +11,38 @@ public class UserService : IUserService
     {
         _userRepository = userRepository;
     }
-    public SystemUser GetUserById(int id)
+    public async Task<SystemUser> GetUserById(int id)
     {
-        var user = _userRepository.GetUserById(id);
-        return (SystemUser) user;
+        var user = await _userRepository.GetSystemUserById(id);
+        return user;
     }
-    public IEnumerable<SystemUser> GetAllUsers()
+    public async Task<IEnumerable<SystemUser>> GetAllUsers()
     {
-        var users = _userRepository.GetAllUsers();
-        return (IEnumerable<SystemUser>) users;
-    }
-
-    public SystemUser CreateUser(SystemUser user)
-    {
-        var createUser = _userRepository.AddUser(user);
-        return (SystemUser) createUser;
+        var users = await _userRepository.GetAllSystemUsers();
+        return users;
     }
 
-    public SystemUser UpdateUser(int id, SystemUser user)
+    public async Task<SystemUser> CreateUser(SystemUser user)
     {
-        var updateUser = _userRepository.UpdateUser(id, user);
+        var createUser = await _userRepository.AddSystemUser(user);
+        return createUser;
+    }
+
+    public async Task<SystemUser> UpdateUser(int id, SystemUser user)
+    {
+        var updateUser = await _userRepository.UpdateSystemUser(id, user);
         return (SystemUser) updateUser;
     }
 
-    public SystemUser DeleteUserById(int id)
+    public async Task<SystemUser> DeleteUserById(int id)
     {
-        var deleteUser = _userRepository.DeleteUser(id);
-        return (SystemUser) deleteUser;
+        var deleteUser = await _userRepository.DeleteSystemUser(id);
+        return deleteUser;
     }
 
-    public IEnumerable<SystemUser> GetOnlineUsers()
+    public async Task<IEnumerable<SystemUser>> GetOnlineUsers()
     {
-        var onlineUsers = _userRepository.GetOnlineUsers();
+        var onlineUsers = await _userRepository.GetOnlineSystemUsers();
         return onlineUsers;
     }
 }

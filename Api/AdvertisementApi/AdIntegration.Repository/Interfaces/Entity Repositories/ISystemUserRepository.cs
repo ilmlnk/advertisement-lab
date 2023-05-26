@@ -10,5 +10,5 @@ public interface ISystemUserRepository
     public Task<object> UpdateSystemUser(int userId, SystemUser inputUser);
     public Task<SystemUser> DeleteSystemUser(int id);
     public Task<SystemUser> GetSystemUserByUsername(string username);
-    public Task<IEnumerable<SystemUser>> GetOnlineUsers();
+    public Task<IEnumerable<SystemUser>> GetOnlineSystemUsers();
 }

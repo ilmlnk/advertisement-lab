@@ -1,7 +1,7 @@
 ﻿using AdIntegration.Data.DatabaseContext;
 using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Interfaces;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace AdIntegration.Repository.Repositories;
 
@@ -14,55 +14,48 @@ public class PostRepository : IPostRepository
         _context = context;
     }
 
-    public Post CreatePost(Post post)
+    public async Task<Post> CreatePost(Post post)
     {
         _context.Posts.Add(post);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
         return post;
     }
 
-    public Post DeletePostById(int id)
+    public async Task<Post> DeletePostById(int id)
     {
-        var foundPost = GetPostById(id);
+        var foundPost = await GetPostById(id);
 
-        if (foundPost == null)
+        if (foundPost != null)
         {
-            throw new InvalidOperationException();
+            _context.Posts.Remove(foundPost);
+            await _context.SaveChangesAsync();
         }
-
-        _context.Posts.Remove(foundPost);
         return foundPost;
 
     }
 
-    public Post GetPostById(int id)
+    public async Task<Post> GetPostById(int id)
     {
-        var foundPost = _context.Posts.Find(id);
-
-        if (foundPost == null)
-        {
-            throw new InvalidOperationException();
-        }
-
+        var foundPost = await _context.Posts.FindAsync(id);
         return foundPost;
     }
 
-    public List<Post> GetPosts()
+    public async Task<IEnumerable<Post>> GetPosts()
     {
-        var posts = _context.Posts.ToList();
+        var posts = await _context.Posts.ToListAsync();
         return posts;
     }
 
-    public object UpdatePostById(int id, Post post)
+    public async Task<object> UpdatePostById(int id, Post post)
     {
-        var foundPost = GetPostById(id);
+        var foundPost = await GetPostById(id);
 
-        if (foundPost == null)
+        if (foundPost != null)
         {
-            throw new InvalidOperationException();
+            _context.Posts.Update(post);
+            await _context.SaveChangesAsync();
         }
 
-        _context.Posts.Update(post);
         var response = new
         {
             Old = foundPost,

@@ -1,10 +1,14 @@
-﻿using AdIntegration.Business.Interfaces.Authentication;
+﻿using AdIntegration.Business.Interfaces;
+using AdIntegration.Business.Interfaces.Authentication;
 using AdIntegration.Business.Mapping;
 using AdIntegration.Business.Services;
+using AdIntegration.Business.Services.Authentication;
 using AdIntegration.Data.DatabaseContext;
 using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Interfaces;
+using AdIntegration.Repository.Interfaces.Channels;
 using AdIntegration.Repository.Repositories;
+using AdIntegration.Repository.Repositories.Channels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
@@ -16,27 +20,37 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
+/* Scoped dependencies (interface-repository) */
+builder.Services.AddScoped<ITelegramChannelRepository, TelegramChannelRepository>();
+builder.Services.AddScoped<IViberChannelRepository, ViberChannelRepository>();
+builder.Services.AddScoped<IWhatsAppChannelRepository, WhatsAppChannelRepository>();
+
 builder.Services.AddScoped<IAdvertisementRepository, AdvertisementRepository>();
-builder.Services.AddScoped<IChannelRepository, ChannelRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 builder.Services.AddScoped<ISystemUserRepository, SystemUserRepository>();
 
-builder.Services.AddScoped<IAuthenticateService, AuthenticateService>();
-
+/* Single scoped dependency */
 builder.Services.AddScoped<AdvertisementRepository>();
-builder.Services.AddScoped<ChannelRepository>();
 builder.Services.AddScoped<CommentRepository>();
 builder.Services.AddScoped<PostRepository>();
 builder.Services.AddScoped<TaskRepository>();
 builder.Services.AddScoped<SystemUserRepository>();
 
+/* Scoped service dependencies (interface-service) */
+builder.Services.AddScoped<IAuthenticateService, AuthenticateService>();
+
+builder.Services.AddScoped<IActionLogService, ActionLogService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<IAdvertisementService, AdvertisementService>();
+builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddScoped<ITaskService, TaskService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
         .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultTokenProviders();
-
 
 builder.Services.AddSwaggerGen(option =>
 {

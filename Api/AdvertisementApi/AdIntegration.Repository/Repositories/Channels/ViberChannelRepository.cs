@@ -1,6 +1,7 @@
 ﻿using AdIntegration.Data.DatabaseContext;
 using AdIntegration.Data.Entities.Viber;
 using AdIntegration.Repository.Interfaces.Channels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,58 +19,55 @@ public class ViberChannelRepository : IViberChannelRepository
         _context = context;
     }
 
-    public ViberChannel CreateViberChannel(ViberChannel viberChannel)
+    public async Task<ViberChannel> CreateViberChannel(ViberChannel viberChannel)
     {
         _context.ViberChannels.Add(viberChannel);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
         return viberChannel;
     }
 
-    public ViberChannel DeleteViberChannelById(int id)
+    public async Task<ViberChannel> DeleteViberChannelById(int id)
     {
-        var foundChannel = GetViberChannelById(id);
+        var foundChannel = await GetViberChannelById(id);
 
         if (foundChannel != null)
         {
             _context.ViberChannels.Remove(foundChannel);
-            _context.SaveChanges();
-            return foundChannel;
+            await _context.SaveChangesAsync();
         }
-        return null;
+        return foundChannel;
     }
 
-    public IEnumerable<ViberChannel> GetAllViberChannels()
+    public async Task<IEnumerable<ViberChannel>> GetAllViberChannels()
     {
-        var viberChannels = _context.ViberChannels.ToList();
+        var viberChannels = await _context.ViberChannels.ToListAsync();
         return viberChannels;
     }
 
-    public ViberChannel GetViberChannelById(int id)
+    public async Task<ViberChannel> GetViberChannelById(int id)
     {
-        var foundChannel = _context.ViberChannels.Find(id);
-        if (foundChannel != null)
-        {
-            return foundChannel;
-        }
-        return null;
+        var foundChannel =  await _context.ViberChannels.FindAsync(id);
+        return foundChannel;
     }
 
-    public IEnumerable<ViberChannel> GetViberChannelsByCategory(string category)
+    public async Task<IEnumerable<ViberChannel>> GetViberChannelsByCategory(string category)
     {
-        var foundChannels = _context.ViberChannels.Where(channel => channel.Category == category).ToList();
+        var foundChannels = await _context.ViberChannels
+            .Where(channel => channel.Category == category)
+            .ToListAsync();
         return foundChannels;
     }
 
-    public ViberChannel UpdateViberChannelById(int id, ViberChannel viberChannel)
+    public async Task<ViberChannel> UpdateViberChannelById(int id, ViberChannel viberChannel)
     {
-        var foundChannel = GetViberChannelById(id);
+        var foundChannel = await GetViberChannelById(id);
 
         if (foundChannel != null)
         {
             _context.ViberChannels.Update(viberChannel);
-            return viberChannel;
+            await _context.SaveChangesAsync();
         }
 
-        return null;
+        return viberChannel;
     }
 }

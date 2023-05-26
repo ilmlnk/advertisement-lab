@@ -13,7 +13,8 @@ public class Post
     public string Text { get; set; }
     public List<byte[]>? Photos { get; set; }
     [Required]
-    public SystemUser CreatedByUser { get; set; }
+    [ForeignKey(nameof(Post))]
+    public int UserId { get; set; }
     [Required]
     public DateTime CreatedAt { get; set; }
     public int? Reposts { get; set; }

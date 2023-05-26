@@ -9,13 +9,13 @@ namespace AdIntegration.Repository.Interfaces.Channels;
 
 public interface IWhatsAppChannelRepository
 {
-    public WhatsAppChannel CreateWhatsAppChannel(WhatsAppChannel whatsAppChannel);
-    public WhatsAppChannel UpdateWhatsAppChannelById(int id, WhatsAppChannel whatsAppChannel);
-    public WhatsAppChannel UpdateWhatsAppChannelByLink(string link, WhatsAppChannel whatsAppChannel);
-    public WhatsAppChannel DeleteWhatsAppChannelById(int id);
-    public WhatsAppChannel DeleteWhatsAppChannelByLink(string link);
-    public WhatsAppChannel GetWhatsAppChannelById(int id);
-    public WhatsAppChannel GetWhatsAppChannelByLink(string link);
-    public IEnumerable<WhatsAppChannel> GetAllWhatsAppChannels();
-    public IEnumerable<WhatsAppChannel> GetWhatsAppChannelsByCategory(string category);
+    public Task<WhatsAppChannel> CreateWhatsAppChannel(WhatsAppChannel whatsAppChannel);
+    public Task<WhatsAppChannel> UpdateWhatsAppChannelById(int id, WhatsAppChannel whatsAppChannel);
+    public Task<WhatsAppChannel> UpdateWhatsAppChannelByLink(string link, WhatsAppChannel whatsAppChannel);
+    public Task<WhatsAppChannel> DeleteWhatsAppChannelById(int id);
+    public Task<WhatsAppChannel> DeleteWhatsAppChannelByLink(string link);
+    public Task<WhatsAppChannel> GetWhatsAppChannelById(int id);
+    public Task<WhatsAppChannel> GetWhatsAppChannelByLink(string link);
+    public Task<IEnumerable<WhatsAppChannel>> GetAllWhatsAppChannels();
+    public Task<IEnumerable<WhatsAppChannel>> GetWhatsAppChannelsByCategory(string category);
 }

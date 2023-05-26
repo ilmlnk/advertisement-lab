@@ -17,7 +17,7 @@ public abstract class Channel
     public int ActiveUsers { get; set; }
     public int? Posts { get; set; }
     [Required]
-    public List<User> UserAdmins { get; set; }
+    public IEnumerable<User> UserAdmins { get; set; }
     public uint Likes { get; set; }
-    public List<Comment>? Comments { get; set; }
+    public IEnumerable<Comment>? Comments { get; set; }
 }

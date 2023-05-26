@@ -1,4 +1,6 @@
-﻿using AdIntegration.Data.DatabaseContext;
+﻿using AdIntegration.Business.Interfaces.Entities_Service;
+using AdIntegration.Business.Services;
+using AdIntegration.Data.DatabaseContext;
 using AdIntegration.Data.Dto.UserDto;
 using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Repositories;
@@ -16,15 +18,11 @@ namespace AdIntegration.Api.Controllers;
 [Route("api/[controller]")]
 public class UserAccountController : ControllerBase
 {
-    private readonly 
+    private readonly UserAccountService _userAccountService;
 
-    public UserAccountController(IConfiguration configuration,
-        SystemUserRepository userRepository,
-        ApplicationDbContext context)
+    public UserAccountController(UserAccountService userAccountService)
     {
-        _configuration = configuration;
-        _userRepository = userRepository;
-        _context = context;
+        _userAccountService = userAccountService;
     }
 
     /*[AllowAnonymous]

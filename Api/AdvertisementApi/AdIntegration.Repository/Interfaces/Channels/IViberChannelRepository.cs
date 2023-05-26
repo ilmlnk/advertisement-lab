@@ -9,10 +9,10 @@ namespace AdIntegration.Repository.Interfaces.Channels;
 
 public interface IViberChannelRepository
 {
-    public ViberChannel CreateViberChannel(ViberChannel viberChannel);
-    public ViberChannel UpdateViberChannelById(int id, ViberChannel viberChannel);
-    public ViberChannel DeleteViberChannelById(int id);
-    public ViberChannel GetViberChannelById(int id);
-    public IEnumerable<ViberChannel> GetAllViberChannels();
-    public IEnumerable<ViberChannel> GetViberChannelsByCategory(string category);
+    public Task<ViberChannel> CreateViberChannel(ViberChannel viberChannel);
+    public Task<ViberChannel> UpdateViberChannelById(int id, ViberChannel viberChannel);
+    public Task<ViberChannel> DeleteViberChannelById(int id);
+    public Task<ViberChannel> GetViberChannelById(int id);
+    public Task<IEnumerable<ViberChannel>> GetAllViberChannels();
+    public Task<IEnumerable<ViberChannel>> GetViberChannelsByCategory(string category);
 }

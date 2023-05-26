@@ -1,7 +1,7 @@
 ﻿using AdIntegration.Data.DatabaseContext;
 using AdIntegration.Data.Entities;
 using AdIntegration.Repository.Interfaces;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace AdIntegration.Repository.Repositories;
 
@@ -11,54 +11,47 @@ public class AdvertisementRepository : IAdvertisementRepository
 
     public AdvertisementRepository(ApplicationDbContext context) => _context = context;
 
-    public Advertisement CreateAdvertisement(Advertisement advertisement)
+    public async Task<Advertisement> CreateAdvertisement(Advertisement advertisement)
     {
         _context.Advertisements.Add(advertisement);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
         return advertisement;
     }
 
-    public Advertisement DeleteAdvertisement(int id)
+    public async Task<Advertisement> DeleteAdvertisement(int id)
     {
-        var advertisement = _context.Advertisements.Find(id);
+        var advertisement = await _context.Advertisements.FindAsync(id);
 
         if (advertisement != null)
         {
             _context.Advertisements.Remove(advertisement);
-            _context.SaveChanges();
-            return advertisement;
+            await _context.SaveChangesAsync();
         }
-        return null;
+        return advertisement;
     }
 
-    public Advertisement GetAdvertisementById(int id)
+    public async Task<Advertisement> GetAdvertisementById(int id)
     {
-        var advertisement = _context.Advertisements.Find(id);
-
-        if (advertisement != null)
-        {
-            return advertisement;
-        }
-        return null;
+        var advertisement = await _context.Advertisements.FindAsync(id);
+        return advertisement;
     }
 
-    public Advertisement UpdateAdvertisementById(int adId, Advertisement inputAdvertisement)
+    public async Task<Advertisement> UpdateAdvertisementById(int adId, Advertisement inputAdvertisement)
     {
-        var advertisement = _context.Advertisements.Find(adId);
+        var advertisement = await _context.Advertisements.FindAsync(adId);
 
         if (advertisement != null)
         {
             _context.Advertisements.Update(inputAdvertisement);
-            _context.SaveChanges();
-            return inputAdvertisement;
+            await _context.SaveChangesAsync();
         }
 
-        return null;
+        return inputAdvertisement;
     }
 
-    public IEnumerable<Advertisement> GetAllAdvertisements()
+    public async Task<IEnumerable<Advertisement>> GetAllAdvertisements()
     {
-        var advertisements = _context.Advertisements.ToList();
+        var advertisements = await _context.Advertisements.ToListAsync();
         return advertisements;
     }
 }

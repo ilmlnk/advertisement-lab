@@ -5,9 +5,9 @@ namespace AdIntegration.Business.Interfaces;
 
 public interface IAdvertisementService
 {
-    public Advertisement CreateAdvertisement(Advertisement advertisement);
-    public Advertisement UpdateAdvertisementById(int id, Advertisement advertisement);
-    public Advertisement DeleteAdvertisement(int id);
-    public IEnumerable<Advertisement> GetAllAdvertisements();
-    public Advertisement GetAdvertisementById(int id);
+    public Task<Advertisement> CreateAdvertisement(Advertisement advertisement);
+    public Task<Advertisement> UpdateAdvertisementById(int id, Advertisement advertisement);
+    public Task<Advertisement> DeleteAdvertisement(int id);
+    public Task<IEnumerable<Advertisement>> GetAllAdvertisements();
+    public Task<Advertisement> GetAdvertisementById(int id);
 }

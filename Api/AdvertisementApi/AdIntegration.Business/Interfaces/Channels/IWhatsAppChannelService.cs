@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace AdIntegration.Business.Interfaces.Channels;
 
-internal interface IWhatsAppChannelService
+public interface IWhatsAppChannelService
 {
 }

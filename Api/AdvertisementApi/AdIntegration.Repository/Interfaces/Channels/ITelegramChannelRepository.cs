@@ -9,12 +9,12 @@ namespace AdIntegration.Repository.Interfaces.Channels;
 
 public interface ITelegramChannelRepository
 {
-    public TelegramChannel CreateTelegramChannel(TelegramChannel channel);
-    public TelegramChannel UpdateTelegramChannelById(int id,  TelegramChannel channel);
-    public TelegramChannel DeleteTelegramChannelById(int id);
-    public TelegramChannel DeleteTelegramChannelByLink(string link);
-    public TelegramChannel GetTelegramChannelById(int id);
-    public TelegramChannel GetTelegramChannelByLink(string link);
-    public IEnumerable<TelegramChannel> GetAllTelegramChannels();
-    public IEnumerable<TelegramChannel> GetTelegramChannelsByCategory(string category);
+    public Task<TelegramChannel> CreateTelegramChannel(TelegramChannel channel);
+    public Task<TelegramChannel> UpdateTelegramChannelById(int id,  TelegramChannel channel);
+    public Task<TelegramChannel> DeleteTelegramChannelById(int id);
+    public Task<TelegramChannel> DeleteTelegramChannelByLink(string link);
+    public Task<TelegramChannel> GetTelegramChannelById(int id);
+    public Task<TelegramChannel> GetTelegramChannelByLink(string link);
+    public Task<IEnumerable<TelegramChannel>> GetAllTelegramChannels();
+    public Task<IEnumerable<TelegramChannel>> GetTelegramChannelsByCategory(string category);
 }

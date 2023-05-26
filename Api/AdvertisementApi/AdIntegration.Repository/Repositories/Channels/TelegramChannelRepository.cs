@@ -1,6 +1,7 @@
 ﻿using AdIntegration.Data.DatabaseContext;
 using AdIntegration.Data.Entities.Telegram;
 using AdIntegration.Repository.Interfaces.Channels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,79 +19,68 @@ public class TelegramChannelRepository : ITelegramChannelRepository
         _context = context;
     }
 
-    public TelegramChannel CreateTelegramChannel(TelegramChannel channel)
+    public async Task<TelegramChannel> CreateTelegramChannel(TelegramChannel channel)
     {
         _context.TelegramChannels.Add(channel);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
         return channel;
     }
 
-    public TelegramChannel DeleteTelegramChannelById(int id)
+    public async Task<TelegramChannel> DeleteTelegramChannelById(int id)
     {
-        var foundChannel = GetTelegramChannelById(id);
+        var foundChannel = await GetTelegramChannelById(id);
 
         if (foundChannel != null)
         {
             _context.TelegramChannels.Remove(foundChannel);
-            _context.SaveChanges();
-            return foundChannel;
+            await _context.SaveChangesAsync();
         }
-        return null;
+        return foundChannel;
     }
 
-    public TelegramChannel DeleteTelegramChannelByLink(string link)
+    public async Task<TelegramChannel> DeleteTelegramChannelByLink(string link)
     {
-        var foundChannel = GetTelegramChannelByLink(link);
+        var foundChannel = await GetTelegramChannelByLink(link);
         if (foundChannel != null)
         {
             _context.TelegramChannels.Remove(foundChannel);
-            _context.SaveChanges();
-            return foundChannel;
+            await _context.SaveChangesAsync();
         }
-        return null;
+        return foundChannel;
     }
 
-    public IEnumerable<TelegramChannel> GetAllTelegramChannels()
+    public async Task<IEnumerable<TelegramChannel>> GetAllTelegramChannels()
     {
-        var channels = _context.TelegramChannels.ToList();
+        var channels = await _context.TelegramChannels.ToListAsync();
         return channels;
     }
 
-    public TelegramChannel GetTelegramChannelById(int id)
+    public async Task<TelegramChannel> GetTelegramChannelById(int id)
     {
-        var foundChannel = _context.TelegramChannels.Find(id);
-        if (foundChannel != null)
-        {
-            return foundChannel;
-        }
-        return null;
+        var foundChannel = await _context.TelegramChannels.FindAsync(id);
+        return foundChannel;
     }
 
-    public TelegramChannel GetTelegramChannelByLink(string link)
+    public async Task<TelegramChannel> GetTelegramChannelByLink(string link)
     {
-        var foundChannel = _context.TelegramChannels.FirstOrDefault(channel => channel.ChannelUrl == link);
-        if (foundChannel != null)
-        {
-            return foundChannel;
-        }
-        return null;
+        var foundChannel = await _context.TelegramChannels.FirstOrDefaultAsync(channel => channel.ChannelUrl == link);
+        return foundChannel;
     }
 
-    public IEnumerable<TelegramChannel> GetTelegramChannelsByCategory(string category)
+    public async Task<IEnumerable<TelegramChannel>> GetTelegramChannelsByCategory(string category)
     {
-        var foundChannels = _context.TelegramChannels.Where(channel => channel.Category == category).ToList();
+        var foundChannels = await _context.TelegramChannels.Where(channel => channel.Category == category).ToListAsync();
         return foundChannels;
     }
 
-    public TelegramChannel UpdateTelegramChannelById(int id, TelegramChannel channel)
+    public async Task<TelegramChannel> UpdateTelegramChannelById(int id, TelegramChannel channel)
     {
-        var foundChannel = GetTelegramChannelById(id);
+        var foundChannel = await GetTelegramChannelById(id);
         if (foundChannel != null)
         {
             _context.TelegramChannels.Update(channel);
-            _context.SaveChanges();
-            return foundChannel;
+            _context.SaveChangesAsync();
         }
-        return null;
+        return foundChannel;
     }
 }

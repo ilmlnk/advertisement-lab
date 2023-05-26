@@ -1,3 +1,7 @@
 import React from "react";
 
-const 
+const AdminAccessGrantPage = () => {
+
+};
+
+export default AdminAccessGrantPage;

@@ -18,11 +18,12 @@ import Analytics from "./Pages/Analytics/Analytics";
 import UserManagement from "./Pages/UserManagement/UserManagement";
 import BudgetManagement from "./Pages/BudgetManagement/BudgetManagement";
 import ComplianceManagement from "./Pages/ComplianceManagement/ComplianceManagement";
-import CommandChat from "./Pages/CommandChat/CommandChat";
+import CommandChat from "./Pages/CommandChat/Components/CommandChat";
 import CustomerSupport from "./Pages/CustomerSupport/CustomerSupport";
 import Registration from "./Pages/Registration/Registration";
 import Login from "./Pages/LogIn/Login";
 import NotFoundPage from "./Pages/ErrorPages/NotFoundPage";
+import CommandChatPage from "./Pages/CommandChat/CommandChatPage";
 
 import TermsOfUse from "./Pages/TermsOfUse/TermsOfUse";
 import JoinOurTeam from "./Pages/JoinOurTeam/JoinOurTeam";
@@ -42,7 +43,7 @@ import PublicationsPage from "./Pages/Publications/PublicationsPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Router>
+    <>
       <Route path="/main" element={<StartPage />} />
       <Route path="/main/ukr" element={<StartPage />} />
       <Route path="/main/de" element={<StartPage />} />
@@ -85,10 +86,10 @@ const router = createBrowserRouter(
         element={<ComplianceManagement />}
       />
 
-      <Route path="/command-chat/:userId" element={<CommandChat />} />
-      <Route path="/command-chat/ukr/:userId" element={<CommandChat />} />
-      <Route path="/command-chat/de/:userId" element={<CommandChat />} />
-      <Route path="/command-chat/pl/:userId" element={<CommandChat />} />
+      <Route path="/command-chat/:userId" element={<CommandChatPage />} />
+      <Route path="/command-chat/ukr/:userId" element={<CommandChatPage />} />
+      <Route path="/command-chat/de/:userId" element={<CommandChatPage />} />
+      <Route path="/command-chat/pl/:userId" element={<CommandChatPage />} />
 
       <Route path="/customer-support/:userId" element={<CustomerSupport />} />
       <Route path="/customer-support/ukr/:userId" element={<CustomerSupport />} />
@@ -142,7 +143,7 @@ const router = createBrowserRouter(
       <Route path="/advertisement/edit/:userId" element={<RequireCredentialsPage />} />
 
       <Route path="/publications" element={<PublicationsPage/>}/>
-    </Router>
+    </>
   )
 );
 

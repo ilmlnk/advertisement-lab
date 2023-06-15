@@ -311,16 +311,17 @@ const NAV_ITEMS = [
   },
   {
     label: "Find Orders",
+    navLink: "orders",
     children: [
       {
         label: "Community",
         subLabel: "Connect with other people",
-        href: "#",
+        navLink: "community",
       },
       {
-        label: "Clients",
-        subLabel: "Match your client",
-        href: "#",
+        label: "Customers",
+        subLabel: "Match your customer",
+        navLink: "customers",
       },
     ],
   },
@@ -328,14 +329,14 @@ const NAV_ITEMS = [
     label: "Find Executors",
     children: [
       {
-        label: "Job Board",
-        subLabel: "Find your dream job",
-        navLink: "job-board",
+        label: "Executors",
+        subLabel: "Find your business partner",
+        navLink: "executors",
       },
       {
         label: "Workspace",
         subLabel: "User Feed to share your impressions",
-        navLink: "projects",
+        navLink: "workspace",
       },
     ],
   },
@@ -345,22 +346,22 @@ const NAV_ITEMS = [
       {
         label: "Bot Catalogue",
         subLabel: "",
-        href: "#",
+        navLink: "bots",
       },
       {
         label: "Hot Offers Catalogue",
         subLabel: "",
-        href: "#",
+        navLink: "hot-offers",
       },
       {
         label: "Ready-made Offers",
         subLabel: "",
-        href: "#",
+        href: "ready-offers",
       },
       {
         label: "Reposts Purchase",
         subLabel: "",
-        href: "#",
+        href: "reposts-purchase",
       },
     ],
   },

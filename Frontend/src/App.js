@@ -39,6 +39,7 @@ import RequireCredentialsPage from "./Pages/RequireCredentials/RequireCredential
 import PublicationsPage from "./Pages/Publications/PublicationsPage.js";
 import CooperationPage from "./Pages/Cooperation/CooperationPage";
 import CommunityPage from "./Pages/Community/CommunityPage";
+import OrdersPage from "./Pages/Orders/OrdersPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -156,6 +157,7 @@ const router = createBrowserRouter(
 
       <Route path="/publications" element={<PublicationsPage />} />
       <Route path="/community" element={<CommunityPage />} />
+      <Route path="/orders" element={<OrdersPage/>} />
     </>
   )
 );

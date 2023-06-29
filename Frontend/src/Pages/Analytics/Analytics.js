@@ -13,8 +13,8 @@ import {
 import SidebarWithHeader from "../../Components/navigation/Navigation.js";
 import { AnalyticsContent } from "./Components/AnalyticsContent.js";
 
-const AnalyticsPage = () => {/*
+const AnalyticsPage = () => {
   return <SidebarWithHeader children={<AnalyticsContent/>}/>
-*/};
+};
 
 export default AnalyticsPage;

@@ -17,7 +17,9 @@ import { ChatSidebar } from "./ChatSidebar";
 import { ChatBubble } from "./ChatBubble";
 import ChatConversation from "./ChatConversation";
 
-const CommandChat = () => {
+const CommandChat = ({ joinChat }) => {
+  const [user, setUser] = useState();
+  const [chat, setChat] = useState();
   const users = ["User 1", "User 2", "User 3", "User 4", "User 5"];
 
   const [newMessage, setNewMessage] = useState("");

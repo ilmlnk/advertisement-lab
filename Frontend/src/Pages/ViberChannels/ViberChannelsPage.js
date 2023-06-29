@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
 
-const TermsOfUse = () => {
+const ViberChannels = () => {
     return (
         <Box>
             
@@ -9,4 +9,4 @@ const TermsOfUse = () => {
     );
 }
 
-export default TermsOfUse;
+export default ViberChannels;

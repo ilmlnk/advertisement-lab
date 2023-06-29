@@ -58,9 +58,9 @@ const Login = () => {
       .post("https://localhost:50555/api/UserAccount/login", data)
       .then((response) => {
         console.log(response.data);
+        const token = response.data.token;
+        localStorage.setItem('authToken', token);
         setLoading(false);
-        const navigationLink = '/admin/' + response.data.id
-        navigate(navigationLink);
       })
       .catch((error) => {
         setLoginError(true);

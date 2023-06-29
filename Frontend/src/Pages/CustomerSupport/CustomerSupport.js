@@ -18,10 +18,6 @@ const CustomerSupport = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Действия при отправке формы
-
-    // Сброс полей
     setName("");
     setEmail("");
     setMessage("");

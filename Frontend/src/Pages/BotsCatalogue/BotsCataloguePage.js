@@ -58,7 +58,7 @@ import {
 import { SearchIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import StartPageHeader from "../Start/Components/StartPageHeader/StartPageHeader.js";
 
-const ChannelDashboard = () => {
+const BotsCataloguePage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [tagToggleState, setTagToggleState] = useState({});
   const [formatToggleState, setFormatToggleState] = useState({});
@@ -347,7 +347,7 @@ const ChannelDashboard = () => {
     <>
       <StartPageHeader />
       <Heading mt="2em" textAlign="center">
-        Channel Board
+        Bots Catalogue
       </Heading>
       <Center>
         <Box display="flex" flexDirection="row" padding={75}>
@@ -824,4 +824,4 @@ const ChannelDashboard = () => {
   );
 };
 
-export default ChannelDashboard;
+export default BotsCataloguePage;

@@ -40,6 +40,8 @@ import PublicationsPage from "./Pages/Publications/PublicationsPage.js";
 import CooperationPage from "./Pages/Cooperation/CooperationPage";
 import CommunityPage from "./Pages/Community/CommunityPage";
 import OrdersPage from "./Pages/Orders/OrdersPage";
+import BotsCataloguePage from "./Pages/BotsCatalogue/BotsCataloguePage";
+import HotOffersPage from "./Pages/HotOffersPage/HotOffersPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -59,58 +61,58 @@ const router = createBrowserRouter(
       <Route path="/analytics/de/:userId" element={<Analytics />} />
       <Route path="/analytics/pl/:userId" element={<Analytics />} />
 
-      <Route path="/user-management/:userId" element={<UserManagement />} />
-      <Route path="/user-management/ukr/:userId" element={<UserManagement />} />
-      <Route path="/user-management/de/:userId" element={<UserManagement />} />
-      <Route path="/user-management/pl/:userId" element={<UserManagement />} />
+      <Route path="/user_management/:userId" element={<UserManagement />} />
+      <Route path="/user_management/ukr/:userId" element={<UserManagement />} />
+      <Route path="/user_management/de/:userId" element={<UserManagement />} />
+      <Route path="/user_management/pl/:userId" element={<UserManagement />} />
 
-      <Route path="/budget-management/:userId" element={<BudgetManagement />} />
+      <Route path="/budget_management/:userId" element={<BudgetManagement />} />
       <Route
-        path="/budget-management/ukr/:userId"
+        path="/budget_management/ukr/:userId"
         element={<BudgetManagement />}
       />
       <Route
-        path="/budget-management/de/:userId"
+        path="/budget_management/de/:userId"
         element={<BudgetManagement />}
       />
       <Route
-        path="/budget-management/pl/:userId"
+        path="/budget_management/pl/:userId"
         element={<BudgetManagement />}
       />
 
       <Route
-        path="/compliance-management/:userId"
+        path="/compliance_management/:userId"
         element={<ComplianceManagement />}
       />
       <Route
-        path="/compliance-management/ukr/:userId"
+        path="/compliance_management/ukr/:userId"
         element={<ComplianceManagement />}
       />
       <Route
-        path="/compliance-management/de/:userId"
+        path="/compliance_management/de/:userId"
         element={<ComplianceManagement />}
       />
       <Route
-        path="/compliance-management/pl/:userId"
+        path="/compliance_management/pl/:userId"
         element={<ComplianceManagement />}
       />
 
-      <Route path="/command-chat/:userId" element={<CommandChatPage />} />
-      <Route path="/command-chat/ukr/:userId" element={<CommandChatPage />} />
-      <Route path="/command-chat/de/:userId" element={<CommandChatPage />} />
-      <Route path="/command-chat/pl/:userId" element={<CommandChatPage />} />
+      <Route path="/command_chat/:userId" element={<CommandChatPage />} />
+      <Route path="/command_chat/ukr/:userId" element={<CommandChatPage />} />
+      <Route path="/command_chat/de/:userId" element={<CommandChatPage />} />
+      <Route path="/command_chat/pl/:userId" element={<CommandChatPage />} />
 
-      <Route path="/customer-support/:userId" element={<CustomerSupport />} />
+      <Route path="/customer_support/:userId" element={<CustomerSupport />} />
       <Route
-        path="/customer-support/ukr/:userId"
+        path="/customer_support/ukr/:userId"
         element={<CustomerSupport />}
       />
       <Route
-        path="/customer-support/de/:userId"
+        path="/customer_support/de/:userId"
         element={<CustomerSupport />}
       />
       <Route
-        path="/customer-support/pl/:userId"
+        path="/customer_support/pl/:userId"
         element={<CustomerSupport />}
       />
 
@@ -119,37 +121,37 @@ const router = createBrowserRouter(
       <Route path="/registration/de" element={<Registration />} />
       <Route path="/registration/pl" element={<Registration />} />
 
-      <Route path="/sign-up" element={<Registration />} />
-      <Route path="/sign-up/ukr" element={<Registration />} />
-      <Route path="/sign-up/de" element={<Registration />} />
-      <Route path="/sign-up/pl" element={<Registration />} />
+      <Route path="/sign_up" element={<Registration />} />
+      <Route path="/sign_up/ukr" element={<Registration />} />
+      <Route path="/sign_up/de" element={<Registration />} />
+      <Route path="/sign_up/pl" element={<Registration />} />
 
       <Route path="/login" element={<Login />} />
       <Route path="/login/ukr" element={<Login />} />
       <Route path="/login/de" element={<Login />} />
       <Route path="/login/pl" element={<Login />} />
 
-      <Route path="/sign-in" element={<Login />} />
-      <Route path="/sign-in/ukr" element={<Login />} />
-      <Route path="/sign-in/de" element={<Login />} />
-      <Route path="/sign-in/pl" element={<Login />} />
+      <Route path="/sign_in" element={<Login />} />
+      <Route path="/sign_in/ukr" element={<Login />} />
+      <Route path="/sign_in/de" element={<Login />} />
+      <Route path="/sign_in/pl" element={<Login />} />
 
       <Route path="/forgot" element={<ForgotPasswordPage />} />
 
       <Route path="*" element={<NotFoundPage />} />
 
       <Route path="/projects" />
-      <Route path="/cooperation-page" element={<CooperationPage />} />
-      <Route path="/channel-board" element={<ChannelDashboard />} />
-      <Route path="/instagram-profiles" element={<InstagramProfiles />} />
+      <Route path="/cooperation_page" element={<CooperationPage />} />
+      <Route path="/channel_board" element={<ChannelDashboard />} />
+      <Route path="/instagram_profiles" element={<InstagramProfiles />} />
 
       <Route path="/groups" element={<Groups />} />
-      <Route path="/service-reviews" element={<ServiceReviews />} />
+      <Route path="/service_reviews" element={<ServiceReviews />} />
 
       <Route path="/faq" element={<Faq />} />
-      <Route path="/report-us" element={<ReportUs />} />
+      <Route path="/report_us" element={<ReportUs />} />
 
-      <Route path="/join-team" element={<JoinOurTeam />} />
+      <Route path="/join_team" element={<JoinOurTeam />} />
       <Route
         path="/advertisement/edit/:userId"
         element={<RequireCredentialsPage />}
@@ -157,12 +159,15 @@ const router = createBrowserRouter(
 
       <Route path="/publications" element={<PublicationsPage />} />
       <Route path="/community" element={<CommunityPage />} />
-      <Route path="/orders" element={<OrdersPage/>} />
+      <Route path="/orders" element={<OrdersPage />} />
+      <Route path="/bots_catalogue" element={<BotsCataloguePage />} />
+      <Route path="/hot_offers" element={<HotOffersPage />} />
     </>
   )
 );
 
 function App() {
+  const isAuthenticated = localStorage.getItem('authToken') !== null;
   return (
     <>
       <RouterProvider router={router} />

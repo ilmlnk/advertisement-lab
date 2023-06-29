@@ -100,14 +100,14 @@ const StartPageHeader = () => {
           >
             <Flex align="center">
               <Flex mr={4}>
-              {/* Change Language button */}
-              <Button m={2}>
-                <FaGlobe />
-              </Button>
-              {/* Change color mode */}
-              <Button m={2} onClick={toggleColorMode}>
-                {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-              </Button>
+                {/* Change Language button */}
+                <Button m={2}>
+                  <FaGlobe />
+                </Button>
+                {/* Change color mode */}
+                <Button m={2} onClick={toggleColorMode}>
+                  {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+                </Button>
               </Flex>
 
               <Button
@@ -307,7 +307,7 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: "Home",
-    navLink: "main"
+    navLink: "main",
   },
   {
     label: "Find Orders",
@@ -373,8 +373,6 @@ const NAV_ITEMS = [
     label: "Channel Dashboard",
     navLink: "channel-board",
   },
-  
 ];
-
 
 export default StartPageHeader;

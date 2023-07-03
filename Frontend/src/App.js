@@ -56,59 +56,59 @@ const router = createBrowserRouter(
       <Route path="/admin/de/:userId" element={<Admin />} />
       <Route path="/admin/pl/:userId" element={<Admin />} />
 
-      <Route path="/analytics/:userId" element={<Analytics />} />
-      <Route path="/analytics/ukr/:userId" element={<Analytics />} />
-      <Route path="/analytics/de/:userId" element={<Analytics />} />
-      <Route path="/analytics/pl/:userId" element={<Analytics />} />
+      <Route path="/admin/:userId/analytics" element={<Analytics />} />
+      <Route path="/admin/:userId/analytics/ukr" element={<Analytics />} />
+      <Route path="/admin/:userId/analytics/de" element={<Analytics />} />
+      <Route path="/admin/:userId/analytics/pl" element={<Analytics />} />
 
-      <Route path="/user_management/:userId" element={<UserManagement />} />
-      <Route path="/user_management/ukr/:userId" element={<UserManagement />} />
-      <Route path="/user_management/de/:userId" element={<UserManagement />} />
-      <Route path="/user_management/pl/:userId" element={<UserManagement />} />
+      <Route path="/admin/:userId/user_management" element={<UserManagement />} />
+      <Route path="/admin/:userId/user_management/ukr" element={<UserManagement />} />
+      <Route path="/admin/:userId/user_management/de" element={<UserManagement />} />
+      <Route path="/admin/:userId/user_management/pl" element={<UserManagement />} />
 
-      <Route path="/budget_management/:userId" element={<BudgetManagement />} />
+      <Route path="/admin/:userId/budget_management" element={<BudgetManagement />} />
       <Route
-        path="/budget_management/ukr/:userId"
+        path="/admin/:userId/budget_management/ukr"
         element={<BudgetManagement />}
       />
       <Route
-        path="/budget_management/de/:userId"
+        path="/admin/:userId/budget_management/de"
         element={<BudgetManagement />}
       />
       <Route
-        path="/budget_management/pl/:userId"
+        path="/admin/:userId/budget_management/pl"
         element={<BudgetManagement />}
       />
 
       <Route
-        path="/compliance_management/:userId"
+        path="/admin/:userId/compliance_management"
         element={<ComplianceManagement />}
       />
       <Route
-        path="/compliance_management/ukr/:userId"
+        path="/admin/:userId/compliance_management/ukr"
         element={<ComplianceManagement />}
       />
       <Route
-        path="/compliance_management/de/:userId"
+        path="/admin/:userId/compliance_management/de"
         element={<ComplianceManagement />}
       />
       <Route
-        path="/compliance_management/pl/:userId"
+        path="/admin/:userId/compliance_management/pl"
         element={<ComplianceManagement />}
       />
 
-      <Route path="/command_chat/:userId" element={<CommandChatPage />} />
-      <Route path="/command_chat/ukr/:userId" element={<CommandChatPage />} />
-      <Route path="/command_chat/de/:userId" element={<CommandChatPage />} />
-      <Route path="/command_chat/pl/:userId" element={<CommandChatPage />} />
+      <Route path="/admin/:userId/command_chat" element={<CommandChatPage />} />
+      <Route path="/admin/:userId/command_chat/ukr" element={<CommandChatPage />} />
+      <Route path="/admin/:userId/command_chat/de" element={<CommandChatPage />} />
+      <Route path="/admin/:userId/command_chat/pl" element={<CommandChatPage />} />
 
-      <Route path="/customer_support/:userId" element={<CustomerSupport />} />
+      <Route path="/admin/:userId/customer_support" element={<CustomerSupport />} />
       <Route
-        path="/customer_support/ukr/:userId"
+        path="/admin/:userId/customer_support/ukr"
         element={<CustomerSupport />}
       />
       <Route
-        path="/customer_support/de/:userId"
+        path="/admin/:userId/customer_support/de"
         element={<CustomerSupport />}
       />
       <Route

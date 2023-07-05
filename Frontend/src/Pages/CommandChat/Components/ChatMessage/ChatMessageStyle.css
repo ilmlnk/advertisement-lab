@@ -1,0 +1,9 @@
+.chatMessage {
+    display: flex;
+    gap: 20px;
+}
+.chatMessageInfo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}

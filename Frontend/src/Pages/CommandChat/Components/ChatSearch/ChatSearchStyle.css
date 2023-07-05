@@ -1,0 +1,45 @@
+.search {
+    
+}
+
+.searchForm {
+    
+}
+
+.searchInput {
+    width: 100%;
+    padding: 7px;
+    padding-left: 12px;
+    background-color: #3e3c61;
+    color: #fff;
+    border-bottom: 1px solid #312f4c;
+}
+
+.chats {
+    overflow-y: auto;
+    height: 570px;
+}
+
+.userChat {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.userChat:hover {
+    background-color: #2f2d52;
+}
+
+.userChat:focus {
+    background-color: #2f2d52;
+}
+
+.clearButton {
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    transform: translate(-200%, 30%);
+}

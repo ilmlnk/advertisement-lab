@@ -1,6 +1,6 @@
 import React from "react";
 import { ResponsiveLine } from "@nivo/line";
-import { tokens } from "./Theme";
+import { tokens } from "../Theme";
 import { useTheme } from "@mui/material";
 
 const LineChart = ({

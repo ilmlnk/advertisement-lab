@@ -18,12 +18,10 @@ import Analytics from "./Pages/Analytics/Analytics.js";
 import UserManagement from "./Pages/UserManagement/UserManagement.js";
 import BudgetManagement from "./Pages/BudgetManagement/BudgetManagement.js";
 import ComplianceManagement from "./Pages/ComplianceManagement/ComplianceManagement.js";
-import CommandChat from "./Pages/CommandChat/Components/CommandChat.js";
 import CustomerSupport from "./Pages/CustomerSupport/CustomerSupport.js";
 import Registration from "./Pages/Registration/Registration.js";
 import Login from "./Pages/LogIn/Login.js";
 import NotFoundPage from "./Pages/ErrorPages/NotFoundPage.js";
-import CommandChatPage from "./Pages/CommandChat/CommandChatPage.js";
 
 import TermsOfUse from "./Pages/TermsOfUse/TermsOfUse.js";
 import JoinOurTeam from "./Pages/JoinOurTeam/JoinOurTeam.js";
@@ -42,6 +40,7 @@ import CommunityPage from "./Pages/Community/CommunityPage";
 import OrdersPage from "./Pages/Orders/OrdersPage";
 import BotsCataloguePage from "./Pages/BotsCatalogue/BotsCataloguePage";
 import HotOffersPage from "./Pages/HotOffersPage/HotOffersPage";
+import CommandChatPage from "./Pages/CommandChat/CommandChatPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

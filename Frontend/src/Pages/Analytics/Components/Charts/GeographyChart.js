@@ -1,8 +1,8 @@
 import React from "react";
 import { useTheme } from "@mui/material";
 import { ResponsiveChoropleth } from "@nivo/geo";
-import { tokens } from "./Theme";
-import { geoFeatures } from "../Data/GeoFeatures";
+import { tokens } from "../Theme";
+import { geoFeatures } from "../../Data/GeoFeatures";
 
 const GeographyChart = ({ data, isDashboard = false }) => {
   const theme = useTheme();

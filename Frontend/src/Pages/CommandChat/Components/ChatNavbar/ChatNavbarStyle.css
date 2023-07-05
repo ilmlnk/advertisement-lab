@@ -1,0 +1,32 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #2f2d52;
+    height: 50px;
+    padding: 10px;
+    justify-content: space-between;
+    color: #fff;
+}
+
+.logo {
+    font-weight: 600;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.log-out {
+    background-color: #4d4a86;
+    border-radius: 10px;
+    padding: 5px;
+    width: 35px;
+    transition: .2s ease-in;
+    cursor: pointer;
+}
+
+.log-out:hover {
+    background-color: #5e5aa6;
+}

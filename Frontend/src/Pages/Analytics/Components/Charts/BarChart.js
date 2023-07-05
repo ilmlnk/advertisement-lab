@@ -4,12 +4,14 @@ import {
   SeriesCollectionDirective,
   SeriesDirective,
   Inject,
-  LineSeries,
-  DateTime,
   Legend,
+  Category,
   Tooltip,
+  ColumnSeries,
+  DataLabel,
 } from "@syncfusion/ej2-react-charts";
-import ChartsHeader from "../ChartsHeader";
+import { barCustomSeries, barPrimaryXAxis, barPrimaryYAxis } from "../../Data/Dummy";
+import ChartsHeader from "../AnalyticsComponents/ChartsHeader";
 
 const BarChart = () => {
   return (

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZLTG/w0JN4r5mksxpYaORt5rW+KJH6TxwVdEsJczeLT1JQ5IyKd++PD0iokztU30Gke42v3OIu3BjRgrQitM6A==",
+  "dgSpecHash": "mWNYmTP23siKHGt++ofQLmAvbTvky7dueSOISNNSVr3VMqnmlTBg5h76MWjnkzEZ9E6vztV72TLY+kkA+0O+MQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\illia.melnyk\\Documents\\Projects\\Advertisement Project\\advertisement-project-lab\\Api\\AdvertisementApi\\AdvertisementApi\\AdIntegration.Api.csproj",
+  "projectFilePath": "C:\\Users\\illia.melnyk\\Documents\\Projects_Development\\advertisement-project-lab-backend-changed\\advertisement-project-lab\\Api\\AdvertisementApi\\AdvertisementApi\\AdIntegration.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
@@ -12,6 +12,7 @@
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\fluentassertions\\6.10.0\\fluentassertions.6.10.0.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\jquery\\1.6.4\\jquery.1.6.4.nupkg.sha512",
+    "C:\\Users\\illia.melnyk\\.nuget\\packages\\log4net\\2.0.15\\log4net.2.0.15.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\microsoft.aspnet.signalr\\2.4.3\\microsoft.aspnet.signalr.2.4.3.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\microsoft.aspnet.signalr.core\\2.4.3\\microsoft.aspnet.signalr.core.2.4.3.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\microsoft.aspnet.signalr.js\\2.4.3\\microsoft.aspnet.signalr.js.2.4.3.nupkg.sha512",
@@ -189,27 +190,6 @@
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
   "logs": [
-    {
-      "code": "NU3037",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.0' from source 'C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\': The repository primary signature validity period has expired.",
-      "libraryId": "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl"
-    },
-    {
-      "code": "NU3037",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.0' from source 'C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\': The repository primary signature validity period has expired.",
-      "libraryId": "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl"
-    },
-    {
-      "code": "NU3037",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.0' from source 'C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\': The repository primary signature validity period has expired.",
-      "libraryId": "runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl"
-    },
     {
       "code": "NU1701",
       "level": "Warning",

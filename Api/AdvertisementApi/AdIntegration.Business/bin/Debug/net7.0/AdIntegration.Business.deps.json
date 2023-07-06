@@ -8,12 +8,12 @@
     ".NETCoreApp,Version=v7.0": {
       "AdIntegration.Business/1.0.0": {
         "dependencies": {
-          "AdIntegration.Data": "1.0.0",
           "AdIntegration.Repository": "1.0.0",
           "AutoMapper": "12.0.1",
           "BCrypt.Net-Next": "4.0.3",
           "Microsoft.AspNet.SignalR": "2.4.3",
-          "Microsoft.AspNetCore.Mvc.Core": "2.2.5"
+          "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
+          "log4net": "2.0.15"
         },
         "runtime": {
           "AdIntegration.Business.dll": {}
@@ -84,6 +84,17 @@
         }
       },
       "jQuery/1.6.4": {},
+      "log4net/2.0.15": {
+        "dependencies": {
+          "System.Configuration.ConfigurationManager": "5.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/log4net.dll": {
+            "assemblyVersion": "2.0.15.0",
+            "fileVersion": "2.0.15.0"
+          }
+        }
+      },
       "Microsoft.AspNet.SignalR/2.4.3": {
         "dependencies": {
           "Microsoft.AspNet.SignalR.JS": "2.4.3",
@@ -1389,7 +1400,8 @@
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
           "Microsoft.EntityFrameworkCore": "7.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.4",
-          "Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite": "7.0.4"
+          "Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite": "7.0.4",
+          "log4net": "2.0.15"
         },
         "runtime": {
           "AdIntegration.Data.dll": {}
@@ -1400,7 +1412,8 @@
           "AdIntegration.Data": "1.0.0",
           "BCrypt.Net-Next": "4.0.3",
           "Microsoft.AspNet.SignalR": "2.4.3",
-          "Microsoft.AspNetCore.Mvc.Core": "2.2.5"
+          "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
+          "log4net": "2.0.15"
         },
         "runtime": {
           "AdIntegration.Repository.dll": {}
@@ -1455,6 +1468,13 @@
       "sha512": "sha512-8RzoZQFeFYL/cINRXksLWyl8D5TKctZ/2G8hrlOLLM5OgFNI9h3t3l5tB+BBbsBUxaPUageVe0p9ruU5jrFeow==",
       "path": "jquery/1.6.4",
       "hashPath": "jquery.1.6.4.nupkg.sha512"
+    },
+    "log4net/2.0.15": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GahnO9ZgFka+xYcFwAfIFjW+k86P2nxFoaEpH6t3v4hiGj7tv2ksVZphxCVIHmJxoySS0HeU3dgCW+bSCcfD0A==",
+      "path": "log4net/2.0.15",
+      "hashPath": "log4net.2.0.15.nupkg.sha512"
     },
     "Microsoft.AspNet.SignalR/2.4.3": {
       "type": "package",

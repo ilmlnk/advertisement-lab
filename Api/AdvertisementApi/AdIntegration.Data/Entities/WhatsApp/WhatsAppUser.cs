@@ -5,15 +5,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AdIntegration.Data.Entities.Abstractions;
 
 namespace AdIntegration.Data.Entities.WhatsApp
 {
-    [Table(nameof(WhatsAppUser))]
+    [Table("WhatsAppUsers")]
     public class WhatsAppUser : User
     {
         [Required]
-        public string Username { get; set; }
-        public byte[]? Photo { get; set; }
+        public override string UserName { get; set; }
+        public string? PhotoUrl { get; set; }
         [Required]
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }

@@ -6,18 +6,19 @@ using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using AdIntegration.Data.Entities.Abstractions;
 
 namespace AdIntegration.Data.Entities.WhatsApp
 {
-    [Table(nameof(WhatsAppChannel<T, V>))]
-    public class WhatsAppChannel<T, V> : Channel<T> where T : User where V : Channel<T>
+    [Table("WhatsAppChannels")]
+    public class WhatsAppChannel : Channel
     {
         [Required]
         public int BusinessProfileId { get; set; }
         [DataType(DataType.EmailAddress)]
         public string? Email { get; set; }
         [Required]
-        public Url UrlAddress { get; set; }
+        public string UrlAddress { get; set; }
         [Required]
         public string Category { get; set; }
         [Required]

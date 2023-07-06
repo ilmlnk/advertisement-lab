@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NX1rKUtn16Ly4M5zMJ9BY16XaLlP2GJWtL0AXu0199505Oj9CUthea2C0fqA7NpL75flwPToC0pDOF6wSwnGBw==",
+  "dgSpecHash": "iSwTQOLZm2APPgIgkUeebcf+8YQKIC9rMEBqztPdslW2DPudnhzpIeVf33YLc3YvC4EKbvwR/rE4jsR1nwLGfw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\illia.melnyk\\Documents\\Projects\\Advertisement Project\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Business\\AdIntegration.Business.csproj",
+  "projectFilePath": "C:\\Users\\illia.melnyk\\Documents\\Projects_Development\\advertisement-project-lab-backend-changed\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Business\\AdIntegration.Business.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
@@ -10,6 +10,7 @@
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\fluentassertions\\6.10.0\\fluentassertions.6.10.0.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\jquery\\1.6.4\\jquery.1.6.4.nupkg.sha512",
+    "C:\\Users\\illia.melnyk\\.nuget\\packages\\log4net\\2.0.15\\log4net.2.0.15.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\microsoft.aspnet.signalr\\2.4.3\\microsoft.aspnet.signalr.2.4.3.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\microsoft.aspnet.signalr.core\\2.4.3\\microsoft.aspnet.signalr.core.2.4.3.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\microsoft.aspnet.signalr.js\\2.4.3\\microsoft.aspnet.signalr.js.2.4.3.nupkg.sha512",

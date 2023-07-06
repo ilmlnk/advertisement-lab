@@ -1,11 +1,12 @@
+import { Box } from "@chakra-ui/react";
 import React from "react";
 
 
 const UserManagement = () => {
     return (
-        <div>
-            <h1>User Management</h1>
-        </div>
+        <Box>
+            
+        </Box>
     );
 }
 

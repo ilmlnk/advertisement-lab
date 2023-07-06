@@ -1,14 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "2UBmpxbPbi2GpwhNapgFoVvsLMeGmT483MPEsXu/hvBLSul/D59uonEk4MFist6xYLv7qM9Nt1a2dD7Q5vFMrA==",
+  "dgSpecHash": "CxHFHFPiLsqXTyMOi+pvePiV4r+6Ik3qzALhBjDf5c0tV271N1UwcKhYVxlOTTHF8wkyjbkfTNJQYBUuGOrfEw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\illia.melnyk\\Documents\\Projects\\Advertisement Project\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Repository\\AdIntegration.Repository.csproj",
+  "projectFilePath": "C:\\Users\\illia.melnyk\\Documents\\Projects_Development\\advertisement-project-lab-backend-changed\\advertisement-project-lab\\Api\\AdvertisementApi\\AdIntegration.Repository\\AdIntegration.Repository.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\fluentassertions\\6.10.0\\fluentassertions.6.10.0.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\jquery\\1.6.4\\jquery.1.6.4.nupkg.sha512",
+    "C:\\Users\\illia.melnyk\\.nuget\\packages\\log4net\\2.0.15\\log4net.2.0.15.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\microsoft.aspnet.signalr\\2.4.3\\microsoft.aspnet.signalr.2.4.3.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\microsoft.aspnet.signalr.core\\2.4.3\\microsoft.aspnet.signalr.core.2.4.3.nupkg.sha512",
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\microsoft.aspnet.signalr.js\\2.4.3\\microsoft.aspnet.signalr.js.2.4.3.nupkg.sha512",
@@ -135,13 +136,6 @@
     "C:\\Users\\illia.melnyk\\.nuget\\packages\\system.xml.xdocument\\4.0.11\\system.xml.xdocument.4.0.11.nupkg.sha512"
   ],
   "logs": [
-    {
-      "code": "NU3037",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Reflection 4.3.0' from source 'C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\': The repository primary signature validity period has expired.",
-      "libraryId": "System.Reflection"
-    },
     {
       "code": "NU1701",
       "level": "Warning",

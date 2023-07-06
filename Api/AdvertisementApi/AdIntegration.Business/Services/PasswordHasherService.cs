@@ -1,4 +1,4 @@
-﻿using AdIntegration.Data.Entities;
+﻿using AdIntegration.Data.Entities.Abstractions;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;

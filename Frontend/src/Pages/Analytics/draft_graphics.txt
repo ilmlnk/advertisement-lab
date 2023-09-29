@@ -1,0 +1,62 @@
+import React from "react";
+import {
+  Box,
+  Flex,
+  Heading,
+  Stat,
+  StatLabel,
+  StatNumber,
+  StatHelpText,
+  StatArrow,
+  Divider,
+  Card,
+  CardBody,
+} from "@chakra-ui/react";
+import ChannelPieChart from "./ChannelPieChart";
+import Footer from "../../../Components/footer/Footer";
+import ChannelCategoriesBarChart from "./ChannelCategoriesBarChart";
+
+/*
+
+    Graphic of buying by fiat or cryptocurrencies
+    Graphic of channel categories
+    Graphic of Viber, Telegram and WhatsApp users
+    Graphic of 
+
+*/
+
+const AnalyticsContent = () => {
+  return (
+    <>
+      <Box p={4}>
+        <Heading mb="2em" textAlign="center">
+          Analytics
+        </Heading>
+        {/* Graphic of Viber, Telegram and WhatsApp advertisements */}
+        <Box>
+          <Flex>
+            <ChannelPieChart />
+            <Flex ml="4em">
+              <ChannelCategoriesBarChart />
+            </Flex>
+            <Flex ml="4em">
+              <ChannelCategoriesBarChart />
+            </Flex>
+          </Flex>
+          <Flex mt="2em">
+            <ChannelPieChart />
+            <Flex ml="4em">
+              <ChannelCategoriesBarChart />
+            </Flex>
+            <Flex ml="4em">
+              <ChannelCategoriesBarChart />
+            </Flex>
+          </Flex>
+        </Box>
+      </Box>
+      <Footer />
+    </>
+  );
+};
+
+export default AnalyticsContent;

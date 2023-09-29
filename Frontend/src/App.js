@@ -41,6 +41,8 @@ import OrdersPage from "./Pages/Orders/OrdersPage";
 import BotsCataloguePage from "./Pages/BotsCatalogue/BotsCataloguePage";
 import HotOffersPage from "./Pages/HotOffersPage/HotOffersPage";
 import CommandChatPage from "./Pages/CommandChat/CommandChatPage";
+import EmployeesPage from "./Pages/Employees/EmployeesPage";
+import CustomersPage from "./Pages/Customers/CustomersPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -60,10 +62,15 @@ const router = createBrowserRouter(
       <Route path="/admin/:userId/analytics/de" element={<Analytics />} />
       <Route path="/admin/:userId/analytics/pl" element={<Analytics />} />
 
-      <Route path="/admin/:userId/user_management" element={<UserManagement />} />
-      <Route path="/admin/:userId/user_management/ukr" element={<UserManagement />} />
-      <Route path="/admin/:userId/user_management/de" element={<UserManagement />} />
-      <Route path="/admin/:userId/user_management/pl" element={<UserManagement />} />
+      <Route path="/admin/:userId/employees" element={<EmployeesPage/>} />
+      <Route path="/admin/:userId/employees/ukr" element={<EmployeesPage/>} />
+      <Route path="/admin/:userId/employees/de" element={<EmployeesPage/>} />
+      <Route path="/admin/:userId/employees/pl" element={<EmployeesPage/>} />
+
+      <Route path="/admin/:userId/customers" element={<CustomersPage/>} />
+      <Route path="/admin/:userId/customers/ukr" element={<CustomersPage/>} />
+      <Route path="/admin/:userId/customers/de" element={<CustomersPage/>} />
+      <Route path="/admin/:userId/customers/pl" element={<CustomersPage/>} />
 
       <Route path="/admin/:userId/budget_management" element={<BudgetManagement />} />
       <Route

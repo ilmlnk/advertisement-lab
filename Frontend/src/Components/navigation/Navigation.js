@@ -44,6 +44,7 @@ import {
   FiHeart,
   FiCalendar,
   FiGlobe,
+  FiUserPlus,
 } from "react-icons/fi";
 
 import { BiUser } from "react-icons/bi";
@@ -59,9 +60,10 @@ const LinkItems = [
   { name: "Home", icon: FiHome, navigation: "main" },
   { name: "Admin", icon: BiUser, navigation: "admin" },
   { name: "Analytics", icon: FiTrendingUp, navigation: "analytics" },
-  { name: "Manage Users", icon: FiUsers, navigation: "user-management" },
+  { name: "Customers", icon: FiUsers, navigation: "customers" },
+  { name: "Employees", icon: FiUserCheck, navigation: "employees" },
   { name: "Manage Budget", icon: FiDollarSign, navigation: "budget-management" },
-  { name: "Compliances", icon: FiUserCheck, navigation: "compliance-management" },
+  { name: "Compliances", icon: FiUserPlus, navigation: "compliance-management" },
   { name: "Command Chat", icon: FiMessageCircle, navigation: "command-chat" },
   { name: "Customer Support", icon: FiSmile, navigation: "customer-support" },
 ];
@@ -140,7 +142,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem onClick={() => navigate("/" + link.navigation)} key={link.name} icon={link.icon}>
+        <NavItem onClick={() => navigate(link.navigation)} key={link.name} icon={link.icon}>
           {link.name}
         </NavItem>
       ))}
